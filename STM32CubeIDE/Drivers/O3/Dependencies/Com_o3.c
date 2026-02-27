@@ -38,16 +38,21 @@ void COM_O3_Clear(void)
 void COM_O3_SendConst(const char *Data)
 {
 	EDT_UART_Transmit_IT(&hRs232, (uint8_t *)Data, (uint16_t) strlen (Data));
+//	EDT_UART_Transmit_IT(&hRs485, (uint8_t *)Data, (uint16_t) strlen (Data));
 }
 
 void COM_O3_Send(uint8_t *Data)
 {
 	EDT_UART_Transmit_IT(&hRs232, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data));
+//	EDT_UART_Transmit_IT(&hRs485, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data));
 }
 
 void COM_O3_PutString(uint8_t *Data)
 {
-	EDT_UART_Transmit_IT(&hRs232, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data));
+//	EDT_UART_Transmit_IT(&hRs232, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data));
+//	EDT_UART_Transmit_IT(&hRs485, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data));
+	EDT_UART_Transmit(&hRs232, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data), HAL_MAX_DELAY);
+//	EDT_UART_Transmit(&hRs485, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data), HAL_MAX_DELAY);
 }
 
 void COM_O3_PollRx(void)

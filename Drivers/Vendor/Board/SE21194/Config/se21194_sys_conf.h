@@ -50,8 +50,8 @@
  //#define MXT336U  // U599 series For 4.3 and 5.0
  #define MXT640U    // U599 series For 5.7 and 7.0
 /******************* External Interface Private define*************/      
-//#define USE_RS232
-#define USE_RS485
+#define USE_RS232
+//#define USE_RS485
 //#define USE_EX_I2C
 //#define USE_SPI
 #define USE_CAN

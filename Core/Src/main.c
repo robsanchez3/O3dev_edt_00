@@ -145,7 +145,14 @@ int main(void)
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
   printf("Hello world! 1\n");
-  EDT_USART_Init(&hRs232, USED_USART_RS232 ,115200); // no runnnnnnnnnnnnnnnnnnnnnnnnning here
+  //EDT_USART_Init(&hRs232, USED_USART_RS232 ,115200); // rsm  no runnnnnnnnnnnnnnnnnnnnnnnnning here
+
+#if defined(USE_RS232)
+  EDT_USART_Init(&hRs232, USED_USART_RS232 ,115200);
+#elif defined(USE_RS485)
+  EDT_USART_Init(&hRs485, USED_USART_RS485 ,115200);
+#endif
+
   printf("Hello world! 2\n");
 
 #if defined(USE_CAN)

@@ -1,8 +1,8 @@
 ../../Drivers/CMSIS/Include/core_cm33.h:3212:26:ITM_SendChar	4
 C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:79:5:_write	2
 C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:100:5:main	1
-C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:193:6:SystemClock_Config	4
-C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:246:6:PeriphCommonClock_Config	2
-C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:274:13:SystemPower_Config	2
-C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:305:6:HAL_TIM_PeriodElapsedCallback	2
-C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:324:6:Error_Handler	1
+C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:200:6:SystemClock_Config	4
+C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:253:6:PeriphCommonClock_Config	2
+C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:281:13:SystemPower_Config	2
+C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:312:6:HAL_TIM_PeriodElapsedCallback	2
+C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c:331:6:Error_Handler	1

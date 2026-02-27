@@ -50,8 +50,15 @@
 #endif /* __GNUC__ */
 #endif
 
-UART_HandleTypeDef hRs485;
-UART_HandleTypeDef hRs232;
+// rsm test UART_HandleTypeDef hRs485;
+// rsm test UART_HandleTypeDef hRs232;
+UART_HandleTypeDef hRs485 = {
+  .Instance = RS485_INSTANCE,
+};
+
+UART_HandleTypeDef hRs232 = {
+  .Instance = RS232_INSTANCE,
+};
 /*****************************************************************************
   * @brief  EDT_USART_Init
   * @param  uarthandle  uart handler
