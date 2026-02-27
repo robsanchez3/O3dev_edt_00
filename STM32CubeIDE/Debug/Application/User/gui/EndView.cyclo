@@ -1,0 +1,23 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:136:5:touchgfx::Bitmap::Bitmap(touchgfx::BitmapId)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:273:13:int16_t touchgfx::Drawable::getX() const	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:515:10:void touchgfx::Drawable::setVisible(bool)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:191:13:int16_t touchgfx::Screen::getScreenWidth() const	1
+../../TouchGFX/gui/include/gui/end_screen/EndView.hpp:13:13:EndView::~EndView()	1
+../../TouchGFX/gui/include/gui/end_screen/EndView.hpp:13:13:virtual EndView::~EndView()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:4:1:EndView::EndView()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:9:6:virtual void EndView::setupScreen()	5
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:26:6:virtual void EndView::tearDownScreen()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:31:6:void EndView::initTherapyContext(THERAPY_CTX*)	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:36:10:uint16_t EndView::getTherapyTargetValue(uint8_t)	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:41:6:void EndView::initVisibleItems()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:50:6:void EndView::initTherapyDataInfo()	2
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:85:6:void EndView::initTherapyEndInfo()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:104:6:virtual void EndView::okClicked()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/end_screen/EndView.cpp:109:6:virtual void EndView::cnlClicked()	1

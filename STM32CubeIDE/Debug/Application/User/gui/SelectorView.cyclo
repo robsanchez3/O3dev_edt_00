@@ -1,0 +1,33 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:136:5:touchgfx::Bitmap::Bitmap(touchgfx::BitmapId)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:123:20:touchgfx::ClickEvent::ClickEventType touchgfx::ClickEvent::getType() const	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:515:10:void touchgfx::Drawable::setVisible(bool)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:537:10:bool touchgfx::Drawable::isVisible() const	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:191:13:int16_t touchgfx::Screen::getScreenWidth() const	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Slider.hpp:193:21:virtual int16_t touchgfx::Slider::getIndicatorMax() const	1
+../../TouchGFX/gui/include/gui/selector_screen/SelectorView.hpp:28:13:SelectorView::~SelectorView()	1
+../../TouchGFX/gui/include/gui/selector_screen/SelectorView.hpp:28:13:virtual SelectorView::~SelectorView()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:8:1:SelectorView::SelectorView()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:18:6:virtual void SelectorView::setupScreen()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:30:6:virtual void SelectorView::tearDownScreen()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:35:6:virtual void SelectorView::handleTickEvent()	8
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:85:6:virtual void SelectorView::handleClickEvent(const touchgfx::ClickEvent&)	2
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:98:6:void SelectorView::thousandsSep(touchgfx::Unicode::UnicodeChar*)	3
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:123:6:virtual void SelectorView::sw_selectorUpdateItem(sw_selectContainer&, int16_t)	5
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:157:6:virtual void SelectorView::sw_selectorUpdateCenterItem(sw_selectionContainer&, int16_t)	2
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:180:6:virtual void SelectorView::okClicked()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:190:6:virtual void SelectorView::cancelClicked()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:196:5:int SelectorView::get_logical_value(int)	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:211:5:int SelectorView::get_physical_value(int)	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:226:6:void SelectorView::update_selection(int)	2
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:236:6:void SelectorView::update_second_selection()	6
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:265:6:virtual void SelectorView::sl_slider_changed(int)	3
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:281:6:virtual void SelectorView::forwardClicked()	4
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:297:6:virtual void SelectorView::backClicked()	4
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:313:6:void SelectorView::initTherapyContext(THERAPY_CTX*)	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:319:6:void SelectorView::initSelectionContext(int8_t)	2
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:416:9:int16_t SelectorView::getSelectorItemWidth()	5
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:435:5:int SelectorView::bufferToInt(const touchgfx::Unicode::UnicodeChar*)	5

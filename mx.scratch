@@ -1,0 +1,1138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ScratchFile FileVersion="3.0">
+  <FileVersion>3.0</FileVersion>
+  <Workspace>
+    <WorkspaceType>Single-project</WorkspaceType>
+    <WorkspacePath>E:\TouchGFXtpaFileProject\ETEMB070027XDHAL\</WorkspacePath>
+    <underRoot>false</underRoot>
+    <TrustZone>0</TrustZone>
+    <HAL_Driver>C:\Users\channing\STM32Cube\Repository\STM32Cube_FW_U5_V1.8.0</HAL_Driver>
+    <CMSIS>Drivers/CMSIS</CMSIS>
+    <Toolchain>STM32CubeIDE</Toolchain>
+    <IocFile>ETEMB0700027XDHAL.ioc</IocFile>
+    <Project>
+              
+      <ProjectName>ETEMB0700027XDHAL</ProjectName>
+           
+      <ProjectNature>Cpp</ProjectNature>
+       
+      <Secure/>
+            
+      <filestoremove>
+                
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/croutine.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>..\Src\custom.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/list.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/queue.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/tasks.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/timers.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/portasm.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c</name>
+                  
+        </file>
+        <file>
+                      
+          <name>../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c</name>
+                  
+        </file>
+                           
+      </filestoremove>
+          
+      <configs>
+        <config>
+              
+          <name>ETEMB0700027XDHAL</name>
+          	 
+          <mainSourceRepo>Core</mainSourceRepo>
+             
+          <sourceStructure>Advanced</sourceStructure>
+           
+          <device>STM32U599NIHxQ</device>
+          		     
+          <cpucore>ARM Cortex-M33</cpucore>
+                  
+          <fpu>SP</fpu>
+                
+          <memories>
+                       
+            <memory access="xrw" name="RAM" size="2555904" start="0x20000000"/>
+                    
+            <memory access="rx" name="FLASH" size="2097152" start="0x08000000"/>
+                
+          </memories>
+              
+          <startup>C:\Users\channing\STM32Cube\Repository\STM32Cube_FW_U5_V1.8.0\Drivers\CMSIS\Device\ST\STM32U5xx\Source\Templates\gcc\startup_stm32u599xx.s</startup>
+                
+          <LinkSettings>
+            	
+            <LinkAdditionalLibs>	</LinkAdditionalLibs>
+          </LinkSettings>
+              
+          <heapSize>0x1000</heapSize>
+              
+          <stackSize>0x1000</stackSize>
+                  
+          <cpuclock>160</cpuclock>
+                  
+          <board>custom</board>
+              
+          <debugprobe>swd</debugprobe>
+              
+          <optimization/>
+              
+          <Aincludes>
+                                         
+            <include>Core\Inc</include>
+                                         
+            <include>TouchGFX\App</include>
+                                         
+            <include>TouchGFX\target\generated</include>
+                                         
+            <include>TouchGFX\target</include>
+                                                  
+            <include>Drivers\STM32U5xx_HAL_Driver\Inc</include>
+                                                  
+            <include>Drivers\STM32U5xx_HAL_Driver\Inc\Legacy</include>
+                                                  
+            <include>Drivers\CMSIS\Device\ST\STM32U5xx\Include</include>
+                                                  
+            <include>Drivers\CMSIS\Include</include>
+                                                  
+            <include>Middlewares\Third_Party\FreeRTOS\Source\include\</include>
+                                                  
+            <include>Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM33_NTZ\non_secure\</include>
+                                                  
+            <include>Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\</include>
+                                                  
+            <include>Middlewares\Third_Party\CMSIS\RTOS2\Include\</include>
+                                                  
+            <include>Drivers\Vendor\Board\SE21194\Config</include>
+                                                  
+            <include>Drivers\Vendor\Device</include>
+                                                  
+            <include>Drivers\Vendor\Driver</include>
+                                                  
+            <include>Drivers\Vendor\Device\mx25lm51245g</include>
+                                                  
+            <include>Drivers\Vendor\FatFs\source</include>
+                                                  
+            <include>Drivers\Vendor\FatFs\source\drivers\sd</include>
+                                                  
+            <include>Drivers\Vendor\STM32_USB_Device_Library\Class\CDC\Inc</include>
+                                                  
+            <include>Drivers\Vendor\STM32_USB_Device_Library\Core\Inc</include>
+                                                  
+            <include>USB_Device\App</include>
+                                                  
+            <include>USB_Device\Target</include>
+                                                  
+            <include>FATFS\App</include>
+                                                  
+            <include>FATFS\Target</include>
+                    
+          </Aincludes>
+              
+          <Adefines>        </Adefines>
+                
+          <Cdefines>
+                    
+            <define>USE_HAL_DRIVER</define>
+                    
+            <define>STM32U599xx</define>
+                    
+          </Cdefines>
+              
+          <Ldefines>        </Ldefines>
+                  
+          <Cincludes>
+            		        
+            <include>Core\Inc</include>
+                    
+            <include>TouchGFX\App</include>
+                    
+            <include>TouchGFX\target\generated</include>
+                    
+            <include>TouchGFX\target</include>
+                    
+            <include>Drivers\STM32U5xx_HAL_Driver\Inc</include>
+                    
+            <include>Drivers\STM32U5xx_HAL_Driver\Inc\Legacy</include>
+                    
+            <include>Drivers\CMSIS\Device\ST\STM32U5xx\Include</include>
+                    
+            <include>Drivers\CMSIS\Include</include>
+                    
+            <include>Middlewares\Third_Party\FreeRTOS\Source\include\</include>
+                    
+            <include>Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM33_NTZ\non_secure\</include>
+                    
+            <include>Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\</include>
+                    
+            <include>Middlewares\Third_Party\CMSIS\RTOS2\Include\</include>
+                    
+            <include>Drivers\Vendor\Board\SE21194\Config</include>
+                    
+            <include>Drivers\Vendor\Device</include>
+                    
+            <include>Drivers\Vendor\Driver</include>
+                    
+            <include>Drivers\Vendor\Device\mx25lm51245g</include>
+                    
+            <include>Drivers\Vendor\FatFs\source</include>
+                    
+            <include>Drivers\Vendor\FatFs\source\drivers\sd</include>
+                    
+            <include>Drivers\Vendor\STM32_USB_Device_Library\Class\CDC\Inc</include>
+                    
+            <include>Drivers\Vendor\STM32_USB_Device_Library\Core\Inc</include>
+                    
+            <include>USB_Device\App</include>
+                    
+            <include>USB_Device\Target</include>
+                    
+            <include>FATFS\App</include>
+                    
+            <include>FATFS\Target</include>
+                    
+          </Cincludes>
+              
+          <definestoremove>
+                    
+            <Adefines>            </Adefines>
+                    
+            <Cdefines>
+                                  
+              <define>USE_FULL_LL_DRIVER</define>
+                                  
+              <define>USE_FULL_ASSERT=1U</define>
+                          
+            </Cdefines>
+                     
+            <Ldefines>            </Ldefines>
+                     
+          </definestoremove>
+              
+          <inctoremove>
+                    
+            <Aincludes>
+                          
+              <include/>
+                          
+            </Aincludes>
+                    
+            <Cincludes>            </Cincludes>
+                    
+          </inctoremove>
+                 
+        </config>
+                
+      </configs>
+       
+      <copyAsReference>false</copyAsReference>
+       
+      <Groups>
+            
+        <group>
+                  
+          <name>Middlewares</name>
+           		        
+          <group>
+                        
+            <name>RTOS2</name>
+                        
+            <group>
+                              
+              <name>CMSIS/RTOS2/Core/TZ_Non_Supported</name>
+              							                
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/croutine.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/event_groups.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/list.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/queue.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/tasks.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/timers.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/portasm.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c</name>
+                                    
+              </file>
+                              
+            </group>
+                        
+            <group>
+                              
+              <name>CMSIS/RTOS2/Heap/Heap_4</name>
+              							                
+              <file>
+                                    
+                <name>Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c</name>
+                                    
+              </file>
+                              
+            </group>
+                        
+          </group>
+                  
+        </group>
+         
+        <group>
+               
+          <name>Drivers</name>
+          <group>
+                 
+            <name>Vendor</name>
+                    
+            <file>
+                          
+              <name>Drivers/Vendor/Board/SE21194/Config/edt_board_config.c</name>
+                      
+            </file>
+                    
+            <file>
+                          
+              <name>Drivers/Vendor/Board/SE21194/Config/se21194_sys_conf.h</name>
+                      
+            </file>
+                    
+            <file>
+                          
+              <name>Drivers/Vendor/Driver/edt_bsp_backlight.c</name>
+                      
+            </file>
+                    
+            <file>
+                          
+              <name>Drivers/Vendor/Driver/edt_bsp_can.c</name>
+                      
+            </file>
+                    
+            <file>
+                          
+              <name>Drivers/Vendor/Driver/edt_bsp_ctp.c</name>
+                      
+            </file>
+                    
+            <file>
+                          
+              <name>Drivers/Vendor/Driver/edt_bsp_lcd.c</name>
+                      
+            </file>
+                
+          </group>
+              
+        </group>
+        <group>
+               
+          <name>Drivers</name>
+          <group>
+                 
+            <name>Vendor</name>
+            <group>
+                   
+              <name>Components</name>
+                      
+              <file>
+                            
+                <name>Drivers/Vendor/Device/ctp/mxt640u.c</name>
+                        
+              </file>
+                      
+              <file>
+                            
+                <name>Drivers/Vendor/Device/mx25lm51245g/mx25lm51245g.c</name>
+                        
+              </file>
+                  
+            </group>
+                
+          </group>
+              
+        </group>
+        <group>
+               
+          <name>Drivers</name>
+          <group>
+                 
+            <name>Vendor</name>
+            <group>
+                   
+              <name>STM32_USB_Device_Library</name>
+                      
+              <file>
+                            
+                <name>Drivers/Vendor/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c</name>
+                        
+              </file>
+                      
+              <file>
+                            
+                <name>Drivers/Vendor/STM32_USB_Device_Library/Core/Src/usbd_core.c</name>
+                        
+              </file>
+                      
+              <file>
+                            
+                <name>Drivers/Vendor/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c</name>
+                        
+              </file>
+                      
+              <file>
+                            
+                <name>Drivers/Vendor/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c</name>
+                        
+              </file>
+                  
+            </group>
+                
+          </group>
+              
+        </group>
+        <group>
+               
+          <name>Drivers</name>
+          <group>
+                 
+            <name>Vendor</name>
+            <group>
+                   
+              <name>USB_DEVICE</name>
+              <group>
+                     
+                <name>App</name>
+                        
+                <file>
+                              
+                  <name>USB_Device/App/usbd_cdc_if.c</name>
+                          
+                </file>
+                        
+                <file>
+                              
+                  <name>USB_Device/App/usb_device.c</name>
+                          
+                </file>
+                        
+                <file>
+                              
+                  <name>USB_Device/App/usbd_desc.c</name>
+                          
+                </file>
+                    
+              </group>
+                  
+            </group>
+                
+          </group>
+              
+        </group>
+        <group>
+               
+          <name>Drivers</name>
+          <group>
+                 
+            <name>Vendor</name>
+            <group>
+                   
+              <name>USB_DEVICE</name>
+              <group>
+                     
+                <name>Target</name>
+                        
+                <file>
+                              
+                  <name>USB_Device/Target/usbd_conf.c</name>
+                          
+                </file>
+                    
+              </group>
+                  
+            </group>
+                
+          </group>
+              
+        </group>
+        <group>
+               
+          <name>Drivers</name>
+          <group>
+                 
+            <name>Vendor</name>
+            <group>
+                   
+              <name>FatFs</name>
+              <group>
+                     
+                <name>source</name>
+                        
+                <file>
+                              
+                  <name>Drivers/Vendor/FatFs/source/diskio.c</name>
+                          
+                </file>
+                        
+                <file>
+                              
+                  <name>Drivers/Vendor/FatFs/source/ff_gen_drv.c</name>
+                          
+                </file>
+                        
+                <file>
+                              
+                  <name>Drivers/Vendor/FatFs/source/ff.c</name>
+                          
+                </file>
+                        
+                <file>
+                              
+                  <name>Drivers/Vendor/FatFs/source/ffsystem_cmsis_os.c</name>
+                          
+                </file>
+                        
+                <file>
+                              
+                  <name>Drivers/Vendor/FatFs/source/ffunicode.c</name>
+                          
+                </file>
+                        
+                <file>
+                              
+                  <name>Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c</name>
+                          
+                </file>
+                    
+              </group>
+                  
+            </group>
+                
+          </group>
+              
+        </group>
+        <group>
+               
+          <name>Drivers</name>
+          <group>
+                 
+            <name>Vendor</name>
+            <group>
+                   
+              <name>FATFS</name>
+              <group>
+                     
+                <name>App</name>
+                        
+                <file>
+                              
+                  <name>FATFS/App/fatfs.c</name>
+                          
+                </file>
+                    
+              </group>
+                  
+            </group>
+                
+          </group>
+              
+        </group>
+            
+        <group>
+                  
+          <name>Drivers</name>
+                                       
+          <group>
+                        
+            <name>STM32U5xx_HAL_Driver</name>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_tim.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_tim_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_adc.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_adc_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_dma.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_dma_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_i2c.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_i2c_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_rcc.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_rcc_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_cortex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_flash.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_flash_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_gpio.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_exti.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_pwr.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_pwr_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_gtzc.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_icache.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_cordic.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_crc.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_crc_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_dcache.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_dma2d.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_fdcan.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_gpu2d.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_ltdc.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_ltdc_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_dsi.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_ospi.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_ll_dlyb.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_ll_sdmmc.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_sd.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_sd_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_mmc.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_mmc_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_sdio.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_uart.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_uart_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_pcd.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_hal_pcd_ex.c</name>
+                              
+            </file>
+                        
+            <file>
+                              
+              <name>Drivers\STM32U5xx_HAL_Driver\Src\stm32u5xx_ll_usb.c</name>
+                              
+            </file>
+                        
+          </group>
+                  
+          <group>
+                        
+            <name>CMSIS</name>
+                            
+            <file>
+                                          
+              <name>Core/Src/system_stm32u5xx.c</name>
+                                          
+            </file>
+                                    
+          </group>
+                  
+        </group>
+               
+        <group>
+                  
+          <name>Application</name>
+                  
+          <group>
+                        
+            <name>User</name>
+                              
+            <group>
+                              
+              <name>Core</name>
+                                
+              <file>
+                                    
+                <name>Core\Src\main.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\gpio.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\app_freertos.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\adc.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\cordic.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\crc.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\dcache.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\dma2d.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\fdcan.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\gpu2d.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\i2c.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\icache.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\ltdc.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\octospi.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\sdmmc.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\tim.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\usart.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\usb_otg.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\stm32u5xx_it.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\stm32u5xx_hal_msp.c</name>
+                                    
+              </file>
+                              
+              <file>
+                                    
+                <name>Core\Src\stm32u5xx_hal_timebase_tim.c</name>
+                                    
+              </file>
+                              
+            </group>
+                              
+            <group>
+                   
+              <name>TouchGFX</name>
+              <group>
+                     
+                <name>target</name>
+                <group>
+                       
+                  <name>generated</name>
+                          
+                  <file>
+                                
+                    <name>TouchGFX\target\generated\TouchGFXConfiguration.cpp</name>
+                            
+                  </file>
+                          
+                  <file>
+                                
+                    <name>TouchGFX\target\generated\TouchGFXGeneratedHAL.cpp</name>
+                            
+                  </file>
+                          
+                  <file>
+                                
+                    <name>TouchGFX\target\generated\STM32DMA.cpp</name>
+                            
+                  </file>
+                          
+                  <file>
+                                
+                    <name>TouchGFX\target\generated\OSWrappers.cpp</name>
+                            
+                  </file>
+                          
+                  <file>
+                                
+                    <name>TouchGFX\target\generated\nema_hal.c</name>
+                            
+                  </file>
+                      
+                </group>
+                    
+              </group>
+              <group>
+                     
+                <name>App</name>
+                        
+                <file>
+                              
+                  <name>TouchGFX\App\app_touchgfx.c</name>
+                          
+                </file>
+                    
+              </group>
+              <group>
+                     
+                <name>target</name>
+                        
+                <file>
+                              
+                  <name>TouchGFX\target\TouchGFXHAL.cpp</name>
+                          
+                </file>
+                        
+                <file>
+                              
+                  <name>TouchGFX\target\STM32TouchController.cpp</name>
+                          
+                </file>
+                        
+                <file>
+                              
+                  <name>TouchGFX\target\TouchGFXGPIO.cpp</name>
+                          
+                </file>
+                    
+              </group>
+                  
+            </group>
+                        
+          </group>
+                   
+        </group>
+                
+      </Groups>
+    </Project>
+  </Workspace>
+</ScratchFile>

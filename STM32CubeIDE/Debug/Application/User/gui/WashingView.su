@@ -1,0 +1,20 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:136:5:touchgfx::Bitmap::Bitmap(touchgfx::BitmapId)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:273:13:int16_t touchgfx::Drawable::getX() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:191:13:int16_t touchgfx::Screen::getScreenWidth() const	16	static
+../../TouchGFX/gui/include/gui/washing_screen/WashingView.hpp:13:13:WashingView::~WashingView()	16	static
+../../TouchGFX/gui/include/gui/washing_screen/WashingView.hpp:13:13:virtual WashingView::~WashingView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/washing_screen/WashingView.cpp:3:1:WashingView::WashingView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/washing_screen/WashingView.cpp:17:6:virtual void WashingView::setupScreen()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/washing_screen/WashingView.cpp:24:6:virtual void WashingView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/washing_screen/WashingView.cpp:30:6:virtual void WashingView::handleTickEvent()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/washing_screen/WashingView.cpp:66:6:virtual void WashingView::cnlClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/washing_screen/WashingView.cpp:71:6:virtual void WashingView::okClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/washing_screen/WashingView.cpp:76:6:void WashingView::initTherapyContext(THERAPY_CTX*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/washing_screen/WashingView.cpp:81:10:uint16_t WashingView::getTherapyTargetValue(uint8_t)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/washing_screen/WashingView.cpp:86:6:void WashingView::initTherapyDataInfo()	72	static

@@ -1,0 +1,10 @@
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:96:6:vApplicationIdleHook	4	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:115:6:MX_FREERTOS_Init	8	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:163:6:StartDefaultTask	16	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:183:13:StartLCDSleepTask	16	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:201:13:StartPwmTask	16	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:216:16:_IsSD	16	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:234:6:list_root_dir	88	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:265:6:list_config_hw_dir	88	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:294:9:_is_fs_mounted	32	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/app_freertos.c:315:6:Test_fileManager	4	static

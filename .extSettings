@@ -1,0 +1,12 @@
+[ProjectFiles]
+HeaderPath=../Drivers/Vendor/Board/SE21194/Config;../Drivers/Vendor/Device;../Drivers/Vendor/Driver;../Drivers/Vendor/Device/mx25lm51245g;../Drivers/Vendor/FatFs/source;../Drivers/Vendor/FatFs/source/drivers/sd;../Drivers/Vendor/STM32_USB_Device_Library/Class/CDC/Inc;../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc;../USB_Device/App;../USB_Device/Target;../FATFS/App;../FATFS/Target;
+[Groups]
+Drivers/Vendor=../Drivers/Vendor/Board/SE21194/Config/edt_board_config.c;../Drivers/Vendor/Board/SE21194/Config/se21194_sys_conf.h;../Drivers/Vendor/Driver/edt_bsp_backlight.c;../Drivers/Vendor/Driver/edt_bsp_can.c;../Drivers/Vendor/Driver/edt_bsp_ctp.c;../Drivers/Vendor/Driver/edt_bsp_lcd.c;
+Drivers/Vendor/Components=../Drivers/Vendor/Device/ctp/mxt640u.c;../Drivers/Vendor/Device/mx25lm51245g/mx25lm51245g.c;
+Drivers/Vendor/STM32_USB_Device_Library=../Drivers/Vendor/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c;../Drivers/Vendor/STM32_USB_Device_Library/Core/Src/usbd_core.c;../Drivers/Vendor/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c;../Drivers/Vendor/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c;
+Drivers/Vendor/USB_DEVICE/App=../USB_Device/App/usbd_cdc_if.c;../USB_Device/App/usb_device.c;../USB_Device/App/usbd_desc.c;
+Drivers/Vendor/USB_DEVICE/Target=../USB_Device/Target/usbd_conf.c;
+Drivers/Vendor/FatFs/source=../Drivers/Vendor/FatFs/source/diskio.c;../Drivers/Vendor/FatFs/source/ff_gen_drv.c;../Drivers/Vendor/FatFs/source/ff.c;../Drivers/Vendor/FatFs/source/ffsystem_cmsis_os.c;../Drivers/Vendor/FatFs/source/ffunicode.c;../Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c;
+Drivers/Vendor/FATFS/App=../FATFS/App/fatfs.c;
+[Others]
+

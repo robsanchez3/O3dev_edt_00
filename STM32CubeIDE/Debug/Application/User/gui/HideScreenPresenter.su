@@ -1,0 +1,22 @@
+../../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:37:18:virtual void touchgfx::Presenter::activate()	16	static
+../../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:47:18:virtual void touchgfx::Presenter::deactivate()	16	static
+../../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:52:13:touchgfx::Presenter::~Presenter()	16	static
+../../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:52:13:virtual touchgfx::Presenter::~Presenter()	16	static
+../../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:58:5:touchgfx::Presenter::Presenter()	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:20:5:ModelListener::ModelListener()	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:22:13:ModelListener::~ModelListener()	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:22:13:virtual ModelListener::~ModelListener()	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:24:18:virtual void ModelListener::RS232CharReceived(uint8_t*, uint16_t)	24	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:25:18:virtual void ModelListener::CANReceived(uint8_t*)	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:26:18:virtual void ModelListener::GetModelTemperature()	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:27:18:virtual void ModelListener::PopUpWindowGPIO1()	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:28:18:virtual void ModelListener::ShowGPIO_0_State()	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:29:22:virtual uint16_t ModelListener::getVisibleScreen()	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:30:18:virtual void ModelListener::updateProgressRange(int, int)	24	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:31:18:virtual void ModelListener::onPinValidated(bool)	16	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:34:18:virtual void ModelListener::PushCanToView(uint8_t*, uint16_t)	24	static
+../../TouchGFX/gui/include/gui/hidescreen_screen/HideScreenPresenter.hpp:28:13:HideScreenPresenter::~HideScreenPresenter()	16	static
+../../TouchGFX/gui/include/gui/hidescreen_screen/HideScreenPresenter.hpp:28:13:virtual HideScreenPresenter::~HideScreenPresenter()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/hidescreen_screen/HideScreenPresenter.cpp:4:1:HideScreenPresenter::HideScreenPresenter(HideScreenView&)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/hidescreen_screen/HideScreenPresenter.cpp:10:6:virtual void HideScreenPresenter::activate()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/hidescreen_screen/HideScreenPresenter.cpp:15:6:virtual void HideScreenPresenter::deactivate()	16	static

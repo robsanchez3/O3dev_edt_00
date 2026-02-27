@@ -1,0 +1,11 @@
+../Drivers/O3/Protocol/Protocol.c:33:6:Protocol_SetCRCStatus	1
+../Drivers/O3/Protocol/Protocol.c:38:13:Protocol_GetCRCStatus	1
+../Drivers/O3/Protocol/Protocol.c:43:13:ClearLastResponseString	1
+../Drivers/O3/Protocol/Protocol.c:48:6:Protocol_ComputeCRC	4
+../Drivers/O3/Protocol/Protocol.c:71:7:CheckCRC	4
+../Drivers/O3/Protocol/Protocol.c:91:6:Protocol_CompoundMessage	66
+../Drivers/O3/Protocol/Protocol.c:474:7:FsmStateForDebug	2
+../Drivers/O3/Protocol/Protocol.c:487:6:Protocol_SendCommand	3
+../Drivers/O3/Protocol/Protocol.c:529:6:Protocol_GetResponse	12
+../Drivers/O3/Protocol/Protocol.c:590:13:ResolveStatus	3
+../Drivers/O3/Protocol/Protocol.c:602:6:Protocol_GetLastResponse	72

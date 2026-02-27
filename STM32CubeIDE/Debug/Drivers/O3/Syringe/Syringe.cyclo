@@ -1,0 +1,4 @@
+../Drivers/O3/Syringe/Syringe.c:10:6:SYRINGE_InitContext	1
+../Drivers/O3/Syringe/Syringe.c:16:6:SYRINGE_InitProcess	1
+../Drivers/O3/Syringe/Syringe.c:30:7:SYRINGE_Process	8
+../Drivers/O3/Syringe/Syringe.c:93:7:SYRINGE_Type	3

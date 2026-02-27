@@ -1,0 +1,47 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:180:10:bool touchgfx::Rect::intersect(int16_t, int16_t) const	24	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:136:5:touchgfx::Bitmap::Bitmap(touchgfx::BitmapId)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:146:14:touchgfx::BitmapId touchgfx::Bitmap::getId() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:157:5:touchgfx::Bitmap::operator touchgfx::BitmapId() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:73:13:int16_t touchgfx::ClickEvent::getX() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:83:13:int16_t touchgfx::ClickEvent::getY() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:123:20:touchgfx::ClickEvent::ClickEventType touchgfx::ClickEvent::getType() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:273:13:int16_t touchgfx::Drawable::getX() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:283:13:int16_t touchgfx::Drawable::getY() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:515:10:void touchgfx::Drawable::setVisible(bool)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:537:10:bool touchgfx::Drawable::isVisible() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Application.hpp:187:10:void touchgfx::Application::registerTimerWidget(touchgfx::Drawable*)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Application.hpp:208:10:void touchgfx::Application::unregisterTimerWidget(const touchgfx::Drawable*)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:191:13:int16_t touchgfx::Screen::getScreenWidth() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:60:10:void touchgfx::Button::setAlpha(uint8_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:68:13:uint8_t touchgfx::Button::getAlpha() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:79:12:touchgfx::Bitmap touchgfx::Button::getCurrentlyDisplayedBitmap() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:84:18:virtual void touchgfx::Button::invalidateContent() const	16	static
+../../TouchGFX/gui/include/gui/running_screen/RunningView.hpp:13:13:RunningView::~RunningView()	16	static
+../../TouchGFX/gui/include/gui/running_screen/RunningView.hpp:13:13:virtual RunningView::~RunningView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:4:1:RunningView::RunningView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:9:6:virtual void RunningView::setupScreen()	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:16:6:virtual void RunningView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:21:6:virtual void RunningView::cnlClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:26:6:virtual void RunningView::okClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:32:6:virtual void RunningView::bigPauseClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:38:6:virtual void RunningView::handleClickEvent(const touchgfx::ClickEvent&)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:90:6:virtual void RunningView::handleTickEvent()	88	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:177:6:void RunningView::initTherapyContext(THERAPY_CTX*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:183:10:uint16_t RunningView::getTherapyTargetValue(uint8_t)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:188:6:void RunningView::initTherapyDataInfo()	72	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:223:6:void RunningView::updatePressureBar()	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:239:6:void RunningView::InitRunningContext()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:245:6:void RunningView::InitProgressInfo()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:254:6:void RunningView::InitProgressGraphic(int, int)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:259:6:virtual void RunningView::manageBigPauseView()	40	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:122:10:void touchgfx::FadeAnimator<T>::startFadeAnimation(uint8_t, uint16_t, touchgfx::EasingEquation) [with T = touchgfx::MoveAnimator<touchgfx::Button>]	24	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:165:10:void touchgfx::FadeAnimator<T>::nextFadeAnimationStep() [with T = touchgfx::MoveAnimator<touchgfx::Button>]	32	static

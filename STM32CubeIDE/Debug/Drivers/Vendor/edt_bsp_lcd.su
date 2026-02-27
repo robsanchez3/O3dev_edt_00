@@ -1,0 +1,15 @@
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:54:10:EDT_LCD_GetXSize	4	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:64:10:EDT_LCD_GetYSize	4	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:74:6:EDT_LCD_SetSize	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:85:6:EDT_LCD_DisplayOn	8	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:100:6:EDT_LCD_DisplayOff	8	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:116:6:EDT_LCD_SetDisplayStatus	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:126:6:EDT_LCD_GetDisplayStatus	4	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:137:6:EDT_LCD_Reset	8	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:152:6:StartLCDSleepTask	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:163:6:EDT_LCD_Sleep_Time	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:168:6:EDT_LCD_Sleep_Function	8	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:189:6:EDT_Sleep_GetDetected	4	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:194:6:EDT_Sleep_SetDetected	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:205:6:EDT_Sleep_SuspendLCDSleepTask	8	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_lcd.c:218:6:EDT_Sleep_ResumeLCDSleepTask	8	static

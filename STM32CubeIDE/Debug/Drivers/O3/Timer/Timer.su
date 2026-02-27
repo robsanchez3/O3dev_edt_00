@@ -1,0 +1,7 @@
+../Drivers/O3/Timer/Timer.c:11:6:TIMER_Init	16	static
+../Drivers/O3/Timer/Timer.c:22:6:TIMER_Start	16	static
+../Drivers/O3/Timer/Timer.c:31:6:TIMER_Stop	16	static
+../Drivers/O3/Timer/Timer.c:36:6:TIMER_Pause	16	static
+../Drivers/O3/Timer/Timer.c:45:6:TIMER_ReStart	16	static
+../Drivers/O3/Timer/Timer.c:55:15:TIMER_State	16	static
+../Drivers/O3/Timer/Timer.c:64:8:TIMER_Count	16	static

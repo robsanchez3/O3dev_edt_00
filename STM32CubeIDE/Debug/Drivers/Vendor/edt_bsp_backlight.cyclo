@@ -1,0 +1,14 @@
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:54:6:EDT_BL_Set_Handle	1
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:68:13:setPWM	6
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:82:6:EDT_BL_Update	9
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:140:13:TS_CAL	1
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:159:14:TEMP_SENSOR_GetValue	5
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:181:6:EDT_LCD_BL_ON	1
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:193:6:EDT_LCD_BL_OFF	1
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:212:7:EDT_LCD_BL_PWM_Init	1
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:245:6:EDT_LCD_BL_SetPwm	3
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:272:9:EDT_LCD_BL_GetPwm	1
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:283:6:StartPwmTask	1
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:305:6:EDT_SuspendPwmTask	1
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:318:6:EDT_ResumePwmTask	1
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Driver/edt_bsp_backlight.c:331:6:Get_EDT_BacklightStatus	1

@@ -1,0 +1,3 @@
+C:/Roberto/O3/O3dev_edt_00/Core/Src/cordic.c:30:6:MX_CORDIC_Init	8	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/cordic.c:51:6:HAL_CORDIC_MspInit	24	static
+C:/Roberto/O3/O3dev_edt_00/Core/Src/cordic.c:67:6:HAL_CORDIC_MspDeInit	16	static

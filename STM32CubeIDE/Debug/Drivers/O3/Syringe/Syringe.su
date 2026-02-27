@@ -1,0 +1,4 @@
+../Drivers/O3/Syringe/Syringe.c:10:6:SYRINGE_InitContext	24	static
+../Drivers/O3/Syringe/Syringe.c:16:6:SYRINGE_InitProcess	16	static
+../Drivers/O3/Syringe/Syringe.c:30:7:SYRINGE_Process	24	static
+../Drivers/O3/Syringe/Syringe.c:93:7:SYRINGE_Type	24	static

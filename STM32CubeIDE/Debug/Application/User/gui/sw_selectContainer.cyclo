@@ -1,0 +1,23 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	2
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:327:18:virtual void touchgfx::Drawable::setY(int16_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:356:18:virtual void touchgfx::Drawable::setWidth(int16_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:368:18:virtual void touchgfx::Drawable::setHeight(int16_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:378:18:virtual void touchgfx::Drawable::childGeometryChanged()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:389:18:virtual void touchgfx::Drawable::handleClickEvent(const touchgfx::ClickEvent&)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:401:18:virtual void touchgfx::Drawable::handleGestureEvent(const touchgfx::GestureEvent&)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:490:18:virtual void touchgfx::Drawable::handleDragEvent(const touchgfx::DragEvent&)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:501:18:virtual void touchgfx::Drawable::handleTickEvent()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:48:18:virtual void touchgfx::TextArea::setWidth(int16_t)	1
+../../TouchGFX/generated/gui_generated/include/gui_generated/containers/sw_selectContainerBase.hpp:21:18:virtual void sw_selectContainerBase::action1()	1
+../../TouchGFX/generated/gui_generated/include/gui_generated/containers/sw_selectContainerBase.hpp:43:18:virtual void sw_selectContainerBase::emitTrigger1Callback()	4
+../../TouchGFX/gui/include/gui/containers/sw_selectContainer.hpp:10:13:sw_selectContainer::~sw_selectContainer()	1
+../../TouchGFX/gui/include/gui/containers/sw_selectContainer.hpp:10:13:virtual sw_selectContainer::~sw_selectContainer()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/containers/sw_selectContainer.cpp:4:1:sw_selectContainer::sw_selectContainer()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/containers/sw_selectContainer.cpp:9:6:virtual void sw_selectContainer::initialize()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/containers/sw_selectContainer.cpp:14:6:virtual void sw_selectContainer::setItem(touchgfx::Unicode::UnicodeChar*)	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/containers/sw_selectContainer.cpp:20:6:virtual void sw_selectContainer::setTextWidth(int16_t)	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/containers/sw_selectContainer.cpp:25:9:int16_t sw_selectContainer::getTextWidth()	1

@@ -1,0 +1,9 @@
+../Drivers/O3/Dependencies/Com_o3.c:21:6:COM_O3_Init	1
+../Drivers/O3/Dependencies/Com_o3.c:32:6:COM_O3_Clear	1
+../Drivers/O3/Dependencies/Com_o3.c:38:6:COM_O3_SendConst	1
+../Drivers/O3/Dependencies/Com_o3.c:43:6:COM_O3_Send	1
+../Drivers/O3/Dependencies/Com_o3.c:48:6:COM_O3_PutString	1
+../Drivers/O3/Dependencies/Com_o3.c:53:6:COM_O3_PollRx	1
+../Drivers/O3/Dependencies/Com_o3.c:77:9:COM_O3_GetChar	3
+../Drivers/O3/Dependencies/Com_o3.c:92:9:COM_O3_DataAvailable	2
+../Drivers/O3/Dependencies/Com_o3.c:103:6:EDT_RS232_RxCpltCallback	2

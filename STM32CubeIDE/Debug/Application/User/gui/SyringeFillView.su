@@ -1,0 +1,52 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:180:10:bool touchgfx::Rect::intersect(int16_t, int16_t) const	24	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:136:5:touchgfx::Bitmap::Bitmap(touchgfx::BitmapId)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:146:14:touchgfx::BitmapId touchgfx::Bitmap::getId() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:157:5:touchgfx::Bitmap::operator touchgfx::BitmapId() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:73:13:int16_t touchgfx::ClickEvent::getX() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:83:13:int16_t touchgfx::ClickEvent::getY() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:123:20:touchgfx::ClickEvent::ClickEventType touchgfx::ClickEvent::getType() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:273:13:int16_t touchgfx::Drawable::getX() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:283:13:int16_t touchgfx::Drawable::getY() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:303:13:int16_t touchgfx::Drawable::getHeight() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:327:18:virtual void touchgfx::Drawable::setY(int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:515:10:void touchgfx::Drawable::setVisible(bool)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:537:10:bool touchgfx::Drawable::isVisible() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Application.hpp:187:10:void touchgfx::Application::registerTimerWidget(touchgfx::Drawable*)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Application.hpp:208:10:void touchgfx::Application::unregisterTimerWidget(const touchgfx::Drawable*)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:191:13:int16_t touchgfx::Screen::getScreenWidth() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:79:12:touchgfx::Bitmap touchgfx::Button::getCurrentlyDisplayedBitmap() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:76:10:void touchgfx::Image::setAlpha(uint8_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:111:13:uint8_t touchgfx::Image::getAlpha() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:118:18:virtual void touchgfx::Image::invalidateContent() const	16	static
+../../TouchGFX/generated/gui_generated/include/gui_generated/syringefill_screen/SyringeFillViewBase.hpp:29:18:virtual void SyringeFillViewBase::okClicked()	16	static
+../../TouchGFX/gui/include/gui/syringefill_screen/SyringeFillView.hpp:13:13:SyringeFillView::~SyringeFillView()	16	static
+../../TouchGFX/gui/include/gui/syringefill_screen/SyringeFillView.hpp:13:13:virtual SyringeFillView::~SyringeFillView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:11:1:SyringeFillView::SyringeFillView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:16:6:virtual void SyringeFillView::setupScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:31:6:virtual void SyringeFillView::cnlClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:36:6:virtual void SyringeFillView::handleClickEvent(const touchgfx::ClickEvent&)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:72:6:void SyringeFillView::test_quitar()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:77:6:virtual void SyringeFillView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:85:9:int16_t SyringeFillView::computeAnimationSteps()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:94:6:virtual void SyringeFillView::handleTickEvent()	72	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:157:6:void SyringeFillView::startAnimation()	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:165:6:void SyringeFillView::initTherapyContext(THERAPY_CTX*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:170:10:uint16_t SyringeFillView::getTherapyTargetValue(uint8_t)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:175:6:void SyringeFillView::initTherapyDataInfo()	72	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:210:6:void SyringeFillView::initVisualElemnets()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:110:10:bool touchgfx::MoveAnimator<T>::isMoveAnimationRunning() const [with T = touchgfx::Image]	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:159:10:void touchgfx::MoveAnimator<T>::cancelMoveAnimation() [with T = touchgfx::Image]	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:131:10:void touchgfx::MoveAnimator<T>::startMoveAnimation(int16_t, int16_t, uint16_t, touchgfx::EasingEquation, touchgfx::EasingEquation) [with T = touchgfx::Image]	24	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:122:10:void touchgfx::FadeAnimator<T>::startFadeAnimation(uint8_t, uint16_t, touchgfx::EasingEquation) [with T = touchgfx::Image]	24	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:147:10:void touchgfx::FadeAnimator<T>::cancelFadeAnimation() [with T = touchgfx::Image]	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:177:10:void touchgfx::MoveAnimator<T>::nextMoveAnimationStep() [with T = touchgfx::Image]	32	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:165:10:void touchgfx::FadeAnimator<T>::nextFadeAnimationStep() [with T = touchgfx::Image]	32	static

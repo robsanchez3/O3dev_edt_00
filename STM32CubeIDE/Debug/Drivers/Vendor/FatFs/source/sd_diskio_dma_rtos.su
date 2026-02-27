@@ -1,0 +1,9 @@
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c:68:12:SD_check_status_with_timeout	24	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c:90:16:SD_check_status	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c:107:16:SD_DMA_initialize	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c:146:16:SD_DMA_status	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c:159:16:SD_DMA_read	48	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c:256:16:SD_DMA_write	48	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c:350:16:SD_DMA_ioctl	56	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c:398:6:HAL_SD_TxCpltCallback	24	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.c:408:6:HAL_SD_RxCpltCallback	24	static

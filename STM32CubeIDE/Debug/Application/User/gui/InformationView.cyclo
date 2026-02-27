@@ -1,0 +1,17 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	1
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
+../../TouchGFX/generated/gui_generated/include/gui_generated/information_screen/InformationViewBase.hpp:31:26:FrontendApplication& InformationViewBase::application()	1
+../../TouchGFX/gui/include/gui/information_screen/InformationView.hpp:11:13:InformationView::~InformationView()	1
+../../TouchGFX/gui/include/gui/information_screen/InformationView.hpp:11:13:virtual InformationView::~InformationView()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:3:1:InformationView::InformationView()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:8:6:virtual void InformationView::setupScreen()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:14:6:virtual void InformationView::tearDownScreen()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:19:6:virtual void InformationView::cancelClicked()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:26:24:touchgfx::Unicode::UnicodeChar* InformationView::getSoftwareVersion()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:34:6:void InformationView::setupVersionsInfo()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:52:6:void InformationView::setupPressTempInfo()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:71:6:void InformationView::setupParametersInfo()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:81:6:void InformationView::setupStartupInfo()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationView.cpp:91:6:void InformationView::setupInfoScreen()	5

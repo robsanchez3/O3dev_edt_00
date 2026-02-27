@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<flash_device>
+  <exe>$PROJ_DIR$\FlashSTM32U599_OSPI256_20211944.out</exe>
+  <page>512</page>
+  <block>1024 0x10000</block>
+  <flash_base>0x90000000</flash_base>
+  <aggregate>1</aggregate>
+  <macro>$PROJ_DIR$\FlashSTM32U599_OSPI256_20211944.mac</macro>
+</flash_device>

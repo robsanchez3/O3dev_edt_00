@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<flash_board>
+  <pass>
+    <range>CODE 0x08000000 0x081FFFFF</range>
+    <loader>$PROJ_DIR$\FlashSTM32U5xxxJ.flash</loader>
+  </pass>
+  <pass>
+    <range>CODE 0x90000000 0x91FFFFFF</range>
+    <loader>$PROJ_DIR$\FlashSTM32U599_OSPI256_20211944.flash</loader>
+  </pass>
+</flash_board>

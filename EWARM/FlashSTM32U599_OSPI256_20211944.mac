@@ -1,0 +1,5 @@
+execUserFlashInit()
+{
+  __message "FL/MAC: -------- THE FLASHLOADER CONTAINS A VERIFY FUNCTION USING CHECKSUM -------";
+  __message "FL/MAC: -------- IF NO ERROR POPUP APPEARS, THE DOWNLOAD IS SUCCESSFUL -------";
+}

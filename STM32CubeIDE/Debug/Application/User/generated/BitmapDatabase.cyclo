@@ -1,0 +1,2 @@
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/images/src/BitmapDatabase.cpp:367:37:const touchgfx::Bitmap::BitmapData* BitmapDatabase::getInstance()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/images/src/BitmapDatabase.cpp:372:10:uint16_t BitmapDatabase::getInstanceSize()	1

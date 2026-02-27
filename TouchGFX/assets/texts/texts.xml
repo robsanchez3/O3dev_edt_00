@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.24.2">
+  <Languages>
+    <Language Id="GB" />
+  </Languages>
+  <Texts>
+    <TextGroup Id="Group1">
+      <Text Id="__SingleUse_0AYZ" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_SH8T" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_0231" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">I2C Screen</Translation>
+      </Text>
+      <Text Id="__SingleUse_RH2B" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Read Once</Translation>
+      </Text>
+      <Text Id="__SingleUse_FV85" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Manual Read</Translation>
+      </Text>
+      <Text Id="__SingleUse_LCHS" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Continuous Read</Translation>
+      </Text>
+      <Text Id="__SingleUse_EM1K" Alignment="Right" TypographyId="VeryBig">
+        <Translation Language="GB"> &lt;value&gt; Deg. C</Translation>
+      </Text>
+      <Text Id="__SingleUse_FDP6" Alignment="Center" TypographyId="Bigger">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_JPBL" Alignment="Left" TypographyId="Bigger">
+        <Translation Language="GB">3</Translation>
+      </Text>
+      <Text Id="__SingleUse_NY5X" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_MR2Z" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Disable Automatic Read!</Translation>
+      </Text>
+      <Text Id="__SingleUse_N6RB" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Project:</Translation>
+      </Text>
+      <Text Id="__SingleUse_GRXR" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">800 x 480 UI Project</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZKS4" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">AT version:</Translation>
+      </Text>
+      <Text Id="__SingleUse_JSD8" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB"> xxx.tpa</Translation>
+      </Text>
+      <Text Id="__SingleUse_JOYM" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Date:</Translation>
+      </Text>
+      <Text Id="__SingleUse_X1KT" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">March 2021</Translation>
+      </Text>
+      <Text Id="__SingleUse_USZU" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Start</Translation>
+      </Text>
+      <Text Id="__SingleUse_W32V" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Version:</Translation>
+      </Text>
+      <Text Id="__SingleUse_9FMR" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">V1.0</Translation>
+      </Text>
+      <Text Id="__SingleUse_F88L" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Designer:</Translation>
+      </Text>
+      <Text Id="__SingleUse_HAJD" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Version:</Translation>
+      </Text>
+      <Text Id="__SingleUse_YD2Q" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">V4.12.3</Translation>
+      </Text>
+      <Text Id="__SingleUse_GL4F" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_OB8P" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_0SZW" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">00</Translation>
+      </Text>
+      <Text Id="__SingleUse_EEVZ" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_FANE" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">00</Translation>
+      </Text>
+      <Text Id="__SingleUse_X3ZS" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">15</Translation>
+      </Text>
+      <Text Id="__SingleUse_FI52" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Adjusting</Translation>
+      </Text>
+      <Text Id="__SingleUse_IY6E" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Go to Adjusting</Translation>
+      </Text>
+      <Text Id="__SingleUse_GTLL" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_4XQ3" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Initial value</Translation>
+      </Text>
+      <Text Id="__SingleUse_YERW" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_UJSM" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Initial value</Translation>
+      </Text>
+      <Text Id="__SingleUse_WMDR" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_FCSS" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Initial value</Translation>
+      </Text>
+      <Text Id="__SingleUse_ODQ6" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_J3QQ" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">325 ug</Translation>
+      </Text>
+      <Text Id="__SingleUse_EJ7E" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_SNYN" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_RCH2" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">03:45</Translation>
+      </Text>
+      <Text Id="__SingleUse_0RB5" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">2256 ml</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZSF6" Alignment="Right" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_UO8D" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">1215 mbar</Translation>
+      </Text>
+      <Text Id="__SingleUse_A260" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_HTU4" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">03:45</Translation>
+      </Text>
+      <Text Id="__SingleUse_YARL" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LN4J" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">2256 ml</Translation>
+      </Text>
+      <Text Id="__SingleUse_Y09D" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_4Z17" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">325 ug</Translation>
+      </Text>
+      <Text Id="__SingleUse_K3DZ" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_Q7G7" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_SNDZ" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_AZTL" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Go to Error</Translation>
+      </Text>
+      <Text Id="__SingleUse_Y6I4" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_P5JK" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Initial value</Translation>
+      </Text>
+      <Text Id="__SingleUse_B9XW" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Go to Wahisng</Translation>
+      </Text>
+      <Text Id="__SingleUse_M3GE" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_E1AS" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">03:45</Translation>
+      </Text>
+      <Text Id="__SingleUse_KE20" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Go to Starting</Translation>
+      </Text>
+      <Text Id="__SingleUse_TCUR" Alignment="Left" TypographyId="Bigger">
+        <Translation Language="GB">O</Translation>
+      </Text>
+      <Text Id="__SingleUse_VB6M" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">2</Translation>
+      </Text>
+      <Text Id="__SingleUse_B5B0" Alignment="Left" TypographyId="Bigger_A">
+        <Translation Language="GB" Alignment="Center">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LBKP" Alignment="Left" TypographyId="Bigger">
+        <Translation Language="GB" Alignment="Center">00:00</Translation>
+      </Text>
+      <Text Id="__SingleUse_U2YQ" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_JUUY" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Initial value</Translation>
+      </Text>
+      <Text Id="__SingleUse_G9VJ" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Goto syringe fill</Translation>
+      </Text>
+      <Text Id="__SingleUse_YBBU" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Go to End</Translation>
+      </Text>
+      <Text Id="__SingleUse_ERLM" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Go to Selector</Translation>
+      </Text>
+      <Text Id="__SingleUse_K1YA" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_CLVR" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">00</Translation>
+      </Text>
+      <Text Id="__SingleUse_2Q3D" Alignment="Center" TypographyId="Bigger">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_QV7R" Alignment="Left" TypographyId="Bigger">
+        <Translation Language="GB">99</Translation>
+      </Text>
+      <Text Id="__SingleUse_QLQ8" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_R6LW" Alignment="Center" TypographyId="Medium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_QXX9" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">x 0</Translation>
+      </Text>
+      <Text Id="__SingleUse_3RW3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">x 0.5</Translation>
+      </Text>
+      <Text Id="__SingleUse_08E3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">x 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_EYN8" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">x 2</Translation>
+      </Text>
+      <Text Id="__SingleUse_4JFX" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Calibrate pressure</Translation>
+      </Text>
+      <Text Id="__SingleUse_CN9P" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Calibrate flow</Translation>
+      </Text>
+      <Text Id="__SingleUse_HFEZ" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Calibrate O3</Translation>
+      </Text>
+      <Text Id="__SingleUse_B755" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_M9J0" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">ug/Nml</Translation>
+      </Text>
+      <Text Id="__SingleUse_3J6W" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Pressure &amp; Temp</Translation>
+      </Text>
+      <Text Id="__SingleUse_Q8W7" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Calibrate period</Translation>
+      </Text>
+      <Text Id="__SingleUse_EEOU" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Show parameters</Translation>
+      </Text>
+      <Text Id="__SingleUse_WAMV" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Load parameters</Translation>
+      </Text>
+      <Text Id="__SingleUse_E4U9" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">SW versions</Translation>
+      </Text>
+      <Text Id="__SingleUse_0C4L" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Save parameters</Translation>
+      </Text>
+      <Text Id="__SingleUse_AUC8" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Show last start</Translation>
+      </Text>
+      <Text Id="__SingleUse_S3UZ" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Generation type</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZAJN" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">1</Translation>
+      </Text>
+      <Text Id="__SingleUse_BI2L" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">2</Translation>
+      </Text>
+      <Text Id="__SingleUse_50EM" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">3</Translation>
+      </Text>
+      <Text Id="__SingleUse_HMG5" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">4</Translation>
+      </Text>
+      <Text Id="__SingleUse_CPZJ" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">5</Translation>
+      </Text>
+      <Text Id="__SingleUse_LZOC" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">6</Translation>
+      </Text>
+      <Text Id="__SingleUse_LV00" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">7</Translation>
+      </Text>
+      <Text Id="__SingleUse_OW31" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">8</Translation>
+      </Text>
+      <Text Id="__SingleUse_10WZ" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">9</Translation>
+      </Text>
+      <Text Id="__SingleUse_6SIF" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">DEL</Translation>
+      </Text>
+      <Text Id="__SingleUse_L0ZY" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_PGBP" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">OK</Translation>
+      </Text>
+      <Text Id="__SingleUse_UIHP" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_KBNP" Alignment="Left" TypographyId="Running">
+        <Translation Language="GB">* * * *</Translation>
+      </Text>
+      <Text Id="__SingleUse_2Z6I" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZQV8" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Software versions\nControl: V3.R0.P3\nInterface: V4.R0.P8</Translation>
+      </Text>
+      <Text Id="__SingleUse_ACPK" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Go to Info</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZVPY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_NOTD" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Load... wait</Translation>
+      </Text>
+      <Text Id="__SingleUse_4ISV" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Go to Process</Translation>
+      </Text>
+      <Text Id="__SingleUse_95DI" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_41S7" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">generation type</Translation>
+      </Text>
+      <Text Id="__SingleUse_UN5J" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Go to Switch</Translation>
+      </Text>
+    </TextGroup>
+  </Texts>
+  <Typographies>
+    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7e,0xB0" />
+    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7e,0xB0" />
+    <Typography Id="Medium" Font="verdana.ttf" Size="25" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0xFF" />
+    <Typography Id="VeryBig" Font="verdanab.ttf" Size="60" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="Bigger" Font="verdana.ttf" Size="60" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9,0x3A,0x20,0x6C,0x6D" />
+    <Typography Id="Typography_01" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Typography_00" Font="DejaVuSans.ttf" Size="150" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9,0x2E,0x2C,0x2D" />
+    <Typography Id="Running" Font="verdana.ttf" Size="35" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9,0x67,0x75,0x6D,0x6C" />
+    <Typography Id="Bigger_A" Font="verdana.ttf" Size="60" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9,0x3A,0x20,0x6C,0x6D">
+      <LanguageSetting Language="GB" Font="verdana.ttf" Size="60" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9,0x3A,0x20,0x6C,0x6D" />
+    </Typography>
+    <Typography Id="Small" Font="verdanab.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Typography_02" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Typography_03" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Typography_04" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+  </Typographies>
+</TextDatabase>

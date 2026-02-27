@@ -1,0 +1,304 @@
+__var _RCC_CFGR1;
+__var _RCC_CFGR2;
+__var _RCC_CR;
+__var _RCC_CIER;
+__var _RCC_AHB3ENR;
+__var _IWDG_PR;
+__var _IWDG_RLR;
+__var _IWDG_WINR;
+__var _GTZC_MPCBB1_SECCFGR0;
+__var _GTZC_MPCBB1_SECCFGR1;
+__var _GTZC_MPCBB1_SECCFGR2;
+__var _GTZC_MPCBB1_SECCFGR3;
+__var _PWR_VOSR;
+__var _PE_STATE;
+__var _MPU_CTRL;
+__var _DAUTHSTATUS;
+
+execUserPreReset()
+{
+  // Needed to execute execUserFlashInit() on devices with RDP level 1
+  __ignoreNonStoppingCPU();
+}
+
+execUserFlashInit()
+{
+__var FLASH_OPTR;
+__var FLASH_NSSR;
+__var FLASH_NSCR;
+
+  // This is already implemented in I-Jet/CMSISDAP support.
+  if (!(__driverType("ijet") || __driverType("cmsisdap")))
+  {
+    disable_watchdogs();
+  }
+
+  FLASH_OPTR = __readMemory32(0x40022040,"Memory");
+  if ((FLASH_OPTR & 0x000000FF) != 0xAA)
+  {
+    __var rdp_str;
+    __var no_dbg_str;
+
+    rdp_str = "Readout protection level ";
+    no_dbg_str = " Debug session cannot continue.";
+
+    if ((FLASH_OPTR & 0x000000FF) == 0xCC)
+    {
+      rdp_str = rdp_str + "2 is set.";
+      __abortLaunch("FL/MAC: " + rdp_str + no_dbg_str);
+    }
+    else if ((FLASH_OPTR & 0x000000FF) == 0x55)
+    {
+      rdp_str = rdp_str + "0.5 is set.";
+      __abortLaunch("FL/MAC: " + rdp_str + " Secure flashloader requires readout protection level 0." + no_dbg_str);
+    }
+    else
+    {
+      rdp_str = rdp_str + "1 is set.";
+    }
+
+    if (!__messageBoxYesCancel(rdp_str + " Secure debug session requires readout protection level 0.\nA transition to level 0, which will force full mass erase, will be performed.\nDo you want to continue?", "Device Protection"))
+    {
+      __abortLaunch("FL/MAC: " + rdp_str + no_dbg_str);
+    }
+
+    __writeMemory32(0x45670123, 0x40022008, "Memory"); // FLASH->NSKEYR = FLASH_KEY1;
+    __writeMemory32(0xCDEF89AB, 0x40022008, "Memory"); // FLASH->NSKEYR = FLASH_KEY2;
+
+    __writeMemory32(0x08192A3B, 0x40022010, "Memory"); // FLASH->OPTKEYR = FLASH_OPTKEY1;
+    __writeMemory32(0x4C5D6E7F, 0x40022010, "Memory"); // FLASH->OPTKEYR = FLASH_OPTKEY2;
+
+    __message "FL/MAC: Setting readout protection level 0 (no protection) ...";
+
+    FLASH_OPTR &= 0xFFFFFF00;
+    FLASH_OPTR |= 0xAA;
+    __writeMemory32(FLASH_OPTR, 0x40022040, "Memory"); // RDP = 0xAA
+
+    FLASH_NSCR = __readMemory32(0x40022028,"Memory");
+    __writeMemory32(0x20000 | FLASH_NSCR, 0x40022028, "Memory"); // Set OPTSTRT
+
+    // Wait while FLASH busy
+    do
+    {
+      FLASH_NSSR = __readMemory32(0x40022020,"Memory");
+    }
+    while (0x10000 & FLASH_NSSR);
+
+    // Set OBL_LAUNCH
+    FLASH_NSCR |= 0x8000000;
+    if (__driverType("ijet") || __driverType("cmsisdap"))
+    {
+      __probeCmd("/noerror dap.w 0x40022028",FLASH_NSCR,0);
+      __probeCmd("j.pause 50");
+      __probeCmd("refresh");
+      __hwReset(0);
+    }
+    else
+    {
+      __writeMemory32(FLASH_NSCR, 0x40022028, "Memory");
+      __delay(50);
+      if (__driverType("stlink"))
+      {
+        __abortLaunch("Debug session restart needed.");
+      }
+      __hwReset(0);
+      disable_watchdogs();
+    }
+  }
+
+  _DAUTHSTATUS = __readMemory32(0xE000EFB8, "Memory");
+
+  // Check if secure mode project is used and secure invasive debug is allowed
+  if (__isTZSecureModeProject() && (_DAUTHSTATUS & 0x10))
+  {
+    _PE_STATE = __setTZSecureMode(1);
+  }
+
+  _MPU_CTRL = __readMemory32(0xE000ED94, "Memory");
+  if (_MPU_CTRL & 0x1)
+  {
+    // Disable MPU
+    __writeMemory32(0x00000000, 0xE000ED94, "Memory");
+  }
+
+  // Save access mode of used SRAM blocks
+  _GTZC_MPCBB1_SECCFGR0 = __readMemory32(0x50032D00, "Memory");
+  _GTZC_MPCBB1_SECCFGR1 = __readMemory32(0x50032D04, "Memory");
+  _GTZC_MPCBB1_SECCFGR2 = __readMemory32(0x50032D08, "Memory");
+  _GTZC_MPCBB1_SECCFGR3 = __readMemory32(0x50032D0C, "Memory");
+
+  // Try to make all used SRAM blocks secure (if not)
+  if (_GTZC_MPCBB1_SECCFGR0 != 0xFFFFFFFF)
+  {
+    __writeMemory32(0xFFFFFFFF, 0x50032D00, "Memory");
+  }
+  if (_GTZC_MPCBB1_SECCFGR1 != 0xFFFFFFFF)
+  {
+    __writeMemory32(0xFFFFFFFF, 0x50032D04, "Memory");
+  }
+  if (_GTZC_MPCBB1_SECCFGR2 != 0xFFFFFFFF)
+  {
+    __writeMemory32(0xFFFFFFFF, 0x50032D08, "Memory");
+  }
+  if (_GTZC_MPCBB1_SECCFGR3 != 0xFFFFFFFF)
+  {
+    __writeMemory32(0xFFFFFFFF, 0x50032D0C, "Memory");
+  }
+  // Check if hardware IWDG is enabled
+  if (!(0x10000 & __readMemory32(0x50022040,"Memory")))
+  {
+    _IWDG_PR = __readMemory32(0x50003004, "Memory");
+    _IWDG_RLR = __readMemory32(0x50003008, "Memory");
+    _IWDG_WINR = __readMemory32(0x50003010, "Memory");
+    // Unlock WDT registers
+    __writeMemory32(0x5555, 0x50003000, "Memory");
+
+    // Prescaler
+    if (_IWDG_PR != 0x7)
+    {
+      __writeMemory32(0x7, 0x50003004, "Memory");
+    }
+    // Reload
+    if (_IWDG_RLR != 0xFFF)
+    {
+      __writeMemory32(0xFFF, 0x50003008, "Memory");
+    }
+    // Window
+    if (_IWDG_WINR != 0xFFF)
+    {
+      // Writing the Window will automatically refresh counter
+      // to Reload value
+      __writeMemory32(0xFFF, 0x50003010, "Memory");
+    }
+    else
+    {
+      // Refresh counter to Reload value
+      __writeMemory32(0xAAAA, 0x50003000, "Memory");
+    }
+  }
+
+  _RCC_CR   = __readMemory32(0x56020C00, "Memory");
+  _RCC_CFGR1 = __readMemory32(0x56020C1C, "Memory");
+  _RCC_CFGR2 = __readMemory32(0x56020C20, "Memory");
+  _RCC_CIER = __readMemory32(0x56020C50, "Memory");
+  _RCC_AHB3ENR = __readMemory32(0x56020C94, "Memory");
+  //_PWR_VOSR = __readMemory32(0x5602080C, "Memory");
+
+  // Set voltage scaling range 1 (PWR_VOSR.VOS) needed for programming
+  //if ((_PWR_VOSR & 0x00030000) != 0x00020000)
+  //{
+  //  __writeMemory32(0x00000200, 0x5602080C, "Memory");
+  //}
+
+  if (_RCC_CIER)
+  {
+    // Disable RCC interrupts
+    __writeMemory32(0x00000000, 0x56020C50, "Memory");
+  }
+
+  if (!(_RCC_CR & 0x00000100))
+  {
+    // Set RCC_CR.HSION
+    __writeMemory32(0x00000100 | _RCC_CR, 0x56020C00, "Memory");
+  }
+
+  // Set system clock to HSI16
+  __writeMemory32(0x00000001, 0x56020C1C, "Memory");
+  // PCLK1 = HCLK/16, needed if HW WWDG is enabled
+  __writeMemory32(0x00000070, 0x56020C20, "Memory");
+
+  if (!(_RCC_AHB3ENR & 0x00000004))
+  {
+    // Set RCC_AHB3ENR.PWREN
+    __writeMemory32(0x00000004 | _RCC_AHB3ENR, 0x56020C94, "Memory");
+  }
+}
+
+execUserFlashExit()
+{
+  // Restore registers modified earlier
+  if (!(_RCC_AHB3ENR & 0x00000004))
+  {
+    __writeMemory32(_RCC_AHB3ENR, 0x56020C94, "Memory");
+  }
+
+  __writeMemory32(_RCC_CFGR2, 0x56020C20, "Memory");
+  __writeMemory32(_RCC_CFGR1, 0x56020C1C, "Memory");
+
+  if (!(_RCC_CR & 0x00000100))
+  {
+    __writeMemory32(_RCC_CR, 0x56020C00, "Memory");
+  }
+
+  if (_RCC_CIER)
+  {
+    __writeMemory32(_RCC_CIER, 0x56020C50, "Memory");
+  }
+
+  //if ((_PWR_VOSR & 0x00030000) != 0x00020000)
+  //{
+  //  __writeMemory32(_PWR_VOSR, 0x5602080C, "Memory");
+  //}
+
+  if (!(0x10000 & __readMemory32(0x50022040, "Memory")))
+  {
+    __writeMemory32(0x5555, 0x50003000, "Memory");
+    if (_IWDG_PR != 0x7)
+    {
+      __writeMemory32(_IWDG_PR, 0x50003004, "Memory");
+    }
+    if (_IWDG_RLR != 0xFFF)
+    {
+      __writeMemory32(_IWDG_RLR, 0x50003008, "Memory");
+    }
+    if (_IWDG_WINR != 0xFFF)
+    {
+      __writeMemory32(_IWDG_WINR, 0x50003010, "Memory");
+    }
+    else
+    {
+      __writeMemory32(0xAAAA, 0x50003000, "Memory");
+    }
+  }
+
+  if (_GTZC_MPCBB1_SECCFGR0 != 0xFFFFFFFF)
+  {
+    __writeMemory32(_GTZC_MPCBB1_SECCFGR0, 0x50032D00, "Memory");
+  }
+  if (_GTZC_MPCBB1_SECCFGR1 != 0xFFFFFFFF)
+  {
+    __writeMemory32(_GTZC_MPCBB1_SECCFGR1, 0x50032D04, "Memory");
+  }
+  if (_GTZC_MPCBB1_SECCFGR2 != 0xFFFFFFFF)
+  {
+    __writeMemory32(_GTZC_MPCBB1_SECCFGR2, 0x50032D08, "Memory");
+  }
+  if (_GTZC_MPCBB1_SECCFGR3 != 0xFFFFFFFF)
+  {
+    __writeMemory32(_GTZC_MPCBB1_SECCFGR3, 0x50032D0C, "Memory");
+  }
+
+  // Restore MPU
+  if (_MPU_CTRL & 0x1)
+  {
+    __writeMemory32(_MPU_CTRL, 0xE000ED94, "Memory");
+  }
+
+  if (__isTZSecureModeProject() && (_DAUTHSTATUS & 0x10))
+  {
+    if (!_PE_STATE) __setTZSecureMode(0);
+  }
+}
+
+disable_watchdogs()
+{
+__var DBGMCU_APB1_FZ;
+
+  // Stop watchdogs when CPU is halted
+  DBGMCU_APB1_FZ = __readMemory32(0xE0044008, "Memory");
+  if ((DBGMCU_APB1_FZ & 0x00001800) != 0x00001800)
+  {
+    __writeMemory32(DBGMCU_APB1_FZ | 0x1800, 0xE0044008, "Memory");
+    __message "FL/MAC: DBGMCU_APB1LFZR was modified. DBG_IWDG_STOP and DBG_WWDG_STOP bits are set.";
+  }
+}

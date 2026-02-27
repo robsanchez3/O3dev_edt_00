@@ -1,0 +1,17 @@
+../Drivers/Vendor/Driver/edt_bsp_uart.c:62:6:EDT_USART_Init	24	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:111:6:EDT_USART_DeInit	16	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:127:26:EDT_UART_Transmit_IT	32	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:143:26:EDT_UART_Receive_IT	32	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:158:19:EDT_UART_Transmit	24	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:172:19:EDT_UART_Receive	24	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:193:6:HAL_UART_TxCpltCallback	16	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:205:6:HAL_UART_RxCpltCallback	16	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:218:6:HAL_UART_ErrorCallback	16	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:231:13:EDT_RS232_IRQHandler	8	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:241:13:EDT_RS485_IRQHandler	8	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:251:13:EDT_RS232_TxCpltCallback	4	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:260:13:EDT_RS485_TxCpltCallback	4	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:269:13:EDT_RS232_RxCpltCallback	4	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:279:13:EDT_RS485_RxCpltCallback	4	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:288:13:EDT_RS232_ErrorCallback	16	static
+../Drivers/Vendor/Driver/edt_bsp_uart.c:305:13:EDT_RS485_ErrorCallback	16	static

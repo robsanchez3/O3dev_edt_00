@@ -1,0 +1,17 @@
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:93:7:int16 FindFirstFileWithExt(const char*, const char*, char*, int16)	128	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:164:7:uint8 get_line(FIL*, int8*, UINT)	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:188:7:char* ltrim(char*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:194:6:void rtrim(char*)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:202:6:void trim(char*)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:210:6:char strToBoolChar(const char*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:223:6:char findEnumValueGeneric(const ENUM_MAP*, int16, const char*, int*)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:249:6:char matchModeStep(const char*, int*, int*)	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:265:6:void processSection(ModCtx*, const char*)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:290:6:void processKeyValue(ModCtx*, const char*, const char*)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:324:9:uint8_t loadTherapyFromFile(OPERATION_MODE_E, THERAPY_CTX*)	984	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:395:6:void print_guiTherapyCtx(const THERAPY_CTX*)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:434:7:int16 loadMainMenu(signed char*, int16)	1104	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:554:7:int16 loadHardwareConfig(HW_CONFIG_T*)	976	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:663:7:int16 loadSyringeConfig(uint16*)	992	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:759:7:int16 loadUserConfig(USR_CONFIG_T*)	888	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:850:7:int16 saveUserConfig(const USR_CONFIG_T*)	664	static

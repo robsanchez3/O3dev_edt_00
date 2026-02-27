@@ -1,0 +1,21 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:136:5:touchgfx::Bitmap::Bitmap(touchgfx::BitmapId)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:273:13:int16_t touchgfx::Drawable::getX() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:191:13:int16_t touchgfx::Screen::getScreenWidth() const	16	static
+../../TouchGFX/generated/gui_generated/include/gui_generated/error_screen/ErrorViewBase.hpp:31:26:FrontendApplication& ErrorViewBase::application()	16	static
+../../TouchGFX/gui/include/gui/error_screen/ErrorView.hpp:13:13:ErrorView::~ErrorView()	16	static
+../../TouchGFX/gui/include/gui/error_screen/ErrorView.hpp:13:13:virtual ErrorView::~ErrorView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/error_screen/ErrorView.cpp:3:1:ErrorView::ErrorView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/error_screen/ErrorView.cpp:8:6:virtual void ErrorView::setupScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/error_screen/ErrorView.cpp:13:6:virtual void ErrorView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/error_screen/ErrorView.cpp:18:6:void ErrorView::initTherapyContext(THERAPY_CTX*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/error_screen/ErrorView.cpp:23:10:uint16_t ErrorView::getTherapyTargetValue(uint8_t)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/error_screen/ErrorView.cpp:28:6:void ErrorView::initTherapyDataInfo()	72	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/error_screen/ErrorView.cpp:63:6:void ErrorView::initErrorCode()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/error_screen/ErrorView.cpp:73:6:virtual void ErrorView::cnlClicked()	16	static

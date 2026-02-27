@@ -1,0 +1,5 @@
+C:/Roberto/O3/O3dev_edt_00/FATFS/App/fatfs.c:92:6:MX_FATFS_Init	2
+C:/Roberto/O3/O3dev_edt_00/FATFS/App/fatfs.c:114:13:uSDThread_Entry	9
+C:/Roberto/O3/O3dev_edt_00/FATFS/App/fatfs.c:161:13:FS_FileOperations	9
+C:/Roberto/O3/O3dev_edt_00/FATFS/App/fatfs.c:215:16:SD_IsDetected	2
+C:/Roberto/O3/O3dev_edt_00/FATFS/App/fatfs.c:236:6:HAL_GPIO_EXTI_Callback	3

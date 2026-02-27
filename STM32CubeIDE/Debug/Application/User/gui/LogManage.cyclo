@@ -1,0 +1,11 @@
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:18:9:FRESULT ensureDirExists(const char*)	4
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:38:8:int8_t openLogFileWrite(const char*)	5
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:70:8:int8_t openLogFileRead(const char*)	3
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:90:6:void closeLogFile()	2
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:101:8:int8_t writeLogLine(uint16_t, int32_t)	4
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:133:5:int get_line(FIL*, int8_t*, int16_t)	12
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:168:6:void trim(int8_t*)	6
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:184:8:int8_t readLogLine(uint16_t, int32_t*)	8
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:232:8:int8_t openParamFileWrite()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:241:8:int8_t openParamFileRead()	1
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/LogManage.cpp:250:6:void closeParamFile()	1

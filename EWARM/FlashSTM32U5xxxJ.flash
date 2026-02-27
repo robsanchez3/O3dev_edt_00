@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<flash_device>
+  <exe>$PROJ_DIR$\FlashSTM32U5xx.out</exe>
+  <page>16</page>
+  <block>512 0x2000</block>
+  <flash_base>0x08000000</flash_base>
+  <macro>$PROJ_DIR$\FlashSTM32U5xx.mac</macro>
+  <online>1</online>
+  <aggregate>1</aggregate>
+</flash_device>

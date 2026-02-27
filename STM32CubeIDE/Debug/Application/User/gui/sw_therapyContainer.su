@@ -1,0 +1,21 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:146:14:touchgfx::BitmapId touchgfx::Bitmap::getId() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:157:5:touchgfx::Bitmap::operator touchgfx::BitmapId() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:327:18:virtual void touchgfx::Drawable::setY(int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:356:18:virtual void touchgfx::Drawable::setWidth(int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:368:18:virtual void touchgfx::Drawable::setHeight(int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:378:18:virtual void touchgfx::Drawable::childGeometryChanged()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:389:18:virtual void touchgfx::Drawable::handleClickEvent(const touchgfx::ClickEvent&)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:401:18:virtual void touchgfx::Drawable::handleGestureEvent(const touchgfx::GestureEvent&)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:490:18:virtual void touchgfx::Drawable::handleDragEvent(const touchgfx::DragEvent&)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:501:18:virtual void touchgfx::Drawable::handleTickEvent()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	16	static
+../../TouchGFX/gui/include/gui/containers/sw_therapyContainer.hpp:10:13:sw_therapyContainer::~sw_therapyContainer()	16	static
+../../TouchGFX/gui/include/gui/containers/sw_therapyContainer.hpp:10:13:virtual sw_therapyContainer::~sw_therapyContainer()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/containers/sw_therapyContainer.cpp:3:1:sw_therapyContainer::sw_therapyContainer()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/containers/sw_therapyContainer.cpp:8:6:virtual void sw_therapyContainer::initialize()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/containers/sw_therapyContainer.cpp:13:6:virtual void sw_therapyContainer::setItem(touchgfx::Unicode::UnicodeChar*, touchgfx::Bitmap)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/containers/sw_therapyContainer.cpp:22:6:virtual void sw_therapyContainer::setItem(touchgfx::Bitmap)	16	static

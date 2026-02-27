@@ -1,0 +1,36 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:136:5:touchgfx::Bitmap::Bitmap(touchgfx::BitmapId)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:515:10:void touchgfx::Drawable::setVisible(bool)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:60:10:void touchgfx::Button::setAlpha(uint8_t)	16	static
+../../TouchGFX/generated/gui_generated/include/gui_generated/mainmenu_screen/MainMenuViewBase.hpp:94:26:FrontendApplication& MainMenuViewBase::application()	16	static
+../../TouchGFX/gui/include/gui/mainmenu_screen/MainMenuView.hpp:14:13:MainMenuView::~MainMenuView()	16	static
+../../TouchGFX/gui/include/gui/mainmenu_screen/MainMenuView.hpp:14:13:virtual MainMenuView::~MainMenuView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:7:1:MainMenuView::MainMenuView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:12:6:virtual void MainMenuView::setupScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:22:6:virtual void MainMenuView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:27:6:virtual void MainMenuView::syringeStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:41:6:virtual void MainMenuView::syringeAutoStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:55:6:virtual void MainMenuView::syringeManualStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:69:6:virtual void MainMenuView::continuousStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:75:6:virtual void MainMenuView::manualStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:81:6:virtual void MainMenuView::dentalStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:87:6:virtual void MainMenuView::doseStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:93:6:virtual void MainMenuView::vacuumStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:106:6:virtual void MainMenuView::vacuumTimeStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:119:6:virtual void MainMenuView::vacuumPressureStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:132:6:virtual void MainMenuView::bagStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:146:6:virtual void MainMenuView::bagClosedStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:160:6:virtual void MainMenuView::openBagStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:174:6:virtual void MainMenuView::insufflationStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:180:6:virtual void MainMenuView::insufflation_r_start()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:186:6:virtual void MainMenuView::insufflation_v_start()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:193:6:virtual void MainMenuView::salineStart()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:222:6:void MainMenuView::setupMenu()	56	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:317:6:void MainMenuView::hideMenuButtons()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:340:6:void MainMenuView::configButton(int8_t, int8_t, int8_t, touchgfx::Button*, uint16_t, uint16_t, uint16_t, uint16_t)	80	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:420:6:void MainMenuView::updateSyringeButonsAlpha()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/mainmenu_screen/MainMenuView.cpp:427:6:void MainMenuView::updateAlphaDependingOnVaccum()	24	static

@@ -1,0 +1,18 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:515:10:void touchgfx::Drawable::setVisible(bool)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
+../../TouchGFX/gui/include/gui/processing_screen/ProcessingView.hpp:11:13:ProcessingView::~ProcessingView()	16	static
+../../TouchGFX/gui/include/gui/processing_screen/ProcessingView.hpp:11:13:virtual ProcessingView::~ProcessingView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:3:1:ProcessingView::ProcessingView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:8:6:virtual void ProcessingView::setupScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:14:6:virtual void ProcessingView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:19:6:virtual void ProcessingView::cancelClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:27:6:virtual void ProcessingView::okClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:32:6:void ProcessingView::initTherapyContext(THERAPY_CTX*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:38:6:virtual void ProcessingView::handleTickEvent()	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:65:6:void ProcessingView::setupCalibratePeriod()	80	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:75:6:void ProcessingView::setupLoadParameters()	80	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:84:6:void ProcessingView::setupSaveParameters()	80	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:94:6:void ProcessingView::setupProcessingScreen()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingView.cpp:119:6:void ProcessingView::setupProcessEnd()	80	static
