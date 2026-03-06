@@ -355,7 +355,10 @@ FSM_O3_OPERATION_T GLB_fsm_o3 = {
 	/* DentalSupplying */
 	0
 };
-
+#include <stdint.h>
+                 extern uint8_t COM_O3_GetChar(uint8_t *data);
+                 uint8_t COM_O3_DataAvailable(void);
+                 void COM_O3_PutString(uint8_t *Data);
 void fsm_o3_timeHandler(void)
 {
   GLB_TickCounter++;
@@ -363,6 +366,18 @@ void fsm_o3_timeHandler(void)
   /* Per second timer management */
   if (GLB_SecondCounter == 1000)
   {
+	  uint8_t quitar[25];
+	  uint8_t i = 0;
+	  memset(quitar,0,sizeof(quitar));
+	  while( COM_O3_DataAvailable()){
+	  COM_O3_GetChar(&quitar[i++]);
+	  }
+		if(quitar[0] != 0)
+		{
+			printf("recibido = %s\n",quitar);
+			COM_O3_PutString((uint8_t *)"recibido\n");
+		}
+
 //	printf("Miliseconds since starting: %ld\n", GLB_TickCounter);
 
     GLB_SecondCounter = 0;

@@ -8,15 +8,32 @@
 
 #include <stdio.h>
 #include <string.h>
-//#include <../vendor/Board/SE21070/Driver/edt_f7xx_usart.h>
 #include <../Vendor/Driver/edt_bsp_uart.h>
+#include "usart.h"
 #include <Dependencies/Com_o3.h>
-//////////////////#include <gui/widget/edt_f7xxh7xx_TestAPI.h>   TODO ¿quitar widget?
+#include <gui/widget/edt_f7xxh7xx_TestAPI.h>
 
 COM_O3_LOOP_BUFFER_T comBuff;
 
-// Variable estática para recepción por interrupción
-static uint8_t com_o3_rx_byte;
+//#define USE_EXPANSION_TTL_USART6
+/*
+#if defined(USE_EXPANSION_TTL_USART6)
+#define COM_O3_TX_UART_HANDLE (&huart6)
+#else
+#define COM_O3_TX_UART_HANDLE (&hRs232)
+#endif
+*/
+
+//#define COM_O3_TX_UART_HANDLE (&huart2)
+#define COM_O3_TX_UART_HANDLE (&huart6)
+//#define COM_O3_TX_UART_HANDLE (&huart1)
+//#define COM_O3_TX_UART_HANDLE (&huart3)
+
+#if defined(USE_EXPANSION_TTL_USART6)
+static HAL_StatusTypeDef COM_O3_ArmRx6(void);
+#endif
+
+static HAL_StatusTypeDef COM_O3_ArmRx6(void);
 
 void COM_O3_Init(void)
 {
@@ -24,9 +41,16 @@ void COM_O3_Init(void)
 	comBuff.tail = 0;
 	memset(comBuff.data, 0, COM_O3_LOOP_BUFFER_LEN);
 
-	// TODO New reception system due to new hw (REVIEW)
-	// Iniciar recepción por interrupción
-	HAL_UART_Receive_IT(&hRs232, &com_o3_rx_byte, 1);
+#if defined(USE_EXPANSION_TTL_USART6)
+	HAL_StatusTypeDef rxStart;
+	rxStart = COM_O3_ArmRx6();
+	printf("COM_O3_Init RX6 arm status=%d\n", (int)rxStart);
+#endif
+
+	HAL_StatusTypeDef rxStart;
+	rxStart = COM_O3_ArmRx6();
+	printf("COM_O3_Init RX arm status=%d\n", (int)rxStart);
+
 }
 
 void COM_O3_Clear(void)
@@ -37,29 +61,24 @@ void COM_O3_Clear(void)
 
 void COM_O3_SendConst(const char *Data)
 {
-	EDT_UART_Transmit_IT(&hRs232, (uint8_t *)Data, (uint16_t) strlen (Data));
-//	EDT_UART_Transmit_IT(&hRs485, (uint8_t *)Data, (uint16_t) strlen (Data));
+	HAL_UART_Transmit_IT(COM_O3_TX_UART_HANDLE, (uint8_t *)Data, (uint16_t)strlen(Data));
 }
 
 void COM_O3_Send(uint8_t *Data)
 {
-	EDT_UART_Transmit_IT(&hRs232, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data));
-//	EDT_UART_Transmit_IT(&hRs485, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data));
+	HAL_UART_Transmit_IT(COM_O3_TX_UART_HANDLE, (uint8_t *)Data, (uint16_t)strlen((const char *)Data));
 }
 
 void COM_O3_PutString(uint8_t *Data)
 {
-//	EDT_UART_Transmit_IT(&hRs232, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data));
-//	EDT_UART_Transmit_IT(&hRs485, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data));
-	EDT_UART_Transmit(&hRs232, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data), HAL_MAX_DELAY);
-//	EDT_UART_Transmit(&hRs485, (uint8_t *)Data, (uint16_t) strlen ((const char *)Data), HAL_MAX_DELAY);
+	HAL_UART_Transmit_IT(COM_O3_TX_UART_HANDLE, (uint8_t *)Data, (uint16_t)strlen((const char *)Data));
 }
 
 void COM_O3_PollRx(void)
 {
-	uint8_t i;
 #if 0
-	// legacy obsolete TODO remove this code when config by means of therapy templates be well tested and validated 
+	uint8_t i;
+
 	if(_RS232RevSt.RevF==true)
 	{
 		for(i=0; i<_RS232RevSt.size; i++)
@@ -76,7 +95,7 @@ void COM_O3_PollRx(void)
 		memset(_RS232RevSt.pdata,0,sizeof(_RS232RevSt.pdata));
 		_RS232RevSt.size=0;
 	}
-#endif	
+#endif
 }
 
 uint8_t COM_O3_GetChar(uint8_t *data)
@@ -103,16 +122,35 @@ uint8_t COM_O3_DataAvailable(void)
 	return 0;
 }
 
-// TODO New reception system due to new hw (REVIEW)
-// Implementación de la función de callback de recepción por interrupción
-void EDT_RS232_RxCpltCallback(void)
+//#if defined(USE_EXPANSION_TTL_USART6)
+#if 1
+static HAL_StatusTypeDef COM_O3_ArmRx6(void)
 {
-	// Almacenar el byte recibido en el buffer circular
-	comBuff.data[comBuff.head++] = com_o3_rx_byte;
-	if (comBuff.head == COM_O3_LOOP_BUFFER_LEN)
+	__HAL_UART_CLEAR_FLAG(COM_O3_TX_UART_HANDLE, UART_CLEAR_IDLEF);
+	__HAL_UART_CLEAR_OREFLAG(COM_O3_TX_UART_HANDLE);
+	__HAL_UART_CLEAR_NEFLAG(COM_O3_TX_UART_HANDLE);
+	__HAL_UART_CLEAR_FEFLAG(COM_O3_TX_UART_HANDLE);
+	__HAL_UART_CLEAR_PEFLAG(COM_O3_TX_UART_HANDLE);
+	__HAL_UART_SEND_REQ(COM_O3_TX_UART_HANDLE, UART_RXDATA_FLUSH_REQUEST);
+
+	return HAL_UARTEx_ReceiveToIdle_IT(COM_O3_TX_UART_HANDLE, &comBuff.data[comBuff.head], COM_O3_LOOP_BUFFER_LEN);
+}
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+
+	if ( (huart == NULL) ||  ((huart->Instance != USART6) && (huart->Instance != USART1) && (huart->Instance != USART3)) )
+	{
+		return;
+	}
+
+	comBuff.head = (uint8_t)(comBuff.head + Size);
+	if (comBuff.head >= COM_O3_LOOP_BUFFER_LEN)
 	{
 		comBuff.head = 0;
 	}
-	// Reiniciar la recepción por interrupción
-	HAL_UART_Receive_IT(&hRs232, &com_o3_rx_byte, 1);
+	printf("RX received = %u bytes\n", (unsigned int)Size);
+
+	HAL_UARTEx_ReceiveToIdle_IT(COM_O3_TX_UART_HANDLE, &comBuff.data[comBuff.head], COM_O3_LOOP_BUFFER_LEN);
 }
+#endif

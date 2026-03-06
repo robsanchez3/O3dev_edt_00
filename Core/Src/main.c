@@ -139,21 +139,15 @@ int main(void)
   MX_CORDIC_Init();
   MX_FDCAN1_Init();
   MX_USART2_UART_Init();
+  MX_USART6_UART_Init(); // Sedecal dev
+  MX_USART1_UART_Init(); // Sedecal dev
+  MX_USART3_UART_Init(); // Sedecal dev
+
   MX_TouchGFX_Init();
 
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
-  printf("Hello world! 1\n");
-  //EDT_USART_Init(&hRs232, USED_USART_RS232 ,115200); // rsm  no runnnnnnnnnnnnnnnnnnnnnnnnning here
-
-#if defined(USE_RS232)
-  EDT_USART_Init(&hRs232, USED_USART_RS232 ,115200);
-#elif defined(USE_RS485)
-  EDT_USART_Init(&hRs485, USED_USART_RS485 ,115200);
-#endif
-
-  printf("Hello world! 2\n");
 
 #if defined(USE_CAN)
   EDT_CANx_Config(&hfdcan1);
@@ -163,9 +157,6 @@ int main(void)
 
   MX_FATFS_Init();
 //MX_SDMMC1_SD_Init(); // not compatible call here wit freertos... (this function is called somehow during SO running)
-
-
-
 
 //	
   /* USER CODE END 2 */

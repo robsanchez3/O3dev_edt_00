@@ -62,8 +62,9 @@ Drivers/O3/Dependencies/Com_o3.o: ../Drivers/O3/Dependencies/Com_o3.c \
  ../../Drivers/Vendor/Device/ctp/mxt640u.h \
  ../../Drivers/Vendor/Device/ctp/../Common/ts.h \
  ../../Drivers/Vendor/Driver/edt_bsp_uart.h \
- ../../Drivers/Vendor/Driver/edt_bsp_can.h \
- ../../Drivers/O3/Dependencies/Com_o3.h
+ ../../Drivers/Vendor/Driver/edt_bsp_can.h ../../Core/Inc/usart.h \
+ ../../Core/Inc/main.h ../../Drivers/O3/Dependencies/Com_o3.h \
+ ../../TouchGFX/gui/include/gui/widget/edt_f7xxh7xx_TestAPI.h
 ../../Drivers/O3/../Vendor/Driver/edt_bsp_uart.h:
 ../../Core/Inc/main.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
@@ -129,4 +130,7 @@ Drivers/O3/Dependencies/Com_o3.o: ../Drivers/O3/Dependencies/Com_o3.c \
 ../../Drivers/Vendor/Device/ctp/../Common/ts.h:
 ../../Drivers/Vendor/Driver/edt_bsp_uart.h:
 ../../Drivers/Vendor/Driver/edt_bsp_can.h:
+../../Core/Inc/usart.h:
+../../Core/Inc/main.h:
 ../../Drivers/O3/Dependencies/Com_o3.h:
+../../TouchGFX/gui/include/gui/widget/edt_f7xxh7xx_TestAPI.h:

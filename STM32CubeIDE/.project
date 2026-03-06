@@ -35,9 +35,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>ETEMB0700027XDHAL.ioc</name>
+			<name>O3dev_edt_00.ioc</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/ETEMB0700027XDHAL.ioc</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/O3dev_edt_00.ioc</locationURI>
 		</link>
 		<link>
 			<name>Drivers/CMSIS/system_stm32u5xx.c</name>

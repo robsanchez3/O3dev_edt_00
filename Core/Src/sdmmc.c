@@ -36,7 +36,7 @@ void MX_SDMMC1_SD_Init(void)
       HAL_SD_MspDeInit(&hsd1);      
       return;
     }
-	printf("SD card init... \n");// rsm
+//	printf("SD card init... \n");// rsm
 
 
 
@@ -55,13 +55,11 @@ void MX_SDMMC1_SD_Init(void)
 
   if (HAL_SD_Init(&hsd1) != HAL_OK)
   {
-	  printf("HAL_SD_Init error.....................................................................\n");
     Error_Handler();
   }
   /* USER CODE BEGIN SDMMC1_Init 2 */
   if (HAL_SD_ConfigWideBusOperation(&hsd1, SDMMC_BUS_WIDE_4B) != HAL_OK)
   {
-	  printf("HAL_SD_ConfigWideBusOperation error.....................................................................\n");
     Error_Handler();
   }
   /* USER CODE END SDMMC1_Init 2 */

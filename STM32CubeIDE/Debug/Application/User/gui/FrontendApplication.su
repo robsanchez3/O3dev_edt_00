@@ -41,7 +41,7 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/common/FrontendApplication.cpp:22:1:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/LCD16DebugPrinter.hpp:32:7:touchgfx::LCD16DebugPrinter::~LCD16DebugPrinter()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/LCD16DebugPrinter.hpp:32:7:virtual touchgfx::LCD16DebugPrinter::~LCD16DebugPrinter()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/common/FrontendApplication.cpp:22:1:void __static_initialization_and_destruction_1()	8	static
-../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:449:18:void touchgfx::Callback<dest_type, void, void, void>::execute() [with dest_type = FrontendApplicationBase]	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:449:18:void touchgfx::Callback<dest_type, void, void, void>::execute() [with dest_type = FrontendApplicationBase]	32	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:459:18:bool touchgfx::Callback<dest_type, void, void, void>::isValid() const [with dest_type = FrontendApplicationBase]	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/common/FrontendApplication.cpp:22:1:cpp)	8	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/common/FrontendApplication.cpp:22:1:cpp)	8	static

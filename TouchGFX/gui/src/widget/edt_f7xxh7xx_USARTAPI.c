@@ -234,10 +234,13 @@ void rs485Rx_task(void *pvParameters)
         {
           if (RS485_RxQueue.DataSize > 0)   //process Queue usart Recevie to Sturct RS232_RxData
           {
+            _RS485RevSt.RevF = true;
+            _RS485RevSt.size = RS485_RxQueue.DataSize;
+            memcpy(_RS485RevSt.pdata, RS485_RxQueue.Data, _RS485RevSt.size);
             USART_ReceiveData(&hRs485, RS485_RxQueue.Data, RS485_RxQueue.DataSize);
             RS485_RxQueue.DataSize = 0;
             RS485_RxQueue.RxEn = 0;
-            for (i = 0; i < RS485_RxQueue.DataSize; i++)
+            for (i = 0; i < sizeof(RS485_RxQueue.Data); i++)
               RS485_RxQueue.Data[i] = 0;
           }
         }

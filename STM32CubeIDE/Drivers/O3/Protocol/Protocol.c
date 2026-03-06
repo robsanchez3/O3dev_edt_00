@@ -11,6 +11,7 @@
 #include "Protocol.h"
 //#include "../OZTDUart.h"                 // TODO......  improve path
 #include "../Fsm_o3/fsm_o3_operation.h"  // Necessary for FSM_O3_OPERATION_T needed for debugging
+#include <stdlib.h>
 
 /**
  * @brief String to store the last received command response.
@@ -502,11 +503,9 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
   {
     do
     {
-    	while(1){
       COM_O3_PutString((uint8_t *)Message);
       deb_printf(D_LEV_0, "%s\n", Message); // SWV debug
       deb_printf(D_LEV_1, "Send(%02d) -> %s\n", (GLB_fsm_o3.CurrentState == GLB_fsm_o3.LastState) ? GLB_fsm_o3.CurrentState->State_ID : GLB_fsm_o3.LastState->State_ID, Message); // SWV debug
-    	}
       RetVal = Protocol_GetResponse();
     }while ( (RetVal != CMD_RESPONSE_ACK) && (RetVal != CMD_RESPONSE_KEY_SIMULATION) && (++NumRetries < 3) );
 
@@ -1182,5 +1181,4 @@ void Protocol_GetLastResponse(PROTOCOL_RESPONSE_T * Response)
   }
   ClearLastResponseString();
 }
-
 

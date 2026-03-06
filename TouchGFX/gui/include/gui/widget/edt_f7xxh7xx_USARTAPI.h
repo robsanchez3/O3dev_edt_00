@@ -50,6 +50,8 @@
 #include "stdbool.h"    
 #if defined(STM32H750xx)
  #include "stm32h7xx_hal.h"
+#elif defined(STM32U599xx)
+ #include "stm32u5xx_hal.h"
 #else
  #include "stm32f7xx_hal.h"
 #endif
