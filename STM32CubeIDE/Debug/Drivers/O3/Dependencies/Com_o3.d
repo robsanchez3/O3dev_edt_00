@@ -64,17 +64,7 @@ Drivers/O3/Dependencies/Com_o3.o: ../Drivers/O3/Dependencies/Com_o3.c \
  ../../Drivers/Vendor/Driver/edt_bsp_uart.h \
  ../../Drivers/Vendor/Driver/edt_bsp_can.h ../../Core/Inc/usart.h \
  ../../Core/Inc/main.h ../../Drivers/O3/Dependencies/Com_o3.h \
- ../../TouchGFX/gui/include/gui/widget/edt_f7xxh7xx_TestAPI.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
- ../../Core/Inc/FreeRTOSConfig.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h
+ ../../TouchGFX/gui/include/gui/widget/edt_f7xxh7xx_TestAPI.h
 ../../Drivers/O3/../Vendor/Driver/edt_bsp_uart.h:
 ../../Core/Inc/main.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
@@ -144,13 +134,3 @@ Drivers/O3/Dependencies/Com_o3.o: ../Drivers/O3/Dependencies/Com_o3.c \
 ../../Core/Inc/main.h:
 ../../Drivers/O3/Dependencies/Com_o3.h:
 ../../TouchGFX/gui/include/gui/widget/edt_f7xxh7xx_TestAPI.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
-../../Core/Inc/FreeRTOSConfig.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h:

@@ -7,5 +7,5 @@
 ../Drivers/O3/Protocol/Protocol.c:475:7:FsmStateForDebug	4	static
 ../Drivers/O3/Protocol/Protocol.c:488:6:Protocol_SendCommand	48	static
 ../Drivers/O3/Protocol/Protocol.c:541:6:Protocol_GetResponse	16	static
-../Drivers/O3/Protocol/Protocol.c:636:13:ResolveStatus	16	static
-../Drivers/O3/Protocol/Protocol.c:648:6:Protocol_GetLastResponse	128	static
+../Drivers/O3/Protocol/Protocol.c:601:13:ResolveStatus	16	static
+../Drivers/O3/Protocol/Protocol.c:613:6:Protocol_GetLastResponse	128	static

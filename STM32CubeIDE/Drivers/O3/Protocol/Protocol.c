@@ -548,11 +548,9 @@ int8 Protocol_GetResponse(void)
 
 //TIMER_Start(&TimeOutTimer,60000); // TODO review timeout value
   TIMER_Start(&TimeOutTimer,1000);
-#if 1
+
   do
   {
-	  //osDelay(10); // To avoid blocking the system in case of no response, we add a small delay in each iteration of the loop. This allows other tasks to run and prevents the system from becoming unresponsive while waiting for a response.
-	 // vTaskDelay(pdMS_TO_TICKS(1));
 	if(COM_O3_DataAvailable())
 	{
       COM_O3_GetChar((uint8_t *) &LastResponseString[i]);
@@ -561,52 +559,19 @@ int8 Protocol_GetResponse(void)
       {
         break;
       }
-      else if (LastResponseString[i] != 0)
+      else if( (LastResponseString[i] != 0) && (i < MAX_RESPONSE_LENGTH))
       {
-        if (i < MAX_RESPONSE_LENGTH)
-        {
-          i++;
-        }
-      }
-	}
-	  if (TIMER_State(&TimeOutTimer) == TIMER_STATE_EXPIRED)
-	  {
-	  	deb_printf(D_LEV_0, "Serial time out\n"); // SWV debug
-	  	deb_printf(D_LEV_1, "Serial time out\n"); // SWV debug
-	      return PROTOCOL_RET_TIMEOUT;
-	  }
-  }while (1);
-//}while (TIMER_State(&TimeOutTimer) != TIMER_STATE_EXPIRED);
-#endif
-#if 0
-  do
-  {
-	  //osDelay(10); // To avoid blocking the system in case of no response, we add a small delay in each iteration of the loop. This allows other tasks to run and prevents the system from becoming unresponsive while waiting for a response.
-	 // vTaskDelay(pdMS_TO_TICKS(1));
-	if(COM_O3_DataAvailable())
-	{
-      COM_O3_GetChar((uint8_t *) &LastResponseString[i]);
-
-      if (LastResponseString[i] == '\r')
-      {
-        break;
-      }
-      else if (LastResponseString[i] != 0)
-      {
-        if (i < MAX_RESPONSE_LENGTH)
-        {
-          i++;
-        }
+        i++;
       }
 	}
     if (TIMER_State(&TimeOutTimer) == TIMER_STATE_EXPIRED)
-    {
-    	deb_printf(D_LEV_0, "Serial time out\n"); // SWV debug
-    	deb_printf(D_LEV_1, "Serial time out\n"); // SWV debug
-        return PROTOCOL_RET_TIMEOUT;
-    }
+	{
+	  deb_printf(D_LEV_0, "Serial time out\n"); // SWV debug
+	  deb_printf(D_LEV_1, "Serial time out\n"); // SWV debug
+	  return PROTOCOL_RET_TIMEOUT;
+	}
   }while (1);
-#endif
+
 
   deb_printf(D_LEV_0, "%s\n", LastResponseString); // SWV debug
   deb_printf(D_LEV_1, "Rec (%02d) -> %s\n", (GLB_fsm_o3.CurrentState == GLB_fsm_o3.LastState) ? GLB_fsm_o3.CurrentState->State_ID : GLB_fsm_o3.LastState->State_ID, LastResponseString); // SWV debug
