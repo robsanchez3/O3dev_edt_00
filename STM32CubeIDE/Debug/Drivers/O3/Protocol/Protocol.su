@@ -6,6 +6,6 @@
 ../Drivers/O3/Protocol/Protocol.c:92:6:Protocol_CompoundMessage	32	static
 ../Drivers/O3/Protocol/Protocol.c:475:7:FsmStateForDebug	4	static
 ../Drivers/O3/Protocol/Protocol.c:488:6:Protocol_SendCommand	48	static
-../Drivers/O3/Protocol/Protocol.c:528:6:Protocol_GetResponse	16	static
-../Drivers/O3/Protocol/Protocol.c:589:13:ResolveStatus	16	static
-../Drivers/O3/Protocol/Protocol.c:601:6:Protocol_GetLastResponse	128	static
+../Drivers/O3/Protocol/Protocol.c:539:6:Protocol_GetResponse	16	static
+../Drivers/O3/Protocol/Protocol.c:602:13:ResolveStatus	16	static
+../Drivers/O3/Protocol/Protocol.c:614:6:Protocol_GetLastResponse	128	static

@@ -366,6 +366,8 @@ void fsm_o3_timeHandler(void)
   /* Per second timer management */
   if (GLB_SecondCounter == 1000)
   {
+
+	  /*
 	  uint8_t quitar[25];
 	  uint8_t i = 0;
 	  memset(quitar,0,sizeof(quitar));
@@ -377,7 +379,7 @@ void fsm_o3_timeHandler(void)
 			printf("recibido = %s\n",quitar);
 			COM_O3_PutString((uint8_t *)"recibido\n");
 		}
-
+*/
 //	printf("Miliseconds since starting: %ld\n", GLB_TickCounter);
 
     GLB_SecondCounter = 0;

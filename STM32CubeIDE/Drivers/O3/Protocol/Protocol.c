@@ -524,7 +524,18 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
     }
   }
 }
-
+// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+#include "cmsis_os2.h"////  TOTDO sacar el delay como dependencia de este módulo, se ha añadido para evitar bloqueos en caso de no recibir respuesta, pero sería mejor implementar un mecanismo de espera que no dependa de un RTOS específico.
+#include "FreeRTOS.h"
+   #include "task.h"
 int8 Protocol_GetResponse(void)
 {
   uint8 i=0;
@@ -537,6 +548,8 @@ int8 Protocol_GetResponse(void)
   TIMER_Start(&TimeOutTimer,1000);
   do
   {
+	  //osDelay(10); // To avoid blocking the system in case of no response, we add a small delay in each iteration of the loop. This allows other tasks to run and prevents the system from becoming unresponsive while waiting for a response.
+	  vTaskDelay(pdMS_TO_TICKS(1));
 	if(COM_O3_DataAvailable())
 	{
       COM_O3_GetChar((uint8_t *) &LastResponseString[i]);

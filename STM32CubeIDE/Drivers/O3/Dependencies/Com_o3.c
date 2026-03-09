@@ -4,8 +4,6 @@
  *  Created on: Jan 28, 2026
  *      Author: Roberto.Sanchez
  */
-
-
 #include <stdio.h>
 #include <string.h>
 #include <../Vendor/Driver/edt_bsp_uart.h>
@@ -15,25 +13,20 @@
 
 COM_O3_LOOP_BUFFER_T comBuff;
 
-//#define USE_EXPANSION_TTL_USART6
 /*
-#if defined(USE_EXPANSION_TTL_USART6)
-#define COM_O3_TX_UART_HANDLE (&huart6)
-#else
-#define COM_O3_TX_UART_HANDLE (&hRs232)
-#endif
+    Usart 2 - main board CN2
+	Usart 6 - fan out expansion board Tx(pin 21) Rx(pin 23)
+	Usart 1 - fan out expansion board Tx(pin 06) Rx(pin 08) - 27 Series Connector Board CN5 Tx(pin 05) Rx(pin 04) control (pin 01) - Low power UART (LPUART)
+	Usart 3 - fan out expansion board Tx(pin 22) Rx(pin 24) - 27 Series Connector Board CN5 Tx(pin 03) Rx(pin 02)
 */
 
+
 //#define COM_O3_TX_UART_HANDLE (&huart2)
-#define COM_O3_TX_UART_HANDLE (&huart6)
+  #define COM_O3_TX_UART_HANDLE (&huart6)
 //#define COM_O3_TX_UART_HANDLE (&huart1)
 //#define COM_O3_TX_UART_HANDLE (&huart3)
 
-#if defined(USE_EXPANSION_TTL_USART6)
-static HAL_StatusTypeDef COM_O3_ArmRx6(void);
-#endif
-
-static HAL_StatusTypeDef COM_O3_ArmRx6(void);
+static HAL_StatusTypeDef COM_O3_Arm_Rx(void);
 
 void COM_O3_Init(void)
 {
@@ -41,16 +34,9 @@ void COM_O3_Init(void)
 	comBuff.tail = 0;
 	memset(comBuff.data, 0, COM_O3_LOOP_BUFFER_LEN);
 
-#if defined(USE_EXPANSION_TTL_USART6)
 	HAL_StatusTypeDef rxStart;
-	rxStart = COM_O3_ArmRx6();
-	printf("COM_O3_Init RX6 arm status=%d\n", (int)rxStart);
-#endif
-
-	HAL_StatusTypeDef rxStart;
-	rxStart = COM_O3_ArmRx6();
+	rxStart = COM_O3_Arm_Rx();
 	printf("COM_O3_Init RX arm status=%d\n", (int)rxStart);
-
 }
 
 void COM_O3_Clear(void)
@@ -122,9 +108,7 @@ uint8_t COM_O3_DataAvailable(void)
 	return 0;
 }
 
-//#if defined(USE_EXPANSION_TTL_USART6)
-#if 1
-static HAL_StatusTypeDef COM_O3_ArmRx6(void)
+static HAL_StatusTypeDef COM_O3_Arm_Rx(void)
 {
 	__HAL_UART_CLEAR_FLAG(COM_O3_TX_UART_HANDLE, UART_CLEAR_IDLEF);
 	__HAL_UART_CLEAR_OREFLAG(COM_O3_TX_UART_HANDLE);
@@ -153,4 +137,3 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 
 	HAL_UARTEx_ReceiveToIdle_IT(COM_O3_TX_UART_HANDLE, &comBuff.data[comBuff.head], COM_O3_LOOP_BUFFER_LEN);
 }
-#endif

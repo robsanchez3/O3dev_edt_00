@@ -139,15 +139,15 @@ int main(void)
   MX_CORDIC_Init();
   MX_FDCAN1_Init();
   MX_USART2_UART_Init();
-  MX_USART6_UART_Init(); // Sedecal dev
-  MX_USART1_UART_Init(); // Sedecal dev
-  MX_USART3_UART_Init(); // Sedecal dev
 
   MX_TouchGFX_Init();
-
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
+
+  MX_USART6_UART_Init(); // Sedecal dev
+  MX_USART1_UART_Init(); // Sedecal dev
+  MX_USART3_UART_Init(); // Sedecal dev
 
 #if defined(USE_CAN)
   EDT_CANx_Config(&hfdcan1);
