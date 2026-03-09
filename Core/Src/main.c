@@ -89,6 +89,10 @@ int _write(int file, char *ptr, int len)
 	return len;
 //}
 }
+
+
+void COM_O3_PollRx(void);
+
 #endif
 
 /* USER CODE END 0 */

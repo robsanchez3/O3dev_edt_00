@@ -1592,12 +1592,13 @@ void LoadParameters(void)
 
 void Initialize(void)
 {
+  COM_O3_Init();  // clear reset response from UART buffer
+
   WelcomeMessage();
 
   Delay_o3_ms(1000);
   SendReset();
   Delay_o3_ms(1000);
-  COM_O3_Init();  // clear reset response from UART buffer
 
   ClearErrors();
   TIMER_Start(&GLB_fsm_o3.WaitForServiceTimer, SERVICE_ENTRY_TIME_WINDOW);
