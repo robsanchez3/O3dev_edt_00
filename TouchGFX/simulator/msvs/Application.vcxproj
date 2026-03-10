@@ -23,16 +23,9 @@
     <ClCompile Include="..\..\gui\src\calibration_screen\CalibrationPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\calibration_screen\CalibrationView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\calibration_screen\CalibrationViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\can_screen\CANPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\can_screen\CANView.cpp"/>
-    <ClCompile Include="..\..\gui\src\cdc_screen\CDCPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\cdc_screen\CDCView.cpp"/>
     <ClCompile Include="..\..\gui\src\configmenu_screen\ConfigMenuPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\configmenu_screen\ConfigMenuView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\configmenu_screen\ConfigMenuViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\widget\edt_f7xxh7xx_CANAPI.c"/>
-    <ClCompile Include="..\..\gui\src\widget\edt_f7xxh7xx_TestAPI.c"/>
-    <ClCompile Include="..\..\gui\src\widget\edt_f7xxh7xx_USARTAPI.c"/>
     <ClCompile Include="..\..\gui\src\end_screen\EndPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\end_screen\EndView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\end_screen\EndViewBase.cpp"/>
@@ -41,8 +34,6 @@
     <ClCompile Include="..\..\generated\gui_generated\src\error_screen\ErrorViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\common\FrontendApplication.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\gpio_screen\GPIOPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\gpio_screen\GPIOView.cpp"/>
     <ClCompile Include="..\..\gui\src\hidescreen_screen\HideScreenPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\hidescreen_screen\HideScreenView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\hidescreen_screen\HideScreenViewBase.cpp"/>
@@ -60,16 +51,10 @@
     <ClCompile Include="..\..\gui\src\mainmenu_screen\MainMenuView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\mainmenu_screen\MainMenuViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
-    <ClCompile Include="..\..\gui\src\oztd_screen\OZTDPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\oztd_screen\OZTDView.cpp"/>
     <ClCompile Include="..\..\gui\src\model\ParseAppConfig.cpp"/>
     <ClCompile Include="..\..\gui\src\processing_screen\ProcessingPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\processing_screen\ProcessingView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\processing_screen\ProcessingViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\rs232_screen\RS232Presenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\rs232_screen\RS232View.cpp"/>
-    <ClCompile Include="..\..\gui\src\rs485_screen\RS485Presenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\rs485_screen\RS485View.cpp"/>
     <ClCompile Include="..\..\gui\src\running_screen\RunningPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\running_screen\RunningView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\running_screen\RunningViewBase.cpp"/>
@@ -102,7 +87,6 @@
     <ClCompile Include="..\..\gui\src\washing_screen\WashingPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\washing_screen\WashingView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\washing_screen\WashingViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\widget\edt_f7xxh7xx_CANAPI - copia.c"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -249,10 +233,6 @@
     <ClInclude Include="..\..\gui\include\gui\calibration_screen\CalibrationPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\calibration_screen\CalibrationView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\calibration_screen\CalibrationViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\can_screen\CANPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\can_screen\CANView.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\cdc_screen\CDCPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\cdc_screen\CDCView.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\configmenu_screen\ConfigMenuPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\configmenu_screen\ConfigMenuView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\configmenu_screen\ConfigMenuViewBase.hpp"/>
@@ -269,8 +249,6 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\FrontendApplicationBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\common\FrontendHeap.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\FrontendHeapBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\gpio_screen\GPIOPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\gpio_screen\GPIOView.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\hidescreen_screen\HideScreenPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\hidescreen_screen\HideScreenView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\hidescreen_screen\HideScreenViewBase.hpp"/>
@@ -292,16 +270,10 @@
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\MJPEGDecoder.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\Model.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\oztd_screen\OZTDPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\oztd_screen\OZTDView.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\ParseAppConfig.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\processing_screen\ProcessingPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\processing_screen\ProcessingView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\processing_screen\ProcessingViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\rs232_screen\RS232Presenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\rs232_screen\RS232View.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\rs485_screen\RS485Presenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\rs485_screen\RS485View.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\running_screen\RunningPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\running_screen\RunningView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\running_screen\RunningViewBase.hpp"/>

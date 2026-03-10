@@ -990,7 +990,7 @@ void Model::setupDefaultTherapyContext(int8_t therapyID)  // TODO: refactor name
         guiTherapyCtx.maxValue[i] = tpl->maxValue[i];
         guiTherapyCtx.negativeValue[i] = tpl->negativeValue[i];
         guiTherapyCtx.step[i] = tpl->step[i];
-        guiTherapyCtx.units[i] = tpl->units[i];
+        guiTherapyCtx.units[i] = tpl->units[i] ? tpl->units[i] : "";
         guiTherapyCtx.therapyTargetValue[i] = tpl->therapyTargetValue[i];
         guiTherapyCtx.secondSelectionVisible[i] = tpl->secondSelectionVisible[i];
         guiTherapyCtx.delayIndicatorTime[i] = tpl->delayIndicatorTime[i];
@@ -1002,10 +1002,13 @@ void Model::setupDefaultTherapyContext(int8_t therapyID)  // TODO: refactor name
 
 void Model::setupTherapyContext(int8_t therapyID)// TODO: refactor name to tHerapy....
 {
+	memset(&guiTherapyCtx, 0, sizeof(guiTherapyCtx));
+
 	for(int8_t i = 0; i < MAX_THERAPY_STEPS; i++)
 	{
 		guiTherapyCtx.okAction[i] = DelegateDummy;       // avoid null pointer dereference
 		guiTherapyCtx.sliderAction[i] = DelegateDummy;   // avoid null pointer dereference
+		guiTherapyCtx.units[i] = "";                     // point to empty string literal
 	}
 	setupDefaultTherapyContext(therapyID);
 	print_guiTherapyCtx(&guiTherapyCtx);
@@ -1094,7 +1097,7 @@ void setMaxTime(void)
 void Model::printTherapyTargetValues(void)
 {
 #if 1
-	printf("Therapy target values:\n");
+	printf("[%lu ms] Therapy target values:\n", HAL_GetTick());
 	printf("therapyTargetValues[TTV_CONCENTRATION]     (ConfiguredO3Concentration): %d\n", GLB_fsm_o3.ConfiguredO3Concentration);
 	printf("therapyTargetValues[TTV_FLOW]              (ConfiguredFlow): %d\n", GLB_fsm_o3.ConfiguredFlow);
 	printf("therapyTargetValues[TTV_TIME]              (ConfiguredTime): %d\n", GLB_fsm_o3.ConfiguredTime);

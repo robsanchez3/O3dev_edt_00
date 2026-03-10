@@ -13,6 +13,8 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/parseappconfig.hpp>
 #include <../../../../../Drivers/O3/Fsm_o3/fsm_o3_operation.h>/*TODO......  improve path*/
+
+extern "C" uint32_t HAL_GetTick(void);
 #include "ff.h"			/* Declarations of FatFs API */
 
 
@@ -137,8 +139,7 @@ int16 FindFirstFileWithExt(const char* dirPath, const char* ext, char* outName, 
 			// Check output buffer size
 			int needed = strlen(dirPath) + 1 + strlen(fno.fname) + 1;
 			if (needed > outSize) {
-				printf("ERROR: output buffer too small (needed %d bytes, available %d).\n",
-						needed, outSize);
+				printf("ERROR: output buffer too small (needed %d bytes, available %d).\n",	needed, outSize);
 				f_closedir(&dir);
 				return -3;
 			}
@@ -146,8 +147,7 @@ int16 FindFirstFileWithExt(const char* dirPath, const char* ext, char* outName, 
 			// Build "dirPath/filename.ext"
 			snprintf(outName, outSize, "%s/%s", dirPath, fno.fname);
 
-			printf("SUCCESS: found file '%s' with extension '%s'. Full path: '%s'\n",
-					fno.fname, ext, outName);
+			printf("[%lu ms] SUCCESS: found file '%s' with extension '%s'. Full path: '%s'\n", HAL_GetTick(), fno.fname, ext, outName);
 
 			f_closedir(&dir);
 			return 1;  // found
@@ -323,7 +323,7 @@ void processKeyValue(ModCtx* p, const char *key, const char *val)
 
 uint8_t loadTherapyFromFile(OPERATION_MODE_E mode, THERAPY_CTX *guiTherapyCtx)
 {
-	printf("Loading therapy config from file...\n");
+	printf("[%lu ms] Loading therapy config from file...\n", HAL_GetTick());
 
 	FIL File;       /* File object */
 	int8_t ext[] = "mod";
@@ -347,7 +347,7 @@ uint8_t loadTherapyFromFile(OPERATION_MODE_E mode, THERAPY_CTX *guiTherapyCtx)
 	}
 	else
 	{
-		printf("Using %s file\n", fileName);
+		printf("[%lu ms] Using %s file\n", HAL_GetTick(), fileName);
 	}
 
 	if (f_open(&File, (const char*)fileName, FA_READ) != FR_OK) {
@@ -357,7 +357,10 @@ uint8_t loadTherapyFromFile(OPERATION_MODE_E mode, THERAPY_CTX *guiTherapyCtx)
 
 	int8 line[LINE_BUF_SIZE];
 
+	int16_t line_num = 0;
 	while (get_line(&File, line, sizeof(line))) {
+		printf("[%lu ms] read line: %d\n", HAL_GetTick(), line_num++);
+
 		trim(line);
 
 		if (line[0]=='\0' || line[0]==';' || line[0]=='#')
@@ -381,6 +384,7 @@ uint8_t loadTherapyFromFile(OPERATION_MODE_E mode, THERAPY_CTX *guiTherapyCtx)
 		trim(eq+1);
 		processKeyValue(&mtx, line, eq+1);
 	}
+	printf("[%lu ms] End of processing %s file\n", HAL_GetTick(), fileName);
 
 	f_close(&File);
 	return foundModeSection;
@@ -413,7 +417,7 @@ void print_guiTherapyCtx(const THERAPY_CTX *ctx)
 		printf("   negativeValue=%u\n", ctx->negativeValue[i]);
 		printf("   defValue=%lu\n", ctx->defValue[i]);
 		printf("   step=%d\n", ctx->step[i]);
-		printf("   units=%s\n", ctx->units[i]);
+		printf("   units=%s\n", ctx->units[i] ? ctx->units[i] : "(null)");
 		printf("   secondSelectionVisible=%d\n", ctx->secondSelectionVisible[i] ? 1 : 0);
 		printf("   therapyTargetValue=%d\n", ctx->therapyTargetValue[i]);
 		printf("   delayIndicatorTime=%lu\n", ctx->delayIndicatorTime[i]);

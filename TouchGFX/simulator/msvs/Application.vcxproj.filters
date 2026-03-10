@@ -139,29 +139,14 @@
     <Filter Include="Source Files\generated\gui_generated">
       <UniqueIdentifier>80FC535C-36B1-B624-D135-7604CE86834B</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\rs485_screen">
-      <UniqueIdentifier>8363D849-F767-4E0B-1583-94BDED89AC88</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\gui\washing_screen">
       <UniqueIdentifier>2B2C76A2-7CB3-FBC8-5803-EBA183447191</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\generated\gui_generated">
       <UniqueIdentifier>7F17EB42-02EA-EE8E-1B31-727806164353</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\rs485_screen">
-      <UniqueIdentifier>02247B0E-9F21-CD9F-7E28-2692D97EC1E3</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\washing_screen">
       <UniqueIdentifier>51505187-7DC7-C717-440D-B373209357AC</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\rs232_screen">
-      <UniqueIdentifier>A58FCD41-D3D9-857E-ECBA-5A4FC6E0F48C</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\widget">
-      <UniqueIdentifier>C2EB7316-6B92-34A4-20A4-E01F5A5A8327</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\rs232_screen">
-      <UniqueIdentifier>C92865A9-F559-1F77-B79C-A9C106D9C8DB</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\configmenu_screen">
       <UniqueIdentifier>4B6DD9B6-DFDB-BE85-E2BA-064F46054515</UniqueIdentifier>
@@ -205,20 +190,8 @@
     <Filter Include="Source Files\gui\switchselect_screen">
       <UniqueIdentifier>803D7794-D1D4-60C5-C6C5-4A2A92EEF51F</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\oztd_screen">
-      <UniqueIdentifier>B0DE3762-5322-50D6-E8F9-3C2A56FF5E3B</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\oztd_screen">
-      <UniqueIdentifier>13EC9B53-8FE4-DB1B-5E99-E76FA661944E</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\cdc_screen">
-      <UniqueIdentifier>98D1C791-0D38-D32F-521C-561232AABA35</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\select_screen">
       <UniqueIdentifier>3BF27BC8-6EBA-4DD8-D924-34FAEED45E2A</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\cdc_screen">
-      <UniqueIdentifier>0B3C579D-9AF6-35DE-7A13-35864E787013</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\syringefill_screen">
       <UniqueIdentifier>4D043BE8-21B2-CC3A-E726-7F8E79523669</UniqueIdentifier>
@@ -243,12 +216,6 @@
     </Filter>
     <Filter Include="Source Files\gui\mainmenu_screen">
       <UniqueIdentifier>5AFB1C01-D323-A013-4FB2-6FAD187FC2CA</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\can_screen">
-      <UniqueIdentifier>6F59ADA5-968F-EEEA-26CF-7F925C446A52</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\can_screen">
-      <UniqueIdentifier>FB1CD6CC-D80F-4C21-0EEE-0A346EF47F3B</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\spi_screen">
       <UniqueIdentifier>005B254B-5602-9FF8-6426-3DDBC0684278</UniqueIdentifier>
@@ -294,12 +261,6 @@
     </Filter>
     <Filter Include="Source Files\gui\i2c_screen">
       <UniqueIdentifier>7B9033C3-8596-4FB4-9FC8-FB2B7D99932B</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\gpio_screen">
-      <UniqueIdentifier>8B43E01A-B32F-99CB-3F65-E1018028B00B</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\gpio_screen">
-      <UniqueIdentifier>0EA786E3-7B40-5720-CC75-0202246FE659</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\hid_screen">
       <UniqueIdentifier>6558E5F0-0102-5C1D-63F1-7ACF91B32355</UniqueIdentifier>
@@ -448,6 +409,9 @@
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>1FA443AB-06F3-A36A-18D0-9F616A0FC99F</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui\widget">
+      <UniqueIdentifier>371AB42F-D765-2370-9EE4-F4B8DDE1C986</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -486,18 +450,6 @@
     <ClCompile Include="..\..\generated\gui_generated\src\calibration_screen\CalibrationViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\calibration_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\can_screen\CANPresenter.cpp">
-      <Filter>Source Files\gui\can_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\can_screen\CANView.cpp">
-      <Filter>Source Files\gui\can_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\cdc_screen\CDCPresenter.cpp">
-      <Filter>Source Files\gui\cdc_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\cdc_screen\CDCView.cpp">
-      <Filter>Source Files\gui\cdc_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\configmenu_screen\ConfigMenuPresenter.cpp">
       <Filter>Source Files\gui\configmenu_screen</Filter>
     </ClCompile>
@@ -506,15 +458,6 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\configmenu_screen\ConfigMenuViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\configmenu_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\widget\edt_f7xxh7xx_CANAPI.c">
-      <Filter>Source Files\gui\widget</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\widget\edt_f7xxh7xx_TestAPI.c">
-      <Filter>Source Files\gui\widget</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\widget\edt_f7xxh7xx_USARTAPI.c">
-      <Filter>Source Files\gui\widget</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\end_screen\EndPresenter.cpp">
       <Filter>Source Files\gui\end_screen</Filter>
@@ -539,12 +482,6 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp">
       <Filter>Source Files\generated\gui_generated\common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\gpio_screen\GPIOPresenter.cpp">
-      <Filter>Source Files\gui\gpio_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\gpio_screen\GPIOView.cpp">
-      <Filter>Source Files\gui\gpio_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\hidescreen_screen\HideScreenPresenter.cpp">
       <Filter>Source Files\gui\hidescreen_screen</Filter>
@@ -597,12 +534,6 @@
     <ClCompile Include="..\..\gui\src\model\Model.cpp">
       <Filter>Source Files\gui\model</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\oztd_screen\OZTDPresenter.cpp">
-      <Filter>Source Files\gui\oztd_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\oztd_screen\OZTDView.cpp">
-      <Filter>Source Files\gui\oztd_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\model\ParseAppConfig.cpp">
       <Filter>Source Files\gui\model</Filter>
     </ClCompile>
@@ -614,18 +545,6 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\processing_screen\ProcessingViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\processing_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\rs232_screen\RS232Presenter.cpp">
-      <Filter>Source Files\gui\rs232_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\rs232_screen\RS232View.cpp">
-      <Filter>Source Files\gui\rs232_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\rs485_screen\RS485Presenter.cpp">
-      <Filter>Source Files\gui\rs485_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\rs485_screen\RS485View.cpp">
-      <Filter>Source Files\gui\rs485_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\running_screen\RunningPresenter.cpp">
       <Filter>Source Files\gui\running_screen</Filter>
@@ -722,9 +641,6 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\washing_screen\WashingViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\washing_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\widget\edt_f7xxh7xx_CANAPI - copia.c">
-      <Filter>Source Files\gui\widget</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1156,18 +1072,6 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\calibration_screen\CalibrationViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\calibration_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\can_screen\CANPresenter.hpp">
-      <Filter>Header Files\gui\can_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\can_screen\CANView.hpp">
-      <Filter>Header Files\gui\can_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\cdc_screen\CDCPresenter.hpp">
-      <Filter>Header Files\gui\cdc_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\cdc_screen\CDCView.hpp">
-      <Filter>Header Files\gui\cdc_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\configmenu_screen\ConfigMenuPresenter.hpp">
       <Filter>Header Files\gui\configmenu_screen</Filter>
     </ClInclude>
@@ -1215,12 +1119,6 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\FrontendHeapBase.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\gpio_screen\GPIOPresenter.hpp">
-      <Filter>Header Files\gui\gpio_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\gpio_screen\GPIOView.hpp">
-      <Filter>Header Files\gui\gpio_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\hidescreen_screen\HideScreenPresenter.hpp">
       <Filter>Header Files\gui\hidescreen_screen</Filter>
@@ -1285,12 +1183,6 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp">
       <Filter>Header Files\gui\model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\oztd_screen\OZTDPresenter.hpp">
-      <Filter>Header Files\gui\oztd_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\oztd_screen\OZTDView.hpp">
-      <Filter>Header Files\gui\oztd_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\model\ParseAppConfig.hpp">
       <Filter>Header Files\gui\model</Filter>
     </ClInclude>
@@ -1302,18 +1194,6 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\processing_screen\ProcessingViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\processing_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\rs232_screen\RS232Presenter.hpp">
-      <Filter>Header Files\gui\rs232_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\rs232_screen\RS232View.hpp">
-      <Filter>Header Files\gui\rs232_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\rs485_screen\RS485Presenter.hpp">
-      <Filter>Header Files\gui\rs485_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\rs485_screen\RS485View.hpp">
-      <Filter>Header Files\gui\rs485_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\running_screen\RunningPresenter.hpp">
       <Filter>Header Files\gui\running_screen</Filter>
