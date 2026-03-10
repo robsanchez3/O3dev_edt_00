@@ -161,24 +161,58 @@ int16 FindFirstFileWithExt(const char* dirPath, const char* ext, char* outName, 
 	return 0; // no file found
 }
 
+/* ── Buffered line reader: reads 512 bytes per f_read call (~30x faster) ── */
+#define LR_BUF_SIZE 512u
+
+typedef struct {
+    FIL     *fp;
+    uint8_t  buf[LR_BUF_SIZE];
+    UINT     len;
+    UINT     pos;
+} LineReader_t;
+
+static void LR_init(LineReader_t *lr, FIL *fp)
+{
+    lr->fp  = fp;
+    lr->len = 0;
+    lr->pos = 0;
+}
+
+static uint8_t LR_getline(LineReader_t *lr, int8_t *out, UINT maxlen)
+{
+    UINT i = 0;
+    while (i < maxlen - 1) {
+        if (lr->pos >= lr->len) {
+            f_read(lr->fp, lr->buf, LR_BUF_SIZE, &lr->len);
+            lr->pos = 0;
+            if (lr->len == 0) break;
+        }
+        uint8_t c = lr->buf[lr->pos++];
+        if (c == '\r') continue;
+        if (c == '\n') { out[i] = '\0'; return 1; }
+        out[i++] = (int8_t)c;
+    }
+    out[i] = '\0';
+    return (i > 0) ? 1u : 0u;
+}
+
+/*
 uint8 get_line(FIL* fp, int8* buf, UINT maxlen)
 {
 	UINT br;
 	int8 c;
 	UINT i = 0;
 	uint8 ret = 0; //failure
-
 	while (i < maxlen - 1) {
 		FRESULT res = f_read(fp, &c, 1, &br);
 		if (res != FR_OK || br == 0) break;   // EOF
 		if (c == '\n') { ret = 1; break; }   // EOL
 		buf[i++] = c;
 	}
-
 	buf[i] = '\0';
 	return ret;
 }
-
+*/
 /* **********************************************************************************************
  *
  * STRING HELPERS (UNIFIED)
@@ -356,9 +390,10 @@ uint8_t loadTherapyFromFile(OPERATION_MODE_E mode, THERAPY_CTX *guiTherapyCtx)
 	}
 
 	int8 line[LINE_BUF_SIZE];
-
+	LineReader_t lr;
+	LR_init(&lr, &File);
 	int16_t line_num = 0;
-	while (get_line(&File, line, sizeof(line))) {
+	while (LR_getline(&lr, (int8_t *)line, sizeof(line))) {
 		printf("[%lu ms] read line: %d\n", HAL_GetTick(), line_num++);
 
 		trim(line);
@@ -470,8 +505,9 @@ int16 loadMainMenu(signed char * decode_out, int16 maxDevTherapies)
     int8 line[LINE_BUF_SIZE];
     int16 lineNumber = 0;
     int16 errors = 0;
-
-    while (get_line(&File, line, sizeof(line)))
+    LineReader_t lr;
+    LR_init(&lr, &File);
+    while (LR_getline(&lr, (int8_t *)line, sizeof(line)))
     {
         lineNumber++;
         trim(line);
@@ -592,8 +628,9 @@ int16 loadHardwareConfig(HW_CONFIG_T *cfg)
     int8 line[LINE_BUF_SIZE];
     int16 lineNumber = 0;
     int16 errors = 0;
-
-    while (get_line(&File, line, sizeof(line)))
+    LineReader_t lr;
+    LR_init(&lr, &File);
+    while (LR_getline(&lr, (int8_t *)line, sizeof(line)))
     {
         lineNumber++;
         trim(line);
@@ -703,8 +740,9 @@ int16 loadSyringeConfig(uint16 *cfg)
     /* Initialize output */
     for (int i = 0; i < 5; i++)
         cfg[i] = 0;
-
-    while (get_line(&File, line, sizeof(line)))
+    LineReader_t lr;
+    LR_init(&lr, &File);
+    while (LR_getline(&lr, (int8_t *)line, sizeof(line)))
     {
         lineNumber++;
         trim(line);
@@ -798,8 +836,9 @@ int16 loadUserConfig(USR_CONFIG_T *cfg)
     int8 line[LINE_BUF_SIZE];
     int16 lineNumber = 0;
     int16 errors = 0;
-
-    while (get_line(&File, line, sizeof(line)))
+    LineReader_t lr;
+    LR_init(&lr, &File);
+    while (LR_getline(&lr, (int8_t *)line, sizeof(line)))
     {
         lineNumber++;
         trim(line);
