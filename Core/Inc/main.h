@@ -82,6 +82,11 @@ void hw_init ( void );
 
 /* USER CODE BEGIN Private defines */
 
+/* USB mode selection: comment/uncomment to switch between CDC Device and USB Host (pen drive)
+ * When defined   -> USB Host MSC mode (pen drive via USB-C to USB-A adapter)
+ * When undefined -> USB Device CDC mode (Virtual COM Port) [DEFAULT]      */
+#define USB_HOST_MODE
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

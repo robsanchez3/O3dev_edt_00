@@ -159,7 +159,9 @@ public:
 	void setDefaultMainMenu(void);
 	void printTherapyTargetValues(void);
 	uint8_t is_SD(void);
-	uint8_t is_fs_mounted(void);
+	uint8_t is_USB_flash(void);
+	uint8_t is_SD_mounted(void);
+	uint8_t is_USB_flash_mounted(void);
 
 
 

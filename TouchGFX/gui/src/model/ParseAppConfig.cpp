@@ -361,8 +361,7 @@ uint8_t loadTherapyFromFile(OPERATION_MODE_E mode, THERAPY_CTX *guiTherapyCtx)
 
 	FIL File;       /* File object */
 	int8_t ext[] = "mod";
-//	int8_t dirPath[] = "1:/Config/Modes";  //TODO  remove when tested
-	int8_t dirPath[] = "/Config/Modes";
+	int8_t dirPath[] = "0:/Config/Modes";
 	int8_t fileName[100];
 	ModCtx mtx;
 	uint8_t foundModeSection = 0;
@@ -475,8 +474,7 @@ int16 loadMainMenu(signed char * decode_out, int16 maxDevTherapies)
     FRESULT res;
     FIL File;
     int8 ext[] = "mnu";
-//  int8 dirPath[] = "1:/Config/Menu"; //TODO  remove when tested
-    int8 dirPath[] = "/Config/Menu"; //TODO  remove when tested
+    int8 dirPath[] = "0:/Config/Menu";
     int8 fileName[100];
 
     printf("Decoding configuration menu file...\n");
@@ -596,8 +594,7 @@ int16 loadHardwareConfig(HW_CONFIG_T *cfg)
     FRESULT res;
     FIL File;
     int8 ext[] = "hwr";
-//  int8 dirPath[] = "1:/Config/HW";  //TODO  remove when tested
-    int8 dirPath[] = "/Config/HW";
+    int8 dirPath[] = "0:/Config/HW";
     int8 fileName[100];
 
     printf("Decoding hardware configuration file...\n");
@@ -706,8 +703,7 @@ int16 loadSyringeConfig(uint16 *cfg)
     FRESULT res;
     FIL File;
     int8 ext[] = "syr";
-    //  int8 dirPath[] = "1:/Config/Syringe";  //TODO  remove when tested
-    int8 dirPath[] = "/Config/Syringe";
+    int8 dirPath[] = "0:/Config/Syringe";
     int8 fileName[100];
 
     printf("Decoding syringe configuration file...\n");
@@ -803,8 +799,7 @@ int16 loadUserConfig(USR_CONFIG_T *cfg)
     FRESULT res;
     FIL File;
     int8 ext[] = "usr";
-//  int8 dirPath[] = "1:/Config/User"; //TODO  remove when tested
-    int8 dirPath[] = "/Config/User";
+    int8 dirPath[] = "0:/Config/User";
 
     printf("Decoding software configuration file...\n");
 

@@ -24,8 +24,12 @@
 #include "cmsis_os2.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#ifdef USB_HOST_MODE
+#include "usb_host.h"
+#else
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
+#endif
 #include "fsm_o3.h" //rsm
 /* USER CODE END Includes */
 
@@ -53,7 +57,7 @@ osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
   .priority = (osPriority_t) osPriorityAboveNormal,
-  .stack_size = 512 * 4
+  .stack_size = 512 * 16
 };
 /* Definitions for TouchGFXTask */
 osThreadId_t TouchGFXTaskHandle;
@@ -76,6 +80,17 @@ const osThreadAttr_t BLPwmTask_attributes = {
   .priority = (osPriority_t) osPriorityBelowNormal,
   .stack_size = 512 * 4
 };
+/* USER CODE BEGIN Variables */
+#ifdef USB_HOST_MODE
+/* Definitions for USBHostTask */
+osThreadId_t USBHostTaskHandle;
+const osThreadAttr_t USBHostTask_attributes = {
+  .name = "USBHostTask",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 512 * 8
+};
+#endif
+/* USER CODE END Variables */
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -86,6 +101,9 @@ void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 void StartLCDSleepTask(void *argument);
 void StartPwmTask(void *argument);
+#ifdef USB_HOST_MODE
+void StartUSBHostTask(void *argument);
+#endif
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -145,7 +163,9 @@ void MX_FREERTOS_Init(void) {
   BLPwmTaskHandle = osThreadNew(StartPwmTask, NULL, &BLPwmTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+#ifdef USB_HOST_MODE
+  USBHostTaskHandle = osThreadNew(StartUSBHostTask, NULL, &USBHostTask_attributes);
+#endif
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -163,7 +183,9 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN defaultTask */
-	MX_USB_DEVICE_Init();
+#ifndef USB_HOST_MODE
+  MX_USB_DEVICE_Init();
+#endif
   /* Infinite loop */
   for(;;)
   {
@@ -172,6 +194,18 @@ void StartDefaultTask(void *argument)
   }
   /* USER CODE END defaultTask */
 }
+
+#ifdef USB_HOST_MODE
+void StartUSBHostTask(void *argument)
+{
+  MX_USB_HOST_Init();
+  for(;;)
+  {
+    MX_USB_HOST_Process();
+    osDelay(1);
+  }
+}
+#endif
 
 /* USER CODE BEGIN Header_StartLCDSleepTask */
 /**

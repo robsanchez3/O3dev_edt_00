@@ -48,6 +48,7 @@ Application/User/Core/main.o: C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h \
+ ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h \
@@ -73,8 +74,9 @@ Application/User/Core/main.o: C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c \
  ../../Drivers/Vendor/FatFs/source/diskio.h \
  ../../Drivers/Vendor/FatFs/source/ff.h \
  ../../Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.h \
- ../../FATFS/Target/sd_diskio_config.h ../../Drivers/O3/Fsm_o3/fsm_o3.h \
- ../../Drivers/O3/Fsm_o3/../Typedef.h
+ ../../FATFS/Target/sd_diskio_config.h \
+ ../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h \
+ ../../Drivers/O3/Fsm_o3/fsm_o3.h ../../Drivers/O3/Fsm_o3/../Typedef.h
 ../../Core/Inc/main.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
 ../../Core/Inc/stm32u5xx_hal_conf.h:
@@ -124,6 +126,7 @@ Application/User/Core/main.o: C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c \
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h:
+../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h:
@@ -160,5 +163,6 @@ Application/User/Core/main.o: C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c \
 ../../Drivers/Vendor/FatFs/source/ff.h:
 ../../Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.h:
 ../../FATFS/Target/sd_diskio_config.h:
+../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h:
 ../../Drivers/O3/Fsm_o3/fsm_o3.h:
 ../../Drivers/O3/Fsm_o3/../Typedef.h:

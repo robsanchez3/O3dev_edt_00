@@ -29,6 +29,13 @@
 
 /* USER CODE BEGIN Includes */
 #include "sd_diskio_dma_rtos.h"
+#ifdef USB_HOST_MODE
+#include "../../Drivers/Vendor/Device/USB/usbh_diskio.h"   // TODO  improve this path
+extern uint8_t  retUSBH;
+extern char     USBHPath[4];
+extern FATFS    USBHFatFS;
+extern FIL      USBHFile;
+#endif
 /* USER CODE END Includes */
 
 

@@ -387,6 +387,11 @@
                     <state>$PROJ_DIR$/../Drivers/Vendor/FatFs/source</state>
                     <state>$PROJ_DIR$/../USB_Device/App</state>
                     <state>$PROJ_DIR$/../USB_Device/Target</state>
+                    <state>$PROJ_DIR$/../Middlewares/ST/STM32_USB_Host_Library/Core/Inc</state>
+                    <state>$PROJ_DIR$/../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc</state>
+                    <state>$PROJ_DIR$/../USB_Host/App</state>
+                    <state>$PROJ_DIR$/../USB_Host/Target</state>
+                    <state>$PROJ_DIR$/../Drivers/Vendor/Device/USB</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -690,6 +695,11 @@
                     <state>$PROJ_DIR$/../USB_Device/Target</state>
                     <state>$PROJ_DIR$/../FATFS/App</state>
                     <state>$PROJ_DIR$/../FATFS/Target</state>
+                    <state>$PROJ_DIR$/../Middlewares/ST/STM32_USB_Host_Library/Core/Inc</state>
+                    <state>$PROJ_DIR$/../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc</state>
+                    <state>$PROJ_DIR$/../USB_Host/App</state>
+                    <state>$PROJ_DIR$/../USB_Host/Target</state>
+                    <state>$PROJ_DIR$/../Drivers/Vendor/Device/USB</state>
                 </option>
                 <option>
                     <name>AExtraOptionsCheckV2</name>

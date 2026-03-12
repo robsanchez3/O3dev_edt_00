@@ -9,6 +9,10 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include USB_Host/Target/subdir.mk
+-include USB_Host/App/subdir.mk
+-include Middlewares/STM32_USB_Host_Library/Core/Src/subdir.mk
+-include Middlewares/STM32_USB_Host_Library/Class/MSC/Src/subdir.mk
 -include Middlewares/RTOS2/CMSIS/RTOS2/Heap/Heap_4/subdir.mk
 -include Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/subdir.mk
 -include Drivers/Vendor/USB_DEVICE/Target/subdir.mk

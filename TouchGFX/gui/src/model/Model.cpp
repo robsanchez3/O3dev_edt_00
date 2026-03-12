@@ -2,6 +2,7 @@
 #include <gui/model/ModelListener.hpp>
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/parseappconfig.hpp>
+#include <gui/model/parseUpdates.hpp>
 
 #ifndef SIMULATOR
 
@@ -37,6 +38,12 @@ static uint8_t  usr_configured = 0;
 static uint32_t usr_configuration_tout = 0;
 static uint8_t  main_menu_configured = 0;
 static uint32_t main_menu_configuration_tout = 0;
+
+
+static uint8_t  usb_detected = 0;
+static uint32_t usb_detection_tout = 0;
+
+
 
 Model* modelInstance = nullptr;
 
@@ -250,7 +257,7 @@ void Model::tick()
 
 		if(main_menu_configuration_tout > 25)   // configure by default after some time
 		{
-			if(is_SD() && is_fs_mounted())
+			if(is_SD() && is_SD_mounted())
 			{
 				configureMainMenu();
 				main_menu_configured = 1;
@@ -270,7 +277,7 @@ void Model::tick()
 	{
 		if(++hw_configuration_tout > 25)   // wait until OS started and SD/FS initialized
 		{
-			if(is_SD() && is_fs_mounted())
+			if(is_SD() && is_SD_mounted())
 			{
 				hw_configured = 1;
 				if( loadHardwareConfig(&GLB_fsm_o3.HwConfig) == 0 )
@@ -296,7 +303,7 @@ void Model::tick()
 	{
 		if(++syr_configuration_tout > 25)   // wait until OS started and SD/FS initialized
 		{
-			if(is_SD() && is_fs_mounted())
+			if(is_SD() && is_SD_mounted())
 			{
 				syr_configured = 1;
 				if( loadSyringeConfig(GLB_fsm_o3.SyringeCtrl.SyringePattern) == 0 )
@@ -322,7 +329,7 @@ void Model::tick()
 	{
 		if(++usr_configuration_tout > 25)   // wait until OS started and SD/FS initialized
 		{
-			if(is_SD() && is_fs_mounted())
+			if(is_SD() && is_SD_mounted())
 			{
 				usr_configured = 1;
 				if( loadUserConfig(&GLB_fsm_o3.UsrConfig) == 0 )
@@ -348,7 +355,7 @@ void Model::tick()
 	{
 		if(++main_menu_configuration_tout > 25)   // wait until OS started and SD/FS initialized
 		{
-			if(is_SD() && is_fs_mounted())
+			if(is_SD() && is_SD_mounted())
 			{
 				if(	loadMainMenu(deviceConfig, MAX_DEV_THERAPIES) == 0 )
 				{
@@ -369,6 +376,25 @@ void Model::tick()
 		}
 	}
 
+
+	if(!usb_detected)
+	{
+
+		if(is_USB_flash()){
+
+			printf("*************************************************************\n");
+			printf("USB flash detected. [%lu ms]\n",HAL_GetTick());
+			printf("*************************************************************\n");
+			usb_detected = 1;
+			if(is_USB_flash_mounted())
+			{
+				printf("*************************************************************\n");
+				printf("USB flash MOUNTED. [%lu ms]\n",HAL_GetTick());
+				printf("*************************************************************\n");
+				ImportDirFromUSB("1:/Service/Menu", "0:/Config/Menu");
+			}
+		}
+	}
 
 
 #if 0 //  legacy code from original demonstration application (start)
@@ -1132,13 +1158,30 @@ uint8_t Model::is_SD(void)
 	return status;
 }
 
-#include "fatfs.h"
-#define NO_is_fs_mounted_verbose
+#ifdef USB_HOST_MODE
+extern "C" uint8_t USBH_IsFlashReady(void);
+#endif
+
 /**
- * @brief Checks if the filesystem is mounted.
+ * @brief Checks if a USB flash drive is connected and MSC class is active.
+ * @retval 1 if ready, 0 if not
+ */
+uint8_t Model::is_USB_flash(void)
+{
+#ifdef USB_HOST_MODE
+    return USBH_IsFlashReady();
+#else
+    return 0;
+#endif
+}
+
+#include "fatfs.h"
+#define NO_is_SD_mounted_verbose
+/**
+ * @brief Checks if the SD drive filesystem is mounted (drive "0:").
  * @retval 1 if mounted, 0 if not mounted
  */
-uint8_t Model::is_fs_mounted(void)
+uint8_t Model::is_SD_mounted(void)
 {
     FATFS *fs;
     DWORD fre_clust;
@@ -1152,22 +1195,58 @@ uint8_t Model::is_fs_mounted(void)
     if (res == FR_OK)
     {
 #ifdef is_fs_mounted_verbose
-        printf("Filesystem is mounted.\n");
+        printf("SD filesystem is mounted.\n");
         // Optionally, print some info about the filesystem
         tot_sect = (fs->n_fatent - 2) * fs->csize;
         fre_sect = fre_clust * fs->csize;
-        printf("Total sectors: %lu, Free sectors: %lu\n", tot_sect, fre_sect);
+        printf("SD total sectors: %lu, Free sectors: %lu\n", tot_sect, fre_sect);
 #endif
         return 1;
     }
     else
     {
 #ifdef is_fs_mounted_verbose
-        printf("Filesystem is NOT mounted. f_getfree error: %d\n", res);
+        printf("SD filesystem is NOT mounted. f_getfree error: %d\n", res);
 #endif
         return 0;
     }
 }
+
+#ifdef USB_HOST_MODE
+#define NO_is_USB_flash_mounted_verbose
+/**
+ * @brief Checks if the USB flash drive filesystem is mounted (drive "1:").
+ * @retval 1 if mounted, 0 if not mounted
+ */
+uint8_t Model::is_USB_flash_mounted(void)
+{
+    FATFS *fs;
+    DWORD fre_clust;
+#ifdef is_USB_flash_mounted_verbose
+    DWORD fre_sect, tot_sect;
+#endif
+    FRESULT res;
+
+    res = f_getfree("1:", &fre_clust, &fs);
+    if (res == FR_OK)
+    {
+#ifdef is_USB_flash_mounted_verbose
+        printf("USB filesystem is mounted.\n");
+        tot_sect = (fs->n_fatent - 2) * fs->csize;
+        fre_sect = fre_clust * fs->csize;
+        printf("USB total sectors: %lu, Free sectors: %lu\n", tot_sect, fre_sect);
+#endif
+        return 1;
+    }
+    else
+    {
+#ifdef is_USB_flash_mounted_verbose
+        printf("USB filesystem NOT mounted. f_getfree error: %d\n", res);
+#endif
+        return 0;
+    }
+}
+#endif
 
 
 //****************************************************************************************************************************************************************************************************

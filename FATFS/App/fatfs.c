@@ -41,6 +41,13 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
+#ifdef USB_HOST_MODE
+uint8_t  retUSBH;
+char     USBHPath[4];
+FATFS    USBHFatFS;
+FIL      USBHFile;
+#endif
+
 static uint32_t PinDetect = {SD_DETECT_Pin};
 static GPIO_TypeDef* SD_GPIO_PORT = {SD_DETECT_GPIO_Port};
 const static uint8_t wtext[] = "This is ETEML043027 working with FatFs uSD + FreeRTOS"; /* File write buffer */
@@ -102,6 +109,11 @@ void MX_FATFS_Init(void)
     /* Create Storage Message Queue */
     QueueHandle = osMessageQueueNew(1U, sizeof(uint16_t), NULL);
   }
+
+#ifdef USB_HOST_MODE
+  /* Link USB Host driver to FatFS - drive "1:" (SD card uses "0:") */
+  retUSBH = FATFS_LinkDriver(&USBH_Driver, USBHPath);
+#endif
   /* USER CODE END Init */
 }
 

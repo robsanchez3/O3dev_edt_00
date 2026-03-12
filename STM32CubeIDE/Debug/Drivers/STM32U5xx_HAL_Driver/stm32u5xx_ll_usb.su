@@ -39,6 +39,11 @@ C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:1
 C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:1677:19:USB_DriveVbus	24	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:1707:10:USB_GetHostSpeed	24	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:1721:10:USB_GetCurrentFrame	24	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:1753:19:USB_HC_Init	40	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:1885:19:USB_HC_StartXfer	56	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:2148:10:USB_HC_ReadInterrupt	24	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:2162:19:USB_HC_Halt	40	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:2247:19:USB_HC_Activate	24	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:2274:19:USB_DoPing	32	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:2298:19:USB_StopHost	40	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c:2363:19:USB_ActivateRemoteWakeup	24	static

@@ -63,4 +63,8 @@ Drivers/Vendor/USB_DEVICE/Target \
 Drivers/Vendor \
 Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported \
 Middlewares/RTOS2/CMSIS/RTOS2/Heap/Heap_4 \
+Middlewares/STM32_USB_Host_Library/Class/MSC/Src \
+Middlewares/STM32_USB_Host_Library/Core/Src \
+USB_Host/App \
+USB_Host/Target \
 

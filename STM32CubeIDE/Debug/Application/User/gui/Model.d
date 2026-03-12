@@ -54,6 +54,7 @@ Application/User/gui/Model.o: \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Gestures.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp \
  ../../TouchGFX/gui/include/gui/model/parseappconfig.hpp \
+ ../../TouchGFX/gui/include/gui/model/parseUpdates.hpp \
  ../../TouchGFX/gui/include/gui/model/TherapyTemplates.hpp \
  ../../TouchGFX/generated/images/include/BitmapDatabase.hpp \
  ../../TouchGFX/generated/images/include/images/BitmapDatabase.hpp \
@@ -111,6 +112,7 @@ Application/User/gui/Model.o: \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h \
+ ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h \
@@ -136,7 +138,8 @@ Application/User/gui/Model.o: \
  ../../Drivers/Vendor/FatFs/source/ff.h \
  ../../Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.h \
  ../../FATFS/Target/sd_diskio_config.h ../../Core/Inc/dcache.h \
- ../../Core/Inc/main.h
+ ../../Core/Inc/main.h \
+ ../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h
 ../../TouchGFX/gui/include/gui/model/Model.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Utils.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:
@@ -191,6 +194,7 @@ Application/User/gui/Model.o: \
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Gestures.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/Transition.hpp:
 ../../TouchGFX/gui/include/gui/model/parseappconfig.hpp:
+../../TouchGFX/gui/include/gui/model/parseUpdates.hpp:
 ../../TouchGFX/gui/include/gui/model/TherapyTemplates.hpp:
 ../../TouchGFX/generated/images/include/BitmapDatabase.hpp:
 ../../TouchGFX/generated/images/include/images/BitmapDatabase.hpp:
@@ -249,6 +253,7 @@ Application/User/gui/Model.o: \
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h:
+../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h:
@@ -277,3 +282,4 @@ Application/User/gui/Model.o: \
 ../../FATFS/Target/sd_diskio_config.h:
 ../../Core/Inc/dcache.h:
 ../../Core/Inc/main.h:
+../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h:

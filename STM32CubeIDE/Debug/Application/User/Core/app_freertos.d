@@ -58,6 +58,7 @@ Application/User/Core/app_freertos.o: \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h \
+ ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h \
@@ -72,16 +73,14 @@ Application/User/Core/app_freertos.o: \
  ../../Drivers/Vendor/Device/ctp/mxt640u.h \
  ../../Drivers/Vendor/Device/ctp/../Common/ts.h \
  ../../Drivers/Vendor/Driver/edt_bsp_uart.h \
- ../../Drivers/Vendor/Driver/edt_bsp_can.h \
- ../../USB_Device/App/usb_device.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../../USB_Device/Target/usbd_conf.h ../../USB_Device/App/usbd_cdc_if.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
+ ../../Drivers/Vendor/Driver/edt_bsp_can.h ../../USB_Host/App/usb_host.h \
+ ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h \
+ ../../USB_Host/Target/usbh_conf.h \
+ ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h \
+ ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ioreq.h \
+ ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h \
+ ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h \
+ ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h \
  ../../Drivers/O3/Fsm_o3/fsm_o3.h ../../Drivers/O3/Fsm_o3/../Typedef.h \
  ../../FATFS/App/fatfs.h ../../Drivers/Vendor/FatFs/source/ff.h \
  ../../FATFS/Target/ffconf.h \
@@ -90,7 +89,8 @@ Application/User/Core/app_freertos.o: \
  ../../Drivers/Vendor/FatFs/source/ff.h \
  ../../Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.h \
  ../../FATFS/Target/sd_diskio_config.h ../../Core/Inc/dcache.h \
- ../../Core/Inc/main.h
+ ../../Core/Inc/main.h \
+ ../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../../Core/Inc/FreeRTOSConfig.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -149,6 +149,7 @@ Application/User/Core/app_freertos.o: \
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h:
+../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h:
@@ -164,16 +165,14 @@ Application/User/Core/app_freertos.o: \
 ../../Drivers/Vendor/Device/ctp/../Common/ts.h:
 ../../Drivers/Vendor/Driver/edt_bsp_uart.h:
 ../../Drivers/Vendor/Driver/edt_bsp_can.h:
-../../USB_Device/App/usb_device.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
-../../USB_Device/Target/usbd_conf.h:
-../../USB_Device/App/usbd_cdc_if.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
+../../USB_Host/App/usb_host.h:
+../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:
+../../USB_Host/Target/usbh_conf.h:
+../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h:
+../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ioreq.h:
+../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:
+../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h:
+../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h:
 ../../Drivers/O3/Fsm_o3/fsm_o3.h:
 ../../Drivers/O3/Fsm_o3/../Typedef.h:
 ../../FATFS/App/fatfs.h:
@@ -186,3 +185,4 @@ Application/User/Core/app_freertos.o: \
 ../../FATFS/Target/sd_diskio_config.h:
 ../../Core/Inc/dcache.h:
 ../../Core/Inc/main.h:
+../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h:

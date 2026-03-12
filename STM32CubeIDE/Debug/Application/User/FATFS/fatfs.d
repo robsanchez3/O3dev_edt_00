@@ -51,6 +51,7 @@ Application/User/FATFS/fatfs.o: \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h \
+ ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h \
@@ -71,7 +72,8 @@ Application/User/FATFS/fatfs.o: \
  ../../Drivers/Vendor/FatFs/source/ff.h \
  ../../Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.h \
  ../../FATFS/Target/sd_diskio_config.h ../../Core/Inc/dcache.h \
- ../../Core/Inc/main.h
+ ../../Core/Inc/main.h \
+ C:/Roberto/O3/O3dev_edt_00/FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h
 C:/Roberto/O3/O3dev_edt_00/FATFS/App/fatfs.h:
 ../../Drivers/Vendor/FatFs/source/ff.h:
 ../../FATFS/Target/ffconf.h:
@@ -124,6 +126,7 @@ C:/Roberto/O3/O3dev_edt_00/FATFS/App/fatfs.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h:
+../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h:
@@ -146,3 +149,4 @@ C:/Roberto/O3/O3dev_edt_00/FATFS/App/fatfs.h:
 ../../FATFS/Target/sd_diskio_config.h:
 ../../Core/Inc/dcache.h:
 ../../Core/Inc/main.h:
+C:/Roberto/O3/O3dev_edt_00/FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h:
