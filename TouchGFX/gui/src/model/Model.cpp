@@ -11,10 +11,12 @@
 #include <gui/model/LogManage.hpp>
 #include "usbd_cdc_if.h"  // TODO analyze if still needed
 #include "BitmapDatabase.hpp"
+#include "cmsis_os2.h"
 
 extern "C" FSM_O3_OPERATION_T GLB_fsm_o3;
 extern "C" FSM_O3_EVENT_T GLB_FsmEvents;
 extern "C" uint32_t GLB_Time;
+extern "C" osSemaphoreId_t hSysConfigReady;  /* signals defaultTask that sys config is ready */
 ////extern "C" uint8_t usb_fatfs_initialized;
 
 // ojoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -30,18 +32,11 @@ uint8_t usb_fatfs_initialized = 0; // TODO: remove when SD option tested
 
 #define PIN "1234"  // hard coded PIN
 
-static uint8_t  hw_configured = 0;
-static uint32_t hw_configuration_tout = 0;
-static uint8_t  syr_configured = 0;
-static uint32_t syr_configuration_tout = 0;
-static uint8_t  usr_configured = 0;
-static uint32_t usr_configuration_tout = 0;
-static uint8_t  main_menu_configured = 0;
-static uint32_t main_menu_configuration_tout = 0;
+static uint8_t  sys_configured = 0;
+static uint32_t sys_configuration_tout = 0;
 
 
-static uint8_t  usb_detected = 0;
-static uint32_t usb_detection_tout = 0;
+static uint8_t  usb_detection_on = 0;
 
 
 
@@ -271,131 +266,115 @@ void Model::tick()
 	}
 #endif
 //
-//  Configure hardware description according to menu configuration file on disk FATFS (if available)
+//  Load all system configuration from SD card (if available)
 //
-	if(!hw_configured)
+	/*
+	if(!sys_configured)
 	{
-		if(++hw_configuration_tout > 25)   // wait until OS started and SD/FS initialized
+		if(++sys_configuration_tout > 25)   // wait until OS started and SD/FS initialized
 		{
 			if(is_SD() && is_SD_mounted())
 			{
-				hw_configured = 1;
+				sys_configured = 1;
 				if( loadHardwareConfig(&GLB_fsm_o3.HwConfig) == 0 )
-				{
 					printf("Hardware configuration loaded from disk.\n");
-				}
 				else
-				{
 					printf("Hardware configuration not loaded from disk, using default.\n");
-				}
-			}
-			else if(hw_configuration_tout > 100)   // configure by default after some time
-			{
-				hw_configured = 1;
-				printf("Hardware configuration not loaded, using default.\n");
-			}
-		}
-	}
-//
-//  Configure syringe stop pattern according to menu configuration file on disk FATFS (if available)
-//
-	if(!syr_configured)
-	{
-		if(++syr_configuration_tout > 25)   // wait until OS started and SD/FS initialized
-		{
-			if(is_SD() && is_SD_mounted())
-			{
-				syr_configured = 1;
+
 				if( loadSyringeConfig(GLB_fsm_o3.SyringeCtrl.SyringePattern) == 0 )
-				{
 					printf("Syringe stop pattern loaded from disk.\n");
-				}
 				else
-				{
 					printf("Syringe stop pattern not loaded from disk, using default.\n");
-				}
-			}
-			else if(syr_configuration_tout > 100)   // configure by default after some time
-			{
-				syr_configured = 1;
-				printf("Syringe stop pattern not loaded, using default.\n");
-			}
-		}
-	}
-//
-//  Configure software description according to menu configuration file on disk FATFS (if available)
-//
-	if(!usr_configured)
-	{
-		if(++usr_configuration_tout > 25)   // wait until OS started and SD/FS initialized
-		{
-			if(is_SD() && is_SD_mounted())
-			{
-				usr_configured = 1;
+
 				if( loadUserConfig(&GLB_fsm_o3.UsrConfig) == 0 )
-				{
 					printf("User configuration loaded from disk.\n");
-				}
 				else
-				{
 					printf("User configuration not loaded from disk, using default.\n");
-				}
-			}
-			else if(usr_configuration_tout > 100)   // configure by default after some time
-			{
-				usr_configured = 1;
-				printf("User configuration not loaded, using default.\n");
-			}
-		}
-	}
-//
-//  Configure main menu according to menu configuration file on disk FATFS (if available)
-//
-	if(!main_menu_configured)
-	{
-		if(++main_menu_configuration_tout > 25)   // wait until OS started and SD/FS initialized
-		{
-			if(is_SD() && is_SD_mounted())
-			{
-				if(	loadMainMenu(deviceConfig, MAX_DEV_THERAPIES) == 0 )
-				{
-					main_menu_configured = 1;
+
+				if( loadMainMenu(deviceConfig, MAX_DEV_THERAPIES) == 0 )
 					printf("main menu loaded from disk.\n");
-				}
 				else
 				{
-					main_menu_configuration_tout = 100 +1; // to force default configuration in next tick
+					setDefaultMainMenu();
+					printf("Main menu not loaded, using default.\n");
 				}
 			}
-	    	else if(main_menu_configuration_tout > 100)   // configure by default after some time
+			else if(sys_configuration_tout > 100)   // configure by default after some time
 			{
+				sys_configured = 1;
 				setDefaultMainMenu();
-				main_menu_configured = 1;
-				printf("Main menu not loaded, using default.\n");
+				printf("System configuration not loaded, using defaults.\n");
 			}
 		}
 	}
 
-
-	if(!usb_detected)
+*/
+	if(!usb_detection_on)
 	{
-
-		if(is_USB_flash()){
-
-			printf("*************************************************************\n");
-			printf("USB flash detected. [%lu ms]\n",HAL_GetTick());
-			printf("*************************************************************\n");
-			usb_detected = 1;
-			if(is_USB_flash_mounted())
+		static uint8_t usb_waiting_printed = 0;
+		uint32_t now = HAL_GetTick();
+		if(now > 500)   // wait until OS/USB stack started
+		{
+			if(!usb_waiting_printed)
 			{
-				printf("*************************************************************\n");
-				printf("USB flash MOUNTED. [%lu ms]\n",HAL_GetTick());
-				printf("*************************************************************\n");
+				printf("Waiting for USB flash...\n");
+				usb_waiting_printed = 1;
+			}
+			if(is_USB_flash() && is_USB_flash_mounted())
+			{
+				usb_detection_on = 1;
+				printf("USB flash detected. [%lu ms].\n", now);
 				ImportDirFromUSB("1:/Service/Menu", "0:/Config/Menu");
 			}
+			else if(now > 1500)   // 1.5 s window elapsed, no USB present
+			{
+				usb_detection_on = 1;
+				printf("No USB flash detected within timeout.\n");
+			}
 		}
 	}
+	else
+	{
+		if(!sys_configured)
+		{
+			uint32_t now = HAL_GetTick();
+			if(is_SD() && is_SD_mounted())
+			{
+				sys_configured = 1;
+				if( loadHardwareConfig(&GLB_fsm_o3.HwConfig) == 0 )
+					printf("Hardware configuration loaded from disk [%lu ms].\n", now);
+				else
+					printf("Hardware configuration not loaded from disk, using default.\n");
 
+				if( loadSyringeConfig(GLB_fsm_o3.SyringeCtrl.SyringePattern) == 0 )
+					printf("Syringe stop pattern loaded from disk [%lu ms].\n", now);
+				else
+					printf("Syringe stop pattern not loaded from disk, using default.\n");
+
+				if( loadUserConfig(&GLB_fsm_o3.UsrConfig) == 0 )
+					printf("User configuration loaded from disk [%lu ms].\n", now);
+				else
+					printf("User configuration not loaded from disk, using default.\n");
+
+				if( loadMainMenu(deviceConfig, MAX_DEV_THERAPIES) == 0 )
+					printf("main menu loaded from disk [%lu ms].\n", now);
+				else
+				{
+					setDefaultMainMenu();
+					printf("Main menu not loaded, using default [%lu ms].\n", now);
+				}
+				osSemaphoreRelease(hSysConfigReady);
+			}
+			else if(now > 3000)   // SD not available after 3 s, use defaults
+			{
+				sys_configured = 1;
+				setDefaultMainMenu();
+				printf("SD not available, using defaults [%lu ms].\n", now);
+				osSemaphoreRelease(hSysConfigReady);
+			}
+			// else: keep retrying each tick until SD mounts or timeout
+		}
+	}
 
 #if 0 //  legacy code from original demonstration application (start)
 

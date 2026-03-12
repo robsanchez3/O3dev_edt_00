@@ -147,7 +147,7 @@ int16 FindFirstFileWithExt(const char* dirPath, const char* ext, char* outName, 
 			// Build "dirPath/filename.ext"
 			snprintf(outName, outSize, "%s/%s", dirPath, fno.fname);
 
-			printf("[%lu ms] SUCCESS: found file '%s' with extension '%s'. Full path: '%s'\n", HAL_GetTick(), fno.fname, ext, outName);
+			printf("Found file '%s' with extension '%s'. Full path: '%s' [%lu ms] \n", fno.fname, ext, outName, HAL_GetTick());
 
 			f_closedir(&dir);
 			return 1;  // found

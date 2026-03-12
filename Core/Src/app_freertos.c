@@ -81,6 +81,8 @@ const osThreadAttr_t BLPwmTask_attributes = {
   .stack_size = 512 * 4
 };
 /* USER CODE BEGIN Variables */
+osSemaphoreId_t hSysConfigReady;   /* released by Model::tick() when sys_configured=1 */
+
 #ifdef USB_HOST_MODE
 /* Definitions for USBHostTask */
 osThreadId_t USBHostTaskHandle;
@@ -140,7 +142,7 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
+  hSysConfigReady = osSemaphoreNew(1, 0, NULL);  /* max=1, initial=0 (blocked) */
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
@@ -186,6 +188,10 @@ void StartDefaultTask(void *argument)
 #ifndef USB_HOST_MODE
   MX_USB_DEVICE_Init();
 #endif
+  /* Wait until Model::tick() has loaded all system configuration from SD */
+  osSemaphoreAcquire(hSysConfigReady, osWaitForever);
+  printf("System configuration ready. Starting FSM.\n");
+
   /* Infinite loop */
   for(;;)
   {
