@@ -1,0 +1,467 @@
+• Análisis para boolaoder de Codex 
+
+  El proyecto ya tiene casi toda la base para un bootloader por pendrive USB:
+
+  - La app actual monta USB Host MSC y hace f_mount() cuando el dispositivo queda listo, así que la detección de USB flash ya existe en el código de aplicación: USB_Host/App/usb_host.c:50, USB_Host/App/
+    usb_host.c:119.
+  - Ese USB hoy depende de una tarea FreeRTOS, no de un arranque temprano: Core/Src/app_freertos.c:178, Core/Src/app_freertos.c:215.
+  - La aplicación está enlazada desde 0x08000000 y el linker reserva toda la flash interna visible del proyecto, 2048K: gcc/STM32U599NJHXQ_FLASH.ld:45.
+  - El VTOR también apunta a FLASH_BASE + 0, así que hoy no hay desplazamiento de vector table para una app detrás de bootloader: Core/Src/system_stm32u5xx.c:138, Core/Src/system_stm32u5xx.c:221.
+  - El micro configurado en CubeMX es STM32U599NIH6Q: O3dev_edt_00.ioc:59.
+  - La build genera por separado intflash.hex y extflash.bin, luego la “reprogramación total” no debería limitarse a la flash interna; también puede afectar contenido OSPI/TouchGFX: gcc/Makefile:391.
+
+  Conclusión: es viable, pero no conviene meterlo dentro de la app actual. Lo correcto es un proyecto bootloader independiente, mínimo, sin RTOS ni TouchGFX, que arranque antes de la aplicación.
+
+  Plan Propuesto
+
+  1. Definir el alcance exacto de “reprogramación total”.
+      - Mínimo: actualizar firmware interno.
+      - Completo: actualizar firmware interno + extflash.bin en OSPI.
+  2. Reservar espacio fijo para bootloader en flash interna.
+      - Propuesta inicial: 128 KB o 192 KB en 0x08000000.
+      - La app pasaría a arrancar en 0x08020000 o similar.
+  3. Crear un proyecto nuevo Bootloader.
+      - Sin FreeRTOS.
+      - Sin TouchGFX.
+      - Con init mínimo de reloj, GPIO, CRC, USB OTG HS Host MSC, FatFS y flash programming.
+  4. Definir el flujo de arranque.
+      - Reset.
+      - Bootloader espera USB durante una ventana corta, por ejemplo 2-3 s.
+      - Si encuentra un paquete válido de actualización, programa.
+      - Si no, valida la app y salta a ella.
+      - Si la app no es válida, queda en modo recuperación esperando USB.
+  5. Definir un formato de paquete robusto.
+      - Mejor un manifest + binarios, no un único .bin suelto.
+      - Ejemplo:
+          - update.json o cabecera binaria con magic, versión, tamaños, CRC/SHA.
+          - app.bin
+          - extflash.bin opcional
+      - El bootloader nunca debe programar nada sin validar integridad completa.
+  6. Adaptar la aplicación actual.
+      - Cambiar linker para moverla detrás del bootloader.
+      - Cambiar VTOR para que apunte a la nueva base de la app.
+      - Añadir API “entrar en bootloader” desde menú de servicio:
+          - escribir flag persistente
+          - NVIC_SystemReset()
+      - Parar SysTick/periféricos usados por bootloader.
+      - Cargar MSP desde base de app.
+      - Poner SCB->VTOR = APP_BASE.
+      - Saltar al Reset_Handler.
+  8. Programación segura de memoria.
+      - Si solo se actualiza app interna: borrar/programar región app.
+      - Si también se actualiza OSPI: programar extflash.bin después o antes según dependencias.
+      - Verificar por CRC al final de cada región.
+  9. Añadir mecanismo anti-brick.
+      - Recomendado: staging area.
+      - Si no hay segundo banco interno disponible en la configuración final, usar OSPI como staging temporal del nuevo app.bin.
+      - No borrar la app válida hasta tener imagen nueva validada.
+  10. Integrar generación de artefactos.
+
+  - Aprovechar que ya existe intflash.hex/extflash.bin.
+  - Añadir post-build que genere paquete de actualización consumible por bootloader.
+
+  Decisiones Técnicas Recomendadas
+
+  - Bootloader separado de la app: sí, obligatorio en la práctica.
+  - USB detectado en arranque: sí, pero en bootloader propio, no esperando a que suba FreeRTOS.
+  - Staging: sí, muy recomendable.
+  - Actualización de OSPI: sí, si quieres “reprogramación total” real.
+  - UI en bootloader: no al inicio; mejor LEDs/UART/log simple. La pantalla puede venir después.
+
+  Riesgos
+
+  - El principal riesgo no es USB, es la partición de memoria y el proceso de recuperación si falla una actualización.
+  - Si se sobrescribe la app sin staging y sin validación previa, puedes dejar el equipo sin arranque funcional.
+  - Si extflash.bin cambia y no se actualiza junto con la app, puedes tener incompatibilidades en assets/recursos.
+
+  Fases de ejecución
+
+  1. Confirmar mapa final de memoria disponible para bootloader, app y staging.
+  2. Crear bootloader mínimo que detecte USB y lea paquete.
+  3. Mover la app a nueva dirección y validar salto.
+  4. Añadir programación de flash interna.
+  5. Añadir actualización de OSPI.
+  6. Añadir trigger desde aplicación y pruebas de recuperación.
+
+  Si quieres, en el siguiente paso te preparo el diseño ya aterrizado para este repo con:
+
+  - mapa exacto de memoria,
+  - nombres de archivos del paquete USB,
+  - secuencia de arranque,
+  - y lista concreta de ficheros a tocar en este proyecto.
+
+
+› si
+
+
+• Diseño Propuesto
+
+  Asumo como punto de partida este esquema:
+
+  - Bootloader: 0x08000000 - 0x0801FFFF (128 KB)
+  - Aplicación: 0x08020000 - 0x081FFFFF
+  - OSPI: 0x90000000 - 0x91FFFFFF
+  - Staging de actualización:
+      - Opción recomendada: usar una zona de OSPI para almacenar temporalmente app.bin
+      - Así no dependes de confirmar ahora mismo doble banco interno operativo en el proyecto
+
+  Esto encaja con el linker actual, que hoy usa toda la flash interna desde 0x08000000: gcc/STM32U599NJHXQ_FLASH.ld:45
+
+  Paquete USB
+
+  En el pendrive propondría una estructura simple y estable:
+
+  /UPDATE/
+    manifest.bin
+    app.bin
+    extflash.bin   <- opcional
+
+  manifest.bin:
+
+  typedef struct
+  {
+      uint32_t magic;          // 'O3UP'
+      uint32_t format_version; // 1
+      uint32_t app_size;
+      uint32_t app_crc32;
+      uint32_t ext_size;       // 0 si no hay update OSPI
+      uint32_t ext_crc32;
+      uint32_t target_addr;    // 0x08020000
+      uint32_t flags;          // bit0=update app, bit1=update extflash
+      uint32_t header_crc32;
+  } o3_update_manifest_t;
+
+  Secuencia de arranque
+
+  1. Reset entra siempre en bootloader.
+  2. El bootloader inicializa mínimo:
+      - HAL_Init
+      - clocks
+      - GPIO
+      - CRC
+      - USB OTG HS Host
+      - FATFS
+  3. Espera 2-3 s a que aparezca USB MSC.
+  4. Si no hay USB o no existe /UPDATE/manifest.bin, valida app y salta.
+  5. Si hay paquete:
+      - valida manifest
+      - valida tamaños/direcciones
+      - copia app.bin a staging en OSPI
+      - verifica CRC
+      - programa flash interna de aplicación
+      - verifica CRC final leído desde flash
+      - si existe extflash.bin, programa OSPI final y verifica
+      - marca update OK
+      - reinicia
+  6. En siguiente arranque, si la app es válida, salta.
+
+  Validación de aplicación
+
+  Antes de saltar a la app, comprobar:
+
+  - MSP inicial en rango RAM válido
+  - Reset vector dentro del rango de aplicación
+  - CRC opcional de la región app
+
+  Salto a la app
+
+  La app actual arranca con VTOR a FLASH_BASE: Core/Src/system_stm32u5xx.c:221
+
+  Habrá que dejarla así:
+
+  - APP_BASE = 0x08020000
+  - SCB->VTOR = APP_BASE
+
+  Y en el bootloader, el salto debe hacer:
+
+  __disable_irq();
+  SysTick->CTRL = 0;
+  SysTick->LOAD = 0;
+  SysTick->VAL  = 0;
+
+  HAL_RCC_DeInit();
+  HAL_DeInit();
+
+  SCB->VTOR = APP_BASE;
+  __set_MSP(*(uint32_t *)APP_BASE);
+
+  void (*app_reset_handler)(void) = (void (*)(void))(*(uint32_t *)(APP_BASE + 4));
+  app_reset_handler();
+
+  Ficheros a tocar en este repo
+
+  En la aplicación actual:
+
+  - gcc/STM32U599NJHXQ_FLASH.ld
+      - cambiar origen FLASH a 0x08020000
+      - reducir longitud en 128 KB
+  - Core/Src/system_stm32u5xx.c
+      - cambiar VECT_TAB_OFFSET o definir base de app
+  - gcc/Makefile:391
+      - añadir generación de app.bin para bootloader
+      - mantener extflash.bin
+      - añadir script que genere manifest.bin
+  - USB_Host/App/usb_host.c
+      - no lo tocaría para el bootloader; reutilizaría lógica, pero en proyecto nuevo
+  - Core/Src/app_freertos.c:215
+      - no usar esta ruta para el bootloader, porque llega demasiado tarde
+  - Core/Inc/main.h
+      - añadir flags/API para “request bootloader”
+  - nuevo: módulo boot_request.c/.h
+      - usar RTC backup register o SRAM retenida para pedir entrada a bootloader
+
+  En proyecto nuevo Bootloader:
+
+  - Core/Src/main.c
+  - Core/Src/system_stm32u5xx.c
+  - USB_Host/*
+  - update_if.c/.h
+  - boot_jump.c/.h
+
+  Qué reutilizar del proyecto actual
+
+  Sí reutilizaría:
+
+  - USB_Host/App/usb_host.c: USB_Host/App/usb_host.c:50
+  - USB_Host/Target/usbh_conf.c
+  - FATFS/App/fatfs.c solo como referencia mínima
+  - configuración CubeMX de USB HS Host y clocks
+
+  No reutilizaría dentro del bootloader:
+
+  - FreeRTOS
+  - TouchGFX
+  - FSM de aplicación
+  - SD loader task actual
+
+  Plan por fases
+
+  1. Crear bootloader mínimo que solo detecte USB y salte a app.
+  2. Desplazar app a 0x08020000 y validar arranque.
+  3. Añadir lectura de manifest.bin y app.bin.
+  4. Añadir staging en OSPI.
+  5. Añadir programación/verificación de flash interna.
+  6. Añadir actualización opcional de extflash.bin.
+  7. Añadir trigger desde menú de servicio.
+  8. Ejecutar pruebas de corte de energía y recuperación.
+
+  Pruebas mínimas obligatorias
+
+  - Arranque normal sin USB
+  - Arranque con USB sin paquete válido
+  - Update solo de app
+  - Update app + extflash
+  - Corte de energía durante copia a staging
+  - Corte de energía durante borrado/programación interna
+  - App inválida y recuperación por USB
+
+  El siguiente paso útil es prepararte un documento de implementación exacto para este repo con:
+
+  - mapa final de memoria,
+  - nombres de módulos nuevos,
+  - API internas,
+  - y checklist de cambios por archivo.
+
+
+› si
+
+
+• Implementación Concreta
+
+  Te propongo este aterrizaje exacto para este repo.
+
+  Mapa de memoria
+
+  - 0x08000000 - 0x0801FFFF: bootloader (128 KB)
+  - 0x08020000 - 0x081FFFFF: aplicación
+  - 0x90000000 - 0x907FFFFF: staging OSPI para app.bin (8 MB, sobrado)
+  - 0x90800000 - ...: assets/extflash actuales
+
+  Esto evita depender de doble banco interno y deja la actualización robusta.
+
+  Módulos nuevos
+
+  En Bootloader/ o proyecto separado:
+
+  - boot_main.c
+  - boot_jump.c/.h
+  - boot_usb.c/.h
+  - boot_update.c/.h
+  - flash_if.c/.h
+  - ospi_if.c/.h
+  - manifest.h
+
+  En la aplicación actual:
+
+  - Core/Src/boot_request.c
+  - Core/Inc/boot_request.h
+
+  API propuesta
+
+  boot_request.h
+
+  #pragma once
+  #include <stdint.h>
+
+  void Boot_RequestUpdateMode(void);
+  uint32_t Boot_GetRequestFlag(void);
+  void Boot_ClearRequestFlag(void);
+
+  boot_jump.h
+
+  #pragma once
+  #include <stdint.h>
+  int Boot_IsApplicationValid(uint32_t app_base);
+  void Boot_JumpToApplication(uint32_t app_base);
+
+  boot_update.h
+
+  #pragma once
+  #include <stdint.h>
+
+  typedef enum {
+      BOOT_UPD_OK = 0,
+      BOOT_UPD_NO_USB,
+      BOOT_UPD_NO_MANIFEST,
+      BOOT_UPD_INVALID_MANIFEST,
+      BOOT_UPD_STAGE_FAILED,
+      BOOT_UPD_FLASH_FAILED,
+      BOOT_UPD_VERIFY_FAILED
+  } boot_update_result_t;
+
+  boot_update_result_t Boot_TryUsbUpdate(void);
+
+  Formato del paquete
+
+  Directorio USB:
+
+  /UPDATE/manifest.bin
+  /UPDATE/app.bin
+  /UPDATE/extflash.bin
+
+  Cabecera:
+
+  #define O3_UPDATE_MAGIC 0x4F335550u /* "O3UP" */
+
+  typedef struct __attribute__((packed))
+  {
+      uint32_t magic;
+      uint32_t format_version;
+      uint32_t app_size;
+      uint32_t app_crc32;
+      uint32_t ext_size;
+      uint32_t ext_crc32;
+      uint32_t app_target_addr;   /* 0x08020000 */
+      uint32_t ext_target_addr;   /* 0x90800000 o 0x90000000 según uso */
+      uint32_t flags;             /* bit0 app, bit1 extflash */
+      uint32_t version;
+      uint32_t header_crc32;
+  } o3_update_manifest_t;
+
+  Flujo exacto de boot
+
+  1. Reset
+  2. Bootloader lee flag de request
+  3. Espera USB 2500 ms
+  4. Si hay /UPDATE/manifest.bin, intenta actualización
+  5. Si no hay update:
+      - valida app en 0x08020000
+      - salta a app
+  6. Si app inválida:
+      - entra en modo recuperación indefinido esperando USB
+
+  Secuencia de actualización
+
+  1. Montar USB MSC
+  2. Leer manifest.bin
+  3. Validar:
+      - magic
+      - format_version
+      - app_target_addr == 0x08020000
+      - tamaños dentro de rango
+      - header_crc32
+  4. Copiar app.bin a staging OSPI
+  5. Verificar CRC staging
+  6. Borrar flash interna de aplicación
+  7. Programar app desde staging a flash interna
+  8. Verificar CRC final sobre flash interna
+  9. Si extflash.bin existe:
+      - programar zona OSPI final
+      - verificar CRC
+  10. Limpiar flag y reset
+
+  Cambios exactos en la app
+
+  1. gcc/STM32U599NJHXQ_FLASH.ld
+      - cambiar:
+
+     FLASH (rx) : ORIGIN = 0x08020000, LENGTH = 1920K
+
+     2048K - 128K = 1920K
+  2. Core/Src/system_stm32u5xx.c
+      - cambiar:
+
+     #define VECT_TAB_OFFSET  0x00020000UL
+
+     o mejor definir APP_VTOR_OFFSET
+  3. Añadir boot_request.c/.h
+      - usar RTC backup register o SRAM retenida
+      - flujo:
+
+     Boot_RequestUpdateMode();
+     NVIC_SystemReset();
+  4. gcc/Makefile
+      - hoy ya genera intflash.hex y extflash.bin: gcc/Makefile:391
+      - añadir también:
+
+     @$(objcopy) -O binary --remove-section=ExtFlashSection --remove-section=FontFlashSection $@ $(@D)/app.bin
+      - y un script que genere manifest.bin
+
+  Script de empaquetado
+
+  tools/make_update_package.py
+
+  Entradas:
+
+  - app.bin
+  - extflash.bin opcional
+  - versión
+
+  Salida:
+
+  - UPDATE/manifest.bin
+  - UPDATE/app.bin
+  - UPDATE/extflash.bin
+
+  Checklist por fases
+
+  1. Crear bootloader que solo:
+      - inicialice HW mínimo
+      - valide app
+      - haga jump
+  2. Mover la app a 0x08020000
+  3. Verificar que la app arranca desde nueva base
+  4. Añadir USB Host + FatFS en bootloader
+  5. Detectar manifest.bin
+  6. Añadir staging en OSPI
+  7. Añadir programación flash interna
+  8. Añadir actualización de extflash.bin
+  9. Añadir trigger desde menú de servicio
+  10. Ejecutar pruebas de fallo
+
+  Orden recomendado real
+
+  Primero no intentes “update total”. Haz estos tres hitos:
+
+  1. Bootloader + jump a app desplazada
+  2. Update solo app.bin
+  3. Update app.bin + extflash.bin
+
+  Eso reduce mucho el riesgo.
+
+  Si quieres, el siguiente paso ya puede ser práctico: te preparo los cambios iniciales en este repo para el hito 1, es decir:
+
+  - mover la app a 0x08020000
+  - ajustar VTOR
+  - añadir el módulo boot_request
+  - y dejar definida la interfaz de salto para el futuro bootloader.

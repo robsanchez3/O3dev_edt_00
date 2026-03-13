@@ -21,8 +21,6 @@ extern "C" osSemaphoreId_t hSysConfigReady;  /* signals defaultTask that sys con
 
 // ojoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 // ojoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-// ojoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-// ojoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 uint8_t usb_fatfs_initialized = 0; // TODO: remove when SD option tested
 //TODO look for USB references and remove if not needed
 // ojoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo

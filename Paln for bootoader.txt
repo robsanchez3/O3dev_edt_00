@@ -1,0 +1,103 @@
+ Analizar y proponer un plan para incluir el proyecto un bootloader mediante USBFlash detectado durante el arranque que permita la reprogramación total del código (Claude)
+
+● El STM32U599 tiene 4MB de flash interna y flash OSPI externa. Antes de proponer un plan necesito entender dónde está ejecutando el código actualmente:
+
+● Read 2 files (ctrl+o to expand)
+
+● Ahora tengo el mapa de memoria claro. El análisis:
+
+  Flash interna:  0x08000000 – 0x081FFFFF  (2MB, código)
+  Flash OSPI:     0x90000000 – 0x91FFFFFF  (32MB, assets TouchGFX en XIP)
+  RAM:            0x20000000 – 0x2026FFFF  (~2.4MB)
+
+  ---
+  Plan de Bootloader USB
+
+  Problema clave
+
+  El código actualmente ocupa los 2MB completos de flash interna. Para añadir un bootloader hay que repartir ese espacio.
+
+  ---
+  Decisión 1 — Verificar si el STM32U599 tiene 4MB
+
+  El ICF muestra 2MB, pero el STM32U599 puede tener 4MB (dos bancos de 2MB). Si es así, el problema desaparece:
+
+  Bank 1: 0x08000000 – 0x081FFFFF (2MB) → Bootloader + Aplicación
+  Bank 2: 0x08200000 – 0x083FFFFF (2MB) → Destino de actualización OTA
+
+  Comprueba en el datasheet o CubeMX si el device es STM32U599NIH6Q con 4MB.
+
+  ---
+  Mapa de flash propuesto (asumiendo 4MB)
+
+  0x08000000 – 0x0801FFFF  128 KB  Bootloader          (nuevo proyecto IAR)
+  0x08020000 – 0x081FFFFF  1.875MB Aplicación actual   (desplazada 128KB)
+  0x08200000 – 0x083FFFFF  2 MB    Staging area OTA    (Bank 2)
+
+  Si solo hay 2MB internos, la staging area va en OSPI (ya hay 32MB libres).
+
+  ---
+  Flujo del bootloader
+
+  Arranque → Bootloader (0x08000000)
+  │
+  ├─ Init mínimo (clocks, GPIO, OSPI para assets si se necesita LCD)
+  │
+  ├─ Espera USB (~2s, igual que configLoaderTask actual)
+  │   │
+  │   ├─ USB encontrado + "1:/Service/FW/firmware.bin" presente?
+  │   │   ├─ Leer cabecera: magic + version + size + CRC32
+  │   │   ├─ CRC OK? → Borrar staging area (Bank 2 o OSPI)
+  │   │   │           → Copiar firmware.bin a staging
+  │   │   │           → Verificar CRC de lo escrito
+  │   │   │           → Escribir flag "update_ok" en RTC backup register
+  │   │   │           → Reset
+  │   │   └─ Segundo arranque: copiar staging → área aplicación → borrar flag → saltar
+  │   │
+  │   └─ No USB / no firmware.bin
+  │       └─ Continuar al siguiente paso
+  │
+  ├─ Verificar validez de la aplicación
+  │   (comprobar stack pointer y reset vector en 0x08020000)
+  │
+  ├─ Válida → Jump a aplicación
+  │   └─ Deshabilitar IRQs, set VTOR = 0x08020000, jump a Reset_Handler
+  │
+  └─ No válida → LED error / pantalla error, espera USB indefinidamente
+
+  ---
+  Cambios en la aplicación actual
+
+  ┌─────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────┐
+  │             Fichero             │                                     Cambio                                      │
+  ├─────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────┤
+  │ stm32u599xx_flash.icf           │ intvec_start = 0x08020000, ROM_start = 0x08020000                               │
+  ├─────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────┤
+  │ Código startup / SystemInit     │ SCB->VTOR = 0x08020000                                                          │
+  ├─────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────┤
+  │ Nuevo: trigger desde aplicación │ Escribir flag en RTC->BKP0R + NVIC_SystemReset() para iniciar update desde menú │
+  └─────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────┘
+
+  ---
+  Formato del fichero firmware.bin
+
+  typedef struct {
+      uint32_t magic;    // 0x4F335F46 ("O3_F")
+      uint32_t version;  // BCD: 0x01020300 = v1.2.3
+      uint32_t size;     // bytes del binario (sin cabecera)
+      uint32_t crc32;    // CRC32 del binario (sin cabecera)
+  } FirmwareHeader_t;
+  // A continuación: binario puro desde 0x08020000
+
+  ---
+  Fases de implementación
+
+  1. Confirmar tamaño flash (4MB vs 2MB) → determina si staging va en Bank 2 o OSPI
+  2. Crear proyecto IAR "Bootloader" — minimal, sin RTOS, sin TouchGFX
+  3. Adaptar linker de la aplicación — desplazar 128KB
+  4. Implementar bootloader — USB Host + FatFS + flash programming
+  5. Implementar trigger desde aplicación — menú de servicio → update
+  6. Script de post-build — genera firmware.bin con cabecera + CRC automáticamente
+
+  ---
+  ¿Confirmas la dirección? Y antes de empezar: ¿el STM32U599 de tu hardware tiene 4MB o 2MB de flash interna?
