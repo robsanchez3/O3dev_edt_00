@@ -1,0 +1,4 @@
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ffsystem_cmsis_os.c:73:5:ff_mutex_create	48	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ffsystem_cmsis_os.c:106:6:ff_mutex_delete	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ffsystem_cmsis_os.c:121:5:ff_mutex_take	24	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ffsystem_cmsis_os.c:145:6:ff_mutex_give	16	static

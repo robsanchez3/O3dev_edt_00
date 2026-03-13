@@ -65,11 +65,15 @@ static int16_t CopyFile(const char* srcPath, const char* dstPath)
 
     fr = f_open(&srcFile, srcPath, FA_READ);
     if (fr != FR_OK)
+    {
+        printf("CopyFile: f_open src failed fr=%d '%s'\n", fr, srcPath);
         return -1;
+    }
 
     fr = f_open(&dstFile, dstPath, FA_CREATE_ALWAYS | FA_WRITE);
     if (fr != FR_OK)
     {
+        printf("CopyFile: f_open dst failed fr=%d '%s'\n", fr, dstPath);
         f_close(&srcFile);
         return -1;
     }
@@ -83,6 +87,7 @@ static int16_t CopyFile(const char* srcPath, const char* dstPath)
         fr = f_write(&dstFile, buf, bytesRead, &bytesWritten);
         if (fr != FR_OK || bytesWritten != bytesRead)
         {
+            printf("CopyFile: f_write failed fr=%d written=%u expected=%u\n", fr, bytesWritten, bytesRead);
             result = -1;
             break;
         }

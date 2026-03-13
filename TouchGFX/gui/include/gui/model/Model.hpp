@@ -162,6 +162,7 @@ public:
 	uint8_t is_USB_flash(void);
 	uint8_t is_SD_mounted(void);
 	uint8_t is_USB_flash_mounted(void);
+	void configLoaderTask(void);
 
 
 

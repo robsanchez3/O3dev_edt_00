@@ -81,7 +81,15 @@ const osThreadAttr_t BLPwmTask_attributes = {
   .stack_size = 512 * 4
 };
 /* USER CODE BEGIN Variables */
-osSemaphoreId_t hSysConfigReady;   /* released by Model::tick() when sys_configured=1 */
+osSemaphoreId_t hSysConfigReady;   /* released by ConfigLoaderTask when system config is ready */
+
+/* Definitions for ConfigLoaderTask */
+osThreadId_t ConfigLoaderTaskHandle;
+const osThreadAttr_t ConfigLoaderTask_attributes = {
+  .name = "ConfigLoaderTask",
+  .priority = (osPriority_t) osPriorityBelowNormal,
+  .stack_size = 512 * 8
+};
 
 #ifdef USB_HOST_MODE
 /* Definitions for USBHostTask */
@@ -103,6 +111,7 @@ void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 void StartLCDSleepTask(void *argument);
 void StartPwmTask(void *argument);
+extern void StartConfigLoaderTask(void *argument);
 #ifdef USB_HOST_MODE
 void StartUSBHostTask(void *argument);
 #endif
@@ -165,6 +174,7 @@ void MX_FREERTOS_Init(void) {
   BLPwmTaskHandle = osThreadNew(StartPwmTask, NULL, &BLPwmTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
+  ConfigLoaderTaskHandle = osThreadNew(StartConfigLoaderTask, NULL, &ConfigLoaderTask_attributes);
 #ifdef USB_HOST_MODE
   USBHostTaskHandle = osThreadNew(StartUSBHostTask, NULL, &USBHostTask_attributes);
 #endif

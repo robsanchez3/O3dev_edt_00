@@ -32,11 +32,6 @@ uint8_t usb_fatfs_initialized = 0; // TODO: remove when SD option tested
 
 #define PIN "1234"  // hard coded PIN
 
-static uint8_t  sys_configured = 0;
-static uint32_t sys_configuration_tout = 0;
-
-
-static uint8_t  usb_detection_on = 0;
 
 
 
@@ -309,72 +304,7 @@ void Model::tick()
 	}
 
 */
-	if(!usb_detection_on)
-	{
-		static uint8_t usb_waiting_printed = 0;
-		uint32_t now = HAL_GetTick();
-		if(now > 500)   // wait until OS/USB stack started
-		{
-			if(!usb_waiting_printed)
-			{
-				printf("Waiting for USB flash...\n");
-				usb_waiting_printed = 1;
-			}
-			if(is_USB_flash() && is_USB_flash_mounted())
-			{
-				usb_detection_on = 1;
-				printf("USB flash detected. [%lu ms].\n", now);
-				ImportDirFromUSB("1:/Service/Menu", "0:/Config/Menu");
-			}
-			else if(now > 1500)   // 1.5 s window elapsed, no USB present
-			{
-				usb_detection_on = 1;
-				printf("No USB flash detected within timeout.\n");
-			}
-		}
-	}
-	else
-	{
-		if(!sys_configured)
-		{
-			uint32_t now = HAL_GetTick();
-			if(is_SD() && is_SD_mounted())
-			{
-				sys_configured = 1;
-				if( loadHardwareConfig(&GLB_fsm_o3.HwConfig) == 0 )
-					printf("Hardware configuration loaded from disk [%lu ms].\n", now);
-				else
-					printf("Hardware configuration not loaded from disk, using default.\n");
-
-				if( loadSyringeConfig(GLB_fsm_o3.SyringeCtrl.SyringePattern) == 0 )
-					printf("Syringe stop pattern loaded from disk [%lu ms].\n", now);
-				else
-					printf("Syringe stop pattern not loaded from disk, using default.\n");
-
-				if( loadUserConfig(&GLB_fsm_o3.UsrConfig) == 0 )
-					printf("User configuration loaded from disk [%lu ms].\n", now);
-				else
-					printf("User configuration not loaded from disk, using default.\n");
-
-				if( loadMainMenu(deviceConfig, MAX_DEV_THERAPIES) == 0 )
-					printf("main menu loaded from disk [%lu ms].\n", now);
-				else
-				{
-					setDefaultMainMenu();
-					printf("Main menu not loaded, using default [%lu ms].\n", now);
-				}
-				osSemaphoreRelease(hSysConfigReady);
-			}
-			else if(now > 3000)   // SD not available after 3 s, use defaults
-			{
-				sys_configured = 1;
-				setDefaultMainMenu();
-				printf("SD not available, using defaults [%lu ms].\n", now);
-				osSemaphoreRelease(hSysConfigReady);
-			}
-			// else: keep retrying each tick until SD mounts or timeout
-		}
-	}
+	// USB detection and system config loading handled by ConfigLoaderTask
 
 #if 0 //  legacy code from original demonstration application (start)
 
@@ -1974,6 +1904,122 @@ void Model::setupTherapyContextBack(int8_t therapyID)
 	}
 }
 #endif
+
+/* ---------------------------------------------------------------------------
+ * ConfigLoaderTask — runs once at startup in its own FreeRTOS task.
+ *
+ * Phase 1: USB detection window (500 ms – 1500 ms).
+ *          If a USB flash is found, imports service config onto the SD card.
+ * Phase 2: SD card config loading with up to 5 s timeout.
+ *          On success loads all config files; on timeout uses defaults.
+ * Releases hSysConfigReady semaphore when done, unblocking defaultTask.
+ * --------------------------------------------------------------------------*/
+void Model::configLoaderTask(void)
+{
+#ifndef SIMULATOR
+	bool usb_found = false;
+	bool sd_found  = false;
+
+	/* --- Phase 1+2: detect USB and SD concurrently ---------------------- */
+	/* Timeouts are relative to when this task actually starts (not boot time) */
+	uint32_t t0 = HAL_GetTick();
+
+	printf("Waiting for USB flash...\n");
+	for(;;)
+	{
+		uint32_t elapsed = HAL_GetTick() - t0;
+
+		/* USB: detection window opens at 500 ms, closes at 1500 ms */
+		if(!usb_found && elapsed > 500)
+		{
+			if(is_USB_flash() && is_USB_flash_mounted())
+			{
+				usb_found = true;
+				printf("USB flash detected [%lu ms]\n", HAL_GetTick());
+			}
+		}
+
+		/* SD: check any time, timeout at 5000 ms */
+		if(!sd_found && is_SD() && is_SD_mounted())
+		{
+			sd_found = true;
+			printf("SD card ready [%lu ms]\n", HAL_GetTick());
+		}
+
+		bool usb_done = usb_found || (elapsed > 1500);
+		bool sd_done  = sd_found  || (elapsed > 5000);
+
+		if(usb_done && sd_done)
+			break;
+
+		osDelay(10);
+	}
+
+	/* --- Phase 3: act --------------------------------------------------- */
+	uint32_t now = HAL_GetTick();
+
+	if(usb_found && sd_found)
+	{
+		/* Service update: import config files from USB onto SD */
+		printf("Updating SD from USB flash... [%lu ms]\n", now);
+		ImportDirFromUSB("1:/Service/Hw",      "0:/Config/Hw");
+		ImportDirFromUSB("1:/Service/Menu",    "0:/Config/Menu");
+		ImportDirFromUSB("1:/Service/Modes",   "0:/Config/Modes");
+		ImportDirFromUSB("1:/Service/Params",  "0:/Config/Params");
+		ImportDirFromUSB("1:/Service/Syringe", "0:/Config/Syringe");
+		ImportDirFromUSB("1:/Service/User",    "0:/Config/User");
+	}
+	if(sd_found)
+	{
+		/* Normal startup: load config from SD */
+		if( loadHardwareConfig(&GLB_fsm_o3.HwConfig) == 0 )
+			printf("Hardware configuration loaded [%lu ms]\n", now);
+		else
+			printf("Hardware configuration not loaded, using default.\n");
+
+		if( loadSyringeConfig(GLB_fsm_o3.SyringeCtrl.SyringePattern) == 0 )
+			printf("Syringe stop pattern loaded [%lu ms]\n", now);
+		else
+			printf("Syringe stop pattern not loaded, using default.\n");
+
+		if( loadUserConfig(&GLB_fsm_o3.UsrConfig) == 0 )
+			printf("User configuration loaded [%lu ms]\n", now);
+		else
+			printf("User configuration not loaded, using default.\n");
+
+		if( loadMainMenu(deviceConfig, MAX_DEV_THERAPIES) != 0 )
+		{
+			setDefaultMainMenu();
+			printf("Main menu not loaded, using default [%lu ms]\n", now);
+		}
+		else
+			printf("Main menu loaded [%lu ms]\n", now);
+	}
+	else
+	{
+		/* SD not available */
+		setDefaultMainMenu();
+		if(usb_found)
+			printf("USB found but SD not available, using defaults [%lu ms]\n", now);
+		else
+			printf("No SD or USB available, using defaults [%lu ms]\n", now);
+	}
+
+	osSemaphoreRelease(hSysConfigReady);
+#else
+	osSemaphoreRelease(hSysConfigReady);
+#endif
+}
+
+extern "C" void StartConfigLoaderTask(void *argument)
+{
+	/* Wait until TouchGFXTask has constructed the Model object */
+	while(modelInstance == nullptr)
+		osDelay(10);
+
+	modelInstance->configLoaderTask();
+	osThreadExit();
+}
 
 
 

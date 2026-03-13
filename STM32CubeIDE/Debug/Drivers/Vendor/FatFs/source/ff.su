@@ -4,6 +4,8 @@ C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ff.c:657:13:st_word	16	st
 C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ff.c:663:13:st_dword	16	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ff.c:693:12:dbc_1st	16	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ff.c:713:12:dbc_2nd	16	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ff.c:896:12:lock_volume	24	static
+C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ff.c:922:13:unlock_volume	16	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ff.c:947:16:chk_share	24	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ff.c:974:12:enq_share	16	static
 C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/FatFs/source/ff.c:983:13:inc_share	24	static
