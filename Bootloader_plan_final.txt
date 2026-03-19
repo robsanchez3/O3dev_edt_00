@@ -1,0 +1,199 @@
+PLAN BOOTLOADER USB FLASH - STM32U599NIH6Q
+==========================================
+Fecha: 2026-03-16
+
+
+RESTRICCION FUNDAMENTAL
+-----------------------
+Device H-variant = 2MB flash interna UNICA. No hay segundo banco.
+Staging area obligatoriamente en OSPI (32MB disponibles).
+
+
+MAPA DE MEMORIA DEFINITIVO
+---------------------------
+Direccion          Tamano    Contenido
+0x08000000         128 KB    BOOTLOADER (proyecto IAR separado)
+0x08020000         1920 KB   APLICACION (desplazada desde 0x08000000)
+0x90000000         8 MB      STAGING OSPI (app.bin temporal durante update)
+0x90800000         24 MB     Assets TouchGFX / extflash existente (sin cambios)
+
+
+ARQUITECTURA: DOS PROYECTOS INDEPENDIENTES
+------------------------------------------
+- O3dev_edt_00/     -> proyecto app actual (app se mueve a 0x08020000)
+- O3_Bootloader/    -> proyecto IAR nuevo  (bootloader en 0x08000000)
+
+El bootloader NO tiene FreeRTOS ni TouchGFX.
+Comparten drivers HAL STM32U5, USB Host y FatFS pero cada uno
+tiene su propio linker script y configuracion IAR.
+
+Para flashear el dispositivo completo:
+  1. Flashear bootloader en 0x08000000
+  2. Flashear app       en 0x08020000
+
+
+ESTRUCTURA DEL PAQUETE USB
+---------------------------
+Directorio en el pendrive:
+
+  /UPDATE/
+    manifest.bin      <- cabecera estructurada con magic + CRCs
+    app.bin           <- binario de la app desde 0x08020000
+    extflash.bin      <- opcional, assets OSPI
+
+Formato manifest.bin (struct packed, ~44 bytes):
+
+  #define O3_UPDATE_MAGIC  0x4F335550u  /* "O3UP" */
+
+  typedef struct __attribute__((packed)) {
+      uint32_t magic;            // O3_UPDATE_MAGIC
+      uint32_t format_version;   // 1
+      uint32_t app_size;         // bytes de app.bin
+      uint32_t app_crc32;        // CRC32 de app.bin
+      uint32_t ext_size;         // 0 si no hay extflash
+      uint32_t ext_crc32;
+      uint32_t app_target_addr;  // debe ser 0x08020000
+      uint32_t ext_target_addr;  // 0x90800000
+      uint32_t flags;            // bit0=update_app, bit1=update_extflash
+      uint32_t fw_version;       // BCD ej. 0x01020300 = v1.2.3
+      uint32_t header_crc32;     // CRC32 de los campos anteriores
+  } o3_update_manifest_t;
+
+
+FLUJO DE ARRANQUE DEL BOOTLOADER
+---------------------------------
+
+RESET
+  |
+  v
+HAL_Init / Clocks / GPIO / CRC                (~50ms)
+  |
+  v
+Leer RTC->BKP0R (flag "update_requested" desde app)
+  |
+  v
+Init USB Host + FatFS --- Esperar USB MSC --- timeout 2500ms
+  |                              |
+  |                   USB listo + /UPDATE/manifest.bin existe?
+  |                              |
+  |              +--------------+------------------+
+  |             SI                                 NO
+  |              |                                  |
+  |         SECUENCIA UPDATE                        |
+  |         (ver abajo)                             |
+  |                                                 |
+  +---------------------+---------------------------+
+                        v
+             Validar app en 0x08020000
+             (MSP en rango RAM + ResetVector en rango app)
+                        |
+             +----------+----------+
+            OK                  INVALIDA
+             |                     |
+             v                     v
+      JUMP TO APP          Modo recuperacion:
+                           espera USB indefinido
+
+
+SECUENCIA UPDATE (paso a paso)
+-------------------------------
+1. Leer y validar manifest.bin (magic, version, addr, tamanos, header_crc32)
+2. Copiar app.bin desde USB a staging OSPI 0x90000000
+3. Verificar CRC32 del staging contra manifest.app_crc32
+4. Borrar region app en flash interna (0x08020000 - 0x081FFFFF)
+5. Copiar staging OSPI -> flash interna
+6. Verificar CRC32 de flash interna programada
+7. Si flag bit1 activo: programar extflash.bin en 0x90800000 + verificar
+8. Borrar staging OSPI, limpiar flag RTC, escribir marca "update_OK"
+9. NVIC_SystemReset()
+
+
+SALTO A LA APLICACION (codigo bootloader)
+------------------------------------------
+__disable_irq();
+SysTick->CTRL = 0;
+SysTick->LOAD = 0;
+SysTick->VAL  = 0;
+HAL_RCC_DeInit();
+HAL_DeInit();
+SCB->VTOR = APP_BASE;                                          // 0x08020000
+__set_MSP(*(uint32_t *)APP_BASE);
+void (*app_reset)(void) = (void(*)(void))(*(uint32_t *)(APP_BASE + 4));
+app_reset();
+
+
+FASES DE IMPLEMENTACION
+------------------------
+
+FASE 1 - Bootloader minimo + jump (sin update)
+  Objetivo: probar desplazamiento de la app y el salto.
+  Cambios en la app:
+    - EWARM/stm32u599xx_flash.icf       ROM_start=0x08020000, ROM_end=0x081FFFFF
+    - STM32CubeIDE/STM32U599NIHXQ_FLASH.ld  FLASH: ORIGIN=0x08020000, LENGTH=1920K
+    - Core/Src/system_stm32u5xx.c       VECT_TAB_OFFSET = 0x00020000UL
+  Proyecto nuevo Bootloader/:
+    - boot_main.c
+    - boot_jump.c / .h  (Boot_IsApplicationValid + Boot_JumpToApplication)
+    - Linker: FLASH ORIGIN=0x08000000, LENGTH=128K
+    - Sin FreeRTOS, sin TouchGFX
+
+FASE 2 - Deteccion USB + lectura manifest
+  - Portar USB_Host/App/usb_host.c y USB_Host/Target/usbh_conf.c al bootloader
+    (sin osDelay, polling puro con HAL_GetTick)
+  - FatFS minimo con un solo volumen USB
+  - boot_update.c/h  (leer y validar manifest.bin)
+
+FASE 3 - Staging OSPI + programacion flash interna
+  - ospi_if.c/h   erase/write/read OSPI
+  - flash_if.c/h  erase/write flash interna (HAL_FLASH_Unlock, pages STM32U5)
+  - Implementar secuencia completa de update
+
+FASE 4 - Trigger desde aplicacion + extflash.bin
+  - Core/Src/boot_request.c/h  Boot_RequestUpdateMode() usando RTC->BKP0R
+  - Opcion en menu de servicio TouchGFX: escribe flag + NVIC_SystemReset()
+  - Actualizacion de extflash.bin opcional
+
+FASE 5 - Script de empaquetado + CI
+  - tools/make_update_package.py  genera UPDATE/ completo con CRCs
+  - Post-build IAR/STM32CubeIDE para generar app.bin listo
+
+
+ARCHIVOS A CREAR / MODIFICAR
+------------------------------
+
+NUEVO PROYECTO O3_Bootloader/:
+  boot_main.c
+  boot_jump.c / .h
+  boot_update.c / .h
+  boot_usb.c / .h          (USB Host sin RTOS)
+  flash_if.c / .h          (STM32U5 internal flash HAL)
+  ospi_if.c / .h           (OSPI staging)
+  manifest.h               (o3_update_manifest_t)
+
+EN PROYECTO ACTUAL O3dev_edt_00/:
+  Core/Inc/boot_request.h              NUEVO
+  Core/Src/boot_request.c              NUEVO (usa RTC->BKP0R)
+  EWARM/stm32u599xx_flash.icf          MODIF  ROM_start=0x08020000
+  STM32CubeIDE/STM32U599NIHXQ_FLASH.ld MODIF  ORIGIN=0x08020000, LENGTH=1920K
+  Core/Src/system_stm32u5xx.c          MODIF  VECT_TAB_OFFSET=0x00020000UL
+
+tools/:
+  make_update_package.py               NUEVO
+
+
+RIESGOS Y MITIGACIONES
+-----------------------
+Riesgo                                     Mitigacion
+------------------------------------------+------------------------------------------------
+Brick si se borra app sin staging valido   Staging OSPI verificado por CRC antes de borrar
+App + extflash desincronizados             Manifest obliga a actualizar ambos (flags bit0+bit1)
+USB no detectado en timeout               Timeout ajustable; modo recuperacion si app invalida
+OSPI assets sobreescritos                 Staging usa 0x90000000-0x907FFFFF; assets desde 0x90800000
+
+
+ORDEN RECOMENDADO
+-----------------
+Empezar por Fase 1: desplazar la app a 0x08020000 y un bootloader
+que solo haga jump. Es el cambio mas arriesgado (reubicacion de memoria)
+y conviene validarlo solo antes de anadir complejidad de update.
+Con Fase 1 estable, el resto es aditivo y recuperable.

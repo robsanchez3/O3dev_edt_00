@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(find /mnt/c/Roberto/O3/OztDUI_UsbFlash/USB_HOST -type f | sort\nfind /mnt/c/Roberto/O3/OztDUI_UsbFlash/Middlewares/ST/STM32_USB_Host_Library -type f | sort)",
-      "Bash(curl -fsSL \"https://raw.githubusercontent.com/STMicroelectronics/stm32u5xx_hal_driver/v1.6.2/Inc/stm32u5xx_hal_hcd.h\" \\\\\n  -o \"/mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h\" && \\\\\ncurl -fsSL \"https://raw.githubusercontent.com/STMicroelectronics/stm32u5xx_hal_driver/v1.6.2/Src/stm32u5xx_hal_hcd.c\" \\\\\n  -o \"/mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hcd.c\" && \\\\\nwc -l /mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h \\\\\n       /mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hcd.c)"
+      "Bash(curl -fsSL \"https://raw.githubusercontent.com/STMicroelectronics/stm32u5xx_hal_driver/v1.6.2/Inc/stm32u5xx_hal_hcd.h\" \\\\\n  -o \"/mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h\" && \\\\\ncurl -fsSL \"https://raw.githubusercontent.com/STMicroelectronics/stm32u5xx_hal_driver/v1.6.2/Src/stm32u5xx_hal_hcd.c\" \\\\\n  -o \"/mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hcd.c\" && \\\\\nwc -l /mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h \\\\\n       /mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hcd.c)",
+      "Bash(ls:*)"
     ]
   }
 }
