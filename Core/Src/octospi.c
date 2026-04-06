@@ -80,24 +80,22 @@ void MX_OCTOSPI1_Init(void)
   /* OSPI memory reset */
   if (ospi_memory_reset(&hospi1) != 0)
   {
-	  Error_Handler();
+		  Error_Handler();
   }
-
   if (MX25LM51245G_AutoPollingMemReady(&hospi1,MX25LM51245G_SPI_MODE, MX25LM51245G_STR_TRANSFER) != MX25LM51245G_OK)
   {
-	  Error_Handler();
+		  Error_Handler();
   }
 
   /* Enable octal mode */
   if (OSPI_NOR_EnterSOPIMode(&hospi1) != 0)
   {
-	  Error_Handler();
+		  Error_Handler();
   }
-
 
   if (OSPI_NOR_EnableMemoryMappedMode(&hospi1) != 0)
   {
-	  Error_Handler();
+		  Error_Handler();
   }
   /* USER CODE END OCTOSPI1_Init 2 */
 
@@ -270,43 +268,39 @@ int32_t OSPI_DLYB_Enable(OSPI_HandleTypeDef *hospi)
   */
 static uint8_t ospi_memory_reset(OSPI_HandleTypeDef *hospi)
 {
-	 int32_t ret = 0;
+  uint8_t ret = 0;
 
-	  /* Enable write operations */
-	  if(MX25LM51245G_ResetEnable(hospi, MX25LM51245G_SPI_MODE, MX25LM51245G_STR_TRANSFER) != MX25LM51245G_OK)
-	  {
-	    ret = 1;
-	  }
-	  else if(MX25LM51245G_ResetMemory(hospi, MX25LM51245G_SPI_MODE, MX25LM51245G_STR_TRANSFER) != MX25LM51245G_OK)
-	  {
-	    ret = 1;
-	  }
-	  else if(MX25LM51245G_ResetEnable(hospi, MX25LM51245G_OPI_MODE, MX25LM51245G_STR_TRANSFER) != MX25LM51245G_OK)
-	  {
-	    ret = 1;
-	  }
-	  else if(MX25LM51245G_ResetMemory(hospi, MX25LM51245G_OPI_MODE, MX25LM51245G_STR_TRANSFER) != MX25LM51245G_OK)
-	  {
-	    ret = 1;
-	  }
-	  else if(MX25LM51245G_ResetEnable(hospi, MX25LM51245G_OPI_MODE, MX25LM51245G_DTR_TRANSFER) != MX25LM51245G_OK)
-	  {
-	    ret = 1;
-	  }
-	  else if(MX25LM51245G_ResetMemory(hospi, MX25LM51245G_OPI_MODE, MX25LM51245G_DTR_TRANSFER) != MX25LM51245G_OK)
-	  {
-	    ret = 1;
-	  }
-	  else
-	  {
+  if (MX25LM51245G_ResetEnable(hospi, MX25LM51245G_SPI_MODE, MX25LM51245G_STR_TRANSFER) != MX25LM51245G_OK)
+  {
+    ret = 1;
+  }
+  else if (MX25LM51245G_ResetMemory(hospi, MX25LM51245G_SPI_MODE, MX25LM51245G_STR_TRANSFER) != MX25LM51245G_OK)
+  {
+    ret = 1;
+  }
+  else if (MX25LM51245G_ResetEnable(hospi, MX25LM51245G_OPI_MODE, MX25LM51245G_STR_TRANSFER) != MX25LM51245G_OK)
+  {
+    ret = 1;
+  }
+  else if (MX25LM51245G_ResetMemory(hospi, MX25LM51245G_OPI_MODE, MX25LM51245G_STR_TRANSFER) != MX25LM51245G_OK)
+  {
+    ret = 1;
+  }
+  else if (MX25LM51245G_ResetEnable(hospi, MX25LM51245G_OPI_MODE, MX25LM51245G_DTR_TRANSFER) != MX25LM51245G_OK)
+  {
+    ret = 1;
+  }
+  else if (MX25LM51245G_ResetMemory(hospi, MX25LM51245G_OPI_MODE, MX25LM51245G_DTR_TRANSFER) != MX25LM51245G_OK)
+  {
+    ret = 1;
+  }
+  else
+  {
+    /* After SWreset CMD, wait in case SWReset occurred during erase operation */
+    HAL_Delay(MX25LM51245G_RESET_MAX_TIME);
+  }
 
-
-	    /* After SWreset CMD, wait in case SWReset occurred during erase operation */
-	    HAL_Delay(MX25LM51245G_RESET_MAX_TIME);
-	  }
-
-	  /* Return BSP status */
-	  return ret;
+  return ret;
 }
 
 

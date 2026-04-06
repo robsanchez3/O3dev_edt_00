@@ -30,8 +30,8 @@
 	.fpu softvfp
 	.thumb
 
-.global	g_pfnVectors
-.global	Default_Handler
+	.global	g_pfnVectors
+	.global	Default_Handler
 
 /* start address for the initialization values of the .data section.
 defined in linker script */
@@ -94,7 +94,7 @@ LoopFillZerobss:
 /* Call static constructors */
     bl __libc_init_array
 /* Call the application's entry point.*/
-	bl	main
+		bl	main
 
 LoopForever:
     b LoopForever

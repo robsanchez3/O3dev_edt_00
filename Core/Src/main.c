@@ -158,11 +158,9 @@ int main(void)
   hfdcanx = hfdcan1;
 #endif
 
-
   MX_FATFS_Init();
 //MX_SDMMC1_SD_Init(); // not compatible call here wit freertos... (this function is called somehow during SO running)
 
-//	
   /* USER CODE END 2 */
 
   /* Init scheduler */
