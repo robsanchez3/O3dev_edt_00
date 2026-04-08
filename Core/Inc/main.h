@@ -81,7 +81,7 @@ void hw_init ( void );
 #define RTC_TS_LED_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+#define SW_VERSION "V1.R1.P1_b"
 /* USB mode selection: comment/uncomment to switch between CDC Device and USB Host (pen drive)
  * When defined   -> USB Host MSC mode (pen drive via USB-C to USB-A adapter)
  * When undefined -> USB Device CDC mode (Virtual COM Port) [DEFAULT]      */

@@ -180,7 +180,7 @@ void WelcomeMessage(void)
 {
 	if( GLB_fsm_o3.DebLevel & D_LEV_SEND_WELCOME ){
 		COM_O3_PutString((uint8 *)"SEDECAL 03 - Operation mode FSM\r");
-		COM_O3_PutString((uint8 *)SW_VERSION);
+		COM_O3_PutString((uint8 *)O3_LIB_VERSION);
 		COM_O3_PutString((uint8 *)" ");
 		COM_O3_PutString((uint8 *)DATE_STAMP);
 		COM_O3_PutString((uint8 *)" ");

@@ -74,6 +74,13 @@ void MX_FREERTOS_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+/* Embed version string in the binary so generate_update_package.sh can
+   extract it with "strings | grep" and populate manifest.ini automatically.
+   __attribute__((used)) prevents the linker from discarding it. */
+const volatile char __attribute__((used)) sw_version_tag[]  = "##SW_VERSION=" SW_VERSION "##";
+const volatile char __attribute__((used)) build_date_tag[]  = "##BUILD_DATE=" __DATE__ "##";
+const volatile char __attribute__((used)) build_time_tag[]  = "##BUILD_TIME=" __TIME__ "##";
+
 #if 1
 //extern "C" {
 int _write(int file, char *ptr, int len)
@@ -105,7 +112,11 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  /* Reference version/build tags so the linker does not discard them (--gc-sections).
+     generate_update_package.sh extracts them from the ELF with strings | grep. */
+  (void)sw_version_tag[0];
+  (void)build_date_tag[0];
+  (void)build_time_tag[0];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/

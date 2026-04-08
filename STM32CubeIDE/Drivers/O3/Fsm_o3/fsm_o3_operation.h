@@ -97,7 +97,7 @@ typedef enum
 #define DATE_STAMP  __DATE__    /*!< Compilation date. */
 #define TIME_STAMP  __TIME__    /*!< Compilation time. */
 
-#define SW_VERSION                       "V0.R0.P0_a"
+#define O3_LIB_VERSION                    "V0.R0.P0_a"
 
 
 /* Pressure references for different therapies */

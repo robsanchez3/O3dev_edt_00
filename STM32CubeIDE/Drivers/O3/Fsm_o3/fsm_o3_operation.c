@@ -18,6 +18,11 @@ compatibilidad e comunicaciones serie o I2C
 //#include "cmsis_os.h" //  osDelay
 #include <stdarg.h>
 
+/* Embed O3 version string in the binary so generate_update_package.sh can
+   extract it with "strings | grep" and populate manifest.ini automatically.
+   __attribute__((used)) prevents the linker from discarding it. */
+const volatile char __attribute__((used)) o3_lib_version_tag[] = "##O3_LIB_VERSION=" O3_LIB_VERSION "##";
+
 /* Global variables */
 int32 GLB_Time;                   /* Global time variable for the mode execution */
 int16 StartUpLog[10];             /* Array to store start up log values          */
@@ -178,9 +183,13 @@ void deb_printf(int8 deb_level, const char *fmt, ...)
 
 void WelcomeMessage(void)
 {
+	/* Reference version tag so the linker does not discard it (--gc-sections).
+	   generate_update_package.sh extracts it from the ELF with strings | grep. */
+	(void)o3_lib_version_tag[0];
+
 	if( GLB_fsm_o3.DebLevel & D_LEV_SEND_WELCOME ){
 		COM_O3_PutString((uint8 *)"SEDECAL 03 - Operation mode FSM\r");
-		COM_O3_PutString((uint8 *)SW_VERSION);
+		COM_O3_PutString((uint8 *)O3_LIB_VERSION);
 		COM_O3_PutString((uint8 *)" ");
 		COM_O3_PutString((uint8 *)DATE_STAMP);
 		COM_O3_PutString((uint8 *)" ");

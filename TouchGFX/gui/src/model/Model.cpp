@@ -498,7 +498,7 @@ bool Model::isVaccumAvailable()
 
 char * Model::getSoftwareVersion()
 {
-	return (char *)SW_VERSION;
+	return (char *)O3_LIB_VERSION;
 }
 
 char * Model::getControlSoftwareVersion()
