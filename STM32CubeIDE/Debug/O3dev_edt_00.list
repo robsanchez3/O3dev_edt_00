@@ -39,25 +39,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  17 ExtFlashSection 00e9c03c  90000000  90000000  000af000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
- 18 .debug_info   002f6242  00000000  00000000  00f4b072  2**0
+ 18 .debug_info   002f626b  00000000  00000000  00f4b072  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_abbrev 00042ea3  00000000  00000000  012412b4  2**0
+ 19 .debug_abbrev 00042efd  00000000  00000000  012412dd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_aranges 0000e5d8  00000000  00000000  01284158  2**3
+ 20 .debug_aranges 0000e5d0  00000000  00000000  012841e0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_rnglists 00009fa7  00000000  00000000  01292730  2**0
+ 21 .debug_rnglists 00009fa1  00000000  00000000  012927b0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_macro  00078994  00000000  00000000  0129c6d7  2**0
+ 22 .debug_macro  00078994  00000000  00000000  0129c751  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_line   00114ce6  00000000  00000000  0131506b  2**0
+ 23 .debug_line   00114cac  00000000  00000000  013150e5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_str    00216b5d  00000000  00000000  01429d51  2**0
+ 24 .debug_str    00216b4c  00000000  00000000  01429d91  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 25 .comment      000000c2  00000000  00000000  016408ae  2**0
+ 25 .comment      000000c2  00000000  00000000  016408dd  2**0
                   CONTENTS, READONLY
- 26 .debug_frame  00038970  00000000  00000000  01640970  2**2
+ 26 .debug_frame  00038954  00000000  00000000  016409a0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 27 .debug_line_str 00000063  00000000  00000000  016792e0  2**0
+ 27 .debug_line_str 00000063  00000000  00000000  016792f4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -89139,8 +89139,8 @@ int8 DelegateDummy4(uint16 a, int32 *b)
 	...
 
 08049f84 <deb_printf>:
-extern uint32 GLB_TickCounter;
-extern uint32 GLB_FSM_ProcessEvent_Count;
+
+/* dep_o3_softwareReset() and dep_o3_beep() moved to dep_o3_<platform>.c */
 
 #if (1)
 void deb_printf(int8 deb_level, const char *fmt, ...)

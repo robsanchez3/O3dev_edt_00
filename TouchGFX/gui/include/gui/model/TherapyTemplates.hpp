@@ -11,8 +11,6 @@
 
 #include "BitmapDatabase.hpp"
 
-extern "C" FSM_O3_OPERATION_T GLB_fsm_o3;
-
 void setMaxFlow(void);
 void setMaxTime(void);
 

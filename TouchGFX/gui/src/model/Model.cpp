@@ -12,10 +12,6 @@
 #include "usbd_cdc_if.h"  // TODO analyze if still needed
 #include "BitmapDatabase.hpp"
 #include "cmsis_os2.h"
-
-extern "C" FSM_O3_OPERATION_T GLB_fsm_o3;
-extern "C" FSM_O3_EVENT_T GLB_FsmEvents;
-extern "C" uint32_t GLB_Time;
 extern "C" osSemaphoreId_t hSysConfigReady;  /* signals defaultTask that sys config is ready */
 ////extern "C" uint8_t usb_fatfs_initialized;
 

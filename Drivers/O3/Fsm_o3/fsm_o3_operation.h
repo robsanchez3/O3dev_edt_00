@@ -901,6 +901,14 @@ void ResetOption(void);
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/* Global variables defined in fsm_o3.c */
+extern FSM_O3_EVENT_T     GLB_FsmEvents;
+extern FSM_O3_OPERATION_T GLB_fsm_o3;
+
+/* Global variables defined in fsm_o3_operation.c */
+extern int32 GLB_Time;
+
 void WashingIni(void);
 
 // Dummy delegate function

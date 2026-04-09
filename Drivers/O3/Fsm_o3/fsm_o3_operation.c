@@ -35,10 +35,6 @@ CALIBRATION_REF_T CalibrationRef; /* Calibration temporal references            
 //uint8 IncreaseFlowPrecisionCounter = 0;   /* Since flow PID is slower (due to flow precision increase) it is            */
                                           /* necessary to wait more time to ensure flow target value in some situations */
 
-/* Externals */
-extern FSM_O3_EVENT_T     GLB_FsmEvents;
-extern FSM_O3_OPERATION_T GLB_fsm_o3;
-
 /* Macros */
 
 #define IS_HW_O3_SENSOR()                    (!(GLB_fsm_o3.HwConfig.O3Sensor == NO_O3_SENSOR))
@@ -139,9 +135,6 @@ int8 DelegateDummy4(uint16 a, int32 *b)
 }
 
 /* dep_o3_softwareReset() and dep_o3_beep() moved to dep_o3_<platform>.c */
-
-extern uint32 GLB_TickCounter;
-extern uint32 GLB_FSM_ProcessEvent_Count;
 
 #if (1)
 void deb_printf(int8 deb_level, const char *fmt, ...)

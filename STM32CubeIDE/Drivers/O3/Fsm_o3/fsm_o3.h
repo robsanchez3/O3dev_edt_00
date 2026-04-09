@@ -64,6 +64,12 @@ typedef struct
 extern "C" {
 #endif
 
+/* Global variables defined in fsm_o3.c */
+extern uint32 GLB_FSM_ProcessEvent_Count;
+extern uint32 GLB_TickCounter;
+extern uint32 GLB_SecondCounter;
+extern uint16 GLB_SyringeStopPattern[];
+
 void fsm_o3_main(void);
 void fsm_o3_timeHandler(void);
 

@@ -28,8 +28,6 @@ static CRC_STATE_E CrcState = CRC_ACTIVATED;
 static TIMER_CTX_T TimeOutTimer;
 
 
-extern uint32 GLB_TickCounter;  // TODO study if it is posiible to remove this dependence
-
 void Protocol_SetCRCStatus(CRC_STATE_E Status)
 {
   CrcState = Status;
@@ -467,13 +465,6 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,int8 * Message)
    strncat(Message,Crc,PROTOCOL_CRC_SIZE);
    strncat(Message,STRING_CMD_TAIL,strlen(STRING_CMD_TAIL) + 1);
    return PROTOCOL_RET_SUCCESS;
-}
-
-extern FSM_O3_OPERATION_T GLB_fsm_o3;
-
-uint8 FsmStateForDebug(void)
-{
-	return (GLB_fsm_o3.CurrentState == GLB_fsm_o3.LastState) ? GLB_fsm_o3.CurrentState->State_ID : GLB_fsm_o3.LastState->State_ID;
 }
 
 /**
