@@ -53,6 +53,7 @@ Application/User/generated/sw_therapyContainer_1Base.o: \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/Protocol.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Typedef.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Timer/Timer.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ScalableImage.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp \
@@ -117,6 +118,7 @@ Application/User/generated/sw_therapyContainer_1Base.o: \
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/Protocol.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Typedef.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Timer/Timer.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ScalableImage.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp:

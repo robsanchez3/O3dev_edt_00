@@ -54,6 +54,7 @@ Application/User/gui/sl_positionContainer.o: \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/Protocol.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Typedef.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Timer/Timer.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
@@ -114,6 +115,7 @@ Application/User/gui/sl_positionContainer.o: \
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/Protocol.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Typedef.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Timer/Timer.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:

@@ -52,6 +52,7 @@ Application/User/gui/FrontendApplication.o: \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/Protocol.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Typedef.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Timer/Timer.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/LCD16DebugPrinter.hpp
 ../../TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
 ../../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:
@@ -105,4 +106,5 @@ Application/User/gui/FrontendApplication.o: \
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/Protocol.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Typedef.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Timer/Timer.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/LCD16DebugPrinter.hpp:

@@ -19,19 +19,7 @@ enum MAIN_MENU_FORMATING {
 	MMF_END_SHIFT_2 = -4}
 ;
 
-enum THERAPY_TARGET_VALUES {TTV_CONCENTRATION,
-	TTV_FLOW,
-	TTV_TIME,
-	TTV_VOLUME,
-	TTV_DOSE,
-	TTV_PRESSURE,
-	TTV_VACUUM_TIME,
-	TTV_VACUUM_PRESSURE,
-	TTV_CALIBRATION_VAL_0,
-	TTV_CALIBRATION_VAL_1,
-	TTV_CALIBRATION_VAL_2,
-	TTV_MAX
-};
+#include <../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h>
 
 struct THERAPY_CTX{
 	int8_t  stepsNum;                                 // number of selection steps in current therapy
@@ -123,7 +111,6 @@ public:
 	void onSelectionAction(uint8_t selectionStep);
 	void onSliderAction(uint8_t step);
 	THERAPY_CTX * getTherapyCtx();
-	uint16_t ** getTherapyTargets();
 	void EndSelection(void);
 	void StartGeneration(void);
 	void CancelSelection(void);
@@ -192,7 +179,6 @@ protected:
 
 private:
 	int8_t      guiTherapy = -1;
-	uint16_t   *therapyTargetValues[TTV_MAX];
 //	THERAPY_CTX guiTherapyCtx;
 	int8_t deviceConfig[MAX_DEV_THERAPIES + 1] = { SYRINGE_AUTO_MODE, CONTINUOUS_MODE, INSUFFLATION_R_MODE, MANUAL_MODE, DENTAL_MODE, VACUUM_TIME_MODE, CLOSED_BAG_MODE, DOSE_MODE, SALINE_MODE, RFU_1_MODE, OPEN_BAG_MODE, SYRINGE_MANUAL_MODE, MMF_END };
 	int8_t deviceConfig_default[MAX_DEV_THERAPIES + 1] = { CONTINUOUS_MODE, MMF_END_SHIFT_1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };

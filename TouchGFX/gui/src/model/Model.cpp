@@ -420,20 +420,7 @@ int8_t Model::getGuiTherapy()
 
 void Model::initTherapyTargetValues()
 {
-	printf("Init therapyTargetValues...\n");
-#ifndef SIMULATOR
-	therapyTargetValues[TTV_CONCENTRATION] = (uint16_t *) &GLB_fsm_o3.ConfiguredO3Concentration;
-	therapyTargetValues[TTV_FLOW] = (uint16_t *) &GLB_fsm_o3.ConfiguredFlow;
-	therapyTargetValues[TTV_TIME] = (uint16_t *) &GLB_fsm_o3.ConfiguredTime;
-	therapyTargetValues[TTV_VOLUME] = (uint16_t *) &GLB_fsm_o3.ConfiguredVolume;// TODO Error in original code: ConfiguredVolume is uint32_t but therapyTargetValues is uint16_t* array. Check if it can cause problems and fix if needed
-	therapyTargetValues[TTV_DOSE] = (uint16_t *) &GLB_fsm_o3.ConfiguredDose;
-	therapyTargetValues[TTV_PRESSURE] = (uint16_t *) &GLB_fsm_o3.ConfiguredPressure;
-	therapyTargetValues[TTV_VACUUM_TIME] = (uint16_t *) &GLB_fsm_o3.ConfiguredVacuumTime;
-	therapyTargetValues[TTV_VACUUM_PRESSURE] = (uint16_t *) &GLB_fsm_o3.ConfiguredVacuumPressure;
-	therapyTargetValues[TTV_CALIBRATION_VAL_0] = (uint16_t *) &GLB_fsm_o3.CalibrationValue_0;
-	therapyTargetValues[TTV_CALIBRATION_VAL_1] = (uint16_t *) &GLB_fsm_o3.CalibrationValue_1; // TODO probably remove
-	therapyTargetValues[TTV_CALIBRATION_VAL_2] = (uint16_t *) &GLB_fsm_o3.CalibrationValue_2; // TODO probably remove
-#endif
+	printf("Init therapyTargetValues... (now handled by fsm_o3_api)\n");
 }
 
 void Model::initStorageDelegates(void)
@@ -449,16 +436,15 @@ void Model::setTherapyTargetValue(uint8_t valueID, uint16_t value)
 {
 //	printf("Model setTherapyTargetValue. valueID: %d, value: %d\n", valueID, value);
 #ifndef SIMULATOR
-	*therapyTargetValues[valueID] = value;
-	UpdateSecondSelectorValue();
+	fsm_o3_setTherapyParam(valueID, value);
 #endif
 }
 
 uint16_t Model::getTherapyTargetValue(uint8_t valueID)
 {
-//	printf("Model getTherapyTargetValue. valueID: %d, value: %d\n", valueID, *therapyTargetValues[valueID]);
+//	printf("Model getTherapyTargetValue. valueID: %d, value: %d\n", valueID, fsm_o3_getTherapyParam(guiTherapyCtx.therapyTargetValue[valueID]));
 #ifndef SIMULATOR
-	return *therapyTargetValues[guiTherapyCtx.therapyTargetValue[valueID]];
+	return (uint16_t)fsm_o3_getTherapyParam(guiTherapyCtx.therapyTargetValue[valueID]);
 #else
 	return 0;
 #endif
@@ -570,11 +556,6 @@ void Model::onSliderAction(uint8_t step)
 THERAPY_CTX * Model::getTherapyCtx()
 {
 	return &guiTherapyCtx;
-}
-
-uint16_t ** Model::getTherapyTargets()
-{
-	return therapyTargetValues;
 }
 
 void Model::EndSelection(void)
