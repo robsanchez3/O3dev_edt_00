@@ -32,6 +32,15 @@ void fsm_o3_sendGeneric(void);
 void   fsm_o3_setTherapyParam(uint8 paramId, uint32 value);
 uint32 fsm_o3_getTherapyParam(uint8 paramId);
 
+/* ---- Storage delegates ---- */
+void fsm_o3_registerStorage(
+    int8 (*startSave)(void),
+    int8 (*startLoad)(void),
+    int8 (*writeLine)(uint16, int32),
+    int8 (*readLine)(uint16, int32 *),
+    void (*stop)(void)
+);
+
 #ifdef __cplusplus
 }
 #endif

@@ -425,11 +425,13 @@ void Model::initTherapyTargetValues()
 
 void Model::initStorageDelegates(void)
 {
-	GLB_fsm_o3.StartStorageSave = (int8 (*)())openParamFileWrite;
-	GLB_fsm_o3.StartStorageLoad = (int8 (*)())openParamFileRead;
-	GLB_fsm_o3.WriteStorageLine = (int8 (*)(uint16, int32))writeLogLine;
-	GLB_fsm_o3.ReadStorageLine = (int8 (*)(uint16, int32 *))readLogLine;
-	GLB_fsm_o3.StoptStorage = closeParamFile;
+	fsm_o3_registerStorage(
+		(int8 (*)())openParamFileWrite,
+		(int8 (*)())openParamFileRead,
+		(int8 (*)(uint16, int32))writeLogLine,
+		(int8 (*)(uint16, int32 *))readLogLine,
+		closeParamFile
+	);
 }
 
 void Model::setTherapyTargetValue(uint8_t valueID, uint16_t value)

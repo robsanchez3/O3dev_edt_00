@@ -56,3 +56,19 @@ uint32 fsm_o3_getTherapyParam(uint8 paramId)
         default: return 0;
     }
 }
+
+/* ---- Storage delegates ---- */
+
+void fsm_o3_registerStorage(
+    int8 (*startSave)(void),
+    int8 (*startLoad)(void),
+    int8 (*writeLine)(uint16, int32),
+    int8 (*readLine)(uint16, int32 *),
+    void (*stop)(void))
+{
+    GLB_fsm_o3.StartStorageSave  = startSave;
+    GLB_fsm_o3.StartStorageLoad  = startLoad;
+    GLB_fsm_o3.WriteStorageLine  = writeLine;
+    GLB_fsm_o3.ReadStorageLine   = readLine;
+    GLB_fsm_o3.StoptStorage      = stop;
+}
