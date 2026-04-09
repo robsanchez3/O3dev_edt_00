@@ -355,7 +355,6 @@ FSM_O3_OPERATION_T GLB_fsm_o3 = {
 	/* DentalSupplying */
 	0
 };
-
 void fsm_o3_timeHandler(void)
 {
   GLB_TickCounter++;
@@ -363,8 +362,6 @@ void fsm_o3_timeHandler(void)
   /* Per second timer management */
   if (GLB_SecondCounter == 1000)
   {
-//	printf("Miliseconds since starting: %ld\n", GLB_TickCounter);
-
     GLB_SecondCounter = 0;
 
 #if 0
@@ -414,9 +411,7 @@ void fsm_o3_main(void)
 	}
 	else
 	{
-//		printf("In..........................................................................................................................................\n");
 		FSM_ProcessEvents();
-//		printf("Out..........................................................................................................................................\n");
 	}
 }
 

@@ -5,16 +5,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Drivers/O3/Dependencies/Com_o3.c \
-../Drivers/O3/Dependencies/Delay_o3.c 
+../Drivers/O3/Dependencies/dep_o3_stm32U599.c 
 
 C_DEPS += \
-./Drivers/O3/Dependencies/Com_o3.d \
-./Drivers/O3/Dependencies/Delay_o3.d 
+./Drivers/O3/Dependencies/dep_o3_stm32U599.d 
 
 OBJS += \
-./Drivers/O3/Dependencies/Com_o3.o \
-./Drivers/O3/Dependencies/Delay_o3.o 
+./Drivers/O3/Dependencies/dep_o3_stm32U599.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -24,7 +21,7 @@ Drivers/O3/Dependencies/%.o Drivers/O3/Dependencies/%.su Drivers/O3/Dependencies
 clean: clean-Drivers-2f-O3-2f-Dependencies
 
 clean-Drivers-2f-O3-2f-Dependencies:
-	-$(RM) ./Drivers/O3/Dependencies/Com_o3.cyclo ./Drivers/O3/Dependencies/Com_o3.d ./Drivers/O3/Dependencies/Com_o3.o ./Drivers/O3/Dependencies/Com_o3.su ./Drivers/O3/Dependencies/Delay_o3.cyclo ./Drivers/O3/Dependencies/Delay_o3.d ./Drivers/O3/Dependencies/Delay_o3.o ./Drivers/O3/Dependencies/Delay_o3.su
+	-$(RM) ./Drivers/O3/Dependencies/dep_o3_stm32U599.cyclo ./Drivers/O3/Dependencies/dep_o3_stm32U599.d ./Drivers/O3/Dependencies/dep_o3_stm32U599.o ./Drivers/O3/Dependencies/dep_o3_stm32U599.su
 
 .PHONY: clean-Drivers-2f-O3-2f-Dependencies
 

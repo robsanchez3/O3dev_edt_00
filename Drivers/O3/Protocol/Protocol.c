@@ -5,12 +5,12 @@
  *      Author:
  */
 
-//#include <Dependencies/Com_o3.h>
-#include "../Dependencies/Com_o3.h"
+#include "../Dependencies/dep_o3.h"
 //#include <Protocol/Protocol.h>
 #include "Protocol.h"
 //#include "../OZTDUart.h"                 // TODO......  improve path
 #include "../Fsm_o3/fsm_o3_operation.h"  // Necessary for FSM_O3_OPERATION_T needed for debugging
+#include <stdlib.h>
 
 /**
  * @brief String to store the last received command response.
@@ -502,10 +502,11 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
   {
     do
     {
-      COM_O3_PutString((uint8_t *)Message);
+      dep_o3_com_putString((uint8_t *)Message);
       deb_printf(D_LEV_0, "%s\n", Message); // SWV debug
       deb_printf(D_LEV_1, "Send(%02d) -> %s\n", (GLB_fsm_o3.CurrentState == GLB_fsm_o3.LastState) ? GLB_fsm_o3.CurrentState->State_ID : GLB_fsm_o3.LastState->State_ID, Message); // SWV debug
       RetVal = Protocol_GetResponse();
+
     }while ( (RetVal != CMD_RESPONSE_ACK) && (RetVal != CMD_RESPONSE_KEY_SIMULATION) && (++NumRetries < 3) );
 
     /* If CMD_CRC_SET command is not acknowledged, leave CRC status as it was */
@@ -523,7 +524,7 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
     }
   }
 }
-
+// TODO: cmsis_os2.h/FreeRTOS.h dependency removed - route through Dependencies/ for portability
 int8 Protocol_GetResponse(void)
 {
   uint8 i=0;
@@ -532,32 +533,32 @@ int8 Protocol_GetResponse(void)
   ClearLastResponseString();
 /*TIMER_Start(&TimeOutTimer,MS_TO_CLOCK(150));*/
 
-  TIMER_Start(&TimeOutTimer,60000);
+//TIMER_Start(&TimeOutTimer,60000); // TODO review timeout value
+  TIMER_Start(&TimeOutTimer,1000);
+
   do
   {
-	if(COM_O3_DataAvailable())
+	if(dep_o3_com_dataAvailable())
 	{
-      COM_O3_GetChar((uint8_t *) &LastResponseString[i]);
+      dep_o3_com_getChar((uint8_t *) &LastResponseString[i]);
 
       if (LastResponseString[i] == '\r')
       {
         break;
       }
-      else if (LastResponseString[i] != 0)
+      else if( (LastResponseString[i] != 0) && (i < MAX_RESPONSE_LENGTH))
       {
-        if (i < MAX_RESPONSE_LENGTH)
-        {
-          i++;
-        }
+        i++;
       }
 	}
     if (TIMER_State(&TimeOutTimer) == TIMER_STATE_EXPIRED)
-    {
-    	deb_printf(D_LEV_0, "Serial time out\n"); // SWV debug
-    	deb_printf(D_LEV_1, "Serial time out\n"); // SWV debug
-        return PROTOCOL_RET_TIMEOUT;
-    }
+	{
+	  deb_printf(D_LEV_0, "Serial time out\n"); // SWV debug
+	  deb_printf(D_LEV_1, "Serial time out\n"); // SWV debug
+	  return PROTOCOL_RET_TIMEOUT;
+	}
   }while (1);
+
 
   deb_printf(D_LEV_0, "%s\n", LastResponseString); // SWV debug
   deb_printf(D_LEV_1, "Rec (%02d) -> %s\n", (GLB_fsm_o3.CurrentState == GLB_fsm_o3.LastState) ? GLB_fsm_o3.CurrentState->State_ID : GLB_fsm_o3.LastState->State_ID, LastResponseString); // SWV debug
@@ -1179,5 +1180,4 @@ void Protocol_GetLastResponse(PROTOCOL_RESPONSE_T * Response)
   }
   ClearLastResponseString();
 }
-
 

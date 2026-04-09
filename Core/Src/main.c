@@ -98,7 +98,7 @@ int _write(int file, char *ptr, int len)
 }
 
 
-void COM_O3_PollRx(void);
+//////////////////void COM_O3_PollRx(void);
 
 #endif
 

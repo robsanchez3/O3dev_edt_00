@@ -604,11 +604,7 @@ typedef struct
 }FSM_O3_OPERATION_T;
 
 
-// Perform a software reset
-void SoftwareReset(void);
-
-// Activate beep sound
-void Beep(void);
+// dep_o3_softwareReset() and dep_o3_beep() declared in dep_o3.h
 
 // Print welcome message via UART
 void WelcomeMessage(void);

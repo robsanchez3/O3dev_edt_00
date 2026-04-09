@@ -5,8 +5,7 @@
  *      Author:
  */
 
-//#include <Dependencies/Com_o3.h>
-#include "../Dependencies/Com_o3.h"
+#include "../Dependencies/dep_o3.h"
 //#include <Protocol/Protocol.h>
 #include "Protocol.h"
 //#include "../OZTDUart.h"                 // TODO......  improve path
@@ -503,7 +502,7 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
   {
     do
     {
-      COM_O3_PutString((uint8_t *)Message);
+      dep_o3_com_putString((uint8_t *)Message);
       deb_printf(D_LEV_0, "%s\n", Message); // SWV debug
       deb_printf(D_LEV_1, "Send(%02d) -> %s\n", (GLB_fsm_o3.CurrentState == GLB_fsm_o3.LastState) ? GLB_fsm_o3.CurrentState->State_ID : GLB_fsm_o3.LastState->State_ID, Message); // SWV debug
       RetVal = Protocol_GetResponse();
@@ -525,19 +524,7 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
     }
   }
 }
-// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-// OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-#include "cmsis_os2.h"////  TOTDO sacar el delay como dependencia de este módulo, se ha añadido para evitar bloqueos en caso de no recibir respuesta, pero sería mejor implementar un mecanismo de espera que no dependa de un RTOS específico.
-#include "FreeRTOS.h"
-   #include "task.h"
-//COM_O3_GetChar_Bis
+// TODO: cmsis_os2.h/FreeRTOS.h dependency removed - route through Dependencies/ for portability
 int8 Protocol_GetResponse(void)
 {
   uint8 i=0;
@@ -551,9 +538,9 @@ int8 Protocol_GetResponse(void)
 
   do
   {
-	if(COM_O3_DataAvailable())
+	if(dep_o3_com_dataAvailable())
 	{
-      COM_O3_GetChar((uint8_t *) &LastResponseString[i]);
+      dep_o3_com_getChar((uint8_t *) &LastResponseString[i]);
 
       if (LastResponseString[i] == '\r')
       {

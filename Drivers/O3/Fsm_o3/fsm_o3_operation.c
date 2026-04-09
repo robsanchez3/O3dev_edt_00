@@ -13,11 +13,18 @@ compatibilidad e comunicaciones serie o I2C
 #include "stdlib.h"
 //#include "../OZTDUart.h"
 //#include "OZTDUart.h"
-#include "../Dependencies/Com_o3.h"
-#include "../Dependencies/Delay_o3.h"
+#include "../Dependencies/dep_o3.h"
 //#include "cmsis_os.h" //  osDelay
 #include <stdarg.h>
 
+/* Embed O3 version string in the binary so generate_update_package.sh can
+   extract it with "strings | grep" and populate manifest.ini automatically.
+   __attribute__((used)) prevents the linker from discarding it. */
+#ifdef _MSC_VER
+__declspec(selectany) const volatile char o3_lib_version_tag[] = "##O3_LIB_VERSION=" O3_LIB_VERSION "##";
+#else
+const volatile char __attribute__((used)) o3_lib_version_tag[] = "##O3_LIB_VERSION=" O3_LIB_VERSION "##";
+#endif
 /* Global variables */
 int32 GLB_Time;                   /* Global time variable for the mode execution */
 int16 StartUpLog[10];             /* Array to store start up log values          */
@@ -131,13 +138,7 @@ int8 DelegateDummy4(uint16 a, int32 *b)
 	return 0;
 }
 
-void SoftwareReset(void)
-{
-}
-
-void Beep(void)
-{
-}
+/* dep_o3_softwareReset() and dep_o3_beep() moved to dep_o3_<platform>.c */
 
 extern uint32 GLB_TickCounter;
 extern uint32 GLB_FSM_ProcessEvent_Count;
@@ -152,10 +153,10 @@ void deb_printf(int8 deb_level, const char *fmt, ...)
 	{
         if(!(GLB_fsm_o3.DebLevel & D_LEV_HIDE_TIME_STAMP))
         {
-            printf("%010ld . %010ld: ", GLB_FSM_ProcessEvent_Count, GLB_TickCounter);
+            dep_o3_printf("%010ld . %010ld: ", GLB_FSM_ProcessEvent_Count, GLB_TickCounter);
         }
         va_start(args, fmt);
-		vprintf(fmt, args);
+		dep_o3_vprintf(fmt, args);
 		va_end(args);
 	}
 }
@@ -167,10 +168,10 @@ void deb_printf(int8 deb_level, const char *fmt, ...)
 	//GLB_fsm_o3.DebLevel = D_LEV_6;
     if( (signed char)GLB_fsm_o3.DebLevel == (signed char)deb_level )
 	{
-        printf("%010ld; %010ld: ", GLB_FSM_ProcessEvent_Count, GLB_TickCounter);
+        dep_o3_printf("%010ld; %010ld: ", GLB_FSM_ProcessEvent_Count, GLB_TickCounter);
 
 		va_start(args, fmt);
-		vprintf(fmt, args);
+		dep_o3_vprintf(fmt, args);
 		va_end(args);
 	}
 }
@@ -178,14 +179,18 @@ void deb_printf(int8 deb_level, const char *fmt, ...)
 
 void WelcomeMessage(void)
 {
+	/* Reference version tag so the linker does not discard it (--gc-sections).
+	   generate_update_package.sh extracts it from the ELF with strings | grep. */
+	(void)o3_lib_version_tag[0];
+
 	if( GLB_fsm_o3.DebLevel & D_LEV_SEND_WELCOME ){
-		COM_O3_PutString((uint8 *)"SEDECAL 03 - Operation mode FSM\r");
-		COM_O3_PutString((uint8 *)O3_LIB_VERSION);
-		COM_O3_PutString((uint8 *)" ");
-		COM_O3_PutString((uint8 *)DATE_STAMP);
-		COM_O3_PutString((uint8 *)" ");
-		COM_O3_PutString((uint8 *)TIME_STAMP);
-		COM_O3_PutString((uint8 *)"\r");
+		dep_o3_com_putString((uint8 *)"SEDECAL 03 - Operation mode FSM\r");
+		dep_o3_com_putString((uint8 *)O3_LIB_VERSION);
+		dep_o3_com_putString((uint8 *)" ");
+		dep_o3_com_putString((uint8 *)DATE_STAMP);
+		dep_o3_com_putString((uint8 *)" ");
+		dep_o3_com_putString((uint8 *)TIME_STAMP);
+		dep_o3_com_putString((uint8 *)"\r");
 	}
 }
 
@@ -958,7 +963,7 @@ void GotoAdjustPressCompFactor(void)
   {
     Command.Command = CMD_TEST_COM;
     ManageCommand(&Command,&Response);
-    Delay_o3_ms(1000);
+    dep_o3_delay_ms(1000);
   }
 #endif
 //  GLB_fsm_o3.CurrentState = &GLB_fsm_o3.States[STATE_SELECT_PRESS_COMP_FACTOR];
@@ -989,7 +994,7 @@ void GotoError(uint16 ErrorState)
 	{
 		if (ErrorState != NO_ERROR)
 		{
-			Beep();
+			dep_o3_beep();
 			StopManualGap();
 			TIMER_Stop(&GLB_fsm_o3.DataReadTimer);
 			TIMER_Stop(&GLB_fsm_o3.KeepAliveTimer);
@@ -1021,7 +1026,7 @@ void GotoError(void)
 		{
 			printf("Goto error %d (depressure and go to error state)\n", GLB_fsm_o3.ErrorState);
 
-			Beep();
+			dep_o3_beep();
 			StopManualGap();
 			TIMER_Stop(&GLB_fsm_o3.DataReadTimer);
 			TIMER_Stop(&GLB_fsm_o3.KeepAliveTimer);
@@ -1058,7 +1063,7 @@ void ExitError(void)
 		case TRANSFORMER_ERROR:
 		case CAL_ERROR:         GotoRepose();
 		                        break;
-		default:                SoftwareReset();
+		default:                dep_o3_softwareReset();
 		}
 	}
 	else
@@ -1411,7 +1416,7 @@ void TestCurrentStart(void)
     ModWidth = 1024 - Response.Data[0];
 
     SwitchOutputValves(OUTPUT_TO_CATALYSER);
-	Delay_o3_ms(500);
+	dep_o3_delay_ms(500);
 
     if( (GLB_fsm_o3.GenerationMode == O3_GENERATION_BASED_ON_O3_PHOTOSENSOR) )
     {
@@ -1592,17 +1597,18 @@ void LoadParameters(void)
 
 void Initialize(void)
 {
+  dep_o3_com_init();  // clear reset response from UART buffer
+
   WelcomeMessage();
 
-  Delay_o3_ms(1000);
+  dep_o3_delay_ms(1000);
   SendReset();
-  Delay_o3_ms(1000);
-  COM_O3_Init();  // clear reset response from UART buffer
+  dep_o3_delay_ms(1000);
 
   ClearErrors();
   TIMER_Start(&GLB_fsm_o3.WaitForServiceTimer, SERVICE_ENTRY_TIME_WINDOW);
   TIMER_Start(&GLB_fsm_o3.AnimationTimer, ANIMATION_PERIOD_MS);
-  Beep();
+  dep_o3_beep();
 }
 
 int16 GetInstantAbsolutePressure(uint16 PressAtm)
@@ -2336,7 +2342,7 @@ void KeyOnPushForInsufflation(void)
     if(GLB_fsm_o3.InsufflationState == INSUFFLATION_STATE_ON)
     {
       SwitchOutputValves(OUTPUT_TO_BOTH);
-      Delay_o3_ms(150);
+      dep_o3_delay_ms(150);
       SwitchOutputValves(OUTPUT_TO_CATALYSER);
       GLB_fsm_o3.CumulatedOutputVolume = GLB_fsm_o3.CurrentOutputVolume;
       GLB_fsm_o3.FreezeRemainingTime = 1;
@@ -2407,7 +2413,7 @@ void KeyOnRelease(void)
   if ( IS_SYRINGE_MANUAL_MODE() )
   {
 	  SwitchOutputValves(OUTPUT_TO_BOTH);
-	  Delay_o3_ms(150);
+	  dep_o3_delay_ms(150);
 	  GLB_fsm_o3.SyringeManualState = SYRINGE_MANUAL_STATE_PAUSED;
   }
   if ( IS_MANUAL_MODE() || IS_SYRINGE_MANUAL_MODE() )
@@ -2426,7 +2432,7 @@ void ReleasePressureDuringGeneration(void)
 	GLB_fsm_o3.DepressureSeconds = 2; // force graphic interface to show the depressurizing icon
 
     SwitchOutputValves(OUTPUT_TO_BOTH);
-    Delay_o3_ms(150);
+    dep_o3_delay_ms(150);
     SwitchOutputValves(OUTPUT_TO_EXTERIOR);
 }
 
@@ -2439,7 +2445,7 @@ void PauseAndReleasePressure(void)
     else
     {
         SwitchOutputValves(OUTPUT_TO_BOTH);
-        Delay_o3_ms(150);
+        dep_o3_delay_ms(150);
         SwitchOutputValves(OUTPUT_TO_CATALYSER);
 	}
 }
@@ -2451,9 +2457,9 @@ void UpdateGeneratingForDental(void)
 	{
 		if( !GLB_fsm_o3.PressureAlertDone )
 		{
-			Beep();
-			Beep();
-			Beep();
+			dep_o3_beep();
+			dep_o3_beep();
+			dep_o3_beep();
 			GLB_fsm_o3.PressureAlertDone = TRUE;
 		}
 	}
@@ -2482,7 +2488,7 @@ void UpdateGeneratingForDental(void)
 		{
 			if(GLB_fsm_o3.DentalSupplying == FALSE)
 			{
-				Beep();
+				dep_o3_beep();
 				GLB_fsm_o3.ReferenceOutputVolume = GetCumulatedVolume();
 			}
 			GLB_fsm_o3.DentalSupplying = TRUE;
@@ -2537,7 +2543,7 @@ void UpdateGeneratingForSyringe(void)
 			snprintf(&SyringeDebugValues[8], 5, "%04X", (uint16)GLB_fsm_o3.SyringeCtrl.PressStableTime);
 			snprintf(&SyringeDebugValues[12], 5, "%04X", (uint16)GLB_fsm_o3.SyringeCtrl.OperatingPressureBefore);
 			SyringeDebugValues[16] = 0;
-			COM_O3_PutString((uint8 *)SyringeDebugValues);
+			dep_o3_com_putString((uint8 *)SyringeDebugValues);
 
 			/* Determine syringe type */
 			switch (SYRINGE_Type(&GLB_fsm_o3.SyringeCtrl))
@@ -2987,7 +2993,7 @@ void StartVacuumGeneration(void)
 	PROTOCOL_RESPONSE_T Response = {0};
 
 	SwitchOutputValves(OUTPUT_TO_CATALYSER);
-	Delay_o3_ms(200);/*TODO: measure real 200 ms*/
+	dep_o3_delay_ms(200);/*TODO: measure real 200 ms*/
 
 	Command.Command = CMD_GET_SENSOR;
 	snprintf(Command.Identifier, 5, "%X", ID_SENSOR_PRESSURE_1);
@@ -3110,7 +3116,7 @@ void O3SensorCalibrationEnd(void)
 			/* Send keep alive */
 			Command.Command = CMD_TEST_COM;
 			ManageCommand(&Command,&Response);
-			Delay_o3_ms(50);
+			dep_o3_delay_ms(50);
 
 			if(GLB_FsmEvents.Cancel)
 			{
@@ -3159,7 +3165,7 @@ void O3SensorCalibrationEnd(void)
 	Command.Position[0] = PULSES_FOR_O3_CALIBRATION_SEC_1_POSITION;
 	Command.Value = (int16)GLB_fsm_o3.CalibrationValue_0;
 	ManageCommand(&Command,&Response);
-////	Delay_o3_ms(200); /*  Evaluate if necessary, only for V3*/
+////	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
 
 	/* Prepare reference value calibration step */
 
@@ -3198,7 +3204,7 @@ void CalibrateO3_Ref_2_Ok(void)
 	Command.Position[0] = PULSES_FOR_O3_CALIBRATION_SEC_2_POSITION;
 	Command.Value = (int16)GLB_fsm_o3.CalibrationValue_1;
 	ManageCommand(&Command,&Response);
-///	Delay_o3_ms(200); /*  Evaluate if necessary, only for V3*/
+///	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
 }
 
 void CalibrateO3_Ref_2_Value(void)
@@ -3228,12 +3234,12 @@ void CalibrateO3_Ref_3_Ok(void)
 	Command.Position[0] = PULSES_FOR_O3_CALIBRATION_SEC_3_POSITION;
 	Command.Value = (int16)GLB_fsm_o3.CalibrationValue_2;
 	ManageCommand(&Command,&Response);
-///	Delay_o3_ms(200);  /* only for V3 evaluate if necessary*/
+///	dep_o3_delay_ms(200);  /* only for V3 evaluate if necessary*/
 
 	Command.Position[0] = PULSES_FOR_1_MG_POSITION;
 	Command.Value = (int16)GLB_fsm_o3.CalibrationValue_2;
 	ManageCommand(&Command,&Response);
-//	Delay_o3_ms(200);  /* only for V3 evaluate if necessary*/
+//	dep_o3_delay_ms(200);  /* only for V3 evaluate if necessary*/
 
 	SendReset();
 	GotoService();
@@ -3582,7 +3588,7 @@ int16 MeasureCurrent(void)
     /* measure current */
     for( i = 0; i < 4; i++ )
     {
-    	Delay_o3_ms(20);
+    	dep_o3_delay_ms(20);
         sprintf((char *)Command.Identifier, "%X", ID_SENSOR_CURRENT);
     	ManageCommand(&Command,&Response);
         Current += Response.Data[0];
@@ -3655,7 +3661,7 @@ void UpdateResonanceFrequencySearch(void)
             /* just delay */
             for(i=0; i<1; i++)
             {
-              Delay_o3_ms(1000);
+              dep_o3_delay_ms(1000);
               Command.Command = CMD_TEST_COM;
               ManageCommand(&Command,&Response);
             }
