@@ -6,14 +6,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Drivers/O3/Fsm_o3/fsm_o3.c \
+../Drivers/O3/Fsm_o3/fsm_o3_api.c \
 ../Drivers/O3/Fsm_o3/fsm_o3_operation.c 
 
 C_DEPS += \
 ./Drivers/O3/Fsm_o3/fsm_o3.d \
+./Drivers/O3/Fsm_o3/fsm_o3_api.d \
 ./Drivers/O3/Fsm_o3/fsm_o3_operation.d 
 
 OBJS += \
 ./Drivers/O3/Fsm_o3/fsm_o3.o \
+./Drivers/O3/Fsm_o3/fsm_o3_api.o \
 ./Drivers/O3/Fsm_o3/fsm_o3_operation.o 
 
 
@@ -24,7 +27,7 @@ Drivers/O3/Fsm_o3/%.o Drivers/O3/Fsm_o3/%.su Drivers/O3/Fsm_o3/%.cyclo: ../Drive
 clean: clean-Drivers-2f-O3-2f-Fsm_o3
 
 clean-Drivers-2f-O3-2f-Fsm_o3:
-	-$(RM) ./Drivers/O3/Fsm_o3/fsm_o3.cyclo ./Drivers/O3/Fsm_o3/fsm_o3.d ./Drivers/O3/Fsm_o3/fsm_o3.o ./Drivers/O3/Fsm_o3/fsm_o3.su ./Drivers/O3/Fsm_o3/fsm_o3_operation.cyclo ./Drivers/O3/Fsm_o3/fsm_o3_operation.d ./Drivers/O3/Fsm_o3/fsm_o3_operation.o ./Drivers/O3/Fsm_o3/fsm_o3_operation.su
+	-$(RM) ./Drivers/O3/Fsm_o3/fsm_o3.cyclo ./Drivers/O3/Fsm_o3/fsm_o3.d ./Drivers/O3/Fsm_o3/fsm_o3.o ./Drivers/O3/Fsm_o3/fsm_o3.su ./Drivers/O3/Fsm_o3/fsm_o3_api.cyclo ./Drivers/O3/Fsm_o3/fsm_o3_api.d ./Drivers/O3/Fsm_o3/fsm_o3_api.o ./Drivers/O3/Fsm_o3/fsm_o3_api.su ./Drivers/O3/Fsm_o3/fsm_o3_operation.cyclo ./Drivers/O3/Fsm_o3/fsm_o3_operation.d ./Drivers/O3/Fsm_o3/fsm_o3_operation.o ./Drivers/O3/Fsm_o3/fsm_o3_operation.su
 
 .PHONY: clean-Drivers-2f-O3-2f-Fsm_o3
 

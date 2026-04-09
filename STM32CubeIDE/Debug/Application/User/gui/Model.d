@@ -131,6 +131,8 @@ Application/User/gui/Model.o: \
  ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
+ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h \
+ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_operation.h \
  ../../FATFS/App/fatfs.h ../../Drivers/Vendor/FatFs/source/ff.h \
  ../../FATFS/Target/ffconf.h \
  ../../Drivers/Vendor/FatFs/source/ff_gen_drv.h \
@@ -272,6 +274,8 @@ Application/User/gui/Model.o: \
 ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
 ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h:
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_operation.h:
 ../../FATFS/App/fatfs.h:
 ../../Drivers/Vendor/FatFs/source/ff.h:
 ../../FATFS/Target/ffconf.h:

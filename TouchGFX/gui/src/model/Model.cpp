@@ -12,6 +12,7 @@
 #include "usbd_cdc_if.h"  // TODO analyze if still needed
 #include "BitmapDatabase.hpp"
 #include "cmsis_os2.h"
+#include "../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h"
 extern "C" osSemaphoreId_t hSysConfigReady;  /* signals defaultTask that sys config is ready */
 ////extern "C" uint8_t usb_fatfs_initialized;
 
@@ -424,7 +425,7 @@ void Model::initTherapyTargetValues()
 	therapyTargetValues[TTV_CONCENTRATION] = (uint16_t *) &GLB_fsm_o3.ConfiguredO3Concentration;
 	therapyTargetValues[TTV_FLOW] = (uint16_t *) &GLB_fsm_o3.ConfiguredFlow;
 	therapyTargetValues[TTV_TIME] = (uint16_t *) &GLB_fsm_o3.ConfiguredTime;
-	therapyTargetValues[TTV_VOLUME] = (uint16_t *) &GLB_fsm_o3.ConfiguredVolume;
+	therapyTargetValues[TTV_VOLUME] = (uint16_t *) &GLB_fsm_o3.ConfiguredVolume;// TODO Error in original code: ConfiguredVolume is uint32_t but therapyTargetValues is uint16_t* array. Check if it can cause problems and fix if needed
 	therapyTargetValues[TTV_DOSE] = (uint16_t *) &GLB_fsm_o3.ConfiguredDose;
 	therapyTargetValues[TTV_PRESSURE] = (uint16_t *) &GLB_fsm_o3.ConfiguredPressure;
 	therapyTargetValues[TTV_VACUUM_TIME] = (uint16_t *) &GLB_fsm_o3.ConfiguredVacuumTime;
@@ -581,7 +582,7 @@ void Model::EndSelection(void)
 //	printf("End of selection (model)...\n");
 #ifndef SIMULATOR
 //	Experimental_LaunchTherapy(); //TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Enter = 1;
+	fsm_o3_sendEnter();
 
 	if(getFsmState() >= STATE_WAITING_FOR_SERVICE)
 	{
@@ -609,7 +610,7 @@ void Model::StartGeneration(void)
 	printf("Start generation (model)...\n");
 #ifndef SIMULATOR
 //	Experimental_LaunchTherapy(); //TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Enter = 1;
+	fsm_o3_sendEnter();
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoAdjustingScreenNoTransition();
 #endif
 }
@@ -633,7 +634,7 @@ void Model::StopGeneration(void)
 	printf("Stop generation (model)...\n");
 #ifndef SIMULATOR
 //	Experimental_StopTherapy(); //TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Cancel = 1;
+	fsm_o3_sendCancel();
 #endif
 }
 
@@ -642,7 +643,7 @@ void Model::exitError(void)
 	printf("Exit error (model)...\n");
 #ifndef SIMULATOR
 //	ExitError(); //TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Cancel = 1;
+	fsm_o3_sendCancel();
 #endif
 }
 
@@ -651,7 +652,7 @@ void Model::userCancelled(void)
 //	printf("User cancelled (model)...\n");
 #ifndef SIMULATOR
 //	GotoUserCanceled(); //TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Cancel = 1;
+	fsm_o3_sendCancel();
 	GLB_fsm_o3.TemperatureMonitoring = 0;
 #endif
 }
@@ -661,7 +662,7 @@ void Model::userOk(void)
 //	printf("User OK (model)...\n");
 #ifndef SIMULATOR
 //	KeyOnPush();//TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Enter = 1;
+	fsm_o3_sendEnter();
 #endif
 }
 
@@ -670,7 +671,7 @@ void Model::userOkRelease(void)
 //	printf("User OK released (model)...\n");
 #ifndef SIMULATOR
 //	KeyOnRelease();//TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Generic = 1; // to handle OK release event
+	fsm_o3_sendGeneric(); // to handle OK release event
 #endif
 }
 
@@ -679,7 +680,7 @@ void Model::cancelWashing(void)
 	printf("Washing cancelled (model)...\n");
 #ifndef SIMULATOR
 //	CancelWashing(); //TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Cancel = 1;
+	fsm_o3_sendCancel();
 #endif
 }
 
@@ -688,7 +689,7 @@ void Model::washingExtesion(void)
 	printf("Washing extension (model)...\n");
 #ifndef SIMULATOR
 //	WashingExtesion(); //TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Enter = 1;
+	fsm_o3_sendEnter();
 #endif
 }
 
@@ -697,7 +698,7 @@ void Model::gotoRepose(void)
 //	printf("Go to repose (model)...\n");
 #ifndef SIMULATOR
 //	GotoMainMenu(); //TODO: Launch synchronously from state machine
-	GLB_FsmEvents.Cancel = 1;
+	fsm_o3_sendCancel();
 #endif
 }
 
