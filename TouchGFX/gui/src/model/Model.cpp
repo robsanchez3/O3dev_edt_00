@@ -407,8 +407,8 @@ void Model::setGuiTherapy(int8_t value)
 		CalibratePressureInit();
 	}
 #ifndef SIMULATOR
-	GLB_fsm_o3.Option = ConvertTherapyOption((OPERATION_MODE_E) value);
-	GLB_fsm_o3.TemperatureMonitoring = 1;
+	fsm_o3_setOption(ConvertTherapyOption((OPERATION_MODE_E) value));
+	fsm_o3_setTemperatureMonitoring(1);
 //	printf("Model setGuiTherapy: value: %d - GLB_fsm_o3.Option: %d\n", value, GLB_fsm_o3.Option);
 #endif
 }
@@ -456,8 +456,8 @@ void Model::setGenerationMode(bool state)
 {
 //	GLB_fsm_o3.GenerationMode = state ? O3_GENERATION_BASED_ON_O3_PHOTOSENSOR : O3_GENERATION_BASED_ON_TUBE_CALIBRATION;
 //	printf("GenerationModeon on Model setGenerationMode: %d\n", GLB_fsm_o3.GenerationMode);
-	GLB_fsm_o3.UsrConfig.userGenerationMode = state ? O3_GENERATION_BASED_ON_O3_PHOTOSENSOR : O3_GENERATION_BASED_ON_TUBE_CALIBRATION;
-	saveUserConfig(&GLB_fsm_o3.UsrConfig);
+	fsm_o3_setGenerationMode(state ? O3_GENERATION_BASED_ON_O3_PHOTOSENSOR : O3_GENERATION_BASED_ON_TUBE_CALIBRATION);
+	saveUserConfig(&GLB_fsm_o3.UsrConfig); // TODO: migrate to API getter in step 5
 	printf("GenerationModeon on Model setGenerationMode: %d\n", GLB_fsm_o3.UsrConfig.userGenerationMode);
 }
 
@@ -636,7 +636,7 @@ void Model::userCancelled(void)
 #ifndef SIMULATOR
 //	GotoUserCanceled(); //TODO: Launch synchronously from state machine
 	fsm_o3_sendCancel();
-	GLB_fsm_o3.TemperatureMonitoring = 0;
+	fsm_o3_setTemperatureMonitoring(0);
 #endif
 }
 
@@ -865,7 +865,7 @@ bool Model::refreshGenerationInfo()
 void Model::clearGenerationInfoFlag()
 {
 #ifndef SIMULATOR
-	GLB_fsm_o3.RefreshScreen = 0;
+	fsm_o3_setRefreshScreen(0);
 #endif
 }
 
@@ -952,7 +952,7 @@ void Model::setupTherapyContext(int8_t therapyID)// TODO: refactor name to tHera
 	print_guiTherapyCtx(&guiTherapyCtx); // debug
 
 	/*  Initialize therapy specific default values */
-	GLB_fsm_o3.PressThreshold = guiTherapyCtx.maxPressure;
+	fsm_o3_setPressThreshold(guiTherapyCtx.maxPressure);
 
 	/*
 	 * First value in this loop is corrupted to 0 value.
@@ -1311,7 +1311,7 @@ void Model::setupTherapyContextBack(int8_t therapyID)
 		guiTherapyCtx.okButtonVisible = false;
 		guiTherapyCtx.bigPauseButtonVisible = false;
 
-		GLB_fsm_o3.ConfiguredTime = 1; // default time value for this therapy TODO consider moving outside the graphic resources....
+		fsm_o3_setTherapyParam(TTV_TIME, 1); // default time value for this therapy TODO consider moving outside the graphic resources....
 		break;
 	case SYRINGE_MANUAL_MODE:
 		guiTherapyCtx.stepsNum = 1;
@@ -1329,7 +1329,7 @@ void Model::setupTherapyContextBack(int8_t therapyID)
 		guiTherapyCtx.okButtonVisible = true;
 		guiTherapyCtx.bigPauseButtonVisible = false;
 
-		GLB_fsm_o3.ConfiguredTime = 10; // default time value for this therapy
+		fsm_o3_setTherapyParam(TTV_TIME, 10); // default time value for this therapy
 		break;
 	case CONTINUOUS_MODE:
 
@@ -1464,7 +1464,7 @@ void Model::setupTherapyContextBack(int8_t therapyID)
 		guiTherapyCtx.okButtonVisible = true;
 		guiTherapyCtx.bigPauseButtonVisible = false;
 
-		GLB_fsm_o3.ConfiguredTime = 10; // default time value for this therapy
+		fsm_o3_setTherapyParam(TTV_TIME, 10); // default time value for this therapy
 		break;
 	case DENTAL_MODE:
 		guiTherapyCtx.stepsNum = 3;
@@ -1496,7 +1496,7 @@ void Model::setupTherapyContextBack(int8_t therapyID)
 		guiTherapyCtx.okButtonVisible = false;
 		guiTherapyCtx.bigPauseButtonVisible = false;
 
-		GLB_fsm_o3.ConfiguredTime = 1; // default time value for this therapy TODO consider moving outside the graphic resources....
+		fsm_o3_setTherapyParam(TTV_TIME, 1); // default time value for this therapy TODO consider moving outside the graphic resources....
 		break;
 	case DOSE_MODE:
 		guiTherapyCtx.stepsNum = 2;

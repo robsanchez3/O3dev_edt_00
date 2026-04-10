@@ -467,11 +467,6 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,int8 * Message)
    return PROTOCOL_RET_SUCCESS;
 }
 
-uint8 FsmStateForDebug(void)
-{
-	return (GLB_fsm_o3.CurrentState == GLB_fsm_o3.LastState) ? GLB_fsm_o3.CurrentState->State_ID : GLB_fsm_o3.LastState->State_ID;
-}
-
 /**
  * @brief Protocol_SendCommand
  *

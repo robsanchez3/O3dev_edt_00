@@ -57,6 +57,33 @@ uint32 fsm_o3_getTherapyParam(uint8 paramId)
     }
 }
 
+/* ---- Configuration setters ---- */
+
+void fsm_o3_setOption(uint16 opt)
+{
+    GLB_fsm_o3.Option = (OPERATION_MODE_E)opt;
+}
+
+void fsm_o3_setTemperatureMonitoring(uint8 on)
+{
+    GLB_fsm_o3.TemperatureMonitoring = on;
+}
+
+void fsm_o3_setPressThreshold(int16 val)
+{
+    GLB_fsm_o3.PressThreshold = val;
+}
+
+void fsm_o3_setGenerationMode(uint8 mode)
+{
+    GLB_fsm_o3.UsrConfig.userGenerationMode = mode;
+}
+
+void fsm_o3_setRefreshScreen(uint8 val)
+{
+    GLB_fsm_o3.RefreshScreen = val;
+}
+
 /* ---- Storage delegates ---- */
 
 void fsm_o3_registerStorage(

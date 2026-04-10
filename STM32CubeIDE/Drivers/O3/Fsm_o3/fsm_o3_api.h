@@ -32,6 +32,13 @@ void fsm_o3_sendGeneric(void);
 void   fsm_o3_setTherapyParam(uint8 paramId, uint32 value);
 uint32 fsm_o3_getTherapyParam(uint8 paramId);
 
+/* ---- Configuration setters ---- */
+void fsm_o3_setOption(uint16 opt);
+void fsm_o3_setTemperatureMonitoring(uint8 on);
+void fsm_o3_setPressThreshold(int16 val);
+void fsm_o3_setGenerationMode(uint8 mode);
+void fsm_o3_setRefreshScreen(uint8 val);
+
 /* ---- Storage delegates ---- */
 void fsm_o3_registerStorage(
     int8 (*startSave)(void),
