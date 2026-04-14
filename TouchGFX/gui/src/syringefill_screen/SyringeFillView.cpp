@@ -1,5 +1,6 @@
 #include <gui/syringefill_screen/SyringeFillView.hpp>
 #include <BitmapDatabase.hpp>
+#include <stdio.h>
 
 #define ANIMATION_DELAY 50
 #define ANIMATION_STEPS 125

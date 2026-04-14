@@ -1,4 +1,5 @@
 #include <gui/switchselect_screen/SwitchSelectView.hpp>
+#include <stdio.h>
 
 SwitchSelectView::SwitchSelectView()
 {

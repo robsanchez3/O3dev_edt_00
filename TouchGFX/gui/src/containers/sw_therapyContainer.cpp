@@ -1,4 +1,5 @@
 #include <gui/containers/sw_therapyContainer.hpp>
+#include <stdio.h>
 
 sw_therapyContainer::sw_therapyContainer()
 {

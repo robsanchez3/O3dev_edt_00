@@ -9,13 +9,14 @@
 //#include <Protocol/Protocol.h>
 #include "Protocol.h"
 //#include "../OZTDUart.h"                 // TODO......  improve path
-#include "../Fsm_o3/fsm_o3_operation.h"  // Necessary for FSM_O3_OPERATION_T needed for debugging
+#include "../Fsm_o3/fsm_o3.h"      // GLB_TickCounter for TIMER_Init
+#include "../Fsm_o3/fsm_o3_api.h"  // FSM state getter for debug logging
 #include <stdlib.h>
 
 /**
  * @brief String to store the last received command response.
  */
-static int8 LastResponseString[MAX_RESPONSE_LENGTH];
+static char LastResponseString[MAX_RESPONSE_LENGTH];
 
 
 /**
@@ -43,7 +44,7 @@ static void ClearLastResponseString(void)
   memset(LastResponseString,0,MAX_RESPONSE_LENGTH);
 }
 
-int8 Protocol_ComputeCRC(int8 * Message, int8 * CrcString)
+int8 Protocol_ComputeCRC(char * Message, char * CrcString)
 {
   uint8 i = 0;
   uint16 Crc = 0;
@@ -68,9 +69,9 @@ int8 Protocol_ComputeCRC(int8 * Message, int8 * CrcString)
  */
 uint8 CheckCRC(int8 *CommandString)
 {
-  int8 *PointerToCRCInCommandString = strchr(CommandString,'\r') -2;
-  int8 *CRC_Calculation_Pointer = CommandString;
-  int8 CalculatedCrcString[PROTOCOL_CRC_SIZE];
+  char *PointerToCRCInCommandString = strchr(CommandString,'\r') -2;
+  char *CRC_Calculation_Pointer = CommandString;
+  char CalculatedCrcString[PROTOCOL_CRC_SIZE];
   int8 Crc=0;
 
   do
@@ -86,7 +87,7 @@ uint8 CheckCRC(int8 *CommandString)
     return FALSE;
 }
 
-int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,int8 * Message)
+int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
 {
   int8 Crc[PROTOCOL_CRC_SIZE]={0,0,0};
   int8 HexValue[MAX_HEX_VALUE_SIZE]={0,0,0,0,0};
@@ -495,7 +496,7 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
     {
       dep_o3_com_putString((uint8_t *)Message);
       deb_printf(D_LEV_0, "%s\n", Message); // SWV debug
-      deb_printf(D_LEV_1, "Send(%02d) -> %s\n", (GLB_fsm_o3.CurrentState == GLB_fsm_o3.LastState) ? GLB_fsm_o3.CurrentState->State_ID : GLB_fsm_o3.LastState->State_ID, Message); // SWV debug
+      deb_printf(D_LEV_1, "Send(%02d) -> %s\n", fsm_o3_getDebugStateId(), Message); // SWV debug
       RetVal = Protocol_GetResponse();
 
     }while ( (RetVal != CMD_RESPONSE_ACK) && (RetVal != CMD_RESPONSE_KEY_SIMULATION) && (++NumRetries < 3) );
@@ -552,7 +553,7 @@ int8 Protocol_GetResponse(void)
 
 
   deb_printf(D_LEV_0, "%s\n", LastResponseString); // SWV debug
-  deb_printf(D_LEV_1, "Rec (%02d) -> %s\n", (GLB_fsm_o3.CurrentState == GLB_fsm_o3.LastState) ? GLB_fsm_o3.CurrentState->State_ID : GLB_fsm_o3.LastState->State_ID, LastResponseString); // SWV debug
+  deb_printf(D_LEV_1, "Rec (%02d) -> %s\n", fsm_o3_getDebugStateId(), LastResponseString); // SWV debug
 
   if ( (CrcState == CRC_ACTIVATED) && !CheckCRC(LastResponseString) )
   {
@@ -590,8 +591,8 @@ static void ResolveStatus(uint8 ReceivedStatus, PROTOCOL_RESPONSE_T* Response)
 
 void Protocol_GetLastResponse(PROTOCOL_RESPONSE_T * Response)
 {
-  int8 * pParser = NULL;
-  int8* rest = LastResponseString;
+  char * pParser = NULL;
+  char * rest = (char*)LastResponseString;
 
 
   memset(Response,0,sizeof(PROTOCOL_RESPONSE_T));

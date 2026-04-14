@@ -99,7 +99,7 @@ void Model::tick()
 		case SYRINGE_AUTO_MODE:
 		case SYRINGE_MANUAL_MODE: if(modelListener->getVisibleScreen() != SID_SYRINGE_FILL )  static_cast<FrontendApplication*>(Application::getInstance())->gotoSyringeFillScreenNoTransition();
 		break;
-		case CLOSED_BAG_MODE:     modelListener->updateProgressRange(0, GLB_Time);  // TODO: try to update just once
+		case CLOSED_BAG_MODE:     modelListener->updateProgressRange(0, fsm_o3_getTime());  // TODO: try to update just once
 		//	break;                intentionally no break to force default action
 		default:                  if(modelListener->getVisibleScreen() != SID_RUNNING) static_cast<FrontendApplication*>(Application::getInstance())->gotoRunningScreenNoTransition();
 		}
@@ -120,7 +120,7 @@ void Model::tick()
 		}
 		break;
 	case STATE_WAITING_THERAPY_TIME:
-		modelListener->updateProgressRange(0, GLB_Time); // TODO: try to update just once
+		modelListener->updateProgressRange(0, fsm_o3_getTime()); // TODO: try to update just once
 		break;
 	case STATE_WAITING_EXTERNAL_STUFF:  //TODO should it be STATE_WAITING_EXTERNAL_STUFF_CONNECTION?
 		if(modelListener->getVisibleScreen() != SID_WASHING)
@@ -137,8 +137,8 @@ void Model::tick()
 		break;
 #if 1
 	case STATE_WAITING_FOR_SERVICE:
-//  	if( (modelListener->getVisibleScreen() != SID_CALIBRATION) && (GLB_fsm_o3.Option == NO_MODE) )
-		if( (modelListener->getVisibleScreen() != SID_CALIBRATION) && (GLB_fsm_o3.Option == SERVICE_MODE) )
+//  	if( (modelListener->getVisibleScreen() != SID_CALIBRATION) && (fsm_o3_getOption() == NO_MODE) )
+		if( (modelListener->getVisibleScreen() != SID_CALIBRATION) && (fsm_o3_getOption() == SERVICE_MODE) )
 		{
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoCalibrationScreenNoTransition();
 		//	ChangeCurrentState(STATE_WAITING_FOR_SERVICE);
@@ -161,7 +161,7 @@ void Model::tick()
 		if(0)//if(is_SD() && is_fs_mounted() && hw_configuration_tout > 10)
 		{
 			hw_configured = 1;
-			if( loadHardwareConfig(&GLB_fsm_o3.HwConfig) == 0)
+			if( loadHardwareConfig(fsm_o3_getHwConfig()) == 0)
 			{
 				printf("Hardware configuration loaded from disk.\n");
 			}
@@ -186,7 +186,7 @@ void Model::tick()
 		if(0)//if(is_SD() && is_fs_mounted())
 		{
 			syr_configured = 1;
-			if( loadSyringeConfig(GLB_fsm_o3.SyringeCtrl.SyringePattern) == 0)
+			if( loadSyringeConfig(fsm_o3_getSyringePattern()) == 0)
 			{
 				printf("Syringe stop pattern loaded from disk.\n");
 			}
@@ -211,7 +211,7 @@ void Model::tick()
 		if(0)//if(is_SD() && is_fs_mounted())
 		{
 			usr_configured = 1;
-			if( loadUserConfig(&GLB_fsm_o3.UsrConfig) == 0)
+			if( loadUserConfig((USR_CONFIG_T*)fsm_o3_getUsrConfig()) == 0)
 			{
 				printf("User configuration loaded from disk.\n");
 			}
@@ -266,17 +266,17 @@ void Model::tick()
 			if(is_SD() && is_SD_mounted())
 			{
 				sys_configured = 1;
-				if( loadHardwareConfig(&GLB_fsm_o3.HwConfig) == 0 )
+				if( loadHardwareConfig(fsm_o3_getHwConfig()) == 0 )
 					printf("Hardware configuration loaded from disk.\n");
 				else
 					printf("Hardware configuration not loaded from disk, using default.\n");
 
-				if( loadSyringeConfig(GLB_fsm_o3.SyringeCtrl.SyringePattern) == 0 )
+				if( loadSyringeConfig(fsm_o3_getSyringePattern()) == 0 )
 					printf("Syringe stop pattern loaded from disk.\n");
 				else
 					printf("Syringe stop pattern not loaded from disk, using default.\n");
 
-				if( loadUserConfig(&GLB_fsm_o3.UsrConfig) == 0 )
+				if( loadUserConfig((USR_CONFIG_T*)fsm_o3_getUsrConfig()) == 0 )
 					printf("User configuration loaded from disk.\n");
 				else
 					printf("User configuration not loaded from disk, using default.\n");
@@ -404,12 +404,12 @@ void Model::setGuiTherapy(int8_t value)
 	if(value == CAL_PRESS_MODE)
 	{
 		printf("Resetting current pressure calibration values...\n");
-		CalibratePressureInit();
+		fsm_o3_calibratePressureInit();
 	}
 #ifndef SIMULATOR
-	fsm_o3_setOption(ConvertTherapyOption((OPERATION_MODE_E) value));
+	fsm_o3_setOption(fsm_o3_convertTherapyOption((OPERATION_MODE_E) value));
 	fsm_o3_setTemperatureMonitoring(1);
-//	printf("Model setGuiTherapy: value: %d - GLB_fsm_o3.Option: %d\n", value, GLB_fsm_o3.Option);
+//	printf("Model setGuiTherapy: value: %d - fsm_o3_getOption(): %d\n", value, fsm_o3_getOption());
 #endif
 }
 
@@ -457,28 +457,28 @@ void Model::setGenerationMode(bool state)
 //	GLB_fsm_o3.GenerationMode = state ? O3_GENERATION_BASED_ON_O3_PHOTOSENSOR : O3_GENERATION_BASED_ON_TUBE_CALIBRATION;
 //	printf("GenerationModeon on Model setGenerationMode: %d\n", GLB_fsm_o3.GenerationMode);
 	fsm_o3_setGenerationMode(state ? O3_GENERATION_BASED_ON_O3_PHOTOSENSOR : O3_GENERATION_BASED_ON_TUBE_CALIBRATION);
-	saveUserConfig(&GLB_fsm_o3.UsrConfig); // TODO: migrate to API getter in step 5
-	printf("GenerationModeon on Model setGenerationMode: %d\n", GLB_fsm_o3.UsrConfig.userGenerationMode);
+	saveUserConfig((USR_CONFIG_T*)fsm_o3_getUsrConfig());
+	printf("GenerationModeon on Model setGenerationMode: %d\n", fsm_o3_getGenerationMode());
 }
 
 bool Model::getGenerationMode()
 {
 //	printf("GenerationMode on Model getGenerationMode: %d\n", GLB_fsm_o3.GenerationMode);
 //	return ((bool)GLB_fsm_o3.GenerationMode);
-	printf("GenerationMode on Model getGenerationMode: %d\n", GLB_fsm_o3.UsrConfig.userGenerationMode);
-	return ((bool)GLB_fsm_o3.UsrConfig.userGenerationMode);
+	printf("GenerationMode on Model getGenerationMode: %d\n", fsm_o3_getGenerationMode());
+	return ((bool)fsm_o3_getGenerationMode());
 }
 
 bool Model::isGenerationModeAvailable()
 {
 //	printf("GenerationMode availability: %d\n", GLB_fsm_o3.HwConfig.O3Sensor);
-	return ((bool)GLB_fsm_o3.HwConfig.O3Sensor);
+	return ((bool)fsm_o3_hasO3Sensor());
 }
 
 bool Model::isVaccumAvailable()
 {
 //	printf("Vacuum pump availability: %d\n", GLB_fsm_o3.HwConfig.VPump);
-	return ((bool)GLB_fsm_o3.HwConfig.VPump);
+	return ((bool)fsm_o3_hasVacuumPump());
 }
 
 char * Model::getSoftwareVersion()
@@ -488,30 +488,30 @@ char * Model::getSoftwareVersion()
 
 char * Model::getControlSoftwareVersion()
 {
-	refreshGeneratorVersion();
-	return (char *) GLB_fsm_o3.SharedBuffer;
+	fsm_o3_refreshGeneratorVersion();
+	return fsm_o3_getSharedBuffer();
 }
 
 int16_t Model::getPressure()
 {
-	return getPressureSensor();
+	return fsm_o3_getPressureSensor();
 }
 
 int16_t Model::getTemperature()
 {
-	return getTemperatureSensor();
+	return fsm_o3_getTemperatureSensor();
 }
 
 char * Model::getParameters()  //TOTO: improve naming
 {
-	refreshParameters();
-	return (char *) GLB_fsm_o3.SharedBuffer;
+	fsm_o3_refreshParameters();
+	return fsm_o3_getSharedBuffer();
 }
 
 char * Model::getStartupInfo()
 {
-	refreshStartupInfo();
-	return (char *) GLB_fsm_o3.SharedBuffer;
+	fsm_o3_refreshStartupInfo();
+	return fsm_o3_getSharedBuffer();
 }
 
 int8_t * Model::getDeviceConfig()
@@ -521,27 +521,27 @@ int8_t * Model::getDeviceConfig()
 
 void Model::periodCalibrationStart()
 {
-	GotoCalibratePeriod();
+	fsm_o3_gotoCalibratePeriod();
 }
 
 void Model::loadParameterStart()
 {
-	GotoLoadParameters();
+	fsm_o3_gotoLoadParameters();
 }
 
 void Model::saveParameterStart()
 {
-	GotoSaveParameters();
+	fsm_o3_gotoSaveParameters();
 }
 
 void Model::flowCalibrationStart()
 {
-	GotoCalibrateFlow();
+	fsm_o3_gotoCalibrateFlow();
 }
 
 void Model::o3CalibrationStart()
 {
-	GotoCalibrateO3();
+	fsm_o3_gotoCalibrateO3();
 }
 
 void Model::onSelectionAction(uint8_t selectionStep)
@@ -573,7 +573,7 @@ void Model::EndSelection(void)
 	}
 	else
 	{
-		switch(GLB_fsm_o3.Option)
+		switch(fsm_o3_getOption())
 		{
 			case VACUUM_MODE:
 			case VACUUM_TIME_MODE:
@@ -685,17 +685,17 @@ void Model::gotoRepose(void)
 #endif
 }
 
-#define IS_STARTING()  ( (GLB_fsm_o3.CurrentState->State_ID == STATE_INIT) || (GLB_fsm_o3.CurrentState->State_ID == STATE_INIT_CHECK_1) || (GLB_fsm_o3.CurrentState->State_ID == STATE_INIT_CHECK_2) || (GLB_fsm_o3.CurrentState->State_ID == STATE_INIT_CHECK_3) )
+#define IS_STARTING()  ( (fsm_o3_getStateId() == STATE_INIT) || (fsm_o3_getStateId() == STATE_INIT_CHECK_1) || (fsm_o3_getStateId() == STATE_INIT_CHECK_2) || (fsm_o3_getStateId() == STATE_INIT_CHECK_3) )
 
 bool Model::isStarting()
 {
 #ifndef SIMULATOR
 //	return (bool) GLB_fsm_o3.Starting;
 	/* Is starting */
-	return (bool) ( (GLB_fsm_o3.CurrentState->State_ID == STATE_INIT) ||
-                    (GLB_fsm_o3.CurrentState->State_ID == STATE_INIT_CHECK_1) ||
-	                (GLB_fsm_o3.CurrentState->State_ID == STATE_INIT_CHECK_2) ||
-	                (GLB_fsm_o3.CurrentState->State_ID == STATE_INIT_CHECK_3) );
+	return (bool) ( (fsm_o3_getStateId() == STATE_INIT) ||
+                    (fsm_o3_getStateId() == STATE_INIT_CHECK_1) ||
+	                (fsm_o3_getStateId() == STATE_INIT_CHECK_2) ||
+	                (fsm_o3_getStateId() == STATE_INIT_CHECK_3) );
 #else
 	return 0;
 #endif
@@ -704,7 +704,7 @@ bool Model::isStarting()
 bool Model::isCalibrationErrorDuringStartUp()
 {
 #ifndef SIMULATOR
-	return (bool) GLB_fsm_o3.CalibrationErrorDuringStartUp;
+	return (bool) fsm_o3_hasCalibrationErrorDuringStartUp();
 #else
 	return 0;
 #endif
@@ -713,7 +713,7 @@ bool Model::isCalibrationErrorDuringStartUp()
 bool Model::isCompensatingPressure()
 {
 #ifndef SIMULATOR
-	return (bool) GLB_fsm_o3.DepressureSeconds;
+	return (bool) fsm_o3_getDepressureSeconds();
 #else
 	return 0;
 #endif
@@ -722,19 +722,19 @@ bool Model::isCompensatingPressure()
 bool Model::isPaused()
 {
 #ifndef SIMULATOR
-	if( (GLB_fsm_o3.Option == INSUFFLATION_R_MODE) || (GLB_fsm_o3.Option == INSUFFLATION_V_MODE) )
+	if( (fsm_o3_getOption() == INSUFFLATION_R_MODE) || (fsm_o3_getOption() == INSUFFLATION_V_MODE) )
 	{
-		return !((bool) GLB_fsm_o3.InsufflationState);
+		return !((bool) fsm_o3_getInsufflationState());
 	}
-	else if( (GLB_fsm_o3.Option == SYRINGE_MANUAL_MODE) )
+	else if( (fsm_o3_getOption() == SYRINGE_MANUAL_MODE) )
 	{
-		return !((bool) GLB_fsm_o3.SyringeManualState);
+		return !((bool) fsm_o3_getSyringeManualState());
 	}
-	else if(GLB_fsm_o3.Option == VACUUM_TIME_MODE)
+	else if(fsm_o3_getOption() == VACUUM_TIME_MODE)
 	{
-		return ( (GLB_fsm_o3.VacuumStatus == VACUUM_STATE_RUNNING) ? FALSE : TRUE );
+		return ( (fsm_o3_getVacuumStatus() == VACUUM_STATE_RUNNING) ? FALSE : TRUE );   //TODO ¿resolve as other cases and remove VACUUM_LOGICAL_STATE_E from fsm_o3_types.h?
 	}
-	else if(GLB_fsm_o3.Option == MANUAL_MODE)
+	else if(fsm_o3_getOption() == MANUAL_MODE)
 	{
 		return (FALSE);
 	}
@@ -750,7 +750,7 @@ bool Model::isPaused()
 bool Model::isPauseAvailable()
 {
 #ifndef SIMULATOR
-	if( (GLB_fsm_o3.Option == SYRINGE_MANUAL_MODE) || (GLB_fsm_o3.Option == INSUFFLATION_R_MODE) || (GLB_fsm_o3.Option == INSUFFLATION_V_MODE) || (GLB_fsm_o3.Option == VACUUM_TIME_MODE) )
+	if( (fsm_o3_getOption() == SYRINGE_MANUAL_MODE) || (fsm_o3_getOption() == INSUFFLATION_R_MODE) || (fsm_o3_getOption() == INSUFFLATION_V_MODE) || (fsm_o3_getOption() == VACUUM_TIME_MODE) )
 	{
 		return (TRUE);
 	}
@@ -766,7 +766,7 @@ bool Model::isPauseAvailable()
 uint8_t Model::getFsmState()
 {
 #ifndef SIMULATOR
-	return GLB_fsm_o3.CurrentState->State_ID;
+	return fsm_o3_getStateId();
 #else
 	return 0;
 #endif
@@ -775,7 +775,7 @@ uint8_t Model::getFsmState()
 uint8_t Model::getErrorState()
 {
 #ifndef SIMULATOR
-	return GLB_fsm_o3.ErrorState;
+	return fsm_o3_getErrorState();
 #else
 	return 0;
 #endif
@@ -784,7 +784,7 @@ uint8_t Model::getErrorState()
 uint8_t Model::getRemainingMinutes()
 {
 #ifndef SIMULATOR
-	return GLB_fsm_o3.RemainingMinutes;
+	return fsm_o3_getRemainingMinutes();
 #else
 	return 0;
 #endif
@@ -793,7 +793,7 @@ uint8_t Model::getRemainingMinutes()
 uint8_t Model::getRemainingSeconds()
 {
 #ifndef SIMULATOR
-	return GLB_fsm_o3.RemainingSeconds;
+	return fsm_o3_getRemainingSeconds();
 #else
 	return 0;
 #endif
@@ -802,7 +802,7 @@ uint8_t Model::getRemainingSeconds()
 uint8_t Model::getWashingSeconds()
 {
 #ifndef SIMULATOR
-	return GLB_fsm_o3.WashingSeconds;
+	return fsm_o3_getWashingSeconds();
 #else
 	return 0;
 #endif
@@ -812,7 +812,7 @@ uint8_t Model::getWashingSeconds()
 int16_t Model::getCurrentOperatingPressure()
 {
 #ifndef SIMULATOR
-	return GLB_fsm_o3.CurrentOperatingPressure + GLB_fsm_o3.PressAtm;
+	return fsm_o3_getOperatingPressure();
 #else
 	return 0;
 #endif
@@ -821,7 +821,7 @@ int16_t Model::getCurrentOperatingPressure()
 uint32_t Model::getCurrentTotalDose()
 {
 #ifndef SIMULATOR
-	return GLB_fsm_o3.CurrentTotalDose;
+	return fsm_o3_getTotalDose();
 #else
 	return 0;
 #endif
@@ -830,7 +830,7 @@ uint32_t Model::getCurrentTotalDose()
 uint32_t Model::getCurrentOutputVolume()
 {
 #ifndef SIMULATOR
-	return GLB_fsm_o3.CurrentOutputVolume;
+	return fsm_o3_getOutputVolume();
 #else
 	return 0;
 #endif
@@ -839,7 +839,7 @@ uint32_t Model::getCurrentOutputVolume()
 uint32_t Model::getConfiguredTime()
 {
 #ifndef SIMULATOR
-	return GLB_Time;
+	return fsm_o3_getTime();
 #else
 	return 60;
 #endif
@@ -847,7 +847,7 @@ uint32_t Model::getConfiguredTime()
 uint32_t Model::getConfiguredVolume()
 {
 #ifndef SIMULATOR
-	return GLB_fsm_o3.ConfiguredVolume;
+	return fsm_o3_getTherapyParam(TTV_VOLUME);
 #else
 	return 1000;
 #endif
@@ -856,7 +856,7 @@ uint32_t Model::getConfiguredVolume()
 bool Model::refreshGenerationInfo()
 {
 #ifndef SIMULATOR
-	return (bool) GLB_fsm_o3.RefreshScreen;
+	return (bool) fsm_o3_getRefreshScreen();
 #else
 	return 0;
 #endif
@@ -919,8 +919,8 @@ void Model::setupTherapyContext(int8_t therapyID)// TODO: refactor name to tHera
 
 	for(int8_t i = 0; i < MAX_THERAPY_STEPS; i++)
 	{
-		guiTherapyCtx.okAction[i] = DelegateDummy;       // avoid null pointer dereference
-		guiTherapyCtx.sliderAction[i] = DelegateDummy;   // avoid null pointer dereference
+		guiTherapyCtx.okAction[i] = fsm_o3_no_op;       // avoid null pointer dereference
+		guiTherapyCtx.sliderAction[i] = fsm_o3_no_op;   // avoid null pointer dereference
 		guiTherapyCtx.units[i] = "";                     // point to empty string literal
 	}
 	setupDefaultTherapyContext(therapyID);
@@ -946,7 +946,7 @@ void Model::setupTherapyContext(int8_t therapyID)// TODO: refactor name to tHera
 	/* Conditionally modify TherapyTemplates.hpp defined values */
 	if(therapyID == CAL_O3_MODE)
 	{
-		guiTherapyCtx.delayIndicatorTime[0] = (GLB_fsm_o3.HwConfig.O3Sensor == NO_O3_SENSOR) ? 20000 : 100000;
+		guiTherapyCtx.delayIndicatorTime[0] = fsm_o3_hasO3Sensor() ? 100000 : 20000;
 	}
 
 	print_guiTherapyCtx(&guiTherapyCtx); // debug
@@ -993,36 +993,36 @@ int16_t Model::configureMainMenu(void)
 
 void setMaxFlow(void)
 {
-	SetMaxAllowedFlow();
+	fsm_o3_setMaxAllowedFlow();
 
     if (modelInstance)
-    	modelInstance->guiTherapyCtx.maxValue[ (GLB_fsm_o3.Option == SALINE_MODE) ? 2 : 1 ] = GLB_fsm_o3.MaxAllowedFlow;
+    	modelInstance->guiTherapyCtx.maxValue[ (fsm_o3_getOption() == SALINE_MODE) ? 2 : 1 ] = fsm_o3_getMaxAllowedFlow();
 }
 
 void setMaxTime(void)
 {
-	SetMaxAllowedTime();
+	fsm_o3_setMaxAllowedTime();
 
     if (modelInstance)
-    	modelInstance->guiTherapyCtx.maxValue[ (GLB_fsm_o3.Option == SALINE_MODE) ? 3 : 2 ] = GLB_fsm_o3.MaxAllowedTime;
+    	modelInstance->guiTherapyCtx.maxValue[ (fsm_o3_getOption() == SALINE_MODE) ? 3 : 2 ] = fsm_o3_getMaxAllowedTime();
 }
 
 void Model::printTherapyTargetValues(void)
 {
 #if 1
 	printf("[%lu ms] Therapy target values:\n", HAL_GetTick());
-	printf("therapyTargetValues[TTV_CONCENTRATION]     (ConfiguredO3Concentration): %d\n", GLB_fsm_o3.ConfiguredO3Concentration);
-	printf("therapyTargetValues[TTV_FLOW]              (ConfiguredFlow): %d\n", GLB_fsm_o3.ConfiguredFlow);
-	printf("therapyTargetValues[TTV_TIME]              (ConfiguredTime): %d\n", GLB_fsm_o3.ConfiguredTime);
-	printf("therapyTargetValues[TTV_VOLUME]            (ConfiguredVolume): %ld\n", GLB_fsm_o3.ConfiguredVolume);
-	printf("therapyTargetValues[TTV_DOSE] )            (ConfiguredDose): %d\n", GLB_fsm_o3.ConfiguredDose);
-	printf("therapyTargetValues[TTV_PRESSURE]          (GLB_fsm_o3.ConfiguredPressure): %d\n", GLB_fsm_o3.ConfiguredPressure);
-	printf("therapyTargetValues[TTV_VACUUM_TIME]       (ConfiguredVacuumTime): %d\n", GLB_fsm_o3.ConfiguredVacuumTime);
-	printf("therapyTargetValues[TTV_VACUUM_PRESSURE]   (ConfiguredVacuumPressure): %d\n", GLB_fsm_o3.ConfiguredVacuumPressure);
-	printf("therapyTargetValues[TTV_CALIBRATION_VAL_0] (CalibrationValue_0): %d\n", GLB_fsm_o3.CalibrationValue_0);
-	printf("therapyTargetValues[TTV_CALIBRATION_VAL_1] (CalibrationValue_1): %d\n", GLB_fsm_o3.CalibrationValue_1);
-	printf("therapyTargetValues[TTV_CALIBRATION_VAL_2] (CalibrationValue_2): %d\n", GLB_fsm_o3.CalibrationValue_2);
-	printf("                                           (PressThreshold): %d\n", GLB_fsm_o3.PressThreshold);
+	printf("therapyTargetValues[TTV_CONCENTRATION]     (ConfiguredO3Concentration): %lu\n", fsm_o3_getTherapyParam(TTV_CONCENTRATION));
+	printf("therapyTargetValues[TTV_FLOW]              (ConfiguredFlow): %lu\n", fsm_o3_getTherapyParam(TTV_FLOW));
+	printf("therapyTargetValues[TTV_TIME]              (ConfiguredTime): %lu\n", fsm_o3_getTherapyParam(TTV_TIME));
+	printf("therapyTargetValues[TTV_VOLUME]            (ConfiguredVolume): %lu\n", fsm_o3_getTherapyParam(TTV_VOLUME));
+	printf("therapyTargetValues[TTV_DOSE] )            (ConfiguredDose): %lu\n", fsm_o3_getTherapyParam(TTV_DOSE));
+	printf("therapyTargetValues[TTV_PRESSURE]          (ConfiguredPressure): %lu\n", fsm_o3_getTherapyParam(TTV_PRESSURE));
+	printf("therapyTargetValues[TTV_VACUUM_TIME]       (ConfiguredVacuumTime): %lu\n", fsm_o3_getTherapyParam(TTV_VACUUM_TIME));
+	printf("therapyTargetValues[TTV_VACUUM_PRESSURE]   (ConfiguredVacuumPressure): %lu\n", fsm_o3_getTherapyParam(TTV_VACUUM_PRESSURE));
+	printf("therapyTargetValues[TTV_CALIBRATION_VAL_0] (CalibrationValue_0): %lu\n", fsm_o3_getTherapyParam(TTV_CALIBRATION_VAL_0));
+	printf("therapyTargetValues[TTV_CALIBRATION_VAL_1] (CalibrationValue_1): %lu\n", fsm_o3_getTherapyParam(TTV_CALIBRATION_VAL_1));
+	printf("therapyTargetValues[TTV_CALIBRATION_VAL_2] (CalibrationValue_2): %lu\n", fsm_o3_getTherapyParam(TTV_CALIBRATION_VAL_2));
+	printf("                                           (PressThreshold): %d\n", fsm_o3_getPressThreshold());
 #endif
 }
 
@@ -1285,8 +1285,8 @@ void Model::setupTherapyContextBack(int8_t therapyID)
 
 		// TODO: it is thre othre ponter to function  	REVIEW AND CORRECT ASAP
 
-		guiTherapyCtx.okAction[i] = DelegateDummy;       // to avoid null pointer dereference
-		guiTherapyCtx.sliderAction[i] = DelegateDummy;   // to avoid null pointer dereference
+		guiTherapyCtx.okAction[i] = fsm_o3_no_op;       // to avoid null pointer dereference
+		guiTherapyCtx.sliderAction[i] = fsm_o3_no_op;   // to avoid null pointer dereference
 		guiTherapyCtx.selectAvailable[i] = true;         // default visible
 		guiTherapyCtx.delayIndicatorTime[i] = 0;         // default invisible
 		guiTherapyCtx.secondSelectionVisible[i] = false; // default invisible
@@ -1726,8 +1726,8 @@ void Model::setupTherapyContextBack(int8_t therapyID)
 		guiTherapyCtx.endTotalTimeVisible = true;
 		guiTherapyCtx.okButtonVisible = false;
 		guiTherapyCtx.bigPauseButtonVisible = false;
-		guiTherapyCtx.okAction[0] = CalibratePressureStep1;
-		guiTherapyCtx.okAction[1] = CalibratePressureStep2;
+		guiTherapyCtx.okAction[0] = fsm_o3_calibratePressureStep1;
+		guiTherapyCtx.okAction[1] = fsm_o3_calibratePressureStep2;
 		break;
 	case CAL_FLOW_MODE:
 		guiTherapyCtx.stepsNum = 2;
@@ -1751,9 +1751,9 @@ void Model::setupTherapyContextBack(int8_t therapyID)
 		guiTherapyCtx.endTotalTimeVisible = true;
 		guiTherapyCtx.okButtonVisible = false;
 		guiTherapyCtx.bigPauseButtonVisible = false;
-		guiTherapyCtx.okAction[0] = CalibrateFlowStep1_Ok;
-		guiTherapyCtx.okAction[1] = CalibrateFlowStep2;
-		guiTherapyCtx.sliderAction[0] = CalibrateFlowStep1_Value;
+		guiTherapyCtx.okAction[0] = fsm_o3_calibrateFlowStep1Ok;
+		guiTherapyCtx.okAction[1] = fsm_o3_calibrateFlowStep2;
+		guiTherapyCtx.sliderAction[0] = fsm_o3_calibrateFlowStep1Value;
 		break;
 	case CAL_O3_MODE:
 		if(GLB_fsm_o3.DeviceType == DEV_OZT)
@@ -1859,7 +1859,7 @@ void Model::setupTherapyContextBack(int8_t therapyID)
 		guiTherapyCtx.maxValue[0] = 3;
 		guiTherapyCtx.step[0] = 1;
 		guiTherapyCtx.minValue[1] = 1;
-		guiTherapyCtx.defValue[1] = GLB_fsm_o3.CalibrationValue_2; // walk around to get the last saved P factor value
+		guiTherapyCtx.defValue[1] = fsm_o3_getTherapyParam(TTV_CALIBRATION_VAL_2); // walk around to get the last saved P factor value
 		guiTherapyCtx.maxValue[1] = 64;
 		guiTherapyCtx.step[1] = 1;
 		guiTherapyCtx.units[0] = "P Factor";
@@ -1950,17 +1950,17 @@ void Model::configLoaderTask(void)
 	if(sd_found)
 	{
 		/* Normal startup: load config from SD */
-		if( loadHardwareConfig(&GLB_fsm_o3.HwConfig) == 0 )
+		if( loadHardwareConfig(fsm_o3_getHwConfig()) == 0 )
 			printf("Hardware configuration loaded [%lu ms]\n", now);
 		else
 			printf("Hardware configuration not loaded, using default.\n");
 
-		if( loadSyringeConfig(GLB_fsm_o3.SyringeCtrl.SyringePattern) == 0 )
+		if( loadSyringeConfig(fsm_o3_getSyringePattern()) == 0 )
 			printf("Syringe stop pattern loaded [%lu ms]\n", now);
 		else
 			printf("Syringe stop pattern not loaded, using default.\n");
 
-		if( loadUserConfig(&GLB_fsm_o3.UsrConfig) == 0 )
+		if( loadUserConfig((USR_CONFIG_T*)fsm_o3_getUsrConfig()) == 0 )
 			printf("User configuration loaded [%lu ms]\n", now);
 		else
 			printf("User configuration not loaded, using default.\n");

@@ -136,40 +136,6 @@ int8 DelegateDummy4(uint16 a, int32 *b)
 
 /* dep_o3_softwareReset() and dep_o3_beep() moved to dep_o3_<platform>.c */
 
-#if (1)
-void deb_printf(int8 deb_level, const char *fmt, ...)
-{
-	va_list args;
-
-//	if( (signed char)GLB_fsm_o3.DebLevel >= (signed char)deb_level )
-	if( GLB_fsm_o3.DebLevel & deb_level )
-	{
-        if(!(GLB_fsm_o3.DebLevel & D_LEV_HIDE_TIME_STAMP))
-        {
-            dep_o3_printf("%010ld . %010ld: ", GLB_FSM_ProcessEvent_Count, GLB_TickCounter);
-        }
-        va_start(args, fmt);
-		dep_o3_vprintf(fmt, args);
-		va_end(args);
-	}
-}
-#else
-void deb_printf(int8 deb_level, const char *fmt, ...)
-{
-	va_list args;
-
-	//GLB_fsm_o3.DebLevel = D_LEV_6;
-    if( (signed char)GLB_fsm_o3.DebLevel == (signed char)deb_level )
-	{
-        dep_o3_printf("%010ld; %010ld: ", GLB_FSM_ProcessEvent_Count, GLB_TickCounter);
-
-		va_start(args, fmt);
-		dep_o3_vprintf(fmt, args);
-		va_end(args);
-	}
-}
-#endif
-
 void WelcomeMessage(void)
 {
 	/* Reference version tag so the linker does not discard it (--gc-sections).
@@ -1476,7 +1442,7 @@ void SaveParameters(void)
 	Command.Command = CMD_GET_TABLE_POSITION;
 	Command.Identifier[0] = 'P';        /* Parameters Table */
 
-	if( GLB_fsm_o3.StartStorageSave() == 0 )
+	if( GLB_fsm_o3.storageOpenWrite() == 0 )
 	{
 		for(i = 0; i < MAX_PARAMETER_WORDS; i++)
 		{
@@ -1484,7 +1450,7 @@ void SaveParameters(void)
 
 			if (ManageCommand(&Command,&Response) != PROTOCOL_RET_COMMAND_NOT_SENT)
 			{
-				GLB_fsm_o3.WriteStorageLine(i, Response.Data[0]);
+				GLB_fsm_o3.storageWrite(i, Response.Data[0]); // write one line
 			}
 			else
 			{
@@ -1500,7 +1466,7 @@ void SaveParameters(void)
 
 	if(!error)
 	{
-		GLB_fsm_o3.StoptStorage();
+		GLB_fsm_o3.storageClose();
 //		GLB_fsm_o3.CurrentState = &GLB_fsm_o3.States[STATE_CALIBRATION_END];
 		ChangeState(STATE_CALIBRATION_END);
 		printf("Parameters saved in flash memory\n");   // SWV debug
@@ -1522,7 +1488,7 @@ void LoadParameters(void)
 	PROTOCOL_COMMAND_T  Command  = {0};
 	PROTOCOL_RESPONSE_T Response = {0};
 
-	if( GLB_fsm_o3.StartStorageLoad() == 0 )
+	if( GLB_fsm_o3.storageOpenRead() == 0 )
 	{
 		Command.Command = CMD_SET_TABLE_POSITION;
 		Command.Identifier[0] = 'P'; /* Parameters Table */
@@ -1535,7 +1501,7 @@ void LoadParameters(void)
 		{
 			for(i = 1; i < MAX_PARAMETER_WORDS; i++)
 			{
-				if (GLB_fsm_o3.ReadStorageLine(i, (int32 *) &Response.Data[0]) == 0)
+				if (GLB_fsm_o3.storageRead(i, (int32 *) &Response.Data[0]) == 0)  // read one line
 				{
 					Command.Position[0] = i;
 					Command.Value = Response.Data[0];
@@ -1560,7 +1526,7 @@ void LoadParameters(void)
 			printf("Error marking parameters table as not initialized\n");   // SWV debug
 			error = 1;
 		}
-		GLB_fsm_o3.StoptStorage();
+		GLB_fsm_o3.storageClose();
 	}
 	else
 	{
@@ -3431,7 +3397,7 @@ void refreshGeneratorVersion(void)
   Command.Command = CMD_GET_SW_VERSION;
   ManageCommand(&Command,&Response);
 
-  sprintf((char *)GLB_fsm_o3.SharedBuffer,"%s",(int8 *)(Response.Data));
+  sprintf((char *)GLB_fsm_o3.SharedBuffer,"%s",(char *)(Response.Data));
 }
 
 int16 getPressureSensor(void)

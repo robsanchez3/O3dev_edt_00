@@ -2,8 +2,9 @@
 #define MODEL_HPP
 
 #include <touchgfx/Utils.hpp>
-#include <../../../../../Drivers/O3/Fsm_o3/fsm_o3_operation.h>/*TODO......  improve path*/
 //#include "ff.h"			/* Declarations of FatFs API */
+
+#include <../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h>
 
 #define MAX_THERAPY_STEPS	8
 #define MAX_DEV_THERAPIES   MAX_OPERATION_MODE
@@ -18,8 +19,6 @@ enum MAIN_MENU_FORMATING {
 	MMF_END_SHIFT_1 = -3,
 	MMF_END_SHIFT_2 = -4}
 ;
-
-#include <../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h>
 
 struct THERAPY_CTX{
 	int8_t  stepsNum;                                 // number of selection steps in current therapy

@@ -2,6 +2,7 @@
 #include <BitmapDatabase.hpp>
 //#include "stm32f7xx_hal.h"  TODO clean when validated
 #include "stm32u5xx_hal.h" // TODO needed for HAL_NVIC_SystemReset(); probably better if implemented on model.cc
+#include <stdio.h>
 
 CalibrationView::CalibrationView() : pinLength(0)
 {

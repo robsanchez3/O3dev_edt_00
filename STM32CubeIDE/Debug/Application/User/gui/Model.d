@@ -5,17 +5,9 @@ Application/User/gui/Model.o: \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Config.hpp \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_operation.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Typedef.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Timer/Timer.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Timer/../TypeDef.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Syringe/Syringe.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Syringe/../TypeDef.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/Protocol.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Typedef.h \
- ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Timer/Timer.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Typedef.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_types.h \
  ../../TouchGFX/gui/include/gui/model/ModelListener.hpp \
  ../../TouchGFX/gui/include/gui/common/FrontendApplication.hpp \
  ../../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp \
@@ -147,17 +139,9 @@ Application/User/gui/Model.o: \
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Config.hpp:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_operation.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Typedef.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Timer/Timer.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Timer/../TypeDef.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Syringe/Syringe.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Syringe/../TypeDef.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/Protocol.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Typedef.h:
-../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Protocol/../Timer/Timer.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/../Typedef.h:
+../../Middlewares/Third_Party/FreeRTOS/Source/include/../../../../../Drivers/O3/Fsm_o3/fsm_o3_types.h:
 ../../TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../../TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
 ../../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:

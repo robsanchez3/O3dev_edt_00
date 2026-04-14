@@ -8,15 +8,21 @@
 #ifndef TYPEDEF_H_
 #define TYPEDEF_H_
 
-//////////////#include "cytypes.h"
+#include <stdint.h>
 
+typedef uint8_t   uint8;
+typedef uint16_t  uint16;
+typedef uint32_t  uint32;
 
-typedef unsigned char   uint8;
-typedef unsigned short  uint16;
-typedef unsigned long   uint32;
+typedef int8_t    int8;
+typedef int16_t   int16;
+typedef int32_t   int32;
 
-typedef char            int8;
-typedef signed short    int16;
-typedef signed long     int32;
+#ifndef FALSE
+#define FALSE   0
+#endif
+#ifndef TRUE
+#define TRUE    1
+#endif
 
 #endif /* TYPEDEF_H_ */

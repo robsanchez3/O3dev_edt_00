@@ -12,7 +12,6 @@
 
 #include <gui/model/Model.hpp>
 #include <gui/model/parseappconfig.hpp>
-#include <../../../../../Drivers/O3/Fsm_o3/fsm_o3_operation.h>/*TODO......  improve path*/
 
 extern "C" uint32_t HAL_GetTick(void);
 #include "ff.h"			/* Declarations of FatFs API */
@@ -74,7 +73,7 @@ ENUM_MAP hwMap[] = {
 
 static const int16_t hwMapCount = sizeof(hwMap) / sizeof(hwMap[0]);
 
-int8 lastUserfileName[100] = {0};
+char lastUserfileName[100] = {0};
 
 // Searches a given directory and returns the first file whose extension
 // matches the given one. The returned filename includes the full path,
@@ -197,10 +196,10 @@ static uint8_t LR_getline(LineReader_t *lr, int8_t *out, UINT maxlen)
 }
 
 /*
-uint8 get_line(FIL* fp, int8* buf, UINT maxlen)
+uint8 get_line(FIL* fp, char* buf, UINT maxlen)
 {
 	UINT br;
-	int8 c;
+	char c;
 	UINT i = 0;
 	uint8 ret = 0; //failure
 	while (i < maxlen - 1) {
@@ -388,7 +387,7 @@ uint8_t loadTherapyFromFile(OPERATION_MODE_E mode, THERAPY_CTX *guiTherapyCtx)
 		return 0;
 	}
 
-	int8 line[LINE_BUF_SIZE];
+	char line[LINE_BUF_SIZE];
 	LineReader_t lr;
 	LR_init(&lr, &File);
 	int16_t line_num = 0;
@@ -473,9 +472,9 @@ int16 loadMainMenu(signed char * decode_out, int16 maxDevTherapies)
 {
     FRESULT res;
     FIL File;
-    int8 ext[] = "mnu";
-    int8 dirPath[] = "0:/Config/Menu";
-    int8 fileName[100];
+    char ext[] = "mnu";
+    char dirPath[] = "0:/Config/Menu";
+    char fileName[100];
 
     printf("Decoding configuration menu file...\n");
 
@@ -500,7 +499,7 @@ int16 loadMainMenu(signed char * decode_out, int16 maxDevTherapies)
         return -1;
     }
 
-    int8 line[LINE_BUF_SIZE];
+    char line[LINE_BUF_SIZE];
     int16 lineNumber = 0;
     int16 errors = 0;
     LineReader_t lr;
@@ -514,8 +513,8 @@ int16 loadMainMenu(signed char * decode_out, int16 maxDevTherapies)
         if (line[0] == '\0' || line[0] == '#')
             continue;
 
-        int8 key[64];
-        int8 value[64];
+        char key[64];
+        char value[64];
 
         // Flexible format:
         // "Posic1=Mode", "Posic1 = Mode", " Posic1    =Mode"
@@ -593,9 +592,9 @@ int16 loadHardwareConfig(HW_CONFIG_T *cfg)
 {
     FRESULT res;
     FIL File;
-    int8 ext[] = "hwr";
-    int8 dirPath[] = "0:/Config/HW";
-    int8 fileName[100];
+    char ext[] = "hwr";
+    char dirPath[] = "0:/Config/HW";
+    char fileName[100];
 
     printf("Decoding hardware configuration file...\n");
 
@@ -622,7 +621,7 @@ int16 loadHardwareConfig(HW_CONFIG_T *cfg)
         return -1;
     }
 
-    int8 line[LINE_BUF_SIZE];
+    char line[LINE_BUF_SIZE];
     int16 lineNumber = 0;
     int16 errors = 0;
     LineReader_t lr;
@@ -702,9 +701,9 @@ int16 loadSyringeConfig(uint16 *cfg)
 {
     FRESULT res;
     FIL File;
-    int8 ext[] = "syr";
-    int8 dirPath[] = "0:/Config/Syringe";
-    int8 fileName[100];
+    char ext[] = "syr";
+    char dirPath[] = "0:/Config/Syringe";
+    char fileName[100];
 
     printf("Decoding syringe configuration file...\n");
 
@@ -729,7 +728,7 @@ int16 loadSyringeConfig(uint16 *cfg)
         return -1;
     }
 
-    int8 line[LINE_BUF_SIZE];
+    char line[LINE_BUF_SIZE];
     int16 lineNumber = 0;
     int16 errors = 0;
 
@@ -798,8 +797,8 @@ int16 loadUserConfig(USR_CONFIG_T *cfg)
 {
     FRESULT res;
     FIL File;
-    int8 ext[] = "usr";
-    int8 dirPath[] = "0:/Config/User";
+    char ext[] = "usr";
+    char dirPath[] = "0:/Config/User";
 
     printf("Decoding software configuration file...\n");
 
@@ -828,7 +827,7 @@ int16 loadUserConfig(USR_CONFIG_T *cfg)
         return -1;
     }
 
-    int8 line[LINE_BUF_SIZE];
+    char line[LINE_BUF_SIZE];
     int16 lineNumber = 0;
     int16 errors = 0;
     LineReader_t lr;

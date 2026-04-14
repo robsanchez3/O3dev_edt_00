@@ -5,6 +5,7 @@
 #include <stdarg.h>
 
 #include "fsm_o3.h"
+#include "fsm_o3_types.h"
 #include "../Typedef.h"
 #include "../Timer/Timer.h"
 #include "../Syringe/Syringe.h"
@@ -64,31 +65,6 @@
 */
 typedef enum
 {
-  NO_ERROR = 0,
-  TEMP_ERROR = 1,
-  CURRENT_ERROR = 2,
-  OZONE_ERROR = 3,
-  FLOW_ERROR = 4,
-  PRESS_ERROR = 5,
-  LEAKAGE_ERROR = 6,
-  PIN_ERROR = 7,
-  COMS_ERROR = 8,
-  CAL_ERROR = 9,
-  TRANSFORMER_ERROR = 10,
-  PROPORIONAL_VALVE_ERROR = 11,
-  PASSWORD_ERROR = 12,
-  PRESS_SENSOR_ERROR = 13,
-  VALVE_0_ERROR = 14,
-  VALVE_1_ERROR = 15,
-  SAVE_PARAMETERS_ERROR = 16,
-  LOAD_PARAMETERS_ERROR = 17,
-  PERIOD_ERROR = 18,
-  UNEXPECTED_ERROR = 19,
-  MAX_ERROR
-}FSM_O3_APP_ERRORS;
-
-typedef enum
-{
   NO_WARNING = NO_ERROR,
   MAX_WARNING = -1
 }FSM_O3_APP_WARNINGS;
@@ -97,7 +73,6 @@ typedef enum
 #define DATE_STAMP  __DATE__    /*!< Compilation date. */
 #define TIME_STAMP  __TIME__    /*!< Compilation time. */
 
-#define O3_LIB_VERSION                    "V0.R0.P0_a"
 
 
 /* Pressure references for different therapies */
@@ -189,9 +164,6 @@ typedef enum
 #define O3_ERROR_DETECTION_ITERATIONS               7    /* @ 10l/h - 1ug/Nml */
 
 /* Miscellaneous definitions */
-#define FALSE   0
-#define TRUE    1
-
 #define DEFAULT_PRESSURE_GAIN                     506	// Default pressure gain value for calibration purposes
 #define FLOW_START_UP_TEST_FLOW                   800	// Set proportional valve completely opened ( Start up flow for test flow)
 
@@ -257,45 +229,6 @@ typedef enum
   ID_SENSOR_MAX                /* ID_SENSOR_MAX           */
 }ID_SENSOR_E;
 
- /* FSM O3 Operation modes. */
-typedef enum
-{
-  SYRINGE_MODE         = 0,
-  SYRINGE_AUTO_MODE    = 1,
-  SYRINGE_MANUAL_MODE  = 2,
-  CONTINUOUS_MODE      = 3,
-  INSUFFLATION_MODE    = 4,
-  INSUFFLATION_R_MODE  = 5,
-  INSUFFLATION_V_MODE  = 6,
-  MANUAL_MODE          = 7,
-  DENTAL_MODE          = 8,
-  VACUUM_MODE          = 9,
-  VACUUM_TIME_MODE     = 10,
-  VACUUM_PRESSURE_MODE = 11,
-  BAG_MODE             = 12,
-  CLOSED_BAG_MODE      = 13,
-  OPEN_BAG_MODE        = 14,
-  DOSE_MODE            = 15,
-  SALINE_MODE          = 16,
-  RFU_1_MODE           = 17,
-  MAX_OPERATION_MODE   = 18,
-
-  CAL_PRESS_MODE       = 19,
-  CAL_FLOW_MODE        = 20,
-  CAL_O3_MODE          = 21,
-  CAL_PERIOD_MODE      = 22,
-  GENERATION_TYPE_MODE = 23,
-  SAVE_PARAMS_MODE     = 24,
-  LOAD_PARAMS_MODE     = 25,
-  SW_VERSION_MODE      = 26,
-  PRESSURE_TEMP_MODE   = 27,
-  SHOW_PARAMS_MODE     = 28,
-  SHOW_STARTUP_MODE    = 29,
-
-  NO_MODE              = 30,   // It always must be the last valid mode in this enumeration (include new ones above and increase number)
-  SERVICE_MODE         = 100,
-}OPERATION_MODE_E;
-
  /* Proportional valves enumeration. */
 typedef enum
 {
@@ -346,14 +279,6 @@ typedef enum
   FLOW_NOT_STARTED_YET = 0
 }FLOW_RUNNING_STATE_E;
 
-/* O3 generation modes. */
-typedef enum
-{
-  O3_GENERATION_BASED_ON_TUBE_CALIBRATION = 0,
-  O3_GENERATION_BASED_ON_O3_PHOTOSENSOR = 1,
-  O3_GENERATION_BASED_ON_MAX
-}GEN_MODE_E;
-
 /* O3 sensor tunning modes. */
 typedef enum
 {
@@ -375,13 +300,6 @@ typedef enum
   VACUUM_1 = '1'
 }VACUUM_ID_E;
 
-/* Vacuum possible logical states. */
-typedef enum
-{
-  VACUUM_STATE_STOP = 0,
-  VACUUM_STATE_RUNNING  = 1,
-  VACUUM_STATE_PAUSE = 2
-}VACUUM_LOGICAL_STATE_E;
 
 /* Saline cycle description. */
 typedef enum
@@ -389,58 +307,6 @@ typedef enum
   SALINE_MIXING_CYCLE = 0,
   SALINE_REINFUSION_CYCLE  = 1,
 }SALINE_CYCLE_E;
-
-/* Control boards allowed. */
-typedef enum
-{
-  A10068_XX_X = 0, // OZT
-  A10026_XX_X = 1, // OZP
-  A40170_XX_X = 2, // V3
-}CONTROL_BOARD_TYPES_E;
-
-/* O3 sensors allowed. */
-typedef enum
-{
-  NO_O3_SENSOR = 0,
-  AS03170 = 1
-}O3_SENSOR_TYPES_E;
-
-/* Transformers allowed. */
-typedef enum
-{
-  A9462_03 = 0, // OZT
-  A9462_04 = 1, // OZP
-  A9462_09 = 2	// V3
-}TRANSFORMER_TYPES_E;
-
-/* O3 tubes allowed. */
-typedef enum
-{
-  A10021_02 = 0, // OZT
-  A10055_01 = 1  // OZP
-}O3_TUBE_TYPES_E;
-
-/* Vacuum pump allowed. */
-typedef enum
-{
-  NO_VACUUM_PUMP = 0,      // OZT
-  _52402054 = 1, // OZP
-  CC02111 = 2    // V3
-}VACUMM_PUMP_TYPES_E;
-
-/*LED strip allowed. */
-typedef enum
-{
-  NO_LED_STRIP = 0,       // OZT - OZP
-  A40236_XX_X = 1 // V3
-}LED_STRIP_TYPES_E;
-
-/* Communication channel allowed. */
-typedef enum
-{
-  SERIAL = 0,
-  I2C = 1
-}COMM_CHANNEL_TYPES_E;
 
 /* Communication channel allowed. */
 typedef enum
@@ -452,39 +318,6 @@ typedef enum
 	START_UP_LOG_PRESSURE,
 	START_UP_LOG_TEMPERATURE
 }START_UP_LOG_ITEMS_E;
-
-typedef enum
-{
-    D_LEV_0 = 0x01,
-    D_LEV_1 = 0x02,
-    D_LEV_2 = 0x04,
-    D_LEV_3 = 0x08,
-    D_LEV_4 = 0x10,
-    D_LEV_5 = 0x20,
-    D_LEV_HIDE_TIME_STAMP = 0x40,
-    D_LEV_SEND_WELCOME = 0x80,
-    D_LEV_ALL = 0xBE,
-    D_LEV_NONE = 0x00,
-}DEBUG_LEVEL_T;
-
-/* HW configuration */
-typedef struct
-{
-  uint8 CBoard;
-  uint8 O3Sensor;
-  uint8 Transformer;
-  uint8 O3Tube;
-  uint8 VPump;
-  uint8 LEDStrip;
-  uint8 Comm;
-}HW_CONFIG_T;
-
-typedef struct
-{
-    uint8 userGenerationMode;
-    uint8 rfu_0;
-    uint8 rfu_1;
-} USR_CONFIG_T;
 
 /* FSM O3 events structure */
 typedef struct
@@ -534,11 +367,11 @@ typedef struct
     TIMER_CTX_T AuxTimer;
     SYRINGE_CTX_T SyringeCtrl;
     int8  DebLevel;
-    int8  (*StartStorageSave)(void);
-    int8  (*StartStorageLoad)(void);
-    int8  (*WriteStorageLine)(uint16 storageId, int32 value);
-    int8  (*ReadStorageLine)(uint16 storageId, int32 *value);
-    void  (*StoptStorage)(void);
+    int8  (*storageOpenWrite)(void);
+    int8  (*storageOpenRead)(void);
+    int8  (*storageWrite)(uint16 storageId, int32 value);
+    int8  (*storageRead)(uint16 storageId, int32 *value);
+    void  (*storageClose)(void);
     uint8  SharedBuffer[16*16];
 //  uint8  SamplePosition;
     uint16 ConfiguredO3Concentration;
@@ -1063,7 +896,6 @@ void StopManualGap(void);
 void StartManualGap(void);
 
 void TestIni(void);
-void deb_printf(int8 deb_level, const char *fmt, ...);
 
 #ifdef __cplusplus
 }

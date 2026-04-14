@@ -1,5 +1,5 @@
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:35:1:Model::Model()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:53:6:void Model::tick()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:53:6:void Model::tick()	32	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:370:6:void Model::checkPin(const char*)	24	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:384:6:void Model::blockConfigOptions()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:389:6:void Model::unblockConfigOptions()	16	static
@@ -62,8 +62,8 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:884:6:void Model::se
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:916:6:void Model::setupTherapyContext(int8_t)	24	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:973:6:void Model::setDefaultMainMenu()	24	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:982:9:int16_t Model::configureMainMenu()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:994:6:void setMaxFlow()	8	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:1002:6:void setMaxTime()	8	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:994:6:void setMaxFlow()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:1002:6:void setMaxTime()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:1010:6:void Model::printTherapyTargetValues()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:1033:9:uint8_t Model::is_SD()	24	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:1056:9:uint8_t Model::is_USB_flash()	16	static

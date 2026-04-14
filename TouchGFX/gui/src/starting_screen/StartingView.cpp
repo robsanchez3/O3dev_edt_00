@@ -2,6 +2,7 @@
 #include <gui_generated/starting_screen/StartingViewBase.hpp>
 
 #include "BitmapDatabase.hpp"
+#include <stdio.h>
 
 #define TOUT_SETTINGS_MS 2500
 #define VIEW_SETTINGS_DELAY_MS 1000

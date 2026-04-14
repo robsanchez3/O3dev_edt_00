@@ -30,19 +30,19 @@
 ../../TouchGFX/generated/gui_generated/include/gui_generated/syringefill_screen/SyringeFillViewBase.hpp:29:18:virtual void SyringeFillViewBase::okClicked()	16	static
 ../../TouchGFX/gui/include/gui/syringefill_screen/SyringeFillView.hpp:13:13:SyringeFillView::~SyringeFillView()	16	static
 ../../TouchGFX/gui/include/gui/syringefill_screen/SyringeFillView.hpp:13:13:virtual SyringeFillView::~SyringeFillView()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:11:1:SyringeFillView::SyringeFillView()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:16:6:virtual void SyringeFillView::setupScreen()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:31:6:virtual void SyringeFillView::cnlClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:36:6:virtual void SyringeFillView::handleClickEvent(const touchgfx::ClickEvent&)	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:72:6:void SyringeFillView::test_quitar()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:77:6:virtual void SyringeFillView::tearDownScreen()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:85:9:int16_t SyringeFillView::computeAnimationSteps()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:94:6:virtual void SyringeFillView::handleTickEvent()	72	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:157:6:void SyringeFillView::startAnimation()	40	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:165:6:void SyringeFillView::initTherapyContext(THERAPY_CTX*)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:170:10:uint16_t SyringeFillView::getTherapyTargetValue(uint8_t)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:175:6:void SyringeFillView::initTherapyDataInfo()	72	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:210:6:void SyringeFillView::initVisualElemnets()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:12:1:SyringeFillView::SyringeFillView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:17:6:virtual void SyringeFillView::setupScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:32:6:virtual void SyringeFillView::cnlClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:37:6:virtual void SyringeFillView::handleClickEvent(const touchgfx::ClickEvent&)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:73:6:void SyringeFillView::test_quitar()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:78:6:virtual void SyringeFillView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:86:9:int16_t SyringeFillView::computeAnimationSteps()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:95:6:virtual void SyringeFillView::handleTickEvent()	72	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:158:6:void SyringeFillView::startAnimation()	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:166:6:void SyringeFillView::initTherapyContext(THERAPY_CTX*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:171:10:uint16_t SyringeFillView::getTherapyTargetValue(uint8_t)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:176:6:void SyringeFillView::initTherapyDataInfo()	72	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/syringefill_screen/SyringeFillView.cpp:211:6:void SyringeFillView::initVisualElemnets()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:110:10:bool touchgfx::MoveAnimator<T>::isMoveAnimationRunning() const [with T = touchgfx::Image]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:159:10:void touchgfx::MoveAnimator<T>::cancelMoveAnimation() [with T = touchgfx::Image]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/MoveAnimator.hpp:131:10:void touchgfx::MoveAnimator<T>::startMoveAnimation(int16_t, int16_t, uint16_t, touchgfx::EasingEquation, touchgfx::EasingEquation) [with T = touchgfx::Image]	24	static

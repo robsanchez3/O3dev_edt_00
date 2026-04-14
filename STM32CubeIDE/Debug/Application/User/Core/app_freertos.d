@@ -82,8 +82,8 @@ Application/User/Core/app_freertos.o: \
  ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h \
  ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h \
  ../../Drivers/O3/Fsm_o3/fsm_o3.h ../../Drivers/O3/Fsm_o3/../Typedef.h \
- ../../FATFS/App/fatfs.h ../../Drivers/Vendor/FatFs/source/ff.h \
- ../../FATFS/Target/ffconf.h \
+ ../../Drivers/O3/Fsm_o3/fsm_o3_types.h ../../FATFS/App/fatfs.h \
+ ../../Drivers/Vendor/FatFs/source/ff.h ../../FATFS/Target/ffconf.h \
  ../../Drivers/Vendor/FatFs/source/ff_gen_drv.h \
  ../../Drivers/Vendor/FatFs/source/diskio.h \
  ../../Drivers/Vendor/FatFs/source/ff.h \
@@ -175,6 +175,7 @@ Application/User/Core/app_freertos.o: \
 ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h:
 ../../Drivers/O3/Fsm_o3/fsm_o3.h:
 ../../Drivers/O3/Fsm_o3/../Typedef.h:
+../../Drivers/O3/Fsm_o3/fsm_o3_types.h:
 ../../FATFS/App/fatfs.h:
 ../../Drivers/Vendor/FatFs/source/ff.h:
 ../../FATFS/Target/ffconf.h:

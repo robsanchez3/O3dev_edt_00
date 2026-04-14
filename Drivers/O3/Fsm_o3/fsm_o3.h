@@ -2,38 +2,7 @@
 #define FSM_O3_H_
 
 #include "../Typedef.h"
-
- /* FSM states identifiers */
- typedef enum
-{
-  STATE_INIT = 0,
-  STATE_ERROR,
-  STATE_INIT_CHECK_1,
-  STATE_INIT_CHECK_2,
-  STATE_INIT_CHECK_3,
-  STATE_WAITING_FOR_PROTOCOL,
-  STATE_TUNING_O3_SENSOR,
-  STATE_ADJUSTING,
-  STATE_O3_GENERATING,
-  STATE_USER_CANCELLED,
-  STATE_COMPLETED,
-  STATE_OVERPRESSURE,
-  STATE_VACUUM_GENERATING,
-  STATE_WAITING_THERAPY_TIME,
-  STATE_WAITING_EXTERNAL_STUFF,
-  STATE_WASHING,
-  STATE_DEPRESSURE,
-  STATE_WAITING_FOR_SERVICE,
-  STATE_CALIBRATE_O3_1,
-  STATE_CALIBRATE_O3_2,
-  STATE_CALIBRATE_O3_3,
-  STATE_SELECT_PRESS_COMP_FACTOR,
-  STATE_CALIBRATE_PERIOD,
-  STATE_SAVING_PARAMETERS,
-  STATE_LOADING_PARAMETERS,
-  STATE_CALIBRATION_END,
-  FSM_O3_STATE_MAX
-}FSM_O3_STATE_ID_E;
+#include "fsm_o3_types.h"
 
 /* Return values for state methods */
 typedef enum
@@ -44,6 +13,21 @@ typedef enum
   FSM_O3_RETVAL_MAX=-3
 }FSM_O3_RETVAL_E;
 
+
+/* Debug level flags */
+typedef enum
+{
+    D_LEV_0 = 0x01,
+    D_LEV_1 = 0x02,
+    D_LEV_2 = 0x04,
+    D_LEV_3 = 0x08,
+    D_LEV_4 = 0x10,
+    D_LEV_5 = 0x20,
+    D_LEV_HIDE_TIME_STAMP = 0x40,
+    D_LEV_SEND_WELCOME = 0x80,
+    D_LEV_ALL = 0xBE,
+    D_LEV_NONE = 0x00,
+}DEBUG_LEVEL_T;
 
 /* State object model structure */
 typedef struct
@@ -72,6 +56,7 @@ extern uint16 GLB_SyringeStopPattern[];
 
 void fsm_o3_main(void);
 void fsm_o3_timeHandler(void);
+void deb_printf(int8 deb_level, const char *fmt, ...);
 
 #ifdef __cplusplus
 }

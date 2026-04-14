@@ -76,7 +76,8 @@ Application/User/Core/main.o: C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c \
  ../../Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.h \
  ../../FATFS/Target/sd_diskio_config.h \
  ../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h \
- ../../Drivers/O3/Fsm_o3/fsm_o3.h ../../Drivers/O3/Fsm_o3/../Typedef.h
+ ../../Drivers/O3/Fsm_o3/fsm_o3.h ../../Drivers/O3/Fsm_o3/../Typedef.h \
+ ../../Drivers/O3/Fsm_o3/fsm_o3_types.h
 ../../Core/Inc/main.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
 ../../Core/Inc/stm32u5xx_hal_conf.h:
@@ -166,3 +167,4 @@ Application/User/Core/main.o: C:/Roberto/O3/O3dev_edt_00/Core/Src/main.c \
 ../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h:
 ../../Drivers/O3/Fsm_o3/fsm_o3.h:
 ../../Drivers/O3/Fsm_o3/../Typedef.h:
+../../Drivers/O3/Fsm_o3/fsm_o3_types.h:

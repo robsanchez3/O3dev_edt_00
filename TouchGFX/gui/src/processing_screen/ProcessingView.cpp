@@ -1,4 +1,6 @@
 #include <gui/processing_screen/ProcessingView.hpp>
+#include <stdio.h>
+
 
 ProcessingView::ProcessingView()
 {

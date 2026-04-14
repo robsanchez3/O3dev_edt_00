@@ -1,18 +1,18 @@
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:95:7:int16 FindFirstFileWithExt(const char*, const char*, char*, int16)	128	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:174:13:void LR_init(LineReader_t*, FIL*)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:181:16:uint8_t LR_getline(LineReader_t*, int8_t*, UINT)	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:222:7:char* ltrim(char*)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:228:6:void rtrim(char*)	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:236:6:void trim(char*)	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:244:6:char strToBoolChar(const char*)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:257:6:char findEnumValueGeneric(const ENUM_MAP*, int16, const char*, int*)	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:283:6:char matchModeStep(const char*, int*, int*)	40	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:299:6:void processSection(ModCtx*, const char*)	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:324:6:void processKeyValue(ModCtx*, const char*, const char*)	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:358:9:uint8_t loadTherapyFromFile(OPERATION_MODE_E, THERAPY_CTX*)	1512	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:433:6:void print_guiTherapyCtx(const THERAPY_CTX*)	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:472:7:int16 loadMainMenu(signed char*, int16)	1632	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:592:7:int16 loadHardwareConfig(HW_CONFIG_T*)	1512	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:701:7:int16 loadSyringeConfig(uint16*)	1520	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:797:7:int16 loadUserConfig(USR_CONFIG_T*)	1408	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:888:7:int16 saveUserConfig(const USR_CONFIG_T*)	664	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:94:7:int16 FindFirstFileWithExt(const char*, const char*, char*, int16)	128	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:173:13:void LR_init(LineReader_t*, FIL*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:180:16:uint8_t LR_getline(LineReader_t*, int8_t*, UINT)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:221:7:char* ltrim(char*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:227:6:void rtrim(char*)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:235:6:void trim(char*)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:243:6:char strToBoolChar(const char*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:256:6:char findEnumValueGeneric(const ENUM_MAP*, int16, const char*, int*)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:282:6:char matchModeStep(const char*, int*, int*)	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:298:6:void processSection(ModCtx*, const char*)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:323:6:void processKeyValue(ModCtx*, const char*, const char*)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:357:9:uint8_t loadTherapyFromFile(OPERATION_MODE_E, THERAPY_CTX*)	1512	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:432:6:void print_guiTherapyCtx(const THERAPY_CTX*)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:471:7:int16 loadMainMenu(signed char*, int16)	1632	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:591:7:int16 loadHardwareConfig(HW_CONFIG_T*)	1512	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:700:7:int16 loadSyringeConfig(uint16*)	1520	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:796:7:int16 loadUserConfig(USR_CONFIG_T*)	1408	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:887:7:int16 saveUserConfig(const USR_CONFIG_T*)	664	static

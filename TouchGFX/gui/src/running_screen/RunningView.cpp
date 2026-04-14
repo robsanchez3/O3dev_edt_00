@@ -1,5 +1,6 @@
 #include <gui/running_screen/RunningView.hpp>
 #include <BitmapDatabase.hpp>
+#include <stdio.h>
 
 RunningView::RunningView()
 {

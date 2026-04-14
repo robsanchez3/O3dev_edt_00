@@ -543,7 +543,7 @@ typedef enum
 typedef struct
 {
     uint8 Command;
-    int8  Identifier[2];
+    char  Identifier[2];
     int16 Value;
     uint16 Position[2];
 }PROTOCOL_COMMAND_T;
@@ -623,7 +623,7 @@ CRC_STATE_E Protocol_GetCRCStatus(void);
  *
  * @return No return.
  */
-int8 Protocol_ComputeCRC(int8 * Message, int8 * CrcString);
+int8 Protocol_ComputeCRC(char * Message, char * CrcString);
 
 /**
  * @brief Protocol_CompoundMessage
@@ -634,7 +634,7 @@ int8 Protocol_ComputeCRC(int8 * Message, int8 * CrcString);
  * @return \li PROTOCOL_RET_ERROR_BAD_PARAMETER if any of the parameters is NULL.
  *         \li PROTOCOL_RET_BAD_COMMAND if the command information is not correct.
  */
-int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command, int8 * Message);
+int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command, char * Message);
 
 
 /**

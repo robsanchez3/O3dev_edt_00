@@ -8,6 +8,8 @@
 #ifndef APPLICATION_USER_TOUCHGFX_GUI_INCLUDE_GUI_MODEL_PARSEAPPCONFIG_HPP_
 #define APPLICATION_USER_TOUCHGFX_GUI_INCLUDE_GUI_MODEL_PARSEAPPCONFIG_HPP_
 
+#include <../../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h>
+
 #define EMPTY_VALUE   -99   // impossible value on this context
 #define LINE_BUF_SIZE 256
 

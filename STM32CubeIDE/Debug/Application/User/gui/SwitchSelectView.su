@@ -7,9 +7,9 @@
 ../../TouchGFX/generated/gui_generated/include/gui_generated/switchselect_screen/SwitchSelectViewBase.hpp:40:26:FrontendApplication& SwitchSelectViewBase::application()	16	static
 ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectView.hpp:11:13:SwitchSelectView::~SwitchSelectView()	16	static
 ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectView.hpp:11:13:virtual SwitchSelectView::~SwitchSelectView()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:3:1:SwitchSelectView::SwitchSelectView()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:8:6:virtual void SwitchSelectView::setupScreen()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:16:6:virtual void SwitchSelectView::tearDownScreen()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:21:6:virtual void SwitchSelectView::cancelClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:30:6:virtual void SwitchSelectView::okClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:37:6:virtual void SwitchSelectView::generationModeClicked()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:4:1:SwitchSelectView::SwitchSelectView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:9:6:virtual void SwitchSelectView::setupScreen()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:17:6:virtual void SwitchSelectView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:22:6:virtual void SwitchSelectView::cancelClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:31:6:virtual void SwitchSelectView::okClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/switchselect_screen/SwitchSelectView.cpp:38:6:virtual void SwitchSelectView::generationModeClicked()	24	static

@@ -1,4 +1,5 @@
 #include <gui/information_screen/InformationView.hpp>
+#include <stdio.h>
 
 InformationView::InformationView()
 {

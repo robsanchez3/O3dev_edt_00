@@ -8,6 +8,7 @@
 #include <touchgfx/TypedText.hpp>
 
 #include <BitmapDatabase.hpp>
+#include <stdio.h>
 
 //sw_therapyContainer& contLog;
 

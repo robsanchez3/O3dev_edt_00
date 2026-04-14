@@ -1,5 +1,7 @@
 #include "fsm_o3.h"
 #include "fsm_o3_operation.h"
+#include "../Dependencies/dep_o3.h"
+#include <stdarg.h>
 
 
 uint32 GLB_FSM_ProcessEvent_Count = 0; // debug purposes
@@ -199,15 +201,15 @@ FSM_O3_OPERATION_T GLB_fsm_o3 = {
     },
 	/* DebLevel */
 	D_LEV_ALL | D_LEV_HIDE_TIME_STAMP,
-	/* StartStorageSave */
+	/* storageOpenWrite */
 	DelegateDummy2,
-	/* StartStorageLoad */
+	/* storageOpenRead */
 	DelegateDummy2,
-	/* writeStorageLine */
+	/* storageWrite */
 	DelegateDummy3,
-	/* ReadStorageLine */
+	/* storageRead */
 	DelegateDummy4,
-	/* StoptStorage */
+	/* storageClose */
 	DelegateDummy,
     /* SharedBuffer[16*8] */
 	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -414,4 +416,38 @@ void fsm_o3_main(void)
 		FSM_ProcessEvents();
 	}
 }
+
+#if (1)
+void deb_printf(int8 deb_level, const char *fmt, ...)
+{
+	va_list args;
+
+//	if( (signed char)GLB_fsm_o3.DebLevel >= (signed char)deb_level )
+	if( GLB_fsm_o3.DebLevel & deb_level )
+	{
+        if(!(GLB_fsm_o3.DebLevel & D_LEV_HIDE_TIME_STAMP))
+        {
+            dep_o3_printf("%010ld . %010ld: ", GLB_FSM_ProcessEvent_Count, GLB_TickCounter);
+        }
+        va_start(args, fmt);
+		dep_o3_vprintf(fmt, args);
+		va_end(args);
+	}
+}
+#else
+void deb_printf(int8 deb_level, const char *fmt, ...)
+{
+	va_list args;
+
+	//GLB_fsm_o3.DebLevel = D_LEV_6;
+    if( (signed char)GLB_fsm_o3.DebLevel == (signed char)deb_level )
+	{
+        dep_o3_printf("%010ld; %010ld: ", GLB_FSM_ProcessEvent_Count, GLB_TickCounter);
+
+		va_start(args, fmt);
+		dep_o3_vprintf(fmt, args);
+		va_end(args);
+	}
+}
+#endif
 
