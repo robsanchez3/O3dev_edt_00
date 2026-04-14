@@ -15,40 +15,40 @@
 ../../TouchGFX/generated/gui_generated/include/gui_generated/calibration_screen/CalibrationViewBase.hpp:127:26:FrontendApplication& CalibrationViewBase::application()	16	static
 ../../TouchGFX/gui/include/gui/calibration_screen/CalibrationView.hpp:11:13:CalibrationView::~CalibrationView()	16	static
 ../../TouchGFX/gui/include/gui/calibration_screen/CalibrationView.hpp:11:13:virtual CalibrationView::~CalibrationView()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:7:1:CalibrationView::CalibrationView()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:14:6:virtual void CalibrationView::setupScreen()	40	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:38:6:virtual void CalibrationView::tearDownScreen()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:44:6:virtual void CalibrationView::handleTickEvent()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:76:6:void CalibrationView::showPinpad()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:111:6:void CalibrationView::hidePinpad()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:144:6:void CalibrationView::updatePinDisplay()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:161:6:void CalibrationView::appendDigit(uint8_t)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:176:6:void CalibrationView::deleteLastDigit()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:186:6:void CalibrationView::validatePin()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:198:6:void CalibrationView::clearPin()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:205:6:void CalibrationView::showPinValidationResult(bool)	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:221:6:void CalibrationView::showPinError()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:230:6:virtual void CalibrationView::pinPadClicked_0()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:231:6:virtual void CalibrationView::pinPadClicked_1()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:232:6:virtual void CalibrationView::pinPadClicked_2()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:233:6:virtual void CalibrationView::pinPadClicked_3()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:234:6:virtual void CalibrationView::pinPadClicked_4()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:235:6:virtual void CalibrationView::pinPadClicked_5()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:236:6:virtual void CalibrationView::pinPadClicked_6()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:237:6:virtual void CalibrationView::pinPadClicked_7()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:238:6:virtual void CalibrationView::pinPadClicked_8()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:239:6:virtual void CalibrationView::pinPadClicked_9()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:240:6:virtual void CalibrationView::pinPadClicked_del()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:241:6:virtual void CalibrationView::pinPadClicked_ok()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:244:6:virtual void CalibrationView::calPressClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:257:6:virtual void CalibrationView::calFlowClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:272:6:virtual void CalibrationView::calO3Clicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:287:6:virtual void CalibrationView::saveParamClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:300:6:virtual void CalibrationView::generationTypeClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:314:6:virtual void CalibrationView::swVersionClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:321:6:virtual void CalibrationView::pressTempClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:328:6:virtual void CalibrationView::showParamClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:335:6:virtual void CalibrationView::showStartClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:342:6:virtual void CalibrationView::loadParamClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:349:6:virtual void CalibrationView::calPeriodClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:356:6:virtual void CalibrationView::cancelClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:5:1:CalibrationView::CalibrationView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:11:6:virtual void CalibrationView::setupScreen()	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:35:6:virtual void CalibrationView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:41:6:virtual void CalibrationView::handleTickEvent()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:73:6:void CalibrationView::showPinpad()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:108:6:void CalibrationView::hidePinpad()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:141:6:void CalibrationView::updatePinDisplay()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:158:6:void CalibrationView::appendDigit(uint8_t)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:173:6:void CalibrationView::deleteLastDigit()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:183:6:void CalibrationView::validatePin()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:195:6:void CalibrationView::clearPin()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:202:6:void CalibrationView::showPinValidationResult(bool)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:218:6:void CalibrationView::showPinError()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:227:6:virtual void CalibrationView::pinPadClicked_0()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:228:6:virtual void CalibrationView::pinPadClicked_1()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:229:6:virtual void CalibrationView::pinPadClicked_2()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:230:6:virtual void CalibrationView::pinPadClicked_3()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:231:6:virtual void CalibrationView::pinPadClicked_4()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:232:6:virtual void CalibrationView::pinPadClicked_5()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:233:6:virtual void CalibrationView::pinPadClicked_6()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:234:6:virtual void CalibrationView::pinPadClicked_7()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:235:6:virtual void CalibrationView::pinPadClicked_8()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:236:6:virtual void CalibrationView::pinPadClicked_9()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:237:6:virtual void CalibrationView::pinPadClicked_del()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:238:6:virtual void CalibrationView::pinPadClicked_ok()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:241:6:virtual void CalibrationView::calPressClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:254:6:virtual void CalibrationView::calFlowClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:269:6:virtual void CalibrationView::calO3Clicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:284:6:virtual void CalibrationView::saveParamClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:297:6:virtual void CalibrationView::generationTypeClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:311:6:virtual void CalibrationView::swVersionClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:318:6:virtual void CalibrationView::pressTempClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:325:6:virtual void CalibrationView::showParamClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:332:6:virtual void CalibrationView::showStartClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:339:6:virtual void CalibrationView::loadParamClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:346:6:virtual void CalibrationView::calPeriodClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationView.cpp:353:6:virtual void CalibrationView::cancelClicked()	16	static

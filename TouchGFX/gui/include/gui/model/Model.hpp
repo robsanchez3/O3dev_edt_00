@@ -80,7 +80,7 @@ public:
 	 * the ModelListener interface.
 	 */
 	void tick();
-
+	void resetSystem();
 	void checkPin(const char* pin);
 	void blockConfigOptions();
 	void unblockConfigOptions();

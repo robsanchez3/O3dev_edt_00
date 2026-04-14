@@ -27,21 +27,21 @@
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:84:18:virtual void touchgfx::Button::invalidateContent() const	16	static
 ../../TouchGFX/gui/include/gui/running_screen/RunningView.hpp:13:13:RunningView::~RunningView()	16	static
 ../../TouchGFX/gui/include/gui/running_screen/RunningView.hpp:13:13:virtual RunningView::~RunningView()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:5:1:RunningView::RunningView()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:10:6:virtual void RunningView::setupScreen()	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:17:6:virtual void RunningView::tearDownScreen()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:22:6:virtual void RunningView::cnlClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:27:6:virtual void RunningView::okClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:33:6:virtual void RunningView::bigPauseClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:39:6:virtual void RunningView::handleClickEvent(const touchgfx::ClickEvent&)	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:91:6:virtual void RunningView::handleTickEvent()	88	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:178:6:void RunningView::initTherapyContext(THERAPY_CTX*)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:184:10:uint16_t RunningView::getTherapyTargetValue(uint8_t)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:189:6:void RunningView::initTherapyDataInfo()	72	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:224:6:void RunningView::updatePressureBar()	40	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:240:6:void RunningView::InitRunningContext()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:246:6:void RunningView::InitProgressInfo()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:255:6:void RunningView::InitProgressGraphic(int, int)	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:260:6:virtual void RunningView::manageBigPauseView()	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:7:1:RunningView::RunningView()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:12:6:virtual void RunningView::setupScreen()	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:19:6:virtual void RunningView::tearDownScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:24:6:virtual void RunningView::cnlClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:29:6:virtual void RunningView::okClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:35:6:virtual void RunningView::bigPauseClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:41:6:virtual void RunningView::handleClickEvent(const touchgfx::ClickEvent&)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:93:6:virtual void RunningView::handleTickEvent()	88	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:180:6:void RunningView::initTherapyContext(THERAPY_CTX*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:186:10:uint16_t RunningView::getTherapyTargetValue(uint8_t)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:191:6:void RunningView::initTherapyDataInfo()	72	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:226:6:void RunningView::updatePressureBar()	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:242:6:void RunningView::InitRunningContext()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:248:6:void RunningView::InitProgressInfo()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:257:6:void RunningView::InitProgressGraphic(int, int)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/running_screen/RunningView.cpp:262:6:virtual void RunningView::manageBigPauseView()	40	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:122:10:void touchgfx::FadeAnimator<T>::startFadeAnimation(uint8_t, uint16_t, touchgfx::EasingEquation) [with T = touchgfx::MoveAnimator<touchgfx::Button>]	24	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:165:10:void touchgfx::FadeAnimator<T>::nextFadeAnimationStep() [with T = touchgfx::MoveAnimator<touchgfx::Button>]	32	static

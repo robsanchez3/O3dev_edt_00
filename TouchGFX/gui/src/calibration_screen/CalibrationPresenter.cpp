@@ -71,3 +71,8 @@ bool CalibrationPresenter::isGenerationModeAvailable()
 	return model->isGenerationModeAvailable();
 }
 
+void CalibrationPresenter::resetSystem()
+{
+	model->resetSystem();
+}
+

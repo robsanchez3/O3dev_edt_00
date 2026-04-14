@@ -1,12 +1,9 @@
 #include <gui/calibration_screen/CalibrationView.hpp>
 #include <BitmapDatabase.hpp>
-//#include "stm32f7xx_hal.h"  TODO clean when validated
-#include "stm32u5xx_hal.h" // TODO needed for HAL_NVIC_SystemReset(); probably better if implemented on model.cc
 #include <stdio.h>
 
 CalibrationView::CalibrationView() : pinLength(0)
 {
-	//
 	ta_pin.setWildcard(pinDisplay);
 	Unicode::snprintf(pinRaw, PIN_BUFFER_SIZE, "%s", "");
 }
@@ -355,14 +352,13 @@ void CalibrationView::calPeriodClicked()
 
 void CalibrationView::cancelClicked()
 {
-	//presenter->cancelClicked();
 	if(bx_pinPadBack.isVisible())
 	{
 		hidePinpad();
 	}
 	else
 	{
-		HAL_NVIC_SystemReset();
+		presenter->resetSystem();
 	}
 }
 

@@ -2,6 +2,8 @@
 #include <BitmapDatabase.hpp>
 #include <stdio.h>
 
+// TODO: develop initVisibleItems in the same way than in Endview.cpp?
+
 RunningView::RunningView()
 {
 

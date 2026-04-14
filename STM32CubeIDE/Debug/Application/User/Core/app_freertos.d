@@ -82,15 +82,7 @@ Application/User/Core/app_freertos.o: \
  ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h \
  ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h \
  ../../Drivers/O3/Fsm_o3/fsm_o3.h ../../Drivers/O3/Fsm_o3/../Typedef.h \
- ../../Drivers/O3/Fsm_o3/fsm_o3_types.h ../../FATFS/App/fatfs.h \
- ../../Drivers/Vendor/FatFs/source/ff.h ../../FATFS/Target/ffconf.h \
- ../../Drivers/Vendor/FatFs/source/ff_gen_drv.h \
- ../../Drivers/Vendor/FatFs/source/diskio.h \
- ../../Drivers/Vendor/FatFs/source/ff.h \
- ../../Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.h \
- ../../FATFS/Target/sd_diskio_config.h ../../Core/Inc/dcache.h \
- ../../Core/Inc/main.h \
- ../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h
+ ../../Drivers/O3/Fsm_o3/fsm_o3_types.h
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../../Core/Inc/FreeRTOSConfig.h:
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -176,14 +168,3 @@ Application/User/Core/app_freertos.o: \
 ../../Drivers/O3/Fsm_o3/fsm_o3.h:
 ../../Drivers/O3/Fsm_o3/../Typedef.h:
 ../../Drivers/O3/Fsm_o3/fsm_o3_types.h:
-../../FATFS/App/fatfs.h:
-../../Drivers/Vendor/FatFs/source/ff.h:
-../../FATFS/Target/ffconf.h:
-../../Drivers/Vendor/FatFs/source/ff_gen_drv.h:
-../../Drivers/Vendor/FatFs/source/diskio.h:
-../../Drivers/Vendor/FatFs/source/ff.h:
-../../Drivers/Vendor/FatFs/source/drivers/sd/sd_diskio_dma_rtos.h:
-../../FATFS/Target/sd_diskio_config.h:
-../../Core/Inc/dcache.h:
-../../Core/Inc/main.h:
-../../FATFS/App/../../Drivers/Vendor/Device/USB/usbh_diskio.h:

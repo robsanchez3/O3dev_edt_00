@@ -21,6 +21,9 @@ void EndView::setupScreen()
     	si_result.setBitmap(Bitmap(BITMAP_OVERPRESSURE_CIRCLE_YELLOW_200_ID));
     	break;
     }
+
+    two_items_top_text_y = (((ta_time.getY() - ta_dose.getY()) + ta_dose.getHeight()) / 3) - (ta_dose.getHeight() / 2) + ta_dose.getY();
+    two_items_down_text_y = two_items_top_text_y + ta_volume.getY() - ta_dose.getY();
 }
 
 void EndView::tearDownScreen()
@@ -40,11 +43,62 @@ uint16_t EndView::getTherapyTargetValue(uint8_t valueID)
 
 void EndView::initVisibleItems()
 {
-//	TODO: make position dinamic dependig on visible items (hide icons)
-//  TODO: do the same for running view
+    uint8_t visibleItems = 0;
+
+    // calculate visible items number depending on therapy context
+    if(therapyCtx->endTotalDoseVisible)	  { visibleItems++; }
+    if(therapyCtx->endTotalVolumeVisible) { visibleItems++; }
+    if(therapyCtx->endTotalTimeVisible)   { visibleItems++; }
+
+    // position text lines depending on visible items
+    if(visibleItems == 1)
+	{
+		if(therapyCtx->endTotalDoseVisible)
+		{
+			ta_dose.setY(ta_volume.getY());
+		}
+		else if(therapyCtx->endTotalTimeVisible)
+		{
+			ta_time.setY(ta_volume.getY());
+		}
+	}
+    else if(visibleItems == 2)
+	{
+        if(therapyCtx->endTotalDoseVisible)
+        {
+        	ta_dose.setY(two_items_top_text_y);
+
+        	if(therapyCtx->endTotalVolumeVisible)
+        	{
+        		ta_volume.setY(two_items_down_text_y);
+        	}
+        	else if(therapyCtx->endTotalTimeVisible)
+			{
+				ta_time.setY(two_items_down_text_y);
+			}
+        }
+        else
+        {
+    		ta_volume.setY(two_items_top_text_y);
+    		ta_time.setY(two_items_down_text_y);
+        }
+	}
+    // position icons depending on visible items (centered with text)
+    if(visibleItems != 3)
+    {
+    	si_dose.setY(ta_dose.getY() + ta_dose.getHeight() / 2 - si_dose.getHeight() / 2);
+    	si_volume.setY(ta_volume.getY() + ta_volume.getHeight() / 2 - si_volume.getHeight() / 2);
+    	si_time.setY(ta_time.getY() + ta_time.getHeight() / 2 - si_time.getHeight() / 2);
+    }
+    // show items depending on therapy context
+    si_dose.setVisible(therapyCtx->endTotalDoseVisible);
+    si_volume.setVisible(therapyCtx->endTotalVolumeVisible);
+    si_time.setVisible(therapyCtx->endTotalTimeVisible);
+
     ta_dose.setVisible(therapyCtx->endTotalDoseVisible);
     ta_volume.setVisible(therapyCtx->endTotalVolumeVisible);
     ta_time.setVisible(therapyCtx->endTotalTimeVisible);
+
 }
 
 void EndView::initTherapyDataInfo()

@@ -35,8 +35,8 @@ public:
     bool configOptionsAllowed();
     void flowCalibrationStart();
     void o3CalibrationStart();
-//    void pFactorCalibrationStart();
     bool isGenerationModeAvailable();
+    void resetSystem();
 
 private:
     CalibrationPresenter();

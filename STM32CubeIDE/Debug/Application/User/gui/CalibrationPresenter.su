@@ -29,3 +29,4 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationPresen
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationPresenter.cpp:59:6:void CalibrationPresenter::flowCalibrationStart()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationPresenter.cpp:64:6:void CalibrationPresenter::o3CalibrationStart()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationPresenter.cpp:69:6:bool CalibrationPresenter::isGenerationModeAvailable()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/calibration_screen/CalibrationPresenter.cpp:74:6:void CalibrationPresenter::resetSystem()	16	static

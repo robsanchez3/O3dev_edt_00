@@ -367,6 +367,11 @@ void Model::tick()
 
 } // Model::tick()
 
+void Model::resetSystem()
+{
+	HAL_NVIC_SystemReset();
+}
+
 void Model::checkPin(const char* pin)
 {
 	const char correctPin[] = PIN;  // valid PIN

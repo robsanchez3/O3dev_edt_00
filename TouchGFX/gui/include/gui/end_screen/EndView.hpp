@@ -24,6 +24,8 @@ public:
 
     THERAPY_CTX *therapyCtx;
 protected:
+    uint16_t two_items_top_text_y;
+    uint16_t two_items_down_text_y;
 };
 
 #endif // ENDVIEW_HPP
