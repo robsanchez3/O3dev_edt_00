@@ -410,7 +410,7 @@
       <UniqueIdentifier>1FA443AB-06F3-A36A-18D0-9F616A0FC99F</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\widget">
-      <UniqueIdentifier>67D7DEBA-33E5-A78F-3603-2C5D3562FC3A</UniqueIdentifier>
+      <UniqueIdentifier>F74F8A49-FFEE-8738-5E41-77B46D8A5D08</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -641,6 +641,9 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\washing_screen\WashingViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\washing_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\model\ParseUpdates.cpp">
+      <Filter>Source Files\gui\model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1308,6 +1311,9 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\washing_screen\WashingViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\washing_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\model\ParseUpdates.hpp">
+      <Filter>Header Files\gui\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

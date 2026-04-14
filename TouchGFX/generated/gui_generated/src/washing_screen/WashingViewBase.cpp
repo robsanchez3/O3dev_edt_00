@@ -38,7 +38,7 @@ WashingViewBase::WashingViewBase() :
     si_modeIcon.setAlpha(110);
     add(si_modeIcon);
 
-    ta_time.setPosition(224, 221, 291, 45);
+    ta_time.setPosition(224, 137, 291, 45);
     ta_time.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     ta_time.setLinespacing(0);
     Unicode::snprintf(ta_timeBuffer, TA_TIME_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_E1AS).getText());
@@ -47,7 +47,7 @@ WashingViewBase::WashingViewBase() :
     add(ta_time);
 
     si_time.setBitmap(touchgfx::Bitmap(BITMAP_TIME_01_ID));
-    si_time.setPosition(135, 208, 70, 70);
+    si_time.setPosition(135, 124, 70, 70);
     si_time.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
     add(si_time);
 

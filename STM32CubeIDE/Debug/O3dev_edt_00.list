@@ -49,15 +49,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  22 .debug_macro  00076241  00000000  00000000  0129b848  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_line   001096ef  00000000  00000000  01311a89  2**0
+ 23 .debug_line   00109709  00000000  00000000  01311a89  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_str    002170e1  00000000  00000000  0141b178  2**0
+ 24 .debug_str    002170fb  00000000  00000000  0141b192  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 25 .comment      000000c2  00000000  00000000  01632259  2**0
+ 25 .comment      000000c2  00000000  00000000  0163228d  2**0
                   CONTENTS, READONLY
- 26 .debug_frame  000390a4  00000000  00000000  0163231c  2**2
+ 26 .debug_frame  000390a4  00000000  00000000  01632350  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 27 .debug_line_str 00000063  00000000  00000000  0166b3c0  2**0
+ 27 .debug_line_str 00000063  00000000  00000000  0166b3f4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -57676,13 +57676,13 @@ WashingViewBase::WashingViewBase() :
  803ba4a:	4610      	mov	r0, r2
  803ba4c:	f7ea fc33 	bl	80262b6 <_ZN8touchgfx6Screen3addERNS_8DrawableE>
 
-    ta_time.setPosition(224, 221, 291, 45);
+    ta_time.setPosition(224, 137, 291, 45);
  803ba50:	697b      	ldr	r3, [r7, #20]
  803ba52:	f503 70a6 	add.w	r0, r3, #332	@ 0x14c
  803ba56:	232d      	movs	r3, #45	@ 0x2d
  803ba58:	9300      	str	r3, [sp, #0]
  803ba5a:	f240 1323 	movw	r3, #291	@ 0x123
- 803ba5e:	22dd      	movs	r2, #221	@ 0xdd
+ 803ba5e:	2289      	movs	r2, #137	@ 0x89
  803ba60:	21e0      	movs	r1, #224	@ 0xe0
  803ba62:	f7ea fa38 	bl	8025ed6 <_ZN8touchgfx8Drawable11setPositionEssss>
     ta_time.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -57843,13 +57843,13 @@ WashingViewBase::WashingViewBase() :
  803bbf2:	4619      	mov	r1, r3
  803bbf4:	4620      	mov	r0, r4
  803bbf6:	f03f fd64 	bl	807b6c2 <_ZN8touchgfx5Image9setBitmapERKNS_6BitmapE>
-    si_time.setPosition(135, 208, 70, 70);
+    si_time.setPosition(135, 124, 70, 70);
  803bbfa:	697b      	ldr	r3, [r7, #20]
  803bbfc:	f503 70cc 	add.w	r0, r3, #408	@ 0x198
  803bc00:	2346      	movs	r3, #70	@ 0x46
  803bc02:	9300      	str	r3, [sp, #0]
  803bc04:	2346      	movs	r3, #70	@ 0x46
- 803bc06:	22d0      	movs	r2, #208	@ 0xd0
+ 803bc06:	227c      	movs	r2, #124	@ 0x7c
  803bc08:	2187      	movs	r1, #135	@ 0x87
  803bc0a:	f7ea f964 	bl	8025ed6 <_ZN8touchgfx8Drawable11setPositionEssss>
     si_time.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);

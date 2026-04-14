@@ -1700,6 +1700,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/model/ParseAppConfig.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/ParseUpdates.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/model/ParseUpdates.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/ProcessingPresenter.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/processing_screen/ProcessingPresenter.cpp</locationURI>
