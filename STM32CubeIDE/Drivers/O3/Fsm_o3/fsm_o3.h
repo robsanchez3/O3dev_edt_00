@@ -4,6 +4,14 @@
 #include "../Typedef.h"
 #include "fsm_o3_types.h"
 
+/* Syringe control data */
+#define SYRINGE_PATTERN_NUM                         5
+#define DEF_SYRINGE_STOP_5ML                     4000
+#define DEF_SYRINGE_STOP_10ML                    6150
+#define DEF_SYRINGE_STOP_20ML                   10828
+#define DEF_SYRINGE_STOP_50ML                   23404
+#define DEF_SYRINGE_STOP_100ML                  45000
+
 /* Return values for state methods */
 typedef enum
 {

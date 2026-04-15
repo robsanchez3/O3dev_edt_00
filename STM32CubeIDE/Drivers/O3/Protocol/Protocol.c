@@ -6,9 +6,7 @@
  */
 
 #include "../Dependencies/dep_o3.h"
-//#include <Protocol/Protocol.h>
 #include "Protocol.h"
-//#include "../OZTDUart.h"                 // TODO......  improve path
 #include "../Fsm_o3/fsm_o3.h"      // GLB_TickCounter for TIMER_Init
 #include "../Fsm_o3/fsm_o3_api.h"  // FSM state getter for debug logging
 #include <stdlib.h>
@@ -507,16 +505,13 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
     }
   }
 }
-// TODO: cmsis_os2.h/FreeRTOS.h dependency removed - route through Dependencies/ for portability
+
 int8 Protocol_GetResponse(void)
 {
   uint8 i=0;
   int8 RetVal=CMD_RESPONSE_NONE;
 
   ClearLastResponseString();
-/*TIMER_Start(&TimeOutTimer,MS_TO_CLOCK(150));*/
-
-//TIMER_Start(&TimeOutTimer,60000); // TODO review timeout value
   TIMER_Start(&TimeOutTimer,1000);
 
   do

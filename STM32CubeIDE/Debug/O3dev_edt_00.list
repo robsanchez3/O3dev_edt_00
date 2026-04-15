@@ -39,25 +39,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  17 ExtFlashSection 00e9c03c  90000000  90000000  000b0000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
- 18 .debug_info   002f3ec4  00000000  00000000  00f4c072  2**0
+ 18 .debug_info   002f3ebe  00000000  00000000  00f4c072  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_abbrev 00042fdf  00000000  00000000  0123ff36  2**0
+ 19 .debug_abbrev 00042fdf  00000000  00000000  0123ff30  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_aranges 0000e7e0  00000000  00000000  01282f18  2**3
+ 20 .debug_aranges 0000e7e0  00000000  00000000  01282f10  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_rnglists 0000a128  00000000  00000000  012916f8  2**0
+ 21 .debug_rnglists 0000a128  00000000  00000000  012916f0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_macro  00075ea8  00000000  00000000  0129b820  2**0
+ 22 .debug_macro  00075edd  00000000  00000000  0129b818  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_line   001095f6  00000000  00000000  013116c8  2**0
+ 23 .debug_line   001095f4  00000000  00000000  013116f5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_str    0021666a  00000000  00000000  0141acbe  2**0
+ 24 .debug_str    0021665a  00000000  00000000  0141ace9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 25 .comment      000000c2  00000000  00000000  01631328  2**0
+ 25 .comment      000000c2  00000000  00000000  01631343  2**0
                   CONTENTS, READONLY
- 26 .debug_frame  000390a4  00000000  00000000  016313ec  2**2
+ 26 .debug_frame  000390a4  00000000  00000000  01631408  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 27 .debug_line_str 00000063  00000000  00000000  0166a490  2**0
+ 27 .debug_line_str 00000063  00000000  00000000  0166a4ac  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -89204,11 +89204,7 @@ void fsm_o3_timeHandler(void)
  804a03a:	4b26      	ldr	r3, [pc, #152]	@ (804a0d4 <fsm_o3_timeHandler+0xbc>)
  804a03c:	2200      	movs	r2, #0
  804a03e:	601a      	str	r2, [r3, #0]
-//  Commented out on 19/12/2025 to test it it is necessary or is just legacy from OZP/T
-    GLB_fsm_o3.AnimationTimer.StartTime = GLB_TickCounter;
-    GLB_fsm_o3.AnimationTimer.TimeOut = GLB_fsm_o3.AnimationTimer.StartTime + 1;
-    GLB_fsm_o3.AnimationTimer.State = TIMER_STATE_STARTED;
-#endif
+
     GLB_fsm_o3.RefreshScreen = 1;  // TODO test user experience refreshing more often (500 or 250 ms)
  804a040:	4b25      	ldr	r3, [pc, #148]	@ (804a0d8 <fsm_o3_timeHandler+0xc0>)
  804a042:	2201      	movs	r2, #1
@@ -91139,8 +91135,6 @@ void SendGenerationCommands(int16 GenerationMode, uint8 FlowRunningState)
  804ac7a:	4618      	mov	r0, r3
  804ac7c:	f7ff fe94 	bl	804a9a8 <ManageCommand>
   }
-
-//  GLB_fsm_o3.GeneratorCleaned = 0;
 }
  804ac80:	bf00      	nop
  804ac82:	3780      	adds	r7, #128	@ 0x80
@@ -92340,7 +92334,6 @@ void GotoService(void)
  804b4d0:	4b06      	ldr	r3, [pc, #24]	@ (804b4ec <GotoService+0x34>)
  804b4d2:	2264      	movs	r2, #100	@ 0x64
  804b4d4:	f883 23bb 	strb.w	r2, [r3, #955]	@ 0x3bb
-//	GLB_fsm_o3.Starting = 0;//  remove when properly tested
 //	GLB_fsm_o3.CurrentState = &GLB_fsm_o3.States[STATE_WAITING_FOR_SERVICE];
 	ChangeState(STATE_WAITING_FOR_SERVICE);
  804b4d8:	2011      	movs	r0, #17
@@ -92380,7 +92373,6 @@ void WaitingForProtocol(void)
 {
  804b50c:	b580      	push	{r7, lr}
  804b50e:	af00      	add	r7, sp, #0
-//	GLB_fsm_o3.Starting = 0;// remove when properly tested
 	GLB_fsm_o3.TemperatureMonitoring = 0;
  804b510:	4b12      	ldr	r3, [pc, #72]	@ (804b55c <WaitingForProtocol+0x50>)
  804b512:	2200      	movs	r2, #0
@@ -95468,7 +95460,7 @@ void FSM_ProcessEvents()
  804c9ba:	2b02      	cmp	r3, #2
  804c9bc:	d10d      	bne.n	804c9da <FSM_ProcessEvents+0xc6>
 		{
-			TIMER_Start(&GLB_fsm_o3.DataReadTimer, HI_SPEED_DATA_READ_PERIOD_MS);
+			TIMER_Start(&GLB_fsm_o3.DataReadTimer, DATA_READ_PERIOD_MS);
  804c9be:	2101      	movs	r1, #1
  804c9c0:	4817      	ldr	r0, [pc, #92]	@ (804ca20 <FSM_ProcessEvents+0x10c>)
  804c9c2:	f005 fdf3 	bl	80525ac <TIMER_Start>
@@ -96451,7 +96443,7 @@ void StartGeneration(uint8 FlowRunningState)
  804d0cc:	2b00      	cmp	r3, #0
  804d0ce:	d108      	bne.n	804d0e2 <StartGeneration+0x56>
   {
-	  TIMER_Start(&GLB_fsm_o3.DataReadTimer, HI_SPEED_DATA_READ_PERIOD_MS);
+	  TIMER_Start(&GLB_fsm_o3.DataReadTimer, DATA_READ_PERIOD_MS);
  804d0d0:	2101      	movs	r1, #1
  804d0d2:	4809      	ldr	r0, [pc, #36]	@ (804d0f8 <StartGeneration+0x6c>)
  804d0d4:	f005 fa6a 	bl	80525ac <TIMER_Start>
@@ -99390,7 +99382,7 @@ void O3SensorCalibrationEnd(void)
  804e5be:	4611      	mov	r1, r2
  804e5c0:	4618      	mov	r0, r3
  804e5c2:	f7fc f9f1 	bl	804a9a8 <ManageCommand>
-////	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
+// 	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
 
 	/* Prepare reference value calibration step */
 
@@ -99531,7 +99523,7 @@ void CalibrateO3_Ref_2_Ok(void)
  804e6cc:	4611      	mov	r1, r2
  804e6ce:	4618      	mov	r0, r3
  804e6d0:	f7fc f96a 	bl	804a9a8 <ManageCommand>
-///	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
+// 	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
 }
  804e6d4:	bf00      	nop
  804e6d6:	3778      	adds	r7, #120	@ 0x78
@@ -99639,7 +99631,7 @@ void CalibrateO3_Ref_3_Ok(void)
  804e790:	4611      	mov	r1, r2
  804e792:	4618      	mov	r0, r3
  804e794:	f7fc f908 	bl	804a9a8 <ManageCommand>
-///	dep_o3_delay_ms(200);  /* only for V3 evaluate if necessary*/
+// 	dep_o3_delay_ms(200);  /* only for V3 evaluate if necessary*/
 
 	Command.Position[0] = PULSES_FOR_1_MG_POSITION;
  804e798:	23c4      	movs	r3, #196	@ 0xc4
@@ -104325,7 +104317,7 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
  8050c98:	20233094 	.word	0x20233094
 
 08050c9c <Protocol_GetResponse>:
-// TODO: cmsis_os2.h/FreeRTOS.h dependency removed - route through Dependencies/ for portability
+
 int8 Protocol_GetResponse(void)
 {
  8050c9c:	b580      	push	{r7, lr}
@@ -104340,9 +104332,6 @@ int8 Protocol_GetResponse(void)
 
   ClearLastResponseString();
  8050caa:	f7fe fc59 	bl	804f560 <ClearLastResponseString>
-/*TIMER_Start(&TimeOutTimer,MS_TO_CLOCK(150));*/
-
-//TIMER_Start(&TimeOutTimer,60000); // TODO review timeout value
   TIMER_Start(&TimeOutTimer,1000);
  8050cae:	f44f 717a 	mov.w	r1, #1000	@ 0x3e8
  8050cb2:	4832      	ldr	r0, [pc, #200]	@ (8050d7c <Protocol_GetResponse+0xe0>)

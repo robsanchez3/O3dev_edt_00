@@ -312,8 +312,6 @@ FSM_O3_OPERATION_T GLB_fsm_o3 = {
     0,
     /* CalibrationErrorDuringStartUp */
     0,
-//    /* Starting */
-//    1,  remove when properly tested
     /* MaxFlowDeviation */
     0,
 	/* RefreshDisplay */
@@ -326,8 +324,6 @@ FSM_O3_OPERATION_T GLB_fsm_o3 = {
 	STATE_COMPLETED,
 	/* DepressureReturnState */
 	NO_ERROR,
-    /* GeneratorCleaned */
-/////    0,
 	/* VacuumStatus */
 	VACUUM_STATE_STOP,
 	/* SalineCycle */
@@ -366,13 +362,6 @@ void fsm_o3_timeHandler(void)
   {
     GLB_SecondCounter = 0;
 
-#if 0
-    /* Force repainting */   // TODO: is it necessary or is legacu from OZP/T
-//  Commented out on 19/12/2025 to test it it is necessary or is just legacy from OZP/T
-    GLB_fsm_o3.AnimationTimer.StartTime = GLB_TickCounter;
-    GLB_fsm_o3.AnimationTimer.TimeOut = GLB_fsm_o3.AnimationTimer.StartTime + 1;
-    GLB_fsm_o3.AnimationTimer.State = TIMER_STATE_STARTED;
-#endif
     GLB_fsm_o3.RefreshScreen = 1;  // TODO test user experience refreshing more often (500 or 250 ms)
 
     if(GLB_fsm_o3.FreezeRemainingTime == 0)

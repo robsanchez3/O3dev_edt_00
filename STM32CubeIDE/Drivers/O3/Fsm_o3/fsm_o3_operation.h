@@ -89,7 +89,8 @@ typedef enum
 /* Ozone references for different utilities */
 #define MAX_OZONE_DEVIATION                       2*8	// ug/Nml * 8
 #define OZONE_START_UP_TEST_CURRENT              40*8	// ug/Nml * 8  ( Start up O3 for test current )
-#define O3_CALIBRATION_POINT_2                   15*8	// ug/Nml * 8  TODO: review naming
+#define O3_CALIBRATION_POINT_1                    1*8	// ug/Nml * 8
+#define O3_CALIBRATION_POINT_2                   15*8	// ug/Nml * 8
 #define O3_CALIBRATION_POINT_3                   60*8	// ug/Nml * 8
 
 
@@ -99,9 +100,9 @@ typedef enum
 #define WASHING_FLOW                               50	// l/h
 #define DEFAULT_FLOW_VALUE                         30	// l/h
 #define FLOW_O3_CALIBRATION_OZP                    20*8	// l/h * 8
-#define MAX_FLOW_LEVEL_WITHOUT_O3_ON_GENERATION_START   15	// l/h  /* Under this flow level O3 generation will start when stable flow were reached */  TODO: review if still necessary
 #define FLOW_START_UP_TEST_CURRENT                20*8	// l/h * 8
 #define FLOW_START_UP_TEST_CURRENT_FOR_OZT        30*8  // l/h * 8
+#define MAX_FLOW_LEVEL_WITHOUT_O3_ON_GENERATION_START   15	// l/h  /* Under this flow level O3 generation will start when stable flow were reached */  TODO: review if still necessary
 
 /* Time references for different utilities */
 #define MAX_TIME_VALUE                             20	// min
@@ -112,18 +113,7 @@ typedef enum
 #define SERVICE_ENTRY_TIME_WINDOW                3500	// ms
 #define HIGH_VOLT_DETECTION_TIMEOUT              5000	// ms
 
-/*  TODO: Review this values and comments (NOT USED NOW)
- * There are to events at the end of filling process during in syringe mode:
- * - Pressure increase.
- * - Flow decrease.
- *
- * At 'high speed reading', flow decrease is detected before syringe full pressure
- * is detected. Then 'flow error' is displayed instead of 'syringe full'.
- * Using 'low speed reading' syringe full pressure is detected before flow media
- * results in 'flow error'.
- */
-#define HI_SPEED_DATA_READ_PERIOD_MS                1	// ms
-#define LOW_SPEED_DATA_READ_PERIOD_MS             250 	// ms
+#define DATA_READ_PERIOD_MS                        1	// ms
 
 /* Temperature references for different utilities */
 #define FAN_ON_TEMPERATURE                     35*127	// ºC * 127  ( Temperature limit to start fan when therapy is selected )
@@ -148,14 +138,6 @@ typedef enum
 /* Manual syringe states */
 #define SYRINGE_MANUAL_STATE_ON                     1
 #define SYRINGE_MANUAL_STATE_PAUSED                 0
-
-/* Syringe control data */  // TODO: reconsider location
-#define SYRINGE_PATTERN_NUM                         5
-#define DEF_SYRINGE_STOP_5ML                     4000
-#define DEF_SYRINGE_STOP_10ML                    6150
-#define DEF_SYRINGE_STOP_20ML                   10828
-#define DEF_SYRINGE_STOP_50ML                   23404
-#define DEF_SYRINGE_STOP_100ML                  45000
 
 /* O3 generation control*/
 #define O3_FLOW_REACHED                             2
@@ -373,7 +355,6 @@ typedef struct
     int8  (*storageRead)(uint16 storageId, int32 *value);
     void  (*storageClose)(void);
     uint8  SharedBuffer[16*16];
-//  uint8  SamplePosition;
     uint16 ConfiguredO3Concentration;
     uint16 ConfiguredFlow;
     uint16 ConfiguredTime;
@@ -391,7 +372,7 @@ typedef struct
     uint16 SensorData[ID_SENSOR_MAX][NUM_SENSOR_SAMPLES];
     uint8  SensorDataIndex;
     uint8  SensorDataFilled;
-    uint16 ErrorState; // TODO Change to uint8?
+    uint16 ErrorState;
     uint16 CurrentMeanOzone;
     uint16 CurrentMeanFlow;
     uint32 CurrentTotalDose;
@@ -411,14 +392,12 @@ typedef struct
     uint8  WashingReturnState;
     uint8  SyringeDetected;                     /* Syringe already detected */
     uint8  CalibrationErrorDuringStartUp;
-//    uint8  Starting;  TODO remove when properly tested
     uint16 MaxFlowDeviation;
     uint8  RefreshScreen;  // TODO analize if necessary
     int16  CurrentOperatingPressure;
     uint8  DepressureSeconds;
     uint8  DepressureReturnState;
-    uint16 DepressureErrorReturnState; // TODO change to uint8 if ErrorState is changed to uint8
-//    uint8  GeneratorCleaned;
+    uint16 DepressureErrorReturnState;
     int8   VacuumStatus;
     uint8  SalineCycle;
     uint8  PressureAlertDone;

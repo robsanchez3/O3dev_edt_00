@@ -319,8 +319,6 @@ void SendGenerationCommands(int16 GenerationMode, uint8 FlowRunningState)
     Command.Value = GenerationMode;
     ManageCommand(&Command,&Response);
   }
-
-//  GLB_fsm_o3.GeneratorCleaned = 0;
 }
 
 void SwitchOutputValves(OUTPUT_POSITION_E OutputPosition)
@@ -707,7 +705,6 @@ void GotoService(void)
 	SendStopCommand();
 	TIMER_Stop(&GLB_fsm_o3.WaitForServiceTimer);
 	GLB_fsm_o3.Option = SERVICE_MODE;
-//	GLB_fsm_o3.Starting = 0;//  remove when properly tested
 //	GLB_fsm_o3.CurrentState = &GLB_fsm_o3.States[STATE_WAITING_FOR_SERVICE];
 	ChangeState(STATE_WAITING_FOR_SERVICE);
 }
@@ -716,7 +713,6 @@ void GotoService(void)
 void GotoRepose(void)
 {
 	printf("Goto repose state...\n");
-//	GLB_fsm_o3.Starting = 0;// remove when properly tested
 	GLB_fsm_o3.TemperatureMonitoring = 0;
 
 	SendStopCommand();
@@ -757,7 +753,6 @@ void GotoRepose(void)
 }
 void WaitingForProtocol(void)
 {
-//	GLB_fsm_o3.Starting = 0;// remove when properly tested
 	GLB_fsm_o3.TemperatureMonitoring = 0;
 
 	SendStopCommand();
@@ -1913,7 +1908,7 @@ void FSM_ProcessEvents()
 		/* Sensor data reading */
 		if(TIMER_State(&GLB_fsm_o3.DataReadTimer) == TIMER_STATE_EXPIRED)
 		{
-			TIMER_Start(&GLB_fsm_o3.DataReadTimer, HI_SPEED_DATA_READ_PERIOD_MS);
+			TIMER_Start(&GLB_fsm_o3.DataReadTimer, DATA_READ_PERIOD_MS);
 			SensorProcess();
 			SensorMeanComputation();
 			CheckFlowStability();
@@ -2215,7 +2210,7 @@ void StartGeneration(uint8 FlowRunningState)
 
   if(GLB_fsm_o3.ErrorState == NO_ERROR)
   {
-	  TIMER_Start(&GLB_fsm_o3.DataReadTimer, HI_SPEED_DATA_READ_PERIOD_MS);
+	  TIMER_Start(&GLB_fsm_o3.DataReadTimer, DATA_READ_PERIOD_MS);
   	  TIMER_Start(&GLB_fsm_o3.AdjustTimer, ADJUST_TIMEOUT_MS);
   }
 
@@ -3124,7 +3119,7 @@ void O3SensorCalibrationEnd(void)
 	Command.Position[0] = PULSES_FOR_O3_CALIBRATION_SEC_1_POSITION;
 	Command.Value = (int16)GLB_fsm_o3.CalibrationValue_0;
 	ManageCommand(&Command,&Response);
-////	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
+// 	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
 
 	/* Prepare reference value calibration step */
 
@@ -3163,7 +3158,7 @@ void CalibrateO3_Ref_2_Ok(void)
 	Command.Position[0] = PULSES_FOR_O3_CALIBRATION_SEC_2_POSITION;
 	Command.Value = (int16)GLB_fsm_o3.CalibrationValue_1;
 	ManageCommand(&Command,&Response);
-///	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
+// 	dep_o3_delay_ms(200); /*  Evaluate if necessary, only for V3*/
 }
 
 void CalibrateO3_Ref_2_Value(void)
@@ -3193,7 +3188,7 @@ void CalibrateO3_Ref_3_Ok(void)
 	Command.Position[0] = PULSES_FOR_O3_CALIBRATION_SEC_3_POSITION;
 	Command.Value = (int16)GLB_fsm_o3.CalibrationValue_2;
 	ManageCommand(&Command,&Response);
-///	dep_o3_delay_ms(200);  /* only for V3 evaluate if necessary*/
+// 	dep_o3_delay_ms(200);  /* only for V3 evaluate if necessary*/
 
 	Command.Position[0] = PULSES_FOR_1_MG_POSITION;
 	Command.Value = (int16)GLB_fsm_o3.CalibrationValue_2;
