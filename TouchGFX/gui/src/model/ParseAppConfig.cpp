@@ -195,23 +195,6 @@ static uint8_t LR_getline(LineReader_t *lr, int8_t *out, UINT maxlen)
     return (i > 0) ? 1u : 0u;
 }
 
-/*
-uint8 get_line(FIL* fp, char* buf, UINT maxlen)
-{
-	UINT br;
-	char c;
-	UINT i = 0;
-	uint8 ret = 0; //failure
-	while (i < maxlen - 1) {
-		FRESULT res = f_read(fp, &c, 1, &br);
-		if (res != FR_OK || br == 0) break;   // EOF
-		if (c == '\n') { ret = 1; break; }   // EOL
-		buf[i++] = c;
-	}
-	buf[i] = '\0';
-	return ret;
-}
-*/
 /* **********************************************************************************************
  *
  * STRING HELPERS (UNIFIED)
@@ -362,11 +345,10 @@ uint8_t loadTherapyFromFile(OPERATION_MODE_E mode, THERAPY_CTX *guiTherapyCtx)
 	int8_t ext[] = "mod";
 	int8_t dirPath[] = "0:/Config/Modes";
 	int8_t fileName[100];
-	ModCtx mtx;
+	ModCtx mtx = {}; // // secure zero-init in C++ (saffer version of memset(&mtx,0,sizeof(mtx)))
 	uint8_t foundModeSection = 0;
 
 	// Initialize parser context
-	memset(&mtx,0,sizeof(mtx));   // TODO: keep an eye on this memset
 	mtx.selectedMode = mode;
 	mtx.currentMode  = NO_MODE;
 	mtx.currentStep  = -1;
