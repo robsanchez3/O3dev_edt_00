@@ -75,3 +75,8 @@ void SelectorPresenter::onSliderAction(uint8_t step, uint8_t targetValueID, uint
 	model->onSliderAction(step);
 }
 
+uint8_t SelectorPresenter::getFsmState()
+{
+	return model->getFsmState();
+}
+

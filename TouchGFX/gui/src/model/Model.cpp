@@ -20,6 +20,7 @@ extern "C" osSemaphoreId_t hSysConfigReady;  /* signals defaultTask that sys con
 
 #define PIN "1234"  // hard coded PIN
 
+// TODO review fsm_o3_setTemperatureMonitoring politic ... force fan while generation and monitoring while repose isn`t it??
 
 Model* modelInstance = nullptr;
 

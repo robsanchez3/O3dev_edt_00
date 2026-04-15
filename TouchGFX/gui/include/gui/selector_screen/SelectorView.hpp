@@ -59,11 +59,11 @@ public:
     int16_t selectorItemWidth = 0;
     int logicalValue = 0;
     int physicalValue = 0;
-
     uint8_t accelCounter = 5;
     uint32_t tickCounter = 0;
-
     UNITS_BLINK_CTX blinkUnits;
+    uint8_t currentExternalState = 0;
+
 protected:
 };
 

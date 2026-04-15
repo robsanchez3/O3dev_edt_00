@@ -869,6 +869,8 @@ void StartForO3Calibration(void)
 	SwitchOutputValves(OUTPUT_TO_EXTERIOR);
 
 	SendGeneratorStartSequence(BasePeriod, Width, 8);
+
+	GLB_fsm_o3.TemperatureMonitoring = 0; // force fun to remain 'on' during calibration
 }
 
 void GotoCalibratePeriod(void)

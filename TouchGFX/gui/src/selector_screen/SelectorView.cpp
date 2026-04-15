@@ -68,6 +68,7 @@ void SelectorView::handleTickEvent()
 
 		lp_iniDelay.setValue(percent);
 		cp_iniDelay.setValue(percent);
+		// check if timeout has elapsed
 		if (elapsedMs >= therapyCtx->delayIndicatorTime[selectionStep])
 		{
 			tickCounter = 0;
@@ -79,6 +80,14 @@ void SelectorView::handleTickEvent()
 //			therapyCtx->delayIndicatorVisible = false;
 			initSelectionContext(++selectionStep);
 		}
+		// check if FSM state has changed while in timeout
+		else if((currentExternalState != presenter->getFsmState()) && cp_iniDelay.isVisible())
+	    {
+			tickCounter = 0;
+			cp_iniDelay.setVisible(false);
+			cp_iniDelay.invalidate();
+			initSelectionContext(++selectionStep);
+	    }
 	}
 }
 
@@ -387,11 +396,6 @@ void SelectorView::initSelectionContext(int8_t step)
 		bt_forward.setVisible(therapyCtx->selectAvailable[step]);
 		bt_forward.invalidate();
 
-    //  update OK button visibility
-	//	bt_OK.setVisible(therapyCtx->selectAvailable[step]);
-	//	bt_OK.invalidate();
-
-
 	//  reset blink effect counter
 	    blinkUnits.count = 0;
 	    blinkUnits.replay = UNITS_BLINK_REPALY_MAX;
@@ -407,9 +411,14 @@ void SelectorView::initSelectionContext(int8_t step)
 	    cp_iniDelay.setRange(0, 100);
 	    cp_iniDelay.setValue(0);
 
-    //  others
+	//  update OK button visibility
+		bt_OK.setVisible(!cp_iniDelay.isVisible());
+		bt_OK.invalidate();
+
+	//  others
 	    selectorViewStarted = true;
 	    tickCounter = 0;
+	    currentExternalState = presenter->getFsmState();
 	}
 }
 
