@@ -51,12 +51,7 @@ Application/User/gui/Model.o: \
  ../../TouchGFX/gui/include/gui/model/TherapyTemplates.hpp \
  ../../TouchGFX/generated/images/include/BitmapDatabase.hpp \
  ../../TouchGFX/generated/images/include/images/BitmapDatabase.hpp \
- ../../TouchGFX/gui/include/gui/model/LogManage.hpp \
- ../../USB_Device/App/usbd_cdc_if.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../../USB_Device/Target/usbd_conf.h ../../Core/Inc/main.h \
+ ../../TouchGFX/gui/include/gui/model/LogManage.hpp ../../Core/Inc/main.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h \
  ../../Core/Inc/stm32u5xx_hal_conf.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc.h \
@@ -121,9 +116,6 @@ Application/User/gui/Model.o: \
  ../../Drivers/Vendor/Device/ctp/../Common/ts.h \
  ../../Drivers/Vendor/Driver/edt_bsp_uart.h \
  ../../Drivers/Vendor/Driver/edt_bsp_can.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
  C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h \
  ../../FATFS/App/fatfs.h ../../Drivers/Vendor/FatFs/source/ff.h \
  ../../FATFS/Target/ffconf.h \
@@ -186,11 +178,6 @@ Application/User/gui/Model.o: \
 ../../TouchGFX/generated/images/include/BitmapDatabase.hpp:
 ../../TouchGFX/generated/images/include/images/BitmapDatabase.hpp:
 ../../TouchGFX/gui/include/gui/model/LogManage.hpp:
-../../USB_Device/App/usbd_cdc_if.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
-../../USB_Device/Target/usbd_conf.h:
 ../../Core/Inc/main.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
 ../../Core/Inc/stm32u5xx_hal_conf.h:
@@ -256,9 +243,6 @@ Application/User/gui/Model.o: \
 ../../Drivers/Vendor/Device/ctp/../Common/ts.h:
 ../../Drivers/Vendor/Driver/edt_bsp_uart.h:
 ../../Drivers/Vendor/Driver/edt_bsp_can.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../../Drivers/Vendor/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h:
 ../../FATFS/App/fatfs.h:
 ../../Drivers/Vendor/FatFs/source/ff.h:

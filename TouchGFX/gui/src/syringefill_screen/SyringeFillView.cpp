@@ -96,7 +96,7 @@ void SyringeFillView::handleTickEvent()
 {
 #ifndef SIMULATOR
 	// manage OK button icon
-	if(bt_OK.isVisible())  //TODO: evaluate if its necessary to update the button icon
+	if(bt_OK.isVisible())  //TODO: evaluate if its necessary to update the button icon (just visual consideration)
 	{
 		if( presenter->isPauseAvailable())
 		{

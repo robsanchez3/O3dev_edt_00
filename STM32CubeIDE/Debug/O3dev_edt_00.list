@@ -39,25 +39,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  17 ExtFlashSection 00e9c03c  90000000  90000000  000b0000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
- 18 .debug_info   002f3f00  00000000  00000000  00f4c072  2**0
+ 18 .debug_info   002f3ed9  00000000  00000000  00f4c072  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_abbrev 00042fc5  00000000  00000000  0123ff72  2**0
+ 19 .debug_abbrev 00042fdf  00000000  00000000  0123ff4b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_aranges 0000e7e0  00000000  00000000  01282f38  2**3
+ 20 .debug_aranges 0000e7e0  00000000  00000000  01282f30  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_rnglists 0000a128  00000000  00000000  01291718  2**0
+ 21 .debug_rnglists 0000a128  00000000  00000000  01291710  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_macro  00076241  00000000  00000000  0129b840  2**0
+ 22 .debug_macro  00075ea8  00000000  00000000  0129b838  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_line   00109707  00000000  00000000  01311a81  2**0
+ 23 .debug_line   001095f6  00000000  00000000  013116e0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_str    002170fb  00000000  00000000  0141b188  2**0
+ 24 .debug_str    0021666a  00000000  00000000  0141acd6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 25 .comment      000000c2  00000000  00000000  01632283  2**0
+ 25 .comment      000000c2  00000000  00000000  01631340  2**0
                   CONTENTS, READONLY
- 26 .debug_frame  000390a4  00000000  00000000  01632348  2**2
+ 26 .debug_frame  000390a4  00000000  00000000  01631404  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 27 .debug_line_str 00000063  00000000  00000000  0166b3ec  2**0
+ 27 .debug_line_str 00000063  00000000  00000000  0166a4a8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -71462,7 +71462,7 @@ void MainMenuView::updateAlphaDependingOnVaccum()
  8041f76:	bd90      	pop	{r4, r7, pc}
 
 08041f78 <_ZN5ModelC1Ev>:
-
+#define PIN "1234"  // hard coded PIN
 
 
 Model* modelInstance = nullptr;
@@ -71897,7 +71897,7 @@ void Model::tick()
  80422d6:	47a0      	blx	r4
 		break;
  80422d8:	e065      	b.n	80423a6 <_ZN5Model4tickEv+0x346>
-	case STATE_WAITING_EXTERNAL_STUFF:  //TODO should it be STATE_WAITING_EXTERNAL_STUFF_CONNECTION?
+	case STATE_WAITING_EXTERNAL_STUFF:
 		if(modelListener->getVisibleScreen() != SID_WASHING)
  80422da:	687b      	ldr	r3, [r7, #4]
  80422dc:	f8d3 2130 	ldr.w	r2, [r3, #304]	@ 0x130
@@ -72020,11 +72020,7 @@ void Model::tick()
  80423a2:	e000      	b.n	80423a6 <_ZN5Model4tickEv+0x346>
 			break;
  80423a4:	bf00      	nop
-#endif // SIMULATOR
-
-#endif //  legacy code from original demonstration application (end)
-
-
+	}
 } // Model::tick()
  80423a6:	bf00      	nop
  80423a8:	3710      	adds	r7, #16
@@ -72184,7 +72180,7 @@ void Model::setGuiTherapy(int8_t value)
  8042498:	687b      	ldr	r3, [r7, #4]
  804249a:	78fa      	ldrb	r2, [r7, #3]
  804249c:	f883 2134 	strb.w	r2, [r3, #308]	@ 0x134
-	setupTherapyContext(value);   //TODO: consider to move this line after the next one
+	setupTherapyContext(value);
  80424a0:	f997 3003 	ldrsb.w	r3, [r7, #3]
  80424a4:	4619      	mov	r1, r3
  80424a6:	6878      	ldr	r0, [r7, #4]
@@ -72745,7 +72741,6 @@ void Model::EndSelection(void)
  80427c0:	6078      	str	r0, [r7, #4]
 //	printf("End of selection (model)...\n");
 #ifndef SIMULATOR
-//	Experimental_LaunchTherapy(); //TODO: Launch synchronously from state machine
 	fsm_o3_sendEnter();
  80427c2:	f007 fcd5 	bl	804a170 <fsm_o3_sendEnter>
 
@@ -72812,7 +72807,6 @@ void Model::StartGeneration(void)
  8042824:	4807      	ldr	r0, [pc, #28]	@ (8042844 <_ZN5Model15StartGenerationEv+0x28>)
  8042826:	f055 fd53 	bl	80982d0 <puts>
 #ifndef SIMULATOR
-//	Experimental_LaunchTherapy(); //TODO: Launch synchronously from state machine
 	fsm_o3_sendEnter();
  804282a:	f007 fca1 	bl	804a170 <fsm_o3_sendEnter>
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoAdjustingScreenNoTransition();
@@ -72886,7 +72880,6 @@ void Model::StopGeneration(void)
  8042890:	4804      	ldr	r0, [pc, #16]	@ (80428a4 <_ZN5Model14StopGenerationEv+0x1c>)
  8042892:	f055 fd1d 	bl	80982d0 <puts>
 #ifndef SIMULATOR
-//	Experimental_StopTherapy(); //TODO: Launch synchronously from state machine
 	fsm_o3_sendCancel();
  8042896:	f007 fc77 	bl	804a188 <fsm_o3_sendCancel>
 #endif
@@ -72910,7 +72903,6 @@ void Model::exitError(void)
  80428b0:	4804      	ldr	r0, [pc, #16]	@ (80428c4 <_ZN5Model9exitErrorEv+0x1c>)
  80428b2:	f055 fd0d 	bl	80982d0 <puts>
 #ifndef SIMULATOR
-//	ExitError(); //TODO: Launch synchronously from state machine
 	fsm_o3_sendCancel();
  80428b6:	f007 fc67 	bl	804a188 <fsm_o3_sendCancel>
 #endif
@@ -72932,7 +72924,6 @@ void Model::userCancelled(void)
  80428ce:	6078      	str	r0, [r7, #4]
 //	printf("User cancelled (model)...\n");
 #ifndef SIMULATOR
-//	GotoUserCanceled(); //TODO: Launch synchronously from state machine
 	fsm_o3_sendCancel();
  80428d0:	f007 fc5a 	bl	804a188 <fsm_o3_sendCancel>
 	fsm_o3_setTemperatureMonitoring(0);
@@ -72955,7 +72946,6 @@ void Model::userOk(void)
  80428e8:	6078      	str	r0, [r7, #4]
 //	printf("User OK (model)...\n");
 #ifndef SIMULATOR
-//	KeyOnPush();//TODO: Launch synchronously from state machine
 	fsm_o3_sendEnter();
  80428ea:	f007 fc41 	bl	804a170 <fsm_o3_sendEnter>
 #endif
@@ -72975,7 +72965,6 @@ void Model::userOkRelease(void)
  80428fc:	6078      	str	r0, [r7, #4]
 //	printf("User OK released (model)...\n");
 #ifndef SIMULATOR
-//	KeyOnRelease();//TODO: Launch synchronously from state machine
 	fsm_o3_sendGeneric(); // to handle OK release event
  80428fe:	f007 fc4f 	bl	804a1a0 <fsm_o3_sendGeneric>
 #endif
@@ -72998,7 +72987,6 @@ void Model::cancelWashing(void)
  8042914:	4804      	ldr	r0, [pc, #16]	@ (8042928 <_ZN5Model13cancelWashingEv+0x1c>)
  8042916:	f055 fcdb 	bl	80982d0 <puts>
 #ifndef SIMULATOR
-//	CancelWashing(); //TODO: Launch synchronously from state machine
 	fsm_o3_sendCancel();
  804291a:	f007 fc35 	bl	804a188 <fsm_o3_sendCancel>
 #endif
@@ -73022,7 +73010,6 @@ void Model::washingExtesion(void)
  8042934:	4804      	ldr	r0, [pc, #16]	@ (8042948 <_ZN5Model15washingExtesionEv+0x1c>)
  8042936:	f055 fccb 	bl	80982d0 <puts>
 #ifndef SIMULATOR
-//	WashingExtesion(); //TODO: Launch synchronously from state machine
 	fsm_o3_sendEnter();
  804293a:	f007 fc19 	bl	804a170 <fsm_o3_sendEnter>
 #endif
@@ -73044,7 +73031,6 @@ void Model::gotoRepose(void)
  8042952:	6078      	str	r0, [r7, #4]
 //	printf("Go to repose (model)...\n");
 #ifndef SIMULATOR
-//	GotoMainMenu(); //TODO: Launch synchronously from state machine
 	fsm_o3_sendCancel();
  8042954:	f007 fc18 	bl	804a188 <fsm_o3_sendCancel>
 #endif
@@ -73594,7 +73580,7 @@ uint8_t Model::getCalibrationSucessState()
 /*
  * Therapy context initialization
  */
-void Model::setupDefaultTherapyContext(int8_t therapyID)  // TODO: refactor name to tHerapy....
+void Model::setupDefaultTherapyContext(int8_t therapyID)
 {
  8042bf8:	b480      	push	{r7}
  8042bfa:	b085      	sub	sp, #20
@@ -73651,7 +73637,6 @@ void Model::setupDefaultTherapyContext(int8_t therapyID)  // TODO: refactor name
  8042c58:	687b      	ldr	r3, [r7, #4]
  8042c5a:	815a      	strh	r2, [r3, #10]
 
-//  for (int i = 0; i < tpl->stepsNum; i++)
     for (int i = 0; i < MAX_THERAPY_STEPS; i++)
  8042c5c:	2300      	movs	r3, #0
  8042c5e:	60fb      	str	r3, [r7, #12]
@@ -73846,7 +73831,7 @@ void Model::setupDefaultTherapyContext(int8_t therapyID)  // TODO: refactor name
 
 08042dcc <_ZN5Model19setupTherapyContextEa>:
 
-void Model::setupTherapyContext(int8_t therapyID)// TODO: refactor name to tHerapy....
+void Model::setupTherapyContext(int8_t therapyID)
 {
  8042dcc:	b580      	push	{r7, lr}
  8042dce:	b084      	sub	sp, #16
@@ -73878,7 +73863,7 @@ void Model::setupTherapyContext(int8_t therapyID)// TODO: refactor name to tHera
  8042e00:	3244      	adds	r2, #68	@ 0x44
  8042e02:	4939      	ldr	r1, [pc, #228]	@ (8042ee8 <_ZN5Model19setupTherapyContextEa+0x11c>)
  8042e04:	f843 1022 	str.w	r1, [r3, r2, lsl #2]
-		guiTherapyCtx.units[i] = "";                     // point to empty string literal
+		guiTherapyCtx.units[i] = "";                    // point to empty string literal
  8042e08:	f997 300f 	ldrsb.w	r3, [r7, #15]
  8042e0c:	687a      	ldr	r2, [r7, #4]
  8042e0e:	3324      	adds	r3, #36	@ 0x24
@@ -73931,9 +73916,7 @@ void Model::setupTherapyContext(int8_t therapyID)// TODO: refactor name to tHera
  8042e6c:	4619      	mov	r1, r3
  8042e6e:	6878      	ldr	r0, [r7, #4]
  8042e70:	f7ff fec2 	bl	8042bf8 <_ZN5Model26setupDefaultTherapyContextEa>
-	case DENTAL_MODE:         GLB_fsm_o3.ConfiguredTime = 1;  break;
 	}
-*/
 
 	/* Conditionally modify TherapyTemplates.hpp defined values */
 	if(therapyID == CAL_O3_MODE)
@@ -73969,7 +73952,7 @@ void Model::setupTherapyContext(int8_t therapyID)// TODO: refactor name to tHera
 	 * Anyway, all values are set again in the next lines by calling setTherapyTargetValue()
 	 * with the default values before being used, so this should not cause any issue.
 	 */
-    for(int j = MAX_THERAPY_STEPS - 1; j >= 0; j--) //for(int j = 0; j < MAX_THERAPY_STEPS; j++)
+    for(int j = MAX_THERAPY_STEPS - 1; j >= 0; j--)
  8042ea8:	2307      	movs	r3, #7
  8042eaa:	60bb      	str	r3, [r7, #8]
  8042eac:	e012      	b.n	8042ed4 <_ZN5Model19setupTherapyContextEa+0x108>
@@ -73990,7 +73973,7 @@ void Model::setupTherapyContext(int8_t therapyID)// TODO: refactor name to tHera
  8042ec6:	461a      	mov	r2, r3
  8042ec8:	6878      	ldr	r0, [r7, #4]
  8042eca:	f7ff fb3f 	bl	804254c <_ZN5Model21setTherapyTargetValueEht>
-    for(int j = MAX_THERAPY_STEPS - 1; j >= 0; j--) //for(int j = 0; j < MAX_THERAPY_STEPS; j++)
+    for(int j = MAX_THERAPY_STEPS - 1; j >= 0; j--)
  8042ece:	68bb      	ldr	r3, [r7, #8]
  8042ed0:	3b01      	subs	r3, #1
  8042ed2:	60bb      	str	r3, [r7, #8]
@@ -74061,7 +74044,7 @@ void Model::setDefaultMainMenu(void)
  8042f40:	0809dcc4 	.word	0x0809dcc4
 
 08042f44 <_Z10setMaxFlowv>:
-//	}
+
 	return ( (ret == 0) ? 1 : 0 );
 }
 
@@ -86436,7 +86419,7 @@ void SyringeFillView::handleTickEvent()
  8048cb2:	6078      	str	r0, [r7, #4]
 #ifndef SIMULATOR
 	// manage OK button icon
-	if(bt_OK.isVisible())  //TODO: evaluate if its necessary to update the button icon
+	if(bt_OK.isVisible())  //TODO: evaluate if its necessary to update the button icon (just visual consideration)
  8048cb4:	687b      	ldr	r3, [r7, #4]
  8048cb6:	336c      	adds	r3, #108	@ 0x6c
  8048cb8:	4618      	mov	r0, r3
