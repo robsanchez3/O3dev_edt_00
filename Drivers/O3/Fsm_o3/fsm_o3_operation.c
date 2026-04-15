@@ -2458,7 +2458,7 @@ void UpdateGeneratingForDental(void)
 void UpdateGeneratingForSyringe(void)
 {
 	uint16 SyringeVol;
-	int8   SyringeDebugValues[20];
+	char   SyringeDebugValues[20];
 	uint16 ElapsedSeconds = (((uint16)(GLB_fsm_o3.ConfiguredTime) - (uint16)(GLB_fsm_o3.RemainingMinutes)) - 1) * 60 + (59 - (uint16)(GLB_fsm_o3.RemainingSeconds));
 
 	/* Detect pressure increase due to piston resistance */

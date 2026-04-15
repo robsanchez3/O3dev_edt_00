@@ -77349,7 +77349,7 @@ LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 .rel.dyn        0x90e9c03c        0x0
  .rel.iplt      0x90e9c03c        0x0 C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740/tools/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
 
-.debug_info     0x00000000   0x2f3ed9
+.debug_info     0x00000000   0x2f3ec4
  .debug_info    0x00000000      0xfd1 ./Application/User/Core/adc.o
  .debug_info    0x00000fd1      0x622 ./Application/User/Core/app_freertos.o
  .debug_info    0x000015f3      0xa8b ./Application/User/Core/cordic.o
@@ -77656,70 +77656,70 @@ LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_info    0x002a5bc6      0xfe3 ./Drivers/O3/Fsm_o3/fsm_o3.o
  .debug_info    0x002a6ba9     0x1218 ./Drivers/O3/Fsm_o3/fsm_o3_api.o
  .debug_info    0x002a7dc1     0x2c61 ./Drivers/O3/Fsm_o3/fsm_o3_operation.o
- .debug_info    0x002aaa22      0xaea ./Drivers/O3/Protocol/Protocol.o
- .debug_info    0x002ab50c      0x2de ./Drivers/O3/Syringe/Syringe.o
- .debug_info    0x002ab7ea      0x24f ./Drivers/O3/Timer/Timer.o
- .debug_info    0x002aba39     0x1488 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal.o
- .debug_info    0x002acec1     0x2716 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_adc.o
- .debug_info    0x002af5d7      0xbdb ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_cordic.o
- .debug_info    0x002b01b2     0x1687 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_cortex.o
- .debug_info    0x002b1839      0x528 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_crc.o
- .debug_info    0x002b1d61      0x33b ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_crc_ex.o
- .debug_info    0x002b209c      0xb21 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_dcache.o
- .debug_info    0x002b2bbd      0xadc ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_dma.o
- .debug_info    0x002b3699     0x1053 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_dma2d.o
- .debug_info    0x002b46ec     0x1920 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_fdcan.o
- .debug_info    0x002b600c      0x859 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_gpio.o
- .debug_info    0x002b6865      0x3fb ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_gpu2d.o
- .debug_info    0x002b6c60     0x127f ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_hcd.o
- .debug_info    0x002b7edf     0x232e ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_i2c.o
- .debug_info    0x002ba20d      0x9ff ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_i2c_ex.o
- .debug_info    0x002bac0c      0x4d6 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_icache.o
- .debug_info    0x002bb0e2     0x1047 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_ltdc.o
- .debug_info    0x002bc129     0x1cbb ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_ospi.o
- .debug_info    0x002bdde4     0x153b ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_pcd.o
- .debug_info    0x002bf31f      0x8bd ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_pcd_ex.o
- .debug_info    0x002bfbdc      0xf0c ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_pwr_ex.o
- .debug_info    0x002c0ae8     0x12b0 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_rcc.o
- .debug_info    0x002c1d98     0x1620 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_rcc_ex.o
- .debug_info    0x002c33b8     0x1a20 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_sd.o
- .debug_info    0x002c4dd8     0x2e54 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_tim.o
- .debug_info    0x002c7c2c     0x1efe ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_tim_ex.o
- .debug_info    0x002c9b2a     0x45a4 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_uart.o
- .debug_info    0x002ce0ce     0x11ef ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_uart_ex.o
- .debug_info    0x002cf2bd     0x16a4 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_ll_sdmmc.o
- .debug_info    0x002d0961     0x1b48 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_ll_usb.o
- .debug_info    0x002d24a9     0x18ad ./Drivers/Vendor/Components/mx25lm51245g.o
- .debug_info    0x002d3d56     0x10bf ./Drivers/Vendor/Components/mxt640u.o
- .debug_info    0x002d4e15     0x10fb ./Drivers/Vendor/Driver/edt_bsp_uart.o
- .debug_info    0x002d5f10      0x418 ./Drivers/Vendor/FatFs/source/diskio.o
- .debug_info    0x002d6328     0x26e8 ./Drivers/Vendor/FatFs/source/ff.o
- .debug_info    0x002d8a10      0x412 ./Drivers/Vendor/FatFs/source/ff_gen_drv.o
- .debug_info    0x002d8e22      0x30a ./Drivers/Vendor/FatFs/source/ffsystem_cmsis_os.o
- .debug_info    0x002d912c      0xe7a ./Drivers/Vendor/FatFs/source/sd_diskio_dma_rtos.o
- .debug_info    0x002d9fa6      0xdf2 ./Drivers/Vendor/FatFs/source/usbh_diskio.o
- .debug_info    0x002dad98     0x11a2 ./Drivers/Vendor/edt_board_config.o
- .debug_info    0x002dbf3a     0x17cd ./Drivers/Vendor/edt_bsp_backlight.o
- .debug_info    0x002dd707      0xd85 ./Drivers/Vendor/edt_bsp_can.o
- .debug_info    0x002de48c     0x128d ./Drivers/Vendor/edt_bsp_ctp.o
- .debug_info    0x002df719      0x50f ./Drivers/Vendor/edt_bsp_lcd.o
- .debug_info    0x002dfc28     0x3e18 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/cmsis_os2.o
- .debug_info    0x002e3a40      0x2af ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/list.o
- .debug_info    0x002e3cef      0x2fe ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/port.o
- .debug_info    0x002e3fed      0x155 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/portasm.o
- .debug_info    0x002e4142     0x1584 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/queue.o
- .debug_info    0x002e56c6     0x2871 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/tasks.o
- .debug_info    0x002e7f37     0x1968 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/timers.o
- .debug_info    0x002e989f      0x441 ./Middlewares/RTOS2/CMSIS/RTOS2/Heap/Heap_4/heap_4.o
- .debug_info    0x002e9ce0     0x15b5 ./Middlewares/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc.o
- .debug_info    0x002eb295     0x11bc ./Middlewares/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_bot.o
- .debug_info    0x002ec451     0x1189 ./Middlewares/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.o
- .debug_info    0x002ed5da      0xfd4 ./Middlewares/STM32_USB_Host_Library/Core/Src/usbh_core.o
- .debug_info    0x002ee5ae      0xfc4 ./Middlewares/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.o
- .debug_info    0x002ef572      0xc43 ./Middlewares/STM32_USB_Host_Library/Core/Src/usbh_ioreq.o
- .debug_info    0x002f01b5      0xaa6 ./Middlewares/STM32_USB_Host_Library/Core/Src/usbh_pipes.o
- .debug_info    0x002f0c5b      0xd17 ./USB_Host/App/usb_host.o
- .debug_info    0x002f1972     0x2567 ./USB_Host/Target/usbh_conf.o
+ .debug_info    0x002aaa22      0xad5 ./Drivers/O3/Protocol/Protocol.o
+ .debug_info    0x002ab4f7      0x2de ./Drivers/O3/Syringe/Syringe.o
+ .debug_info    0x002ab7d5      0x24f ./Drivers/O3/Timer/Timer.o
+ .debug_info    0x002aba24     0x1488 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal.o
+ .debug_info    0x002aceac     0x2716 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_adc.o
+ .debug_info    0x002af5c2      0xbdb ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_cordic.o
+ .debug_info    0x002b019d     0x1687 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_cortex.o
+ .debug_info    0x002b1824      0x528 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_crc.o
+ .debug_info    0x002b1d4c      0x33b ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_crc_ex.o
+ .debug_info    0x002b2087      0xb21 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_dcache.o
+ .debug_info    0x002b2ba8      0xadc ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_dma.o
+ .debug_info    0x002b3684     0x1053 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_dma2d.o
+ .debug_info    0x002b46d7     0x1920 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_fdcan.o
+ .debug_info    0x002b5ff7      0x859 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_gpio.o
+ .debug_info    0x002b6850      0x3fb ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_gpu2d.o
+ .debug_info    0x002b6c4b     0x127f ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_hcd.o
+ .debug_info    0x002b7eca     0x232e ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_i2c.o
+ .debug_info    0x002ba1f8      0x9ff ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_i2c_ex.o
+ .debug_info    0x002babf7      0x4d6 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_icache.o
+ .debug_info    0x002bb0cd     0x1047 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_ltdc.o
+ .debug_info    0x002bc114     0x1cbb ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_ospi.o
+ .debug_info    0x002bddcf     0x153b ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_pcd.o
+ .debug_info    0x002bf30a      0x8bd ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_pcd_ex.o
+ .debug_info    0x002bfbc7      0xf0c ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_pwr_ex.o
+ .debug_info    0x002c0ad3     0x12b0 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_rcc.o
+ .debug_info    0x002c1d83     0x1620 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_rcc_ex.o
+ .debug_info    0x002c33a3     0x1a20 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_sd.o
+ .debug_info    0x002c4dc3     0x2e54 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_tim.o
+ .debug_info    0x002c7c17     0x1efe ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_tim_ex.o
+ .debug_info    0x002c9b15     0x45a4 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_uart.o
+ .debug_info    0x002ce0b9     0x11ef ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_hal_uart_ex.o
+ .debug_info    0x002cf2a8     0x16a4 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_ll_sdmmc.o
+ .debug_info    0x002d094c     0x1b48 ./Drivers/STM32U5xx_HAL_Driver/stm32u5xx_ll_usb.o
+ .debug_info    0x002d2494     0x18ad ./Drivers/Vendor/Components/mx25lm51245g.o
+ .debug_info    0x002d3d41     0x10bf ./Drivers/Vendor/Components/mxt640u.o
+ .debug_info    0x002d4e00     0x10fb ./Drivers/Vendor/Driver/edt_bsp_uart.o
+ .debug_info    0x002d5efb      0x418 ./Drivers/Vendor/FatFs/source/diskio.o
+ .debug_info    0x002d6313     0x26e8 ./Drivers/Vendor/FatFs/source/ff.o
+ .debug_info    0x002d89fb      0x412 ./Drivers/Vendor/FatFs/source/ff_gen_drv.o
+ .debug_info    0x002d8e0d      0x30a ./Drivers/Vendor/FatFs/source/ffsystem_cmsis_os.o
+ .debug_info    0x002d9117      0xe7a ./Drivers/Vendor/FatFs/source/sd_diskio_dma_rtos.o
+ .debug_info    0x002d9f91      0xdf2 ./Drivers/Vendor/FatFs/source/usbh_diskio.o
+ .debug_info    0x002dad83     0x11a2 ./Drivers/Vendor/edt_board_config.o
+ .debug_info    0x002dbf25     0x17cd ./Drivers/Vendor/edt_bsp_backlight.o
+ .debug_info    0x002dd6f2      0xd85 ./Drivers/Vendor/edt_bsp_can.o
+ .debug_info    0x002de477     0x128d ./Drivers/Vendor/edt_bsp_ctp.o
+ .debug_info    0x002df704      0x50f ./Drivers/Vendor/edt_bsp_lcd.o
+ .debug_info    0x002dfc13     0x3e18 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/cmsis_os2.o
+ .debug_info    0x002e3a2b      0x2af ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/list.o
+ .debug_info    0x002e3cda      0x2fe ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/port.o
+ .debug_info    0x002e3fd8      0x155 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/portasm.o
+ .debug_info    0x002e412d     0x1584 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/queue.o
+ .debug_info    0x002e56b1     0x2871 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/tasks.o
+ .debug_info    0x002e7f22     0x1968 ./Middlewares/RTOS2/CMSIS/RTOS2/Core/TZ_Non_Supported/timers.o
+ .debug_info    0x002e988a      0x441 ./Middlewares/RTOS2/CMSIS/RTOS2/Heap/Heap_4/heap_4.o
+ .debug_info    0x002e9ccb     0x15b5 ./Middlewares/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc.o
+ .debug_info    0x002eb280     0x11bc ./Middlewares/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_bot.o
+ .debug_info    0x002ec43c     0x1189 ./Middlewares/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.o
+ .debug_info    0x002ed5c5      0xfd4 ./Middlewares/STM32_USB_Host_Library/Core/Src/usbh_core.o
+ .debug_info    0x002ee599      0xfc4 ./Middlewares/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.o
+ .debug_info    0x002ef55d      0xc43 ./Middlewares/STM32_USB_Host_Library/Core/Src/usbh_ioreq.o
+ .debug_info    0x002f01a0      0xaa6 ./Middlewares/STM32_USB_Host_Library/Core/Src/usbh_pipes.o
+ .debug_info    0x002f0c46      0xd17 ./USB_Host/App/usb_host.o
+ .debug_info    0x002f195d     0x2567 ./USB_Host/Target/usbh_conf.o
 
 .debug_abbrev   0x00000000    0x42fdf
  .debug_abbrev  0x00000000      0x1de ./Application/User/Core/adc.o

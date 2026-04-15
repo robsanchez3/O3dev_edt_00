@@ -39,25 +39,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  17 ExtFlashSection 00e9c03c  90000000  90000000  000b0000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
- 18 .debug_info   002f3ed9  00000000  00000000  00f4c072  2**0
+ 18 .debug_info   002f3ec4  00000000  00000000  00f4c072  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_abbrev 00042fdf  00000000  00000000  0123ff4b  2**0
+ 19 .debug_abbrev 00042fdf  00000000  00000000  0123ff36  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_aranges 0000e7e0  00000000  00000000  01282f30  2**3
+ 20 .debug_aranges 0000e7e0  00000000  00000000  01282f18  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_rnglists 0000a128  00000000  00000000  01291710  2**0
+ 21 .debug_rnglists 0000a128  00000000  00000000  012916f8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_macro  00075ea8  00000000  00000000  0129b838  2**0
+ 22 .debug_macro  00075ea8  00000000  00000000  0129b820  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_line   001095f6  00000000  00000000  013116e0  2**0
+ 23 .debug_line   001095f6  00000000  00000000  013116c8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_str    0021666a  00000000  00000000  0141acd6  2**0
+ 24 .debug_str    0021666a  00000000  00000000  0141acbe  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 25 .comment      000000c2  00000000  00000000  01631340  2**0
+ 25 .comment      000000c2  00000000  00000000  01631328  2**0
                   CONTENTS, READONLY
- 26 .debug_frame  000390a4  00000000  00000000  01631404  2**2
+ 26 .debug_frame  000390a4  00000000  00000000  016313ec  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 27 .debug_line_str 00000063  00000000  00000000  0166a4a8  2**0
+ 27 .debug_line_str 00000063  00000000  00000000  0166a490  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -97258,7 +97258,7 @@ void UpdateGeneratingForSyringe(void)
  804d666:	b086      	sub	sp, #24
  804d668:	af00      	add	r7, sp, #0
 	uint16 SyringeVol;
-	int8   SyringeDebugValues[20];
+	char   SyringeDebugValues[20];
 	uint16 ElapsedSeconds = (((uint16)(GLB_fsm_o3.ConfiguredTime) - (uint16)(GLB_fsm_o3.RemainingMinutes)) - 1) * 60 + (59 - (uint16)(GLB_fsm_o3.RemainingSeconds));
  804d66a:	4b8f      	ldr	r3, [pc, #572]	@ (804d8a8 <UpdateGeneratingForSyringe+0x244>)
  804d66c:	f8b3 35c0 	ldrh.w	r3, [r3, #1472]	@ 0x5c0
@@ -101526,7 +101526,7 @@ int8 Protocol_ComputeCRC(char * Message, char * CrcString)
  * @return \li TRUE If the command CRC is the same as the calculated
  *         \li FALSE If not.
  */
-uint8 CheckCRC(int8 *CommandString)
+uint8 CheckCRC(char *CommandString)
 {
  804f5d8:	b580      	push	{r7, lr}
  804f5da:	b086      	sub	sp, #24
@@ -101539,7 +101539,7 @@ uint8 CheckCRC(int8 *CommandString)
  804f5e8:	4603      	mov	r3, r0
  804f5ea:	3b02      	subs	r3, #2
  804f5ec:	60fb      	str	r3, [r7, #12]
-  char *CRC_Calculation_Pointer = CommandString;
+  char *CRC_Calculation_Pointer = (char *)CommandString;
  804f5ee:	687b      	ldr	r3, [r7, #4]
  804f5f0:	617b      	str	r3, [r7, #20]
   char CalculatedCrcString[PROTOCOL_CRC_SIZE];
@@ -101607,14 +101607,14 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
  804f64c:	af00      	add	r7, sp, #0
  804f64e:	6078      	str	r0, [r7, #4]
  804f650:	6039      	str	r1, [r7, #0]
-  int8 Crc[PROTOCOL_CRC_SIZE]={0,0,0};
+  char Crc[PROTOCOL_CRC_SIZE]={0,0,0};
  804f652:	f107 0314 	add.w	r3, r7, #20
  804f656:	2100      	movs	r1, #0
  804f658:	460a      	mov	r2, r1
  804f65a:	801a      	strh	r2, [r3, #0]
  804f65c:	460a      	mov	r2, r1
  804f65e:	709a      	strb	r2, [r3, #2]
-  int8 HexValue[MAX_HEX_VALUE_SIZE]={0,0,0,0,0};
+  char HexValue[MAX_HEX_VALUE_SIZE]={0,0,0,0,0};
  804f660:	f107 030c 	add.w	r3, r7, #12
  804f664:	2200      	movs	r2, #0
  804f666:	601a      	str	r2, [r3, #0]
@@ -101735,7 +101735,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804f7d8:	f001 b9ad 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_CRC_SET:
-       strncat(Message,STRING_CMD_CRC_SET,sizeof(STRING_CMD_CRC_SET));
+       strncat(Message,STRING_CMD_CRC_SET,strlen(STRING_CMD_CRC_SET) + 1);
  804f7dc:	6838      	ldr	r0, [r7, #0]
  804f7de:	f7d0 fd71 	bl	80202c4 <strlen>
  804f7e2:	4603      	mov	r3, r0
@@ -101767,7 +101767,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804f816:	f001 b98e 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_SET_VALVE:
-       strncat(Message,STRING_CMD_SET_VALVE,sizeof(STRING_CMD_SET_VALVE));
+       strncat(Message,STRING_CMD_SET_VALVE,strlen(STRING_CMD_SET_VALVE) + 1);
  804f81a:	6838      	ldr	r0, [r7, #0]
  804f81c:	f7d0 fd52 	bl	80202c4 <strlen>
  804f820:	4603      	mov	r3, r0
@@ -101834,7 +101834,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804f8a4:	f001 b947 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_GET_VALVE:
-       strncat(Message,STRING_CMD_GET_VALVE,sizeof(STRING_CMD_GET_VALVE));
+       strncat(Message,STRING_CMD_GET_VALVE,strlen(STRING_CMD_GET_VALVE) + 1);
  804f8a8:	6838      	ldr	r0, [r7, #0]
  804f8aa:	f7d0 fd0b 	bl	80202c4 <strlen>
  804f8ae:	4603      	mov	r3, r0
@@ -101866,7 +101866,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804f8e2:	f001 b928 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_SET_FAN:
-       strncat(Message,STRING_CMD_SET_FAN,sizeof(STRING_CMD_SET_FAN));
+       strncat(Message,STRING_CMD_SET_FAN,strlen(STRING_CMD_SET_FAN) + 1);
  804f8e6:	6838      	ldr	r0, [r7, #0]
  804f8e8:	f7d0 fcec 	bl	80202c4 <strlen>
  804f8ec:	4603      	mov	r3, r0
@@ -101924,7 +101924,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804f95a:	f001 b8ec 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_GET_FAN:
-       strncat(Message,STRING_CMD_GET_FAN,sizeof(STRING_CMD_GET_FAN));
+       strncat(Message,STRING_CMD_GET_FAN,strlen(STRING_CMD_GET_FAN) + 1);
  804f95e:	6838      	ldr	r0, [r7, #0]
  804f960:	f7d0 fcb0 	bl	80202c4 <strlen>
  804f964:	4603      	mov	r3, r0
@@ -102060,7 +102060,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804fa7e:	f001 b85a 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_SET_SENSOR_SLOPE:
-       strncat(Message,STRING_CMD_SET_SENSOR_SLOPE,sizeof(STRING_CMD_SET_SENSOR_SLOPE));
+       strncat(Message,STRING_CMD_SET_SENSOR_SLOPE,strlen(STRING_CMD_SET_SENSOR_SLOPE) + 1);
  804fa82:	6838      	ldr	r0, [r7, #0]
  804fa84:	f7d0 fc1e 	bl	80202c4 <strlen>
  804fa88:	4603      	mov	r3, r0
@@ -102144,7 +102144,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804fb2e:	f001 b802 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_GET_SENSOR_SLOPE:
-       strncat(Message,STRING_CMD_GET_SENSOR_SLOPE,sizeof(STRING_CMD_GET_SENSOR_SLOPE));
+       strncat(Message,STRING_CMD_GET_SENSOR_SLOPE,strlen(STRING_CMD_GET_SENSOR_SLOPE) + 1);
  804fb32:	6838      	ldr	r0, [r7, #0]
  804fb34:	f7d0 fbc6 	bl	80202c4 <strlen>
  804fb38:	4603      	mov	r3, r0
@@ -102202,7 +102202,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804fba4:	f000 bfc7 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_SET_SENSOR_OFFSET:
-       strncat(Message,STRING_CMD_SET_SENSOR_OFFSET,sizeof(STRING_CMD_SET_SENSOR_OFFSET));
+       strncat(Message,STRING_CMD_SET_SENSOR_OFFSET,strlen(STRING_CMD_SET_SENSOR_OFFSET) + 1);
  804fba8:	6838      	ldr	r0, [r7, #0]
  804fbaa:	f7d0 fb8b 	bl	80202c4 <strlen>
  804fbae:	4603      	mov	r3, r0
@@ -102286,7 +102286,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804fc54:	f000 bf6f 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_GET_SENSOR_OFFSET:
-       strncat(Message,STRING_CMD_GET_SENSOR_OFFSET,sizeof(STRING_CMD_GET_SENSOR_OFFSET));
+       strncat(Message,STRING_CMD_GET_SENSOR_OFFSET,strlen(STRING_CMD_GET_SENSOR_OFFSET) + 1);
  804fc58:	6838      	ldr	r0, [r7, #0]
  804fc5a:	f7d0 fb33 	bl	80202c4 <strlen>
  804fc5e:	4603      	mov	r3, r0
@@ -102483,7 +102483,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804fdf6:	f000 be9e 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_SET_MODULATOR_WIDTH:
-       strncat(Message,STRING_CMD_SET_MODULATOR_WIDTH,sizeof(STRING_CMD_SET_MODULATOR_WIDTH));
+       strncat(Message,STRING_CMD_SET_MODULATOR_WIDTH,strlen(STRING_CMD_SET_MODULATOR_WIDTH) + 1);
  804fdfa:	6838      	ldr	r0, [r7, #0]
  804fdfc:	f7d0 fa62 	bl	80202c4 <strlen>
  804fe00:	4603      	mov	r3, r0
@@ -102522,7 +102522,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804fe48:	f000 be75 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_SET_MODULATOR_PERIOD:
-       strncat(Message,STRING_CMD_SET_MODULATOR_PERIOD,sizeof(STRING_CMD_SET_MODULATOR_PERIOD));
+       strncat(Message,STRING_CMD_SET_MODULATOR_PERIOD,strlen(STRING_CMD_SET_MODULATOR_PERIOD) + 1);
  804fe4c:	6838      	ldr	r0, [r7, #0]
  804fe4e:	f7d0 fa39 	bl	80202c4 <strlen>
  804fe52:	4603      	mov	r3, r0
@@ -102561,7 +102561,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804fe9a:	f000 be4c 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_SET_MODULATOR_DEADTIME:
-       strncat(Message,STRING_CMD_SET_MODULATOR_DEADTIME,sizeof(STRING_CMD_SET_MODULATOR_DEADTIME));
+       strncat(Message,STRING_CMD_SET_MODULATOR_DEADTIME,strlen(STRING_CMD_SET_MODULATOR_DEADTIME) + 1);
  804fe9e:	6838      	ldr	r0, [r7, #0]
  804fea0:	f7d0 fa10 	bl	80202c4 <strlen>
  804fea4:	4603      	mov	r3, r0
@@ -102632,7 +102632,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804ff28:	f000 be05 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_GET_MODULATOR_WIDTH:
-       strncat(Message,STRING_CMD_GET_MODULATOR_WIDTH,sizeof(STRING_CMD_GET_MODULATOR_WIDTH));
+       strncat(Message,STRING_CMD_GET_MODULATOR_WIDTH,strlen(STRING_CMD_GET_MODULATOR_WIDTH) + 1);
  804ff2c:	6838      	ldr	r0, [r7, #0]
  804ff2e:	f7d0 f9c9 	bl	80202c4 <strlen>
  804ff32:	4603      	mov	r3, r0
@@ -102645,7 +102645,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  804ff40:	f000 bdf9 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_GET_MODULATOR_PERIOD:
-       strncat(Message,STRING_CMD_GET_MODULATOR_PERIOD,sizeof(STRING_CMD_GET_MODULATOR_PERIOD));
+       strncat(Message,STRING_CMD_GET_MODULATOR_PERIOD,strlen(STRING_CMD_GET_MODULATOR_PERIOD) + 1);
  804ff44:	6838      	ldr	r0, [r7, #0]
  804ff46:	f7d0 f9bd 	bl	80202c4 <strlen>
  804ff4a:	4603      	mov	r3, r0
@@ -102779,7 +102779,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  805006a:	f000 bd64 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_SET_OZONE_TARGET:
-       strncat(Message,STRING_CMD_SET_OZONE_TARGET,sizeof(STRING_CMD_SET_OZONE_TARGET));
+       strncat(Message,STRING_CMD_SET_OZONE_TARGET,strlen(STRING_CMD_SET_OZONE_TARGET) + 1);
  805006e:	6838      	ldr	r0, [r7, #0]
  8050070:	f7d0 f928 	bl	80202c4 <strlen>
  8050074:	4603      	mov	r3, r0
@@ -102831,11 +102831,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  80500d4:	f000 bd2f 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_START_OZONE:
-//       strncat(Message,STRING_CMD_START_OZONE,strlen(STRING_CMD_START_OZONE) + 1);
-
-
-
-       strncat(Message,STRING_CMD_START_OZONE,sizeof(STRING_CMD_START_OZONE));
+       strncat(Message,STRING_CMD_START_OZONE,strlen(STRING_CMD_START_OZONE) + 1);
  80500d8:	6838      	ldr	r0, [r7, #0]
  80500da:	f7d0 f8f3 	bl	80202c4 <strlen>
  80500de:	4603      	mov	r3, r0
@@ -102873,10 +102869,6 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
  8050122:	4619      	mov	r1, r3
  8050124:	6838      	ldr	r0, [r7, #0]
  8050126:	f048 faab 	bl	8098680 <strncat>
-
-
-
-
        break;
  805012a:	f000 bd04 	b.w	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_STOP_OZONE:
@@ -104069,7 +104061,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  8050aa2:	e048      	b.n	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_SET_PROPORTIONAL_VALVE:
-       strncat(Message,STRING_CMD_SET_PROP_VALVE,sizeof(STRING_CMD_SET_PROP_VALVE));
+       strncat(Message,STRING_CMD_SET_PROP_VALVE,strlen(STRING_CMD_SET_PROP_VALVE) + 1);
  8050aa4:	6838      	ldr	r0, [r7, #0]
  8050aa6:	f7cf fc0d 	bl	80202c4 <strlen>
  8050aaa:	4603      	mov	r3, r0
@@ -104127,7 +104119,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        break;
  8050b18:	e00d      	b.n	8050b36 <Protocol_CompoundMessage+0x14ee>
      case CMD_GET_PROPORTIONAL_VALVE:
-       strncat(Message,STRING_CMD_GET_PROP_VALVE,sizeof(STRING_CMD_GET_PROP_VALVE));
+       strncat(Message,STRING_CMD_GET_PROP_VALVE,strlen(STRING_CMD_GET_PROP_VALVE) + 1);
  8050b1a:	6838      	ldr	r0, [r7, #0]
  8050b1c:	f7cf fbd2 	bl	80202c4 <strlen>
  8050b20:	4603      	mov	r3, r0
@@ -104211,7 +104203,7 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
  8050bb2:	b08a      	sub	sp, #40	@ 0x28
  8050bb4:	af00      	add	r7, sp, #0
  8050bb6:	6078      	str	r0, [r7, #4]
-  int8 Message[PROTOCOL_MAX_MESSAGE_SIZE];
+  char Message[PROTOCOL_MAX_MESSAGE_SIZE];
   int8 RetVal=0;
  8050bb8:	2300      	movs	r3, #0
  8050bba:	f887 3026 	strb.w	r3, [r7, #38]	@ 0x26
@@ -104267,7 +104259,6 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
  8050c18:	f000 f840 	bl	8050c9c <Protocol_GetResponse>
  8050c1c:	4603      	mov	r3, r0
  8050c1e:	f887 3026 	strb.w	r3, [r7, #38]	@ 0x26
-
     }while ( (RetVal != CMD_RESPONSE_ACK) && (RetVal != CMD_RESPONSE_KEY_SIMULATION) && (++NumRetries < 3) );
  8050c22:	f997 3026 	ldrsb.w	r3, [r7, #38]	@ 0x26
  8050c26:	2b00      	cmp	r3, #0

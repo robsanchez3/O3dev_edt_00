@@ -67,10 +67,10 @@ int8 Protocol_ComputeCRC(char * Message, char * CrcString)
  * @return \li TRUE If the command CRC is the same as the calculated
  *         \li FALSE If not.
  */
-uint8 CheckCRC(int8 *CommandString)
+uint8 CheckCRC(char *CommandString)
 {
   char *PointerToCRCInCommandString = strchr(CommandString,'\r') -2;
-  char *CRC_Calculation_Pointer = CommandString;
+  char *CRC_Calculation_Pointer = (char *)CommandString;
   char CalculatedCrcString[PROTOCOL_CRC_SIZE];
   int8 Crc=0;
 
@@ -89,8 +89,8 @@ uint8 CheckCRC(int8 *CommandString)
 
 int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
 {
-  int8 Crc[PROTOCOL_CRC_SIZE]={0,0,0};
-  int8 HexValue[MAX_HEX_VALUE_SIZE]={0,0,0,0,0};
+  char Crc[PROTOCOL_CRC_SIZE]={0,0,0};
+  char HexValue[MAX_HEX_VALUE_SIZE]={0,0,0,0,0};
 
    if (Command == NULL)
      return PROTOCOL_RET_ERROR_BAD_PARAMETER;
@@ -102,12 +102,12 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,STRING_CMD_TEST_COM,strlen(STRING_CMD_TEST_COM) + 1);
        break;
      case CMD_CRC_SET:
-       strncat(Message,STRING_CMD_CRC_SET,sizeof(STRING_CMD_CRC_SET));
+       strncat(Message,STRING_CMD_CRC_SET,strlen(STRING_CMD_CRC_SET) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        break;
      case CMD_SET_VALVE:
-       strncat(Message,STRING_CMD_SET_VALVE,sizeof(STRING_CMD_SET_VALVE));
+       strncat(Message,STRING_CMD_SET_VALVE,strlen(STRING_CMD_SET_VALVE) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
@@ -116,12 +116,12 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        deb_printf(D_LEV_4, "Set valve %d to %d...\n", Command->Identifier[0] - 48, Command->Value);
        break;
      case CMD_GET_VALVE:
-       strncat(Message,STRING_CMD_GET_VALVE,sizeof(STRING_CMD_GET_VALVE));
+       strncat(Message,STRING_CMD_GET_VALVE,strlen(STRING_CMD_GET_VALVE) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        break;
      case CMD_SET_FAN:
-       strncat(Message,STRING_CMD_SET_FAN,sizeof(STRING_CMD_SET_FAN));
+       strncat(Message,STRING_CMD_SET_FAN,strlen(STRING_CMD_SET_FAN) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
@@ -129,7 +129,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
        break;
      case CMD_GET_FAN:
-       strncat(Message,STRING_CMD_GET_FAN,sizeof(STRING_CMD_GET_FAN));
+       strncat(Message,STRING_CMD_GET_FAN,strlen(STRING_CMD_GET_FAN) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        break;
@@ -147,7 +147,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,Command->Identifier,1);
        break;
      case CMD_SET_SENSOR_SLOPE:
-       strncat(Message,STRING_CMD_SET_SENSOR_SLOPE,sizeof(STRING_CMD_SET_SENSOR_SLOPE));
+       strncat(Message,STRING_CMD_SET_SENSOR_SLOPE,strlen(STRING_CMD_SET_SENSOR_SLOPE) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
@@ -158,7 +158,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
        break;
      case CMD_GET_SENSOR_SLOPE:
-       strncat(Message,STRING_CMD_GET_SENSOR_SLOPE,sizeof(STRING_CMD_GET_SENSOR_SLOPE));
+       strncat(Message,STRING_CMD_GET_SENSOR_SLOPE,strlen(STRING_CMD_GET_SENSOR_SLOPE) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        snprintf(HexValue, 5, "%X", (uint8)Command->Position[0]);
@@ -166,7 +166,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        break;
      case CMD_SET_SENSOR_OFFSET:
-       strncat(Message,STRING_CMD_SET_SENSOR_OFFSET,sizeof(STRING_CMD_SET_SENSOR_OFFSET));
+       strncat(Message,STRING_CMD_SET_SENSOR_OFFSET,strlen(STRING_CMD_SET_SENSOR_OFFSET) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
@@ -177,7 +177,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
        break;
      case CMD_GET_SENSOR_OFFSET:
-       strncat(Message,STRING_CMD_GET_SENSOR_OFFSET,sizeof(STRING_CMD_GET_SENSOR_OFFSET));
+       strncat(Message,STRING_CMD_GET_SENSOR_OFFSET,strlen(STRING_CMD_GET_SENSOR_OFFSET) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        snprintf(HexValue, 5, "%X", (uint8)Command->Position[0]);
@@ -205,19 +205,19 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
        break;
      case CMD_SET_MODULATOR_WIDTH:
-       strncat(Message,STRING_CMD_SET_MODULATOR_WIDTH,sizeof(STRING_CMD_SET_MODULATOR_WIDTH));
+       strncat(Message,STRING_CMD_SET_MODULATOR_WIDTH,strlen(STRING_CMD_SET_MODULATOR_WIDTH) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        snprintf(HexValue, 5, "%04X", (uint16)Command->Value);
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
        break;
      case CMD_SET_MODULATOR_PERIOD:
-       strncat(Message,STRING_CMD_SET_MODULATOR_PERIOD,sizeof(STRING_CMD_SET_MODULATOR_PERIOD));
+       strncat(Message,STRING_CMD_SET_MODULATOR_PERIOD,strlen(STRING_CMD_SET_MODULATOR_PERIOD) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        snprintf(HexValue, 5, "%04X", (uint16)Command->Value);
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
        break;
      case CMD_SET_MODULATOR_DEADTIME:
-       strncat(Message,STRING_CMD_SET_MODULATOR_DEADTIME,sizeof(STRING_CMD_SET_MODULATOR_DEADTIME));
+       strncat(Message,STRING_CMD_SET_MODULATOR_DEADTIME,strlen(STRING_CMD_SET_MODULATOR_DEADTIME) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        snprintf(HexValue, 5, "%02X", (uint16)Command->Value);
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
@@ -229,10 +229,10 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,STRING_CMD_GET_MODULATOR_BASE_PERIOD,strlen(STRING_CMD_GET_MODULATOR_BASE_PERIOD) + 1);
        break;
      case CMD_GET_MODULATOR_WIDTH:
-       strncat(Message,STRING_CMD_GET_MODULATOR_WIDTH,sizeof(STRING_CMD_GET_MODULATOR_WIDTH));
+       strncat(Message,STRING_CMD_GET_MODULATOR_WIDTH,strlen(STRING_CMD_GET_MODULATOR_WIDTH) + 1);
        break;
      case CMD_GET_MODULATOR_PERIOD:
-       strncat(Message,STRING_CMD_GET_MODULATOR_PERIOD,sizeof(STRING_CMD_GET_MODULATOR_PERIOD));
+       strncat(Message,STRING_CMD_GET_MODULATOR_PERIOD,strlen(STRING_CMD_GET_MODULATOR_PERIOD) + 1);
        break;
      case CMD_MODULATOR_BASE_START:
        strncat(Message,STRING_CMD_MODULATOR_BASE_START,strlen(STRING_CMD_MODULATOR_BASE_START) + 1);
@@ -253,7 +253,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
        break;
      case CMD_SET_OZONE_TARGET:
-       strncat(Message,STRING_CMD_SET_OZONE_TARGET,sizeof(STRING_CMD_SET_OZONE_TARGET));
+       strncat(Message,STRING_CMD_SET_OZONE_TARGET,strlen(STRING_CMD_SET_OZONE_TARGET) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        snprintf(HexValue, 5, "%04X", (uint16)Command->Value);
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
@@ -262,18 +262,10 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,STRING_CMD_GET_OZONE_TARGET,strlen(STRING_CMD_GET_OZONE_TARGET) + 1);
        break;
      case CMD_START_OZONE:
-//       strncat(Message,STRING_CMD_START_OZONE,strlen(STRING_CMD_START_OZONE) + 1);
-
-
-
-       strncat(Message,STRING_CMD_START_OZONE,sizeof(STRING_CMD_START_OZONE));
+       strncat(Message,STRING_CMD_START_OZONE,strlen(STRING_CMD_START_OZONE) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        snprintf(HexValue, 5, "%04X", (uint16)Command->Value);
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
-
-
-
-
        break;
      case CMD_STOP_OZONE:
        strncat(Message,STRING_CMD_STOP_OZONE,strlen(STRING_CMD_STOP_OZONE) + 1);
@@ -445,7 +437,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
        break;
      case CMD_SET_PROPORTIONAL_VALVE:
-       strncat(Message,STRING_CMD_SET_PROP_VALVE,sizeof(STRING_CMD_SET_PROP_VALVE));
+       strncat(Message,STRING_CMD_SET_PROP_VALVE,strlen(STRING_CMD_SET_PROP_VALVE) + 1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
        strncat(Message,Command->Identifier,1);
        strncat(Message,STRING_CMD_SEPARATOR,strlen(STRING_CMD_SEPARATOR) + 1);
@@ -453,7 +445,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
        strncat(Message,HexValue,MAX_HEX_VALUE_SIZE);
        break;
      case CMD_GET_PROPORTIONAL_VALVE:
-       strncat(Message,STRING_CMD_GET_PROP_VALVE,sizeof(STRING_CMD_GET_PROP_VALVE));
+       strncat(Message,STRING_CMD_GET_PROP_VALVE,strlen(STRING_CMD_GET_PROP_VALVE) + 1);
        break;
      default:
        return PROTOCOL_RET_BAD_COMMAND;
@@ -478,7 +470,7 @@ int8 Protocol_CompoundMessage(PROTOCOL_COMMAND_T * Command,char * Message)
  */
 int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
 {
-  int8 Message[PROTOCOL_MAX_MESSAGE_SIZE];
+  char Message[PROTOCOL_MAX_MESSAGE_SIZE];
   int8 RetVal=0;
   uint8 NumRetries = 0;
 
@@ -497,6 +489,10 @@ int8 Protocol_SendCommand(PROTOCOL_COMMAND_T * Command)
       dep_o3_com_putString((uint8_t *)Message);
       deb_printf(D_LEV_0, "%s\n", Message); // SWV debug
       deb_printf(D_LEV_1, "Send(%02d) -> %s\n", fsm_o3_getDebugStateId(), Message); // SWV debug
+
+
+      /*quitarrrrrrrrrrrr*/return PROTOCOL_RET_SUCCESS;
+
       RetVal = Protocol_GetResponse();
 
     }while ( (RetVal != CMD_RESPONSE_ACK) && (RetVal != CMD_RESPONSE_KEY_SIMULATION) && (++NumRetries < 3) );

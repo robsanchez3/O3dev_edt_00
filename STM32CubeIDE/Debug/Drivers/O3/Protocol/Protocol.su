@@ -4,7 +4,7 @@
 ../Drivers/O3/Protocol/Protocol.c:47:6:Protocol_ComputeCRC	24	static
 ../Drivers/O3/Protocol/Protocol.c:70:7:CheckCRC	32	static
 ../Drivers/O3/Protocol/Protocol.c:90:6:Protocol_CompoundMessage	32	static
-../Drivers/O3/Protocol/Protocol.c:479:6:Protocol_SendCommand	48	static
-../Drivers/O3/Protocol/Protocol.c:520:6:Protocol_GetResponse	16	static
-../Drivers/O3/Protocol/Protocol.c:580:13:ResolveStatus	16	static
-../Drivers/O3/Protocol/Protocol.c:592:6:Protocol_GetLastResponse	128	static
+../Drivers/O3/Protocol/Protocol.c:471:6:Protocol_SendCommand	48	static
+../Drivers/O3/Protocol/Protocol.c:511:6:Protocol_GetResponse	16	static
+../Drivers/O3/Protocol/Protocol.c:571:13:ResolveStatus	16	static
+../Drivers/O3/Protocol/Protocol.c:583:6:Protocol_GetLastResponse	128	static
