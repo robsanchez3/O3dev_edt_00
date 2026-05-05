@@ -26,6 +26,7 @@ RM := rm -rf
 -include Drivers/O3/Timer/subdir.mk
 -include Drivers/O3/Syringe/subdir.mk
 -include Drivers/O3/Protocol/subdir.mk
+-include Drivers/O3/IAP/subdir.mk
 -include Drivers/O3/Fsm_o3/subdir.mk
 -include Drivers/O3/Dependencies/subdir.mk
 -include Drivers/CMSIS/subdir.mk

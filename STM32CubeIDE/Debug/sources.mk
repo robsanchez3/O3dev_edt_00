@@ -50,6 +50,7 @@ Application/User/gui \
 Drivers/CMSIS \
 Drivers/O3/Dependencies \
 Drivers/O3/Fsm_o3 \
+Drivers/O3/IAP \
 Drivers/O3/Protocol \
 Drivers/O3/Syringe \
 Drivers/O3/Timer \

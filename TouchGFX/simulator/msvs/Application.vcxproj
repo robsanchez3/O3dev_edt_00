@@ -88,6 +88,9 @@
     <ClCompile Include="..\..\gui\src\washing_screen\WashingView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\washing_screen\WashingViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\ParseUpdates.cpp"/>
+    <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdatePresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdateView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\genupdate_screen\GenUpdateViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -314,6 +317,9 @@
     <ClInclude Include="..\..\gui\include\gui\washing_screen\WashingView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\washing_screen\WashingViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\ParseUpdates.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdatePresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdateView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\genupdate_screen\GenUpdateViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

@@ -26,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 #ifdef USB_HOST_MODE
 #include "usb_host.h"
+#include "gen_updater.h"
 #else
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
@@ -99,6 +100,14 @@ const osThreadAttr_t USBHostTask_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 512 * 8
 };
+
+/* Definitions for GenUpdaterTask */
+osThreadId_t GenUpdaterTaskHandle;
+const osThreadAttr_t GenUpdaterTask_attributes = {
+  .name = "GenUpdaterTask",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 512 * 16  /* 8 KB: FatFS + IAP buffers */
+};
 #endif
 /* USER CODE END Variables */
 
@@ -114,6 +123,7 @@ void StartPwmTask(void *argument);
 extern void StartConfigLoaderTask(void *argument);
 #ifdef USB_HOST_MODE
 void StartUSBHostTask(void *argument);
+void StartGenUpdaterTask(void *argument);
 #endif
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -152,6 +162,9 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   hSysConfigReady = osSemaphoreNew(1, 0, NULL);  /* max=1, initial=0 (blocked) */
+#ifdef USB_HOST_MODE
+  hGenUpdStart    = osSemaphoreNew(1, 0, NULL);  /* released by gen_upd_start() on OK */
+#endif
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
@@ -176,7 +189,8 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_THREADS */
   ConfigLoaderTaskHandle = osThreadNew(StartConfigLoaderTask, NULL, &ConfigLoaderTask_attributes);
 #ifdef USB_HOST_MODE
-  USBHostTaskHandle = osThreadNew(StartUSBHostTask, NULL, &USBHostTask_attributes);
+  USBHostTaskHandle    = osThreadNew(StartUSBHostTask,    NULL, &USBHostTask_attributes);
+  GenUpdaterTaskHandle = osThreadNew(StartGenUpdaterTask, NULL, &GenUpdaterTask_attributes);
 #endif
   /* USER CODE END RTOS_THREADS */
 
@@ -220,6 +234,11 @@ void StartUSBHostTask(void *argument)
     MX_USB_HOST_Process();
     osDelay(1);
   }
+}
+
+void StartGenUpdaterTask(void *argument)
+{
+  gen_upd_task_fn();  /* blocks on hGenUpdStart; runs IAP cycle when released */
 }
 #endif
 

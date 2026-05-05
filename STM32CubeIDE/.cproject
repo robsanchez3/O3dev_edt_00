@@ -117,6 +117,8 @@
 									<listOptionValue builtIn="false" value="../../Drivers/Vendor/Device/USB"/>
 									<listOptionValue builtIn="false" value="C:/Roberto/O3/O3dev_edt_00/Drivers/Vendor/Device/USB"/>
 									<listOptionValue builtIn="false" value="/Drivers/Vendor/FatFs/source/drivers/USB"/>
+									<listOptionValue builtIn="false" value="../../Drivers/O3/Dependencies"/>
+									<listOptionValue builtIn="false" value="../../Drivers/O3/IAP"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/touchgfx_components/gpu2d/NemaGFX/include"/>
 									<listOptionValue builtIn="false" value="../../Middlewares/ST/touchgfx_components/gpu2d/TouchGFXNema/include"/>
 								</option>

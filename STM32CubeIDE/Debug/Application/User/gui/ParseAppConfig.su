@@ -1,4 +1,4 @@
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:94:7:int16 FindFirstFileWithExt(const char*, const char*, char*, int16)	128	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:94:7:int16 FindFirstFileWithExt(const char*, const char*, char*, int16)	384	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:173:13:void LR_init(LineReader_t*, FIL*)	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:180:16:uint8_t LR_getline(LineReader_t*, int8_t*, UINT)	32	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/ParseAppConfig.cpp:204:7:char* ltrim(char*)	16	static

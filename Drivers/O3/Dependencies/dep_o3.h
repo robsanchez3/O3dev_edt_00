@@ -28,6 +28,7 @@ void dep_o3_com_putString(uint8_t *Data);
 void dep_o3_com_pollRx(void);
 uint8_t dep_o3_com_getChar(uint8_t *);
 uint8_t dep_o3_com_dataAvailable(void);
+void dep_o3_com_iap_takeover(void); /* abort IT reception before IAP */
 
 /* ---- Delay ---- */
 

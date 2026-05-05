@@ -62,6 +62,9 @@ public:
     // SwitchSelect
     void gotoSwitchSelectScreenNoTransition();
 
+    // GenUpdate
+    void gotoGenUpdateScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -108,6 +111,9 @@ protected:
 
     // SwitchSelect
     void gotoSwitchSelectScreenNoTransitionImpl();
+
+    // GenUpdate
+    void gotoGenUpdateScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

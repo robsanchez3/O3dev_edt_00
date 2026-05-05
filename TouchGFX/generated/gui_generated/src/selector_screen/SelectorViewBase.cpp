@@ -25,13 +25,13 @@ SelectorViewBase::SelectorViewBase() :
     si_selectorPoint.setVisible(false);
     add(si_selectorPoint);
 
-    si_modeIcon.setBitmap(touchgfx::Bitmap(BITMAP_CONTINUO_01_ID));
-    si_modeIcon.setPosition(10, 10, 130, 130);
+    si_modeIcon.setBitmap(touchgfx::Bitmap(BITMAP_OVERPRESSURE_CIRCLE_YELLOW_200_ID));
+    si_modeIcon.setPosition(5, 10, 130, 130);
     si_modeIcon.setScalingAlgorithm(touchgfx::ScalableImage::BILINEAR_INTERPOLATION);
     add(si_modeIcon);
 
     si_magnitudeIcon.setBitmap(touchgfx::Bitmap(BITMAP_O3_00_ID));
-    si_magnitudeIcon.setPosition(660, 10, 130, 130);
+    si_magnitudeIcon.setPosition(665, 10, 130, 130);
     si_magnitudeIcon.setScalingAlgorithm(touchgfx::ScalableImage::BILINEAR_INTERPOLATION);
     add(si_magnitudeIcon);
 

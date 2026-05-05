@@ -92,6 +92,14 @@ HideScreenViewBase::HideScreenViewBase() :
     GotoSwitchSel.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
     GotoSwitchSel.setAction(buttonCallback);
     add(GotoSwitchSel);
+
+    GotoGenUpdate.setXY(188, 180);
+    GotoGenUpdate.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    GotoGenUpdate.setLabelText(touchgfx::TypedText(T___SINGLEUSE_9YCP));
+    GotoGenUpdate.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    GotoGenUpdate.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    GotoGenUpdate.setAction(buttonCallback);
+    add(GotoGenUpdate);
 }
 
 HideScreenViewBase::~HideScreenViewBase()
@@ -175,5 +183,12 @@ void HideScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& s
         //When GotoSwitchSel clicked change screen to SwitchSelect
         //Go to SwitchSelect with no screen transition
         application().gotoSwitchSelectScreenNoTransition();
+    }
+    if (&src == &GotoGenUpdate)
+    {
+        //GotoGenUpdate
+        //When GotoGenUpdate clicked change screen to GenUpdate
+        //Go to GenUpdate with no screen transition
+        application().gotoGenUpdateScreenNoTransition();
     }
 }

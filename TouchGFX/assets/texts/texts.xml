@@ -354,6 +354,17 @@
         <Translation Language="GB">Go to Switch</Translation>
       </Text>
     </TextGroup>
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_9YCP" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Goto gen updt</Translation>
+      </Text>
+      <Text Id="__SingleUse_8JPS" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">New generator firmware avilable, continue?</Translation>
+      </Text>
+      <Text Id="__SingleUse_CH0B" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+    </TextGroup>
   </Texts>
   <Typographies>
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7e,0xB0" />

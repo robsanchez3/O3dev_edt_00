@@ -13,9 +13,11 @@
 #include "cmsis_os2.h"
 #include "stm32u5xx_hal.h"
 #include "../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h"
+#include "../../../../Drivers/O3/IAP/gen_updater.h"
 #include <stdio.h>
 #include <string.h>
 extern "C" osSemaphoreId_t hSysConfigReady;  /* signals defaultTask that sys config is ready */
+extern "C" osThreadId_t    defaultTaskHandle;
 #endif
 
 #define PIN "1234"  // hard coded PIN
@@ -45,11 +47,26 @@ Model::Model() : modelListener(0)
 void Model::tick()
 {
 	static char debug_done = 0;
-//  Update screen according to current FSM state
 
 //  REMEMBER: The Model has a pointer to your currently active Presenter by means of ModelListener (where getVisibleScreen() has been defined as virtual)
 
+#ifndef SIMULATOR
+	/* GenUpdate: navigate once to GenUpdate screen if folder was found on USB */
+	static uint8_t s_gen_upd_shown = 0;
+	if (!s_gen_upd_shown && gen_upd_is_pending()) {
+		s_gen_upd_shown = 1;
+		osThreadSuspend(defaultTaskHandle);
+		static_cast<FrontendApplication*>(Application::getInstance())->gotoGenUpdateScreenNoTransition();
+		return;
+	}
+	/* While GenUpdate screen is active: feed the presenter and block FSM switching */
+	if (modelListener->getVisibleScreen() == SID_GEN_UPDATE) {
+		modelListener->onGenUpdTick(gen_upd_get_progress(), (int)gen_upd_get_state(), gen_upd_get_msg());
+		return;
+	}
+#endif
 
+//  Update screen according to current FSM state
 	// TODO: analyze if it is possible change screen in "controlled way"
 	// TODO: analyze if it is possible change screen in "controlled way"
 	switch(getFsmState())
@@ -942,51 +959,63 @@ void Model::configLoaderTask(void)
 	/* --- Phase 3: act --------------------------------------------------- */
 	uint32_t now = HAL_GetTick();
 
-	if(usb_found && sd_found)
+	if(usb_found)
+		gen_upd_scan_usb();  /* check for "1:/GEN_UPDATE" folder */
+
+	if(!gen_upd_is_pending())
 	{
-		/* Service update: import config files from USB onto SD */
-		printf("Updating SD from USB flash... [%lu ms]\n", now);
-		ImportDirFromUSB("1:/Service/Hw",      "0:/Config/Hw");
-		ImportDirFromUSB("1:/Service/Menu",    "0:/Config/Menu");
-		ImportDirFromUSB("1:/Service/Modes",   "0:/Config/Modes");
-		ImportDirFromUSB("1:/Service/Params",  "0:/Config/Params");
-		ImportDirFromUSB("1:/Service/Syringe", "0:/Config/Syringe");
-		ImportDirFromUSB("1:/Service/User",    "0:/Config/User");
-	}
-	if(sd_found)
-	{
-		/* Normal startup: load config from SD */
-		if( loadHardwareConfig(fsm_o3_getHwConfig()) == 0 )
-			printf("Hardware configuration loaded [%lu ms]\n", now);
-		else
-			printf("Hardware configuration not loaded, using default.\n");
-
-		if( loadSyringeConfig(fsm_o3_getSyringePattern()) == 0 )
-			printf("Syringe stop pattern loaded [%lu ms]\n", now);
-		else
-			printf("Syringe stop pattern not loaded, using default.\n");
-
-		if( loadUserConfig((USR_CONFIG_T*)fsm_o3_getUsrConfig()) == 0 )
-			printf("User configuration loaded [%lu ms]\n", now);
-		else
-			printf("User configuration not loaded, using default.\n");
-
-		if( loadMainMenu(deviceConfig, MAX_DEV_THERAPIES) != 0 )
+		if(usb_found && sd_found)
 		{
-			setDefaultMainMenu();
-			printf("Main menu not loaded, using default [%lu ms]\n", now);
+			/* Service update: import config files from USB onto SD */
+			printf("Updating SD from USB flash... [%lu ms]\n", now);
+			ImportDirFromUSB("1:/Service/Hw",      "0:/Config/Hw");
+			ImportDirFromUSB("1:/Service/Menu",    "0:/Config/Menu");
+			ImportDirFromUSB("1:/Service/Modes",   "0:/Config/Modes");
+			ImportDirFromUSB("1:/Service/Params",  "0:/Config/Params");
+			ImportDirFromUSB("1:/Service/Syringe", "0:/Config/Syringe");
+			ImportDirFromUSB("1:/Service/User",    "0:/Config/User");
+		}
+		if(sd_found)
+		{
+			/* Normal startup: load config from SD */
+			if( loadHardwareConfig(fsm_o3_getHwConfig()) == 0 )
+				printf("Hardware configuration loaded [%lu ms]\n", now);
+			else
+				printf("Hardware configuration not loaded, using default.\n");
+
+			if( loadSyringeConfig(fsm_o3_getSyringePattern()) == 0 )
+				printf("Syringe stop pattern loaded [%lu ms]\n", now);
+			else
+				printf("Syringe stop pattern not loaded, using default.\n");
+
+			if( loadUserConfig((USR_CONFIG_T*)fsm_o3_getUsrConfig()) == 0 )
+				printf("User configuration loaded [%lu ms]\n", now);
+			else
+				printf("User configuration not loaded, using default.\n");
+
+			if( loadMainMenu(deviceConfig, MAX_DEV_THERAPIES) != 0 )
+			{
+				setDefaultMainMenu();
+				printf("Main menu not loaded, using default [%lu ms]\n", now);
+			}
+			else
+				printf("Main menu loaded [%lu ms]\n", now);
 		}
 		else
-			printf("Main menu loaded [%lu ms]\n", now);
+		{
+			/* SD not available */
+			setDefaultMainMenu();
+			if(usb_found)
+				printf("USB found but SD not available, using defaults [%lu ms]\n", now);
+			else
+				printf("No SD or USB available, using defaults [%lu ms]\n", now);
+		}
 	}
 	else
 	{
-		/* SD not available */
+		/* Generator update pending — skip normal config loading */
 		setDefaultMainMenu();
-		if(usb_found)
-			printf("USB found but SD not available, using defaults [%lu ms]\n", now);
-		else
-			printf("No SD or USB available, using defaults [%lu ms]\n", now);
+		printf("Generator update pending, skipping config load [%lu ms]\n", now);
 	}
 
 	osSemaphoreRelease(hSysConfigReady);

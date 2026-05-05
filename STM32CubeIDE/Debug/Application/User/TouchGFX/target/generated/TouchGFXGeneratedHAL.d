@@ -185,6 +185,9 @@ Application/User/TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
  ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectView.hpp \
  ../../TouchGFX/generated/gui_generated/include/gui_generated/switchselect_screen/SwitchSelectViewBase.hpp \
  ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectPresenter.hpp \
+ ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp \
+ ../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp \
+ ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/GPIO.hpp \
  ../../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5xx.h \
  ../../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u599xx.h \
@@ -424,6 +427,9 @@ Application/User/TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
 ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectView.hpp:
 ../../TouchGFX/generated/gui_generated/include/gui_generated/switchselect_screen/SwitchSelectViewBase.hpp:
 ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectPresenter.hpp:
+../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp:
+../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp:
+../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/GPIO.hpp:
 ../../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5xx.h:
 ../../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u599xx.h:

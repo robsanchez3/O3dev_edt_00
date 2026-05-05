@@ -81,7 +81,8 @@ Application/User/Core/app_freertos.o: \
  ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h \
  ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h \
  ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h \
- ../../Drivers/O3/Fsm_o3/fsm_o3.h ../../Drivers/O3/Fsm_o3/../Typedef.h \
+ ../../Drivers/O3/IAP/gen_updater.h ../../Drivers/O3/Fsm_o3/fsm_o3.h \
+ ../../Drivers/O3/Fsm_o3/../Typedef.h \
  ../../Drivers/O3/Fsm_o3/fsm_o3_types.h
 ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../../Core/Inc/FreeRTOSConfig.h:
@@ -165,6 +166,7 @@ Application/User/Core/app_freertos.o: \
 ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:
 ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h:
 ../../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h:
+../../Drivers/O3/IAP/gen_updater.h:
 ../../Drivers/O3/Fsm_o3/fsm_o3.h:
 ../../Drivers/O3/Fsm_o3/../Typedef.h:
 ../../Drivers/O3/Fsm_o3/fsm_o3_types.h:

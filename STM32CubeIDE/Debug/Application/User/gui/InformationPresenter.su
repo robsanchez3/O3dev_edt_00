@@ -14,7 +14,8 @@
 ../../TouchGFX/gui/include/gui/model/ModelListener.hpp:29:22:virtual uint16_t ModelListener::getVisibleScreen()	16	static
 ../../TouchGFX/gui/include/gui/model/ModelListener.hpp:30:18:virtual void ModelListener::updateProgressRange(int, int)	24	static
 ../../TouchGFX/gui/include/gui/model/ModelListener.hpp:31:18:virtual void ModelListener::onPinValidated(bool)	16	static
-../../TouchGFX/gui/include/gui/model/ModelListener.hpp:34:18:virtual void ModelListener::PushCanToView(uint8_t*, uint16_t)	24	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:35:18:virtual void ModelListener::onGenUpdTick(uint8_t, int, const char*)	24	static
+../../TouchGFX/gui/include/gui/model/ModelListener.hpp:38:18:virtual void ModelListener::PushCanToView(uint8_t*, uint16_t)	24	static
 ../../TouchGFX/gui/include/gui/information_screen/InformationPresenter.hpp:28:13:InformationPresenter::~InformationPresenter()	16	static
 ../../TouchGFX/gui/include/gui/information_screen/InformationPresenter.hpp:28:13:virtual InformationPresenter::~InformationPresenter()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/information_screen/InformationPresenter.cpp:4:1:InformationPresenter::InformationPresenter(InformationView&)	16	static

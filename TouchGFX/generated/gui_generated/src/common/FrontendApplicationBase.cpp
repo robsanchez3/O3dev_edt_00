@@ -47,6 +47,8 @@
 #include <gui/processing_screen/ProcessingPresenter.hpp>
 #include <gui/switchselect_screen/SwitchSelectView.hpp>
 #include <gui/switchselect_screen/SwitchSelectPresenter.hpp>
+#include <gui/genupdate_screen/GenUpdateView.hpp>
+#include <gui/genupdate_screen/GenUpdatePresenter.hpp>
 
 using namespace touchgfx;
 
@@ -249,4 +251,17 @@ void FrontendApplicationBase::gotoSwitchSelectScreenNoTransition()
 void FrontendApplicationBase::gotoSwitchSelectScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<SwitchSelectView, SwitchSelectPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// GenUpdate
+
+void FrontendApplicationBase::gotoGenUpdateScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoGenUpdateScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoGenUpdateScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<GenUpdateView, GenUpdatePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

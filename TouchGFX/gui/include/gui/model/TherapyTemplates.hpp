@@ -425,7 +425,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[RFU_1_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -449,7 +449,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[MAX_OPERATION_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -473,7 +473,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[CAL_PRESS_MODE]*/ {
         /*stepsNum*/                 2,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -497,7 +497,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[CAL_FLOW_MODE]*/ {
         /*stepsNum*/                 2,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -521,7 +521,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[CAL_O3_MODE]*/ {
         /*stepsNum*/                 5,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -547,7 +547,7 @@ const THERAPY_CTX therapyTemplates[] = {
 #if 0
     /*[CAL_PFACTOR_MODE]*/ {
         /*stepsNum*/                 2,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -572,7 +572,7 @@ const THERAPY_CTX therapyTemplates[] = {
 #endif
     /*[CAL_PERIOD_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -596,7 +596,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[GENERATION_TYPE_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -620,7 +620,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[SAVE_PARAMS_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -644,7 +644,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[LOAD_PARAMS_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -668,7 +668,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[SW_VERSION_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -692,7 +692,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[PRESSURE_TEMP_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -716,7 +716,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[SHOW_PARAMS_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -740,7 +740,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[SHOW_STARTUP_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,
@@ -764,7 +764,7 @@ const THERAPY_CTX therapyTemplates[] = {
     },
     /*[NO_MODE]*/ {
         /*stepsNum*/                 1,
-        /*mainIcon*/                 BITMAP_SETTINGS_100_A_ID,
+        /*mainIcon*/                 BITMAP_SETTINGS_130_A_ID,
         /*endTotalDoseVisible*/      false,
         /*endTotalVolumeVisible*/    false,
         /*endTotalTimeVisible*/      false,

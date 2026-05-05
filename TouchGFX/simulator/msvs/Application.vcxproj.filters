@@ -409,8 +409,20 @@
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>1FA443AB-06F3-A36A-18D0-9F616A0FC99F</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\genupdate_screen">
+      <UniqueIdentifier>33607120-DF83-8F9E-F3E5-14CE530B7FC7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\genupdate_screen">
+      <UniqueIdentifier>DA9998F6-DDD6-5D64-A21C-7C516853521C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\genupdate_screen">
+      <UniqueIdentifier>B854CE5B-7FD9-0730-3A0E-F23EF2322505</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\genupdate_screen">
+      <UniqueIdentifier>1D61945B-8ED3-2AAE-CFB2-C336F810ABBA</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\gui\widget">
-      <UniqueIdentifier>F74F8A49-FFEE-8738-5E41-77B46D8A5D08</UniqueIdentifier>
+      <UniqueIdentifier>B449FA13-2A8C-4A5D-B020-5F0D6C62E6E4</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -644,6 +656,15 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\model\ParseUpdates.cpp">
       <Filter>Source Files\gui\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdatePresenter.cpp">
+      <Filter>Source Files\gui\genupdate_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdateView.cpp">
+      <Filter>Source Files\gui\genupdate_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\genupdate_screen\GenUpdateViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\genupdate_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1314,6 +1335,15 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\model\ParseUpdates.hpp">
       <Filter>Header Files\gui\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdatePresenter.hpp">
+      <Filter>Header Files\gui\genupdate_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdateView.hpp">
+      <Filter>Header Files\gui\genupdate_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\genupdate_screen\GenUpdateViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\genupdate_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

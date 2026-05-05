@@ -3,7 +3,7 @@
 
 #include <gui/model/Model.hpp>
 
-enum SCREEN_ID {SID_NON, SID_ERROR, SID_MAIN_MENU, SID_STARTING, SID_RUNNING, SID_END, SID_WASHING, SID_SYRINGE_FILL, SID_ADJUSTING, SID_CALIBRATION};
+enum SCREEN_ID {SID_NON, SID_ERROR, SID_MAIN_MENU, SID_STARTING, SID_RUNNING, SID_END, SID_WASHING, SID_SYRINGE_FILL, SID_ADJUSTING, SID_CALIBRATION, SID_GEN_UPDATE};
 
 /**
  * ModelListener is the interface through which the Model can inform the currently
@@ -29,6 +29,10 @@ public:
     virtual uint16_t getVisibleScreen() {return SID_NON;}
     virtual void updateProgressRange(int min, int max){}
     virtual void onPinValidated(bool success) {}
+
+    /* Called every Model::tick() while GenUpdate screen is active.
+     * progress: 0-100, state: gen_upd_state_t cast to int, msg: last log line. */
+    virtual void onGenUpdTick(uint8_t progress, int state, const char* msg) {}
 
 #ifndef SIMULATOR
     virtual void PushCanToView(uint8_t *candata , uint16_t Size){}

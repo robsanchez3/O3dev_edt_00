@@ -5,7 +5,10 @@
       "Bash(curl -fsSL \"https://raw.githubusercontent.com/STMicroelectronics/stm32u5xx_hal_driver/v1.6.2/Inc/stm32u5xx_hal_hcd.h\" \\\\\n  -o \"/mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h\" && \\\\\ncurl -fsSL \"https://raw.githubusercontent.com/STMicroelectronics/stm32u5xx_hal_driver/v1.6.2/Src/stm32u5xx_hal_hcd.c\" \\\\\n  -o \"/mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hcd.c\" && \\\\\nwc -l /mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h \\\\\n       /mnt/c/Roberto/O3/O3dev_edt_00/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hcd.c)",
       "Bash(ls:*)",
       "Bash(find:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(grep -E \"\\\\.\\(c|h\\)$\")",
+      "Bash(grep -E \"\\\\.\\(cpp|c|hpp|h\\)$\")",
+      "Bash(grep -v \".d$\")"
     ]
   }
 }
