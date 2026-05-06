@@ -7,7 +7,7 @@
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
-			<triggers>full,incremental,</triggers>
+			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -428,6 +428,11 @@
 			<name>Application/User/generated/ConfigMenuViewBase.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/configmenu_screen/ConfigMenuViewBase.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/DevUpdateViewBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/devupdate_screen/DevUpdateViewBase.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/EndViewBase.cpp</name>
@@ -1618,6 +1623,16 @@
 			<name>Application/User/gui/ConfigMenuView.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/configmenu_screen/ConfigMenuView.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/DevUpdatePresenter.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/devupdate_screen/DevUpdatePresenter.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/DevUpdateView.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/devupdate_screen/DevUpdateView.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/gui/EndPresenter.cpp</name>

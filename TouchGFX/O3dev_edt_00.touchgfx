@@ -4134,6 +4134,95 @@
         ]
       },
       {
+        "Name": "DevUpdate",
+        "Components": [
+          {
+            "Type": "ScalableImage",
+            "Name": "si_info",
+            "X": 680,
+            "Y": 100,
+            "Width": 100,
+            "Height": 100,
+            "Filename": "Info_100.png",
+            "ScalingAlgorithm": "Bilinear Interpolation"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ta_info",
+            "X": 172,
+            "Y": 75,
+            "Width": 457,
+            "Height": 351,
+            "TextId": "__SingleUse_ZECK",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "__SingleUse_W1JP",
+              "UseBuffer": true,
+              "BufferSize": 200
+            }
+          },
+          {
+            "Type": "Button",
+            "Name": "bt_cancel",
+            "X": 10,
+            "Y": 370,
+            "Width": 100,
+            "Height": 100,
+            "Pressed": "CancelButton_01_b.png",
+            "Released": "CancelButton_01_a.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "bt_OK",
+            "X": 690,
+            "Y": 370,
+            "Width": 100,
+            "Height": 100,
+            "Pressed": "EnterButton_02_b.png",
+            "Released": "EnterButton_02_a.png"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "si_icon",
+            "X": 20,
+            "Y": 25,
+            "Width": 100,
+            "Height": 100,
+            "Filename": "Settings_100_a.png",
+            "ScalingAlgorithm": "Bilinear Interpolation"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "cancelClicked1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bt_cancel"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "cancelClicked"
+            }
+          },
+          {
+            "InteractionName": "okClicked1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bt_OK"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "okClicked1"
+            }
+          }
+        ]
+      },
+      {
         "Name": "GenUpdate",
         "Components": [
           {

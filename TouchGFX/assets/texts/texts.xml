@@ -355,6 +355,12 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_W1JP" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">New update avilable, continue?</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZECK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_9YCP" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Goto gen updt</Translation>
       </Text>

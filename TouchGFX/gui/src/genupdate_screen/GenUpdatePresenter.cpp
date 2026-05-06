@@ -19,7 +19,11 @@ void GenUpdatePresenter::activate()
         view.updateInfo("ERROR: TargetApp.hex not found in GEN_UPDATE");
         view.showButtons(false, true);   /* hide OK, show Cancel */
     } else {
-        view.showButtons(true, true);    /* show OK and Cancel, keep designer text */
+        char info[128];
+        snprintf(info, sizeof info, "New generator firmware available:\n\n%s\n\nContinue?",
+                 gen_upd_get_hex_name());
+        view.updateInfo(info);
+        view.showButtons(true, true);
     }
 #endif
 }
@@ -32,7 +36,10 @@ void GenUpdatePresenter::okClicked1()
 {
 #ifndef SIMULATOR
     view.showButtons(false, false);
-    gen_upd_start();
+    if (gen_upd_get_state() == GEN_UPD_SUCCESS)
+        gen_upd_confirm_reset();
+    else
+        gen_upd_start();
 #endif
 }
 
@@ -58,8 +65,8 @@ void GenUpdatePresenter::onGenUpdTick(uint8_t progress, int state, const char* m
         break;
 
     case GEN_UPD_SUCCESS:
-        view.updateInfo(msg);
-        view.showButtons(false, false);
+        view.updateInfo("Programming complete!\n\nRemove USB drive.\nPress confirm to restart.");
+        view.showButtons(true, false);
         break;
 
     case GEN_UPD_FAIL_RESOURCES:

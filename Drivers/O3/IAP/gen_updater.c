@@ -34,6 +34,7 @@ static volatile uint8_t          s_progress  = 0;
 static volatile size_t           s_blk_total = 0;
 static volatile size_t           s_blk_done  = 0;
 static char                      s_msg[96]   = "";
+static char                      s_hex_name[64] = "";
 
 /*--- Internal helpers -------------------------------------------------------*/
 
@@ -57,7 +58,7 @@ static int progress_src(void*     ctx,
             s_progress = (uint8_t)(s_blk_done * 100u / s_blk_total);
 
         char tmp[80];
-        snprintf(tmp, sizeof tmp, "Bloque %u/%u  id=0x%04X",
+        snprintf(tmp, sizeof tmp, "Block %u/%u  id=0x%04X",
                  (unsigned)s_blk_done, (unsigned)s_blk_total, (unsigned)*block_id);
         set_msg(tmp);
         printf("[IAP] %s\n", tmp);
@@ -94,19 +95,40 @@ static void drain_rx(const iap_hal_t* hal)
 
 void gen_upd_scan_usb(void)
 {
-    FILINFO fi;
-    if (f_stat("1:/GEN_UPDATE", &fi) == FR_OK && (fi.fattrib & AM_DIR)) {
-        s_pending = 1;
-        printf("GEN_UPDATE folder found, update pending\n");
-    } else {
+    DIR dir;
+    FILINFO fno;
+
+    if (f_opendir(&dir, "1:/GEN_UPDATE") != FR_OK) {
         printf("No generator update (GEN_UPDATE not found)\n");
+        return;
     }
+    while (f_readdir(&dir, &fno) == FR_OK && fno.fname[0]) {
+        size_t n = strlen(fno.fname);
+        if (n > 4 && fno.fname[n-4] == '.' &&
+            (fno.fname[n-3]=='h'||fno.fname[n-3]=='H') &&
+            (fno.fname[n-2]=='e'||fno.fname[n-2]=='E') &&
+            (fno.fname[n-1]=='x'||fno.fname[n-1]=='X')) {
+            strncpy(s_hex_name, fno.fname, sizeof s_hex_name - 1);
+            s_hex_name[sizeof s_hex_name - 1] = '\0';
+            break;
+        }
+    }
+    f_closedir(&dir);
+
+    if (!s_hex_name[0]) {
+        printf("GEN_UPDATE folder found but no .hex file inside\n");
+        return;
+    }
+
+    printf("GEN_UPDATE: found %s, update pending\n", s_hex_name);
+    s_pending = 1;
 }
 
-uint8_t gen_upd_is_pending(void)   { return s_pending; }
-gen_upd_state_t gen_upd_get_state(void)   { return s_state;    }
-uint8_t         gen_upd_get_progress(void){ return s_progress;  }
-const char*     gen_upd_get_msg(void)     { return s_msg;       }
+uint8_t gen_upd_is_pending(void)        { return s_pending;   }
+gen_upd_state_t gen_upd_get_state(void) { return s_state;     }
+uint8_t         gen_upd_get_progress(void){ return s_progress; }
+const char*     gen_upd_get_msg(void)   { return s_msg;       }
+const char*     gen_upd_get_hex_name(void) { return s_hex_name; }
 
 void gen_upd_start(void)
 {
@@ -122,6 +144,11 @@ void gen_upd_cancel(void)
     s_pending = 0;
     s_state   = GEN_UPD_IDLE;
     osThreadResume(defaultTaskHandle);
+}
+
+void gen_upd_confirm_reset(void)
+{
+    HAL_NVIC_SystemReset();
 }
 
 /*--- Task -------------------------------------------------------------------*/
@@ -223,12 +250,10 @@ void gen_upd_task_fn(void)
 
         /* ---- 6. Result -------------------------------------------------- */
         if (rc == IAP_OK) {
-            set_msg("Done. Restarting...");
-            printf("[GEN_UPD] SUCCESS — resetting in 2 s\n");
+            set_msg("Done! Remove USB drive and press Confirm to restart.");
+            printf("[GEN_UPD] SUCCESS — waiting for user confirmation\n");
             s_progress = 100u;
             s_state    = GEN_UPD_SUCCESS;
-            osDelay(2000u);
-            HAL_NVIC_SystemReset();
         } else {
             char err[80];
             snprintf(err, sizeof err, "ERROR: %s", iap_strerror(rc));

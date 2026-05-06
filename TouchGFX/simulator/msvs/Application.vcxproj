@@ -91,6 +91,9 @@
     <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdatePresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdateView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\genupdate_screen\GenUpdateViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\devupdate_screen\DevUpdatePresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\devupdate_screen\DevUpdateView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\devupdate_screen\DevUpdateViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -320,6 +323,9 @@
     <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdatePresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdateView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\genupdate_screen\GenUpdateViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\devupdate_screen\DevUpdatePresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\devupdate_screen\DevUpdateView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\devupdate_screen\DevUpdateViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

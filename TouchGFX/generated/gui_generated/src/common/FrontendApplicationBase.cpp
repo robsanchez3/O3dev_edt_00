@@ -47,6 +47,8 @@
 #include <gui/processing_screen/ProcessingPresenter.hpp>
 #include <gui/switchselect_screen/SwitchSelectView.hpp>
 #include <gui/switchselect_screen/SwitchSelectPresenter.hpp>
+#include <gui/devupdate_screen/DevUpdateView.hpp>
+#include <gui/devupdate_screen/DevUpdatePresenter.hpp>
 #include <gui/genupdate_screen/GenUpdateView.hpp>
 #include <gui/genupdate_screen/GenUpdatePresenter.hpp>
 

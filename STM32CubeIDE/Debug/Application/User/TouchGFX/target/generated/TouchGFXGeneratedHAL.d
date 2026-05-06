@@ -185,6 +185,9 @@ Application/User/TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
  ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectView.hpp \
  ../../TouchGFX/generated/gui_generated/include/gui_generated/switchselect_screen/SwitchSelectViewBase.hpp \
  ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectPresenter.hpp \
+ ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdateView.hpp \
+ ../../TouchGFX/generated/gui_generated/include/gui_generated/devupdate_screen/DevUpdateViewBase.hpp \
+ ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdatePresenter.hpp \
  ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp \
  ../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp \
  ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp \
@@ -427,6 +430,9 @@ Application/User/TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
 ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectView.hpp:
 ../../TouchGFX/generated/gui_generated/include/gui_generated/switchselect_screen/SwitchSelectViewBase.hpp:
 ../../TouchGFX/gui/include/gui/switchselect_screen/SwitchSelectPresenter.hpp:
+../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdateView.hpp:
+../../TouchGFX/generated/gui_generated/include/gui_generated/devupdate_screen/DevUpdateViewBase.hpp:
+../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdatePresenter.hpp:
 ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp:
 ../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp:
 ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp:

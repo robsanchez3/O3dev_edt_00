@@ -41,8 +41,9 @@ uint8_t gen_upd_is_pending(void);
 /*--- State (read from any task; volatile, no mutex) -------------------------*/
 
 gen_upd_state_t gen_upd_get_state(void);
-uint8_t         gen_upd_get_progress(void);   /* 0–100 %                     */
-const char*     gen_upd_get_msg(void);        /* last status line for ta_info*/
+uint8_t         gen_upd_get_progress(void);    /* 0–100 %                    */
+const char*     gen_upd_get_msg(void);         /* last status line           */
+const char*     gen_upd_get_hex_name(void);    /* e.g. "firmware.hex"       */
 
 /*--- Commands (from GenUpdatePresenter) -------------------------------------*/
 
@@ -51,6 +52,9 @@ void gen_upd_start(void);
 
 /* Clears pending flag so Model::tick() resumes normal boot flow.            */
 void gen_upd_cancel(void);
+
+/* Triggers HAL_NVIC_SystemReset(); called from presenter after success.     */
+void gen_upd_confirm_reset(void);
 
 /*--- Task entry point -------------------------------------------------------*/
 
