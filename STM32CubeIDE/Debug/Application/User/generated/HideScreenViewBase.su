@@ -61,11 +61,11 @@
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp:38:7:virtual touchgfx::ButtonWithLabel::~ButtonWithLabel()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:357:8:touchgfx::Callback<HideScreenViewBase, const touchgfx::AbstractButton&>::~Callback()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:357:8:virtual touchgfx::Callback<HideScreenViewBase, const touchgfx::AbstractButton&>::~Callback()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:9:1:HideScreenViewBase::HideScreenViewBase()	408	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:113:1:HideScreenViewBase::~HideScreenViewBase()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:113:1:virtual HideScreenViewBase::~HideScreenViewBase()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:118:6:virtual void HideScreenViewBase::setupScreen()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:123:6:void HideScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:9:1:HideScreenViewBase::HideScreenViewBase()	384	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:105:1:HideScreenViewBase::~HideScreenViewBase()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:105:1:virtual HideScreenViewBase::~HideScreenViewBase()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:110:6:virtual void HideScreenViewBase::setupScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/hidescreen_screen/HideScreenViewBase.cpp:115:6:void HideScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:39:5:touchgfx::View<T>::View() [with T = HideScreenPresenter]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:134:7:constexpr touchgfx::GenericCallback<const touchgfx::AbstractButton&>::GenericCallback()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:373:5:touchgfx::Callback<dest_type, T1, void, void>::Callback(dest_type*, void (dest_type::*)(T1)) [with dest_type = HideScreenViewBase; T1 = const touchgfx::AbstractButton&]	24	static

@@ -45,7 +45,7 @@ HideScreenViewBase::HideScreenViewBase() :
     GotoStaringScreen.setAction(buttonCallback);
     add(GotoStaringScreen);
 
-    GotoSyringeFillScreen.setXY(0, 248);
+    GotoSyringeFillScreen.setXY(0, 240);
     GotoSyringeFillScreen.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     GotoSyringeFillScreen.setLabelText(touchgfx::TypedText(T___SINGLEUSE_G9VJ));
     GotoSyringeFillScreen.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -53,7 +53,7 @@ HideScreenViewBase::HideScreenViewBase() :
     GotoSyringeFillScreen.setAction(buttonCallback);
     add(GotoSyringeFillScreen);
 
-    GotoEndScreen.setXY(0, 316);
+    GotoEndScreen.setXY(0, 300);
     GotoEndScreen.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     GotoEndScreen.setLabelText(touchgfx::TypedText(T___SINGLEUSE_YBBU));
     GotoEndScreen.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -61,7 +61,7 @@ HideScreenViewBase::HideScreenViewBase() :
     GotoEndScreen.setAction(buttonCallback);
     add(GotoEndScreen);
 
-    GotoSelectorScreen.setXY(0, 384);
+    GotoSelectorScreen.setXY(0, 360);
     GotoSelectorScreen.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     GotoSelectorScreen.setLabelText(touchgfx::TypedText(T___SINGLEUSE_ERLM));
     GotoSelectorScreen.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -93,15 +93,7 @@ HideScreenViewBase::HideScreenViewBase() :
     GotoSwitchSel.setAction(buttonCallback);
     add(GotoSwitchSel);
 
-    GotoGenUpdate.setXY(188, 180);
-    GotoGenUpdate.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    GotoGenUpdate.setLabelText(touchgfx::TypedText(T___SINGLEUSE_9YCP));
-    GotoGenUpdate.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    GotoGenUpdate.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    GotoGenUpdate.setAction(buttonCallback);
-    add(GotoGenUpdate);
-
-    GotoDevUpdate.setXY(188, 248);
+    GotoDevUpdate.setXY(188, 180);
     GotoDevUpdate.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     GotoDevUpdate.setLabelText(touchgfx::TypedText(T___SINGLEUSE_9UCP));
     GotoDevUpdate.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -191,13 +183,6 @@ void HideScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& s
         //When GotoSwitchSel clicked change screen to SwitchSelect
         //Go to SwitchSelect with no screen transition
         application().gotoSwitchSelectScreenNoTransition();
-    }
-    if (&src == &GotoGenUpdate)
-    {
-        //GotoGenUpdate
-        //When GotoGenUpdate clicked change screen to GenUpdate
-        //Go to GenUpdate with no screen transition
-        application().gotoGenUpdateScreenNoTransition();
     }
     if (&src == &GotoDevUpdate)
     {

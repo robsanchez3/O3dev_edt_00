@@ -88,9 +88,6 @@
     <ClCompile Include="..\..\gui\src\washing_screen\WashingView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\washing_screen\WashingViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\ParseUpdates.cpp"/>
-    <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdatePresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdateView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\genupdate_screen\GenUpdateViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\devupdate_screen\DevUpdatePresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\devupdate_screen\DevUpdateView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\devupdate_screen\DevUpdateViewBase.cpp"/>
@@ -320,9 +317,6 @@
     <ClInclude Include="..\..\gui\include\gui\washing_screen\WashingView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\washing_screen\WashingViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\ParseUpdates.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdatePresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdateView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\genupdate_screen\GenUpdateViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\devupdate_screen\DevUpdatePresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\devupdate_screen\DevUpdateView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\devupdate_screen\DevUpdateViewBase.hpp"/>

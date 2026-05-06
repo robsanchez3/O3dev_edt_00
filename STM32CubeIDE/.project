@@ -495,11 +495,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/GenUpdateViewBase.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/genupdate_screen/GenUpdateViewBase.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/generated/GeneratedFont.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/fonts/src/GeneratedFont.cpp</locationURI>
@@ -1658,16 +1653,6 @@
 			<name>Application/User/gui/FrontendApplication.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/common/FrontendApplication.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/gui/GenUpdatePresenter.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/genupdate_screen/GenUpdatePresenter.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/gui/GenUpdateView.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/genupdate_screen/GenUpdateView.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/gui/HideScreenPresenter.cpp</name>

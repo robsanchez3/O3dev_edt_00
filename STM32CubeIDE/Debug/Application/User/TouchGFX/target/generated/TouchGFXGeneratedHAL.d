@@ -188,9 +188,6 @@ Application/User/TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
  ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdateView.hpp \
  ../../TouchGFX/generated/gui_generated/include/gui_generated/devupdate_screen/DevUpdateViewBase.hpp \
  ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdatePresenter.hpp \
- ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp \
- ../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp \
- ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/GPIO.hpp \
  ../../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5xx.h \
  ../../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u599xx.h \
@@ -433,9 +430,6 @@ Application/User/TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
 ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdateView.hpp:
 ../../TouchGFX/generated/gui_generated/include/gui_generated/devupdate_screen/DevUpdateViewBase.hpp:
 ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdatePresenter.hpp:
-../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp:
-../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp:
-../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/GPIO.hpp:
 ../../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5xx.h:
 ../../Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u599xx.h:

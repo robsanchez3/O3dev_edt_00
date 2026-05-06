@@ -409,17 +409,9 @@
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>1FA443AB-06F3-A36A-18D0-9F616A0FC99F</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\genupdate_screen">
       <UniqueIdentifier>33607120-DF83-8F9E-F3E5-14CE530B7FC7</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\genupdate_screen">
       <UniqueIdentifier>DA9998F6-DDD6-5D64-A21C-7C516853521C</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\genupdate_screen">
-      <UniqueIdentifier>B854CE5B-7FD9-0730-3A0E-F23EF2322505</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\genupdate_screen">
-      <UniqueIdentifier>1D61945B-8ED3-2AAE-CFB2-C336F810ABBA</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\devupdate_screen">
       <UniqueIdentifier>BF45ECDF-9299-8DB9-FBE9-F666FFAFF6CB</UniqueIdentifier>
@@ -434,7 +426,7 @@
       <UniqueIdentifier>9A22BFB8-42F1-8299-C966-AA4FD697B945</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\widget">
-      <UniqueIdentifier>B43A90B5-AB3A-88B9-4AE0-81E17C3AE8BC</UniqueIdentifier>
+      <UniqueIdentifier>B07EA81F-538B-AE89-AE89-A4E1DC954B5C</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -669,14 +661,7 @@
     <ClCompile Include="..\..\gui\src\model\ParseUpdates.cpp">
       <Filter>Source Files\gui\model</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdatePresenter.cpp">
-      <Filter>Source Files\gui\genupdate_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\genupdate_screen\GenUpdateView.cpp">
-      <Filter>Source Files\gui\genupdate_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\genupdate_screen\GenUpdateViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\genupdate_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\devupdate_screen\DevUpdatePresenter.cpp">
       <Filter>Source Files\gui\devupdate_screen</Filter>
@@ -1357,14 +1342,7 @@
     <ClInclude Include="..\..\gui\include\gui\model\ParseUpdates.hpp">
       <Filter>Header Files\gui\model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdatePresenter.hpp">
-      <Filter>Header Files\gui\genupdate_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\genupdate_screen\GenUpdateView.hpp">
-      <Filter>Header Files\gui\genupdate_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\genupdate_screen\GenUpdateViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\genupdate_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\devupdate_screen\DevUpdatePresenter.hpp">
       <Filter>Header Files\gui\devupdate_screen</Filter>

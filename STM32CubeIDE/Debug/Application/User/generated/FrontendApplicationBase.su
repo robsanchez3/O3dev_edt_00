@@ -63,41 +63,39 @@ C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 ../../TouchGFX/gui/include/gui/model/ModelListener.hpp:47:10:void ModelListener::bind(Model*)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp:36:7:touchgfx::Widget::~Widget()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp:36:7:virtual touchgfx::Widget::~Widget()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:57:1:FrontendApplicationBase::FrontendApplicationBase(Model&, FrontendHeap&)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:55:1:FrontendApplicationBase::FrontendApplicationBase(Model&, FrontendHeap&)	24	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:175:7:touchgfx::GenericCallback<void>& touchgfx::GenericCallback<void>::operator=(const touchgfx::GenericCallback<void>&)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:424:8:touchgfx::Callback<FrontendApplicationBase>& touchgfx::Callback<FrontendApplicationBase>::operator=(touchgfx::Callback<FrontendApplicationBase>&&)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:78:6:void FrontendApplicationBase::gotoRunningScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:84:6:void FrontendApplicationBase::gotoRunningScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:91:6:void FrontendApplicationBase::gotoEndScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:97:6:void FrontendApplicationBase::gotoEndScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:104:6:void FrontendApplicationBase::gotoAdjustingScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:110:6:void FrontendApplicationBase::gotoAdjustingScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:117:6:void FrontendApplicationBase::gotoStartingScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:123:6:void FrontendApplicationBase::gotoStartingScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:130:6:void FrontendApplicationBase::gotoSelectorScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:136:6:void FrontendApplicationBase::gotoSelectorScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:143:6:void FrontendApplicationBase::gotoMainMenuScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:149:6:void FrontendApplicationBase::gotoMainMenuScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:156:6:void FrontendApplicationBase::gotoErrorScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:162:6:void FrontendApplicationBase::gotoErrorScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:169:6:void FrontendApplicationBase::gotoWashingScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:175:6:void FrontendApplicationBase::gotoWashingScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:182:6:void FrontendApplicationBase::gotoCalibrationScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:188:6:void FrontendApplicationBase::gotoCalibrationScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:195:6:void FrontendApplicationBase::gotoInformationScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:201:6:void FrontendApplicationBase::gotoInformationScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:208:6:void FrontendApplicationBase::gotoConfigMenuScreenSlideTransitionEast()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:214:6:void FrontendApplicationBase::gotoConfigMenuScreenSlideTransitionEastImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:221:6:void FrontendApplicationBase::gotoSyringeFillScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:227:6:void FrontendApplicationBase::gotoSyringeFillScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:234:6:void FrontendApplicationBase::gotoProcessingScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:240:6:void FrontendApplicationBase::gotoProcessingScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:247:6:void FrontendApplicationBase::gotoSwitchSelectScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:253:6:void FrontendApplicationBase::gotoSwitchSelectScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:260:6:void FrontendApplicationBase::gotoDevUpdateScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:266:6:void FrontendApplicationBase::gotoDevUpdateScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:273:6:void FrontendApplicationBase::gotoGenUpdateScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:279:6:void FrontendApplicationBase::gotoGenUpdateScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:76:6:void FrontendApplicationBase::gotoRunningScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:82:6:void FrontendApplicationBase::gotoRunningScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:89:6:void FrontendApplicationBase::gotoEndScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:95:6:void FrontendApplicationBase::gotoEndScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:102:6:void FrontendApplicationBase::gotoAdjustingScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:108:6:void FrontendApplicationBase::gotoAdjustingScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:115:6:void FrontendApplicationBase::gotoStartingScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:121:6:void FrontendApplicationBase::gotoStartingScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:128:6:void FrontendApplicationBase::gotoSelectorScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:134:6:void FrontendApplicationBase::gotoSelectorScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:141:6:void FrontendApplicationBase::gotoMainMenuScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:147:6:void FrontendApplicationBase::gotoMainMenuScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:154:6:void FrontendApplicationBase::gotoErrorScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:160:6:void FrontendApplicationBase::gotoErrorScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:167:6:void FrontendApplicationBase::gotoWashingScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:173:6:void FrontendApplicationBase::gotoWashingScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:180:6:void FrontendApplicationBase::gotoCalibrationScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:186:6:void FrontendApplicationBase::gotoCalibrationScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:193:6:void FrontendApplicationBase::gotoInformationScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:199:6:void FrontendApplicationBase::gotoInformationScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:206:6:void FrontendApplicationBase::gotoConfigMenuScreenSlideTransitionEast()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:212:6:void FrontendApplicationBase::gotoConfigMenuScreenSlideTransitionEastImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:219:6:void FrontendApplicationBase::gotoSyringeFillScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:225:6:void FrontendApplicationBase::gotoSyringeFillScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:232:6:void FrontendApplicationBase::gotoProcessingScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:238:6:void FrontendApplicationBase::gotoProcessingScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:245:6:void FrontendApplicationBase::gotoSwitchSelectScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:251:6:void FrontendApplicationBase::gotoSwitchSelectScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:258:6:void FrontendApplicationBase::gotoDevUpdateScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:264:6:void FrontendApplicationBase::gotoDevUpdateScreenNoTransitionImpl()	24	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:175:7:constexpr touchgfx::GenericCallback<void>::GenericCallback()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:427:5:touchgfx::Callback<dest_type, void, void, void>::Callback() [with dest_type = FrontendApplicationBase]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:440:5:touchgfx::Callback<dest_type, void, void, void>::Callback(dest_type*, void (dest_type::*)()) [with dest_type = FrontendApplicationBase]	24	static
@@ -117,7 +115,6 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendA
 ../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:161:16:PresenterType* touchgfx::makeTransition(Screen**, Presenter**, MVPHeap&, Transition**, ModelType*) [with ScreenType = ProcessingView; PresenterType = ProcessingPresenter; TransType = NoTransition; ModelType = Model]	72	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:161:16:PresenterType* touchgfx::makeTransition(Screen**, Presenter**, MVPHeap&, Transition**, ModelType*) [with ScreenType = SwitchSelectView; PresenterType = SwitchSelectPresenter; TransType = NoTransition; ModelType = Model]	72	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:161:16:PresenterType* touchgfx::makeTransition(Screen**, Presenter**, MVPHeap&, Transition**, ModelType*) [with ScreenType = DevUpdateView; PresenterType = DevUpdatePresenter; TransType = NoTransition; ModelType = Model]	72	static
-../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:161:16:PresenterType* touchgfx::makeTransition(Screen**, Presenter**, MVPHeap&, Transition**, ModelType*) [with ScreenType = GenUpdateView; PresenterType = GenUpdatePresenter; TransType = NoTransition; ModelType = Model]	72	static
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = touchgfx::NoTransition]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = RunningView]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = RunningPresenter]	16	static
@@ -168,9 +165,6 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendA
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = DevUpdateView]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = DevUpdatePresenter]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:50:10:void touchgfx::View<T>::bind(T&) [with T = DevUpdatePresenter]	16	static
-../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = GenUpdateView]	16	static
-../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = GenUpdatePresenter]	16	static
-../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:50:10:void touchgfx::View<T>::bind(T&) [with T = GenUpdatePresenter]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/SlideTransition.hpp:39:7:touchgfx::SlideTransition<touchgfx::EAST>::~SlideTransition()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/SlideTransition.hpp:39:7:virtual touchgfx::SlideTransition<touchgfx::EAST>::~SlideTransition()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/NoTransition.hpp:31:7:touchgfx::NoTransition::~NoTransition()	16	static

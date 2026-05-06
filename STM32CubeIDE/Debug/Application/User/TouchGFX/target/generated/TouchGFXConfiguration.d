@@ -185,9 +185,6 @@ Application/User/TouchGFX/target/generated/TouchGFXConfiguration.o: \
  ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdateView.hpp \
  ../../TouchGFX/generated/gui_generated/include/gui_generated/devupdate_screen/DevUpdateViewBase.hpp \
  ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdatePresenter.hpp \
- ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp \
- ../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp \
- ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp \
  ../../TouchGFX/generated/images/include/BitmapDatabase.hpp \
  ../../TouchGFX/generated/images/include/images/BitmapDatabase.hpp \
  ../../Middlewares/ST/touchgfx_components/gpu2d/TouchGFXNema/include/touchgfx_nema/LCDGPU2D.hpp \
@@ -442,9 +439,6 @@ Application/User/TouchGFX/target/generated/TouchGFXConfiguration.o: \
 ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdateView.hpp:
 ../../TouchGFX/generated/gui_generated/include/gui_generated/devupdate_screen/DevUpdateViewBase.hpp:
 ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdatePresenter.hpp:
-../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp:
-../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp:
-../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp:
 ../../TouchGFX/generated/images/include/BitmapDatabase.hpp:
 ../../TouchGFX/generated/images/include/images/BitmapDatabase.hpp:
 ../../Middlewares/ST/touchgfx_components/gpu2d/TouchGFXNema/include/touchgfx_nema/LCDGPU2D.hpp:

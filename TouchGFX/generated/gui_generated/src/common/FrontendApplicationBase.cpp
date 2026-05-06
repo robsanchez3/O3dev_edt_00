@@ -49,8 +49,6 @@
 #include <gui/switchselect_screen/SwitchSelectPresenter.hpp>
 #include <gui/devupdate_screen/DevUpdateView.hpp>
 #include <gui/devupdate_screen/DevUpdatePresenter.hpp>
-#include <gui/genupdate_screen/GenUpdateView.hpp>
-#include <gui/genupdate_screen/GenUpdatePresenter.hpp>
 
 using namespace touchgfx;
 
@@ -266,17 +264,4 @@ void FrontendApplicationBase::gotoDevUpdateScreenNoTransition()
 void FrontendApplicationBase::gotoDevUpdateScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<DevUpdateView, DevUpdatePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
-}
-
-// GenUpdate
-
-void FrontendApplicationBase::gotoGenUpdateScreenNoTransition()
-{
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoGenUpdateScreenNoTransitionImpl);
-    pendingScreenTransitionCallback = &transitionCallback;
-}
-
-void FrontendApplicationBase::gotoGenUpdateScreenNoTransitionImpl()
-{
-    touchgfx::makeTransition<GenUpdateView, GenUpdatePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

@@ -182,9 +182,6 @@ Application/User/generated/FrontendApplicationBase.o: \
  ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdateView.hpp \
  ../../TouchGFX/generated/gui_generated/include/gui_generated/devupdate_screen/DevUpdateViewBase.hpp \
  ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdatePresenter.hpp \
- ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp \
- ../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp \
- ../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp \
  ../../TouchGFX/generated/texts/include/texts/TextKeysAndLanguages.hpp
 ../../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:
 ../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:
@@ -368,7 +365,4 @@ Application/User/generated/FrontendApplicationBase.o: \
 ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdateView.hpp:
 ../../TouchGFX/generated/gui_generated/include/gui_generated/devupdate_screen/DevUpdateViewBase.hpp:
 ../../TouchGFX/gui/include/gui/devupdate_screen/DevUpdatePresenter.hpp:
-../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdateView.hpp:
-../../TouchGFX/generated/gui_generated/include/gui_generated/genupdate_screen/GenUpdateViewBase.hpp:
-../../TouchGFX/gui/include/gui/genupdate_screen/GenUpdatePresenter.hpp:
 ../../TouchGFX/generated/texts/include/texts/TextKeysAndLanguages.hpp:

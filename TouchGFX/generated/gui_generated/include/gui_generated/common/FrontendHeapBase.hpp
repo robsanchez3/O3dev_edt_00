@@ -52,8 +52,6 @@
 #include <gui/switchselect_screen/SwitchSelectPresenter.hpp>
 #include <gui/devupdate_screen/DevUpdateView.hpp>
 #include <gui/devupdate_screen/DevUpdatePresenter.hpp>
-#include <gui/genupdate_screen/GenUpdateView.hpp>
-#include <gui/genupdate_screen/GenUpdatePresenter.hpp>
 
 
 /**
@@ -95,8 +93,7 @@ public:
             touchgfx::meta::TypeList< ProcessingView,
             touchgfx::meta::TypeList< SwitchSelectView,
             touchgfx::meta::TypeList< DevUpdateView,
-            touchgfx::meta::TypeList< GenUpdateView,
-            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > >
+            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -127,8 +124,7 @@ public:
             touchgfx::meta::TypeList< ProcessingPresenter,
             touchgfx::meta::TypeList< SwitchSelectPresenter,
             touchgfx::meta::TypeList< DevUpdatePresenter,
-            touchgfx::meta::TypeList< GenUpdatePresenter,
-            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > >
+            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**

@@ -65,9 +65,6 @@ public:
     // DevUpdate
     void gotoDevUpdateScreenNoTransition();
 
-    // GenUpdate
-    void gotoGenUpdateScreenNoTransition();
-
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -117,9 +114,6 @@ protected:
 
     // DevUpdate
     void gotoDevUpdateScreenNoTransitionImpl();
-
-    // GenUpdate
-    void gotoGenUpdateScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP
