@@ -19,7 +19,7 @@ public:
 
     virtual uint16_t getVisibleScreen() { return SID_DEV_UPDATE; }
 
-    virtual void onGenUpdTick(uint8_t progress, int state, const char* msg);
+    virtual void onDevUpdTick(uint8_t progress, int state, const char* msg);
 
     void cancelClicked();
     void okClicked1();

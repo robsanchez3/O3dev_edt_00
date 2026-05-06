@@ -7,7 +7,7 @@
  *    3. Frame RST en crudo (1 disparo sin ACK) + 0xDD inmediato
  *    4. Send 0xDD trigger until 0xAA ACK (up to 5 s), then drain stale bytes
  *    5. iap_run() — ENTER → INVALIDATE → WRITE×N → CHECKSUM → VALIDATE → RESET
- *    6. On success: HAL_NVIC_SystemReset() after 2 s
+ *    6. On success: HAL_NVIC_SystemReset() after user confirmation
  *    7. On failure: set error state, keep device in BL (safe)
  *===========================================================================*/
 #include "gen_updater.h"
@@ -22,27 +22,14 @@
 #include <stdio.h>
 #include <string.h>
 
-extern osThreadId_t defaultTaskHandle;
-
-/*--- Shared state (written from GenUpdaterTask, read from TouchGFX task) ----*/
-
+/* Semaphore created in app_freertos.c; released by gen_upd_start() on OK.  */
 osSemaphoreId_t hGenUpdStart = NULL;
 
-static volatile uint8_t          s_pending   = 0;
-static volatile gen_upd_state_t  s_state     = GEN_UPD_IDLE;
-static volatile uint8_t          s_progress  = 0;
-static volatile size_t           s_blk_total = 0;
-static volatile size_t           s_blk_done  = 0;
-static char                      s_msg[96]   = "";
-static char                      s_hex_name[64] = "";
+static char              s_hex_name[64] = "";
+static volatile size_t   s_blk_total    = 0;
+static volatile size_t   s_blk_done     = 0;
 
 /*--- Internal helpers -------------------------------------------------------*/
-
-static void set_msg(const char* m)
-{
-    strncpy(s_msg, m, sizeof s_msg - 1);
-    s_msg[sizeof s_msg - 1] = '\0';
-}
 
 /* iap_block_src_t callback: advances cursor and updates progress display.  */
 static int progress_src(void*     ctx,
@@ -54,14 +41,16 @@ static int progress_src(void*     ctx,
     int rc = iap_hex_cursor_next(cur, block_id, out, is_last);
     if (rc == 0) {
         s_blk_done++;
-        if (s_blk_total > 0)
-            s_progress = (uint8_t)(s_blk_done * 100u / s_blk_total);
+        uint8_t pct = (s_blk_total > 0)
+                      ? (uint8_t)(s_blk_done * 100u / s_blk_total)
+                      : 0u;
+        dev_upd_set_progress(pct);
 
-/*      char tmp[80];
-        snprintf(tmp, sizeof tmp, "Block %u/%u  id=0x%04X", (unsigned)s_blk_done, (unsigned)s_blk_total, (unsigned)*block_id);
-        set_msg(tmp);
+        char tmp[80];
+        snprintf(tmp, sizeof tmp, "Block %u/%u  id=0x%04X",
+                 (unsigned)s_blk_done, (unsigned)s_blk_total, (unsigned)*block_id);
+        dev_upd_set_msg(tmp);
         printf("[IAP] %s\n", tmp);
-*/
     }
     return rc;
 }
@@ -121,29 +110,18 @@ void gen_upd_scan_usb(void)
     }
 
     printf("GEN_UPDATE: found %s, update pending\n", s_hex_name);
-    s_pending = 1;
+    dev_upd_set_pending(1);
 }
 
-uint8_t gen_upd_is_pending(void)        { return s_pending;   }
-gen_upd_state_t gen_upd_get_state(void) { return s_state;     }
-uint8_t         gen_upd_get_progress(void){ return s_progress; }
-const char*     gen_upd_get_msg(void)   { return s_msg;       }
-const char*     gen_upd_get_hex_name(void) { return s_hex_name; }
+const char* gen_upd_get_hex_name(void) { return s_hex_name; }
 
 void gen_upd_start(void)
 {
-    s_state    = GEN_UPD_IN_PROGRESS;
-    s_progress = 0;
+    dev_upd_set_state(DEV_UPD_IN_PROGRESS);
+    dev_upd_set_progress(0);
     s_blk_done = 0;
-    set_msg("Starting...");
+    dev_upd_set_msg("Starting...");
     osSemaphoreRelease(hGenUpdStart);
-}
-
-void gen_upd_cancel(void)
-{
-    s_pending = 0;
-    s_state   = GEN_UPD_IDLE;
-    osThreadResume(defaultTaskHandle);
 }
 
 void gen_upd_confirm_reset(void)
@@ -158,12 +136,12 @@ void gen_upd_task_fn(void)
     for (;;) {
         osSemaphoreAcquire(hGenUpdStart, osWaitForever);
 
-        s_state    = GEN_UPD_IN_PROGRESS;
-        s_progress = 0;
+        dev_upd_set_state(DEV_UPD_IN_PROGRESS);
+        dev_upd_set_progress(0);
         s_blk_done = 0;
 
         /* ---- 1. Find and load first .hex file in GEN_UPDATE ------------ */
-        set_msg("Loading firmware...");
+        dev_upd_set_msg("Loading firmware...");
 
         char hex_path[64] = "";
         {
@@ -187,9 +165,9 @@ void gen_upd_task_fn(void)
         }
 
         if (hex_path[0] == '\0') {
-            set_msg("ERROR: .hex not found");
+            dev_upd_set_msg("ERROR: .hex not found");
             printf("[GEN_UPD] FAIL_RESOURCES: no .hex in GEN_UPDATE\n");
-            s_state = GEN_UPD_FAIL_RESOURCES;
+            dev_upd_set_state(DEV_UPD_FAIL_RESOURCES);
             continue;
         }
 
@@ -199,9 +177,9 @@ void gen_upd_task_fn(void)
         memset(&img, 0, sizeof img);
 
         if (iap_hex_fatfs_load(&img, hex_path) != 0) {
-            set_msg("ERROR: cannot read .hex");
+            dev_upd_set_msg("ERROR: cannot read .hex");
             printf("[GEN_UPD] FAIL_RESOURCES\n");
-            s_state = GEN_UPD_FAIL_RESOURCES;
+            dev_upd_set_state(DEV_UPD_FAIL_RESOURCES);
             continue;
         }
 
@@ -218,27 +196,26 @@ void gen_upd_task_fn(void)
          * Frame RST del protocolo O3 hardcodeado (CRC=02 determinista).
          * Un solo disparo sin esperar respuesta para no perder la ventana
          * del bootloader (~100 ms tras el reset del generador).            */
-        set_msg("Resetting generator...");
+        dev_upd_set_msg("Resetting generator...");
         printf("[GEN_UPD] RST raw + 0xDD\n");
         static const uint8_t rst_frame[] = {'{','R','S','T',',','0','2','\r'};
         hal->serial_write(rst_frame, sizeof rst_frame);
         osDelay(10u);
 
         /* ---- 4. Trigger: send 0xDD until 0xAA (5 s window) ------------- */
-        set_msg("Waiting for bootloader...");
-
+        dev_upd_set_msg("Waiting for bootloader...");
 
         if (!send_trigger_until_ack(hal, 5000u)) {
             /* Device may already be in BL (0xDD is discarded silently).
              * Attempt iap_enter() directly before declaring failure.       */
             printf("[GEN_UPD] No ACK to 0xDD, trying iap_enter directly\n");
-            set_msg("No ACK, trying direct ENTER...");
+            dev_upd_set_msg("No ACK, trying direct ENTER...");
         }
 
         drain_rx(hal);
 
         /* ---- 5. IAP cycle ----------------------------------------------- */
-        set_msg("Programming firmware...");
+        dev_upd_set_msg("Programming firmware...");
         printf("[GEN_UPD] Starting iap_run (%u blocks)\n", (unsigned)img.count);
 
         iap_hex_cursor_t cursor;
@@ -250,16 +227,16 @@ void gen_upd_task_fn(void)
 
         /* ---- 6. Result -------------------------------------------------- */
         if (rc == IAP_OK) {
-            set_msg("Done! Remove USB drive and press Confirm to restart.");
+            dev_upd_set_msg("Done! Remove USB drive and press confirm to restart.");
             printf("[GEN_UPD] SUCCESS — waiting for user confirmation\n");
-            s_progress = 100u;
-            s_state    = GEN_UPD_SUCCESS;
+            dev_upd_set_progress(100u);
+            dev_upd_set_state(DEV_UPD_SUCCESS);
         } else {
             char err[80];
             snprintf(err, sizeof err, "ERROR: %s", iap_strerror(rc));
-            set_msg(err);
+            dev_upd_set_msg(err);
             printf("[GEN_UPD] FAIL_FLASH: %s\n", iap_strerror(rc));
-            s_state = GEN_UPD_FAIL_FLASH;
+            dev_upd_set_state(DEV_UPD_FAIL_FLASH);
             /* Device is left in BL (INVALIDATE flag set — safe to retry). */
         }
     }

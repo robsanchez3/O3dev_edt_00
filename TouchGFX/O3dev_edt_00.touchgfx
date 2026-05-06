@@ -4140,7 +4140,7 @@
             "Type": "ScalableImage",
             "Name": "si_info",
             "X": 680,
-            "Y": 100,
+            "Y": 25,
             "Width": 100,
             "Height": 100,
             "Filename": "Info_100.png",

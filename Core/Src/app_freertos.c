@@ -163,7 +163,7 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   hSysConfigReady = osSemaphoreNew(1, 0, NULL);  /* max=1, initial=0 (blocked) */
 #ifdef USB_HOST_MODE
-  hGenUpdStart    = osSemaphoreNew(1, 0, NULL);  /* released by gen_upd_start() on OK */
+  hGenUpdStart = osSemaphoreNew(1, 0, NULL);  /* released by gen_upd_start() on OK */
 #endif
   /* USER CODE END RTOS_SEMAPHORES */
 

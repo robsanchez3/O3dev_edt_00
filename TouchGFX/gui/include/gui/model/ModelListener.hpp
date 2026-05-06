@@ -31,8 +31,8 @@ public:
     virtual void onPinValidated(bool success) {}
 
     /* Called every Model::tick() while DevUpdate screen is active.
-     * progress: 0-100, state: gen_upd_state_t cast to int, msg: last log line. */
-    virtual void onGenUpdTick(uint8_t progress, int state, const char* msg) {}
+     * progress: 0-100, state: dev_upd_state_t cast to int, msg: last log line. */
+    virtual void onDevUpdTick(uint8_t progress, int state, const char* msg) {}
 
 #ifndef SIMULATOR
     virtual void PushCanToView(uint8_t *candata , uint16_t Size){}

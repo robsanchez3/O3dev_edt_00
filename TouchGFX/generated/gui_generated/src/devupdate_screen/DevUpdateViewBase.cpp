@@ -14,7 +14,7 @@ DevUpdateViewBase::DevUpdateViewBase() :
     add(__background);
 
     si_info.setBitmap(touchgfx::Bitmap(BITMAP_INFO_100_ID));
-    si_info.setPosition(680, 100, 100, 100);
+    si_info.setPosition(680, 25, 100, 100);
     si_info.setScalingAlgorithm(touchgfx::ScalableImage::BILINEAR_INTERPOLATION);
     add(si_info);
 

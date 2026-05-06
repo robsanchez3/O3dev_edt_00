@@ -48,9 +48,10 @@ Application/User/TouchGFX/target/generated \
 Application/User/generated \
 Application/User/gui \
 Drivers/CMSIS \
+Drivers/DevUpdate \
+Drivers/IAP \
 Drivers/O3/Dependencies \
 Drivers/O3/Fsm_o3 \
-Drivers/O3/IAP \
 Drivers/O3/Protocol \
 Drivers/O3/Syringe \
 Drivers/O3/Timer \

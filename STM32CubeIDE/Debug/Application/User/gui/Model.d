@@ -117,7 +117,8 @@ Application/User/gui/Model.o: \
  ../../Drivers/Vendor/Driver/edt_bsp_uart.h \
  ../../Drivers/Vendor/Driver/edt_bsp_can.h \
  C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h \
- C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/IAP/gen_updater.h \
+ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/IAP/gen_updater.h \
+ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/IAP/../DevUpdate/dev_updater.h \
  ../../FATFS/App/fatfs.h ../../Drivers/Vendor/FatFs/source/ff.h \
  ../../FATFS/Target/ffconf.h \
  ../../Drivers/Vendor/FatFs/source/ff_gen_drv.h \
@@ -245,7 +246,8 @@ Application/User/gui/Model.o: \
 ../../Drivers/Vendor/Driver/edt_bsp_uart.h:
 ../../Drivers/Vendor/Driver/edt_bsp_can.h:
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h:
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/IAP/gen_updater.h:
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/IAP/gen_updater.h:
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/IAP/../DevUpdate/dev_updater.h:
 ../../FATFS/App/fatfs.h:
 ../../Drivers/Vendor/FatFs/source/ff.h:
 ../../FATFS/Target/ffconf.h:

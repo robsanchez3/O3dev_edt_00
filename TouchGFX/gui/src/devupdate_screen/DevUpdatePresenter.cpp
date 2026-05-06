@@ -3,7 +3,7 @@
 #include <gui/common/FrontendApplication.hpp>
 
 #ifndef SIMULATOR
-#include "../../../../Drivers/O3/IAP/gen_updater.h"
+#include "../../../../Drivers/IAP/gen_updater.h"
 #include <stdio.h>
 #endif
 
@@ -15,7 +15,10 @@ DevUpdatePresenter::DevUpdatePresenter(DevUpdateView& v)
 void DevUpdatePresenter::activate()
 {
 #ifndef SIMULATOR
-    if (gen_upd_get_state() == GEN_UPD_FAIL_RESOURCES) {
+    if (dev_upd_import_is_active()) {
+        view.updateInfo("Service update found.\nChecking directories...");
+        view.showButtons(false, false);
+    } else if (dev_upd_get_state() == DEV_UPD_FAIL_RESOURCES) {
         view.updateInfo("ERROR: .hex not found in GEN_UPDATE");
         view.showButtons(false, true);
     } else {
@@ -35,43 +38,62 @@ void DevUpdatePresenter::deactivate()
 void DevUpdatePresenter::okClicked1()
 {
 #ifndef SIMULATOR
-    view.showButtons(false, false);
-    if (gen_upd_get_state() == GEN_UPD_SUCCESS)
-        gen_upd_confirm_reset();
-    else
-        gen_upd_start();
+    if (dev_upd_import_is_active()) {
+        view.updateInfo("Importing...");
+        view.showButtons(false, false);
+        dev_upd_import_confirm();
+    } else {
+        view.showButtons(false, false);
+        if (dev_upd_get_state() == DEV_UPD_SUCCESS)
+            gen_upd_confirm_reset();
+        else
+            gen_upd_start();
+    }
 #endif
 }
 
 void DevUpdatePresenter::cancelClicked()
 {
 #ifndef SIMULATOR
-    gen_upd_cancel();
+    if (dev_upd_import_is_active()) {
+        view.updateInfo("Skipping...");
+        view.showButtons(false, false);
+        dev_upd_import_skip();
+        return;
+    }
+    dev_upd_cancel();
+    /* No explicit navigation — tick() navigates to Starting when DevUpdate has nothing active */
 #endif
-    static_cast<FrontendApplication*>(Application::getInstance())->gotoStartingScreenNoTransition();
 }
 
-void DevUpdatePresenter::onGenUpdTick(uint8_t progress, int state, const char* msg)
+void DevUpdatePresenter::onDevUpdTick(uint8_t progress, int state, const char* msg)
 {
 #ifndef SIMULATOR
     char display[96];
 
-    switch ((gen_upd_state_t)state)
+    switch ((dev_upd_state_t)state)
     {
-    case GEN_UPD_IN_PROGRESS:
+    case DEV_UPD_IMPORT_CONFIRM: {
+        char prompt[96];
+        snprintf(prompt, sizeof prompt, "Import service config:\n\n%s\n\nContinue?", msg);
+        view.updateInfo(prompt);
+        view.showButtons(true, true);
+        break;
+    }
+    case DEV_UPD_IN_PROGRESS:
         snprintf(display, sizeof display, "%s  %u%%", msg, (unsigned)progress);
         view.updateInfo(display);
         view.showButtons(false, false);
         break;
 
-    case GEN_UPD_SUCCESS:
-        view.updateInfo("Programming complete!\n\nRemove USB drive.\nPress Confirm to restart.");
+    case DEV_UPD_SUCCESS:
+        view.updateInfo("Programming complete!\n\nRemove USB drive.\nPress confirm to restart.");
         view.showButtons(true, false);
         break;
 
-    case GEN_UPD_FAIL_RESOURCES:
-    case GEN_UPD_FAIL_COMM:
-    case GEN_UPD_FAIL_FLASH:
+    case DEV_UPD_FAIL_RESOURCES:
+    case DEV_UPD_FAIL_COMM:
+    case DEV_UPD_FAIL_FLASH:
         view.updateInfo(msg);
         view.showButtons(false, true);
         break;

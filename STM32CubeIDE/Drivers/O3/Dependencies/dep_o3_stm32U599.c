@@ -141,7 +141,7 @@ void dep_o3_com_pollRx(void)
  * Sets COM_O3_Ready=0 so HAL_UARTEx_RxEventCallback does not re-arm IT
  * reception, then aborts any active IT transfer leaving the UART in
  * HAL_UART_STATE_READY for blocking IAP use.
- * Called once before gen_upd_task_fn() starts the IAP cycle.
+ * Called once before dev_upd_gen_fw_task_fn() starts the IAP cycle.
  * No restore needed: system resets via HAL_NVIC_SystemReset() after IAP. */
 void dep_o3_com_iap_takeover(void)
 {
