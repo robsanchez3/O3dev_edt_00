@@ -94,8 +94,10 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendA
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:240:6:void FrontendApplicationBase::gotoProcessingScreenNoTransitionImpl()	24	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:247:6:void FrontendApplicationBase::gotoSwitchSelectScreenNoTransition()	48	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:253:6:void FrontendApplicationBase::gotoSwitchSelectScreenNoTransitionImpl()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:260:6:void FrontendApplicationBase::gotoGenUpdateScreenNoTransition()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:266:6:void FrontendApplicationBase::gotoGenUpdateScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:260:6:void FrontendApplicationBase::gotoDevUpdateScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:266:6:void FrontendApplicationBase::gotoDevUpdateScreenNoTransitionImpl()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:273:6:void FrontendApplicationBase::gotoGenUpdateScreenNoTransition()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp:279:6:void FrontendApplicationBase::gotoGenUpdateScreenNoTransitionImpl()	24	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:175:7:constexpr touchgfx::GenericCallback<void>::GenericCallback()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:427:5:touchgfx::Callback<dest_type, void, void, void>::Callback() [with dest_type = FrontendApplicationBase]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:440:5:touchgfx::Callback<dest_type, void, void, void>::Callback(dest_type*, void (dest_type::*)()) [with dest_type = FrontendApplicationBase]	24	static
@@ -114,6 +116,7 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendA
 ../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:161:16:PresenterType* touchgfx::makeTransition(Screen**, Presenter**, MVPHeap&, Transition**, ModelType*) [with ScreenType = SyringeFillView; PresenterType = SyringeFillPresenter; TransType = NoTransition; ModelType = Model]	72	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:161:16:PresenterType* touchgfx::makeTransition(Screen**, Presenter**, MVPHeap&, Transition**, ModelType*) [with ScreenType = ProcessingView; PresenterType = ProcessingPresenter; TransType = NoTransition; ModelType = Model]	72	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:161:16:PresenterType* touchgfx::makeTransition(Screen**, Presenter**, MVPHeap&, Transition**, ModelType*) [with ScreenType = SwitchSelectView; PresenterType = SwitchSelectPresenter; TransType = NoTransition; ModelType = Model]	72	static
+../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:161:16:PresenterType* touchgfx::makeTransition(Screen**, Presenter**, MVPHeap&, Transition**, ModelType*) [with ScreenType = DevUpdateView; PresenterType = DevUpdatePresenter; TransType = NoTransition; ModelType = Model]	72	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:161:16:PresenterType* touchgfx::makeTransition(Screen**, Presenter**, MVPHeap&, Transition**, ModelType*) [with ScreenType = GenUpdateView; PresenterType = GenUpdatePresenter; TransType = NoTransition; ModelType = Model]	72	static
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = touchgfx::NoTransition]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = RunningView]	16	static
@@ -162,6 +165,9 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/common/FrontendA
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = SwitchSelectView]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = SwitchSelectPresenter]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:50:10:void touchgfx::View<T>::bind(T&) [with T = SwitchSelectPresenter]	16	static
+../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = DevUpdateView]	16	static
+../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = DevUpdatePresenter]	16	static
+../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:50:10:void touchgfx::View<T>::bind(T&) [with T = DevUpdatePresenter]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = GenUpdateView]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/common/AbstractPartition.hpp:135:8:T& touchgfx::AbstractPartition::at(uint16_t) [with T = GenUpdatePresenter]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:50:10:void touchgfx::View<T>::bind(T&) [with T = GenUpdatePresenter]	16	static

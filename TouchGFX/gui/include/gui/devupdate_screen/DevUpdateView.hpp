@@ -11,6 +11,12 @@ public:
     virtual ~DevUpdateView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    void updateInfo(const char* asciiMsg);
+    void showButtons(bool showOk, bool showCancel);
+
+    virtual void cancelClicked();
+    virtual void okClicked1();
 protected:
 };
 

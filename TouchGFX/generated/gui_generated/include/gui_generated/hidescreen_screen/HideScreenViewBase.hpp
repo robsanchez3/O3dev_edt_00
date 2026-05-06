@@ -37,6 +37,7 @@ protected:
     touchgfx::ButtonWithLabel GotoProcessing;
     touchgfx::ButtonWithLabel GotoSwitchSel;
     touchgfx::ButtonWithLabel GotoGenUpdate;
+    touchgfx::ButtonWithLabel GotoDevUpdate;
 
 private:
 

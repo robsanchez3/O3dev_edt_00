@@ -51,16 +51,16 @@ void Model::tick()
 //  REMEMBER: The Model has a pointer to your currently active Presenter by means of ModelListener (where getVisibleScreen() has been defined as virtual)
 
 #ifndef SIMULATOR
-	/* GenUpdate: navigate once to GenUpdate screen if folder was found on USB */
+	/* DevUpdate: navigate once to DevUpdate screen if generator update pending */
 	static uint8_t s_gen_upd_shown = 0;
 	if (!s_gen_upd_shown && gen_upd_is_pending()) {
 		s_gen_upd_shown = 1;
 		osThreadSuspend(defaultTaskHandle);
-		static_cast<FrontendApplication*>(Application::getInstance())->gotoGenUpdateScreenNoTransition();
+		static_cast<FrontendApplication*>(Application::getInstance())->gotoDevUpdateScreenNoTransition();
 		return;
 	}
-	/* While GenUpdate screen is active: feed the presenter and block FSM switching */
-	if (modelListener->getVisibleScreen() == SID_GEN_UPDATE) {
+	/* While DevUpdate screen is active: feed the presenter and block FSM switching */
+	if (modelListener->getVisibleScreen() == SID_DEV_UPDATE) {
 		modelListener->onGenUpdTick(gen_upd_get_progress(), (int)gen_upd_get_state(), gen_upd_get_msg());
 		return;
 	}

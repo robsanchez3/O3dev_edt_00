@@ -100,6 +100,14 @@ HideScreenViewBase::HideScreenViewBase() :
     GotoGenUpdate.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
     GotoGenUpdate.setAction(buttonCallback);
     add(GotoGenUpdate);
+
+    GotoDevUpdate.setXY(188, 248);
+    GotoDevUpdate.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    GotoDevUpdate.setLabelText(touchgfx::TypedText(T___SINGLEUSE_9UCP));
+    GotoDevUpdate.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    GotoDevUpdate.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    GotoDevUpdate.setAction(buttonCallback);
+    add(GotoDevUpdate);
 }
 
 HideScreenViewBase::~HideScreenViewBase()
@@ -190,5 +198,12 @@ void HideScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& s
         //When GotoGenUpdate clicked change screen to GenUpdate
         //Go to GenUpdate with no screen transition
         application().gotoGenUpdateScreenNoTransition();
+    }
+    if (&src == &GotoDevUpdate)
+    {
+        //GotoDevUpdate
+        //When GotoDevUpdate clicked change screen to DevUpdate
+        //Go to DevUpdate with no screen transition
+        application().gotoDevUpdateScreenNoTransition();
     }
 }

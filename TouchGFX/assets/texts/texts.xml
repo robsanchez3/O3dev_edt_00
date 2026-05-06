@@ -355,6 +355,9 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_9UCP" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Goto dev updt</Translation>
+      </Text>
       <Text Id="__SingleUse_W1JP" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">New update avilable, continue?</Translation>
       </Text>

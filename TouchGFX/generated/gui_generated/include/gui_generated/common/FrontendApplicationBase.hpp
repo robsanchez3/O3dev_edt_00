@@ -62,6 +62,9 @@ public:
     // SwitchSelect
     void gotoSwitchSelectScreenNoTransition();
 
+    // DevUpdate
+    void gotoDevUpdateScreenNoTransition();
+
     // GenUpdate
     void gotoGenUpdateScreenNoTransition();
 
@@ -111,6 +114,9 @@ protected:
 
     // SwitchSelect
     void gotoSwitchSelectScreenNoTransitionImpl();
+
+    // DevUpdate
+    void gotoDevUpdateScreenNoTransitionImpl();
 
     // GenUpdate
     void gotoGenUpdateScreenNoTransitionImpl();

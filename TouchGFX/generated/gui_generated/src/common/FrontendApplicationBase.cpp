@@ -255,6 +255,19 @@ void FrontendApplicationBase::gotoSwitchSelectScreenNoTransitionImpl()
     touchgfx::makeTransition<SwitchSelectView, SwitchSelectPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+// DevUpdate
+
+void FrontendApplicationBase::gotoDevUpdateScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoDevUpdateScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoDevUpdateScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<DevUpdateView, DevUpdatePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
 // GenUpdate
 
 void FrontendApplicationBase::gotoGenUpdateScreenNoTransition()

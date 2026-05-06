@@ -421,9 +421,6 @@
     <Filter Include="Header Files\generated\gui_generated\genupdate_screen">
       <UniqueIdentifier>1D61945B-8ED3-2AAE-CFB2-C336F810ABBA</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\widget">
-      <UniqueIdentifier>3E4B6B07-8A18-566D-F09D-90388904965E</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\devupdate_screen">
       <UniqueIdentifier>BF45ECDF-9299-8DB9-FBE9-F666FFAFF6CB</UniqueIdentifier>
     </Filter>
@@ -435,6 +432,9 @@
     </Filter>
     <Filter Include="Header Files\generated\gui_generated\devupdate_screen">
       <UniqueIdentifier>9A22BFB8-42F1-8299-C966-AA4FD697B945</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\widget">
+      <UniqueIdentifier>B43A90B5-AB3A-88B9-4AE0-81E17C3AE8BC</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
