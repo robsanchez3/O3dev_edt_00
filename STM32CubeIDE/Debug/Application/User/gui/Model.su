@@ -70,5 +70,5 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:823:9:uint8_t Model:
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:846:9:uint8_t Model::is_USB_flash()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:861:9:uint8_t Model::is_SD_mounted()	32	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:898:9:uint8_t Model::is_USB_flash_mounted()	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:937:6:void Model::configLoaderTask()	40	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:1056:17:void StartConfigLoaderTask(void*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:937:6:void Model::configLoaderTask()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/Model.cpp:1065:17:void StartConfigLoaderTask(void*)	16	static

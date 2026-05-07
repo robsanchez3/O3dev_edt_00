@@ -374,7 +374,7 @@ uint8_t loadTherapyFromFile(OPERATION_MODE_E mode, THERAPY_CTX *guiTherapyCtx)
 	LR_init(&lr, &File);
 	int16_t line_num = 0;
 	while (LR_getline(&lr, (int8_t *)line, sizeof(line))) {
-		printf("[%lu ms] read line: %d\n", HAL_GetTick(), line_num++);
+//		printf("[%lu ms] read line: %d\n", HAL_GetTick(), line_num++);
 
 		trim(line);
 

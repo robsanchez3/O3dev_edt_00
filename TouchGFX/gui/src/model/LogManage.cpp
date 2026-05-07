@@ -233,7 +233,7 @@ int8_t openParamFileWrite(void)
 	gWriteLineFormat = "PARAM_%03u = %ld\r\n";
 
 	printf("openParamFileWrite called\n");
-	return openLogFileWrite("1:/Config/Params/params.prm");
+	return openLogFileWrite("0:/Config/Params/params.prm");
 }
 
 int8_t openParamFileRead(void)
@@ -242,7 +242,7 @@ int8_t openParamFileRead(void)
 	gWriteLineFormat = "PARAM_%03u = %ld\r\n";
 
 	printf("openParamFileRead called\n");
-	return openLogFileRead("1:/Config/Params/params.prm");
+	return openLogFileRead("0:/Config/Params/params.prm");
 }
 
 void closeParamFile(void)

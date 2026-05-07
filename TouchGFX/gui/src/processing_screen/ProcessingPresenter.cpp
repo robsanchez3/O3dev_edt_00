@@ -60,3 +60,8 @@ uint8_t ProcessingPresenter::getCalibrationSucessState()
 	return model->getCalibrationSucessState();
 }
 
+uint16_t ProcessingPresenter::getVisibleScreen()
+{
+	return SID_PROCESSING;
+}
+

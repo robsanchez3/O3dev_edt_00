@@ -36,6 +36,7 @@ public:
     void userOk();
     uint8_t getFsmState();
     uint8_t getCalibrationSucessState();
+    uint16_t getVisibleScreen();
 private:
     ProcessingPresenter();
 

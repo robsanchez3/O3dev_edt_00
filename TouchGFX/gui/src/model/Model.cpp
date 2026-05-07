@@ -1000,16 +1000,25 @@ void Model::configLoaderTask(void)
 
 	if(usb_found && sd_found)
 	{
-		/* Service update: ask user confirmation per directory via DevUpdate screen */
-		printf("Service update detected, requesting user confirmation... [%lu ms]\n", now);
-		dev_upd_import_begin();
-		if (dev_upd_import_request("Hw"))      ImportDirFromUSB("1:/Service/Hw",      "0:/Config/Hw");
-		if (dev_upd_import_request("Menu"))    ImportDirFromUSB("1:/Service/Menu",    "0:/Config/Menu");
-		if (dev_upd_import_request("Modes"))   ImportDirFromUSB("1:/Service/Modes",   "0:/Config/Modes");
-		if (dev_upd_import_request("Params"))  ImportDirFromUSB("1:/Service/Params",  "0:/Config/Params");
-		if (dev_upd_import_request("Syringe")) ImportDirFromUSB("1:/Service/Syringe", "0:/Config/Syringe");
-		if (dev_upd_import_request("User"))    ImportDirFromUSB("1:/Service/User",    "0:/Config/User");
-		dev_upd_import_end();
+		uint8_t has_hw      = (f_stat("1:/Service/Hw",      NULL) == FR_OK);
+		uint8_t has_menu    = (f_stat("1:/Service/Menu",     NULL) == FR_OK);
+		uint8_t has_modes   = (f_stat("1:/Service/Modes",    NULL) == FR_OK);
+		uint8_t has_params  = (f_stat("1:/Service/Params",   NULL) == FR_OK);
+		uint8_t has_syringe = (f_stat("1:/Service/Syringe",  NULL) == FR_OK);
+		uint8_t has_user    = (f_stat("1:/Service/User",     NULL) == FR_OK);
+
+		if(has_hw || has_menu || has_modes || has_params || has_syringe || has_user)
+		{
+			printf("Service update detected, requesting user confirmation... [%lu ms]\n", now);
+			dev_upd_import_begin();
+			if (has_hw      && dev_upd_import_request("Hw"))      ImportDirFromUSB("1:/Service/Hw",      "0:/Config/Hw");
+			if (has_menu    && dev_upd_import_request("Menu"))    ImportDirFromUSB("1:/Service/Menu",    "0:/Config/Menu");
+			if (has_modes   && dev_upd_import_request("Modes"))   ImportDirFromUSB("1:/Service/Modes",   "0:/Config/Modes");
+			if (has_params  && dev_upd_import_request("Params"))  ImportDirFromUSB("1:/Service/Params",  "0:/Config/Params");
+			if (has_syringe && dev_upd_import_request("Syringe")) ImportDirFromUSB("1:/Service/Syringe", "0:/Config/Syringe");
+			if (has_user    && dev_upd_import_request("User"))    ImportDirFromUSB("1:/Service/User",    "0:/Config/User");
+			dev_upd_import_end();
+		}
 	}
 	if(sd_found)
 	{
