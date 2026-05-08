@@ -359,7 +359,7 @@
         <Translation Language="GB">Goto dev updt</Translation>
       </Text>
       <Text Id="__SingleUse_W1JP" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">New update avilable, continue?</Translation>
+        <Translation Language="GB">New update avilable, continue?&#10;Line 1&#10;Line 2&#10;Line 3&#10;Line 4</Translation>
       </Text>
       <Text Id="__SingleUse_ZECK" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>

@@ -409,10 +409,6 @@
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>1FA443AB-06F3-A36A-18D0-9F616A0FC99F</UniqueIdentifier>
     </Filter>
-      <UniqueIdentifier>33607120-DF83-8F9E-F3E5-14CE530B7FC7</UniqueIdentifier>
-    </Filter>
-      <UniqueIdentifier>DA9998F6-DDD6-5D64-A21C-7C516853521C</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\devupdate_screen">
       <UniqueIdentifier>BF45ECDF-9299-8DB9-FBE9-F666FFAFF6CB</UniqueIdentifier>
     </Filter>
@@ -426,7 +422,7 @@
       <UniqueIdentifier>9A22BFB8-42F1-8299-C966-AA4FD697B945</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\widget">
-      <UniqueIdentifier>B07EA81F-538B-AE89-AE89-A4E1DC954B5C</UniqueIdentifier>
+      <UniqueIdentifier>377A6BB8-2E78-BAEB-338D-6A390AC723FD</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -660,8 +656,6 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\model\ParseUpdates.cpp">
       <Filter>Source Files\gui\model</Filter>
-    </ClCompile>
-    </ClCompile>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\devupdate_screen\DevUpdatePresenter.cpp">
       <Filter>Source Files\gui\devupdate_screen</Filter>
@@ -1341,8 +1335,6 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\model\ParseUpdates.hpp">
       <Filter>Header Files\gui\model</Filter>
-    </ClInclude>
-    </ClInclude>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\devupdate_screen\DevUpdatePresenter.hpp">
       <Filter>Header Files\gui\devupdate_screen</Filter>

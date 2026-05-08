@@ -40,6 +40,7 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::ScalableImage si_update;
     touchgfx::ScalableImage si_info;
     touchgfx::TextAreaWithOneWildcard ta_info;
     touchgfx::Button bt_cancel;

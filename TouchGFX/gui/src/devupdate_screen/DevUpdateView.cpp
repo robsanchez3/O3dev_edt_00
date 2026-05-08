@@ -1,6 +1,8 @@
 #include <gui/devupdate_screen/DevUpdateView.hpp>
 #include <gui/devupdate_screen/DevUpdatePresenter.hpp>
 #include <touchgfx/Unicode.hpp>
+#include <touchgfx/Bitmap.hpp>
+#include <images/BitmapDatabase.hpp>
 
 DevUpdateView::DevUpdateView()
 {
@@ -33,6 +35,12 @@ void DevUpdateView::showButtons(bool showOk, bool showCancel)
     bt_cancel.setVisible(showCancel);
     bt_OK.invalidate();
     bt_cancel.invalidate();
+}
+
+void DevUpdateView::showImage(uint16_t bitmapId)
+{
+    si_update.setBitmap(Bitmap(bitmapId));
+    si_update.invalidate();
 }
 
 void DevUpdateView::cancelClicked()

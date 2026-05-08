@@ -24,6 +24,8 @@ typedef enum {
     DEV_UPD_FAIL_COMM       = 5,  /* bootloader did not respond               */
     DEV_UPD_FAIL_FLASH      = 6,  /* IAP write/checksum/validate error        */
     DEV_UPD_IMPORT_CONFIRM  = 7,  /* waiting for user to confirm/skip a config import */
+    DEV_UPD_EXPORT_CONFIRM  = 8,  /* waiting for user to confirm/skip log export      */
+    DEV_UPD_EXPORT_DONE     = 9,  /* export finished — acknowledge to continue boot   */
 } dev_upd_state_t;
 
 /*--- Generic state (read from any task; volatile, no mutex) -----------------*/
@@ -64,6 +66,32 @@ void    dev_upd_import_skip(void);
 uint8_t     dev_upd_import_is_active(void);
 uint8_t     dev_upd_import_is_pending(void);
 const char* dev_upd_import_get_dir(void);
+
+/*--- Log export confirmation ------------------------------------------------*/
+
+/* Call before the first dev_upd_export_request() to activate DevUpdate.    */
+void    dev_upd_export_begin(void);
+
+/* Call after the last dev_upd_export_request() to release DevUpdate.       */
+void    dev_upd_export_end(void);
+
+/* Blocks until the user presses OK (returns 1) or Cancel (returns 0).
+ * msg: question shown in the prompt (e.g. "Export logs to USB?").          */
+int     dev_upd_export_request(const char* msg);
+
+/* Called by DevUpdatePresenter OK button while export is active.           */
+void    dev_upd_export_confirm(void);
+
+/* Called by DevUpdatePresenter Cancel button while export is active.       */
+void    dev_upd_export_skip(void);
+
+/* Blocks until user presses OK — shows done message, only confirm button.   */
+void    dev_upd_export_notify(const char* msg);
+
+uint8_t     dev_upd_export_is_active(void);
+uint8_t     dev_upd_export_is_pending(void);
+uint8_t     dev_upd_export_is_notify(void);
+const char* dev_upd_export_get_msg(void);
 
 #ifdef __cplusplus
 }

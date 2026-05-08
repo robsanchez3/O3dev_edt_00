@@ -30,4 +30,4 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingPresente
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingPresenter.cpp:49:6:void ProcessingPresenter::userOk()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingPresenter.cpp:53:9:uint8_t ProcessingPresenter::getFsmState()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingPresenter.cpp:58:9:uint8_t ProcessingPresenter::getCalibrationSucessState()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingPresenter.cpp:64:10:virtual uint16_t ProcessingPresenter::getVisibleScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/processing_screen/ProcessingPresenter.cpp:63:10:virtual uint16_t ProcessingPresenter::getVisibleScreen()	16	static

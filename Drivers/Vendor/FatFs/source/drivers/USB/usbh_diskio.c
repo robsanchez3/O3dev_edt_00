@@ -27,14 +27,8 @@ extern USBH_HandleTypeDef  hUsbHostHS;
 DSTATUS USBH_initialize(BYTE lun);
 DSTATUS USBH_status(BYTE lun);
 DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count);
-
-#if _USE_WRITE == 1
-  DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count);
-#endif
-
-#if _USE_IOCTL == 1
-  DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff);
-#endif
+DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count);
+DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff);
 
 /* FatFS driver interface registration */
 const Diskio_drvTypeDef USBH_Driver =
@@ -42,12 +36,8 @@ const Diskio_drvTypeDef USBH_Driver =
   USBH_initialize,
   USBH_status,
   USBH_read,
-#if _USE_WRITE == 1
   USBH_write,
-#endif
-#if _USE_IOCTL == 1
   USBH_ioctl,
-#endif
 };
 
 /* Private functions ---------------------------------------------------------*/
@@ -103,7 +93,6 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
   return res;
 }
 
-#if _USE_WRITE == 1
 /**
   * @brief  Write sector(s)
   */
@@ -138,9 +127,7 @@ DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
   }
   return res;
 }
-#endif /* _USE_WRITE */
 
-#if _USE_IOCTL == 1
 /**
   * @brief  IOCTL - get drive info
   */
@@ -185,4 +172,3 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
   }
   return res;
 }
-#endif /* _USE_IOCTL */

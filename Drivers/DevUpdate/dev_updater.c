@@ -90,3 +90,64 @@ void dev_upd_import_skip(void)
 uint8_t     dev_upd_import_is_active(void)  { return s_import_active;  }
 uint8_t     dev_upd_import_is_pending(void) { return s_import_pending; }
 const char* dev_upd_import_get_dir(void)    { return s_import_dir;     }
+
+/*--- Log export confirmation ------------------------------------------------*/
+
+static osSemaphoreId_t   s_hExportConfirm = NULL;
+static volatile uint8_t  s_export_active  = 0;
+static volatile uint8_t  s_export_pending = 0;
+static volatile uint8_t  s_export_result  = 0;
+static volatile uint8_t  s_export_notify  = 0;
+static char              s_export_msg[64] = "";
+
+void dev_upd_export_begin(void)
+{
+    if (s_hExportConfirm == NULL)
+        s_hExportConfirm = osSemaphoreNew(1, 0, NULL);
+    s_export_active = 1;
+}
+
+void dev_upd_export_end(void)
+{
+    s_export_pending = 0;
+    s_export_active  = 0;
+}
+
+int dev_upd_export_request(const char* msg)
+{
+    strncpy(s_export_msg, msg, sizeof s_export_msg - 1);
+    s_export_msg[sizeof s_export_msg - 1] = '\0';
+    s_export_result  = 0;
+    s_export_pending = 1;  /* LAST: signals UI that prompt is ready */
+    osSemaphoreAcquire(s_hExportConfirm, osWaitForever);
+    return (int)s_export_result;
+}
+
+void dev_upd_export_confirm(void)
+{
+    s_export_result  = 1;
+    s_export_pending = 0;
+    osSemaphoreRelease(s_hExportConfirm);
+}
+
+void dev_upd_export_skip(void)
+{
+    s_export_result  = 0;
+    s_export_pending = 0;
+    osSemaphoreRelease(s_hExportConfirm);
+}
+
+void dev_upd_export_notify(const char* msg)
+{
+    strncpy(s_export_msg, msg, sizeof s_export_msg - 1);
+    s_export_msg[sizeof s_export_msg - 1] = '\0';
+    s_export_notify  = 1;
+    s_export_pending = 1;  /* LAST: signals UI that prompt is ready */
+    osSemaphoreAcquire(s_hExportConfirm, osWaitForever);
+    s_export_notify  = 0;
+}
+
+uint8_t     dev_upd_export_is_active(void)  { return s_export_active;  }
+uint8_t     dev_upd_export_is_pending(void) { return s_export_pending; }
+uint8_t     dev_upd_export_is_notify(void)  { return s_export_notify;  }
+const char* dev_upd_export_get_msg(void)    { return s_export_msg;     }

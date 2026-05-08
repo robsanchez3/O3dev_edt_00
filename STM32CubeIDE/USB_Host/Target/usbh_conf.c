@@ -223,9 +223,9 @@ USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
     hhcd_USB_OTG_HS.Instance           = USB_OTG_HS;
     hhcd_USB_OTG_HS.Init.Host_channels = 16;
     hhcd_USB_OTG_HS.Init.speed         = HCD_SPEED_HIGH;
-    hhcd_USB_OTG_HS.Init.dma_enable    = ENABLE;
+    hhcd_USB_OTG_HS.Init.dma_enable    = DISABLE;  /* FIFO mode: avoids DMA alignment issues on BULK OUT */
     hhcd_USB_OTG_HS.Init.phy_itface    = USB_OTG_HS_EMBEDDED_PHY;
-    hhcd_USB_OTG_HS.Init.Sof_enable    = DISABLE;
+    hhcd_USB_OTG_HS.Init.Sof_enable    = ENABLE;   /* phost->Timer must increment for write timeouts */
 
     if (HAL_HCD_Init(&hhcd_USB_OTG_HS) != HAL_OK)
     {

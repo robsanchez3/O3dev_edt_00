@@ -13,12 +13,17 @@ DevUpdateViewBase::DevUpdateViewBase() :
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
+    si_update.setBitmap(touchgfx::Bitmap(BITMAP_BOOTLOAD_120_00_ID));
+    si_update.setPosition(250, 250, 300, 120);
+    si_update.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
+    add(si_update);
+
     si_info.setBitmap(touchgfx::Bitmap(BITMAP_INFO_100_ID));
     si_info.setPosition(680, 25, 100, 100);
     si_info.setScalingAlgorithm(touchgfx::ScalableImage::BILINEAR_INTERPOLATION);
     add(si_info);
 
-    ta_info.setPosition(172, 75, 457, 351);
+    ta_info.setPosition(172, 75, 457, 123);
     ta_info.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     ta_info.setLinespacing(0);
     Unicode::snprintf(ta_infoBuffer, TA_INFO_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_W1JP).getText());

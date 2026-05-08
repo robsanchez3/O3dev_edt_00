@@ -57,9 +57,9 @@ static int16_t ClearDir(const char* dirPath)
  * --------------------------------------------------------------------------*/
 static int16_t CopyFile(const char* srcPath, const char* dstPath)
 {
-    FIL     srcFile, dstFile;
+    static FIL     srcFile, dstFile;
+    static uint8_t buf[COPY_BUF_SIZE];
     FRESULT fr;
-    uint8_t buf[COPY_BUF_SIZE];
     UINT    bytesRead, bytesWritten;
     int16_t result = 0;
 
@@ -96,6 +96,116 @@ static int16_t CopyFile(const char* srcPath, const char* dstPath)
     f_close(&srcFile);
     f_close(&dstFile);
     return result;
+}
+
+/* ---------------------------------------------------------------------------
+ * ClearDirRecursive
+ *
+ * Recursively deletes all files and subdirectories inside dirPath,
+ * then removes dirPath itself.
+ * --------------------------------------------------------------------------*/
+int16_t ClearDirRecursive(const char* dirPath)
+{
+    DIR          dir;
+    static FILINFO fno;
+    FRESULT      fr;
+    static char  childPath[256];
+    char         selfPath[64];  /* local copy — childPath may alias dirPath in recursive calls */
+
+    /* Save dirPath NOW, before the loop overwrites childPath */
+    strncpy(selfPath, dirPath, sizeof(selfPath) - 1);
+    selfPath[sizeof(selfPath) - 1] = '\0';
+
+    fr = f_opendir(&dir, dirPath);
+    if (fr != FR_OK)
+        return (fr == FR_NO_PATH) ? 0 : -1;
+
+    while (1)
+    {
+        fr = f_readdir(&dir, &fno);
+        if (fr != FR_OK || fno.fname[0] == '\0')
+            break;
+
+        snprintf(childPath, sizeof(childPath), "%s/%s", selfPath, fno.fname);
+
+        if (fno.fattrib & AM_DIR)
+            ClearDirRecursive(childPath);
+        else
+            f_unlink(childPath);
+    }
+
+    f_closedir(&dir);
+    f_unlink(selfPath);
+    return 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * CopyDirRecursive  (internal)
+ *
+ * Recursively copies all files and subdirectories from srcDir to dstDir.
+ * dstDir must already exist.
+ * --------------------------------------------------------------------------*/
+static int16_t CopyDirRecursive(const char* srcDir, const char* dstDir)
+{
+    DIR            dir;
+    static FILINFO fno;
+    FRESULT        fr;
+    static char    srcPath[256];
+    static char    dstPath[256];
+    char           srcBase[48], dstBase[48];  /* local copies — srcPath/dstPath may alias srcDir/dstDir */
+    int16_t        copied = 0;
+
+    strncpy(srcBase, srcDir, sizeof(srcBase) - 1);  srcBase[sizeof(srcBase)-1] = '\0';
+    strncpy(dstBase, dstDir, sizeof(dstBase) - 1);  dstBase[sizeof(dstBase)-1] = '\0';
+
+    fr = f_opendir(&dir, srcBase);
+    if (fr != FR_OK)
+        return -1;
+
+    while (1)
+    {
+        fr = f_readdir(&dir, &fno);
+        if (fr != FR_OK || fno.fname[0] == '\0')
+            break;
+
+        snprintf(srcPath, sizeof(srcPath), "%s/%s", srcBase, fno.fname);
+        snprintf(dstPath, sizeof(dstPath), "%s/%s", dstBase, fno.fname);
+
+        if (fno.fattrib & AM_DIR)
+        {
+            f_mkdir(dstPath);
+            int16_t sub = CopyDirRecursive(srcPath, dstPath);
+            if (sub >= 0) copied += sub;
+        }
+        else
+        {
+            if (CopyFile(srcPath, dstPath) == 0)
+            {
+                printf("ExportDirToUSB: copied '%s'\n", fno.fname);
+                copied++;
+            }
+            else
+            {
+                printf("ExportDirToUSB: ERROR copying '%s'\n", fno.fname);
+            }
+        }
+    }
+
+    f_closedir(&dir);
+    return copied;
+}
+
+/* ---------------------------------------------------------------------------
+ * ExportDirToUSB
+ *
+ * Recursively copies srcDir (SD) into dstDir (USB).
+ * Creates dstDir if it does not exist.
+ * --------------------------------------------------------------------------*/
+int16_t ExportDirToUSB(const char* srcDir, const char* dstDir)
+{
+    f_mkdir(dstDir);  /* no-op if already exists */
+    printf("ExportDirToUSB: '%s' -> '%s'\n", srcDir, dstDir);
+    return CopyDirRecursive(srcDir, dstDir);
 }
 
 /* ---------------------------------------------------------------------------

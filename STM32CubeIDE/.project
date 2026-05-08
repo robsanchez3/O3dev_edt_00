@@ -745,6 +745,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Bluish3.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_Bootload_120_00.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Bootload_120_00.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_BulbWhite.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_BulbWhite.cpp</locationURI>
@@ -998,6 +1003,11 @@
 			<name>Application/User/generated/image_LightgGray1.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_LightgGray1.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Log_120_00.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Log_120_00.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_Manual_01.cpp</name>
@@ -1298,6 +1308,11 @@
 			<name>Application/User/generated/image_Tout_bar_95_5.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Tout_bar_95_5.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Update_120_00.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Update_120_00.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_Vacuum_01.cpp</name>

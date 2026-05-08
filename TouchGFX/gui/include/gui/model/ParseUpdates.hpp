@@ -33,4 +33,26 @@
  */
 int16_t ImportDirFromUSB(const char* srcDir, const char* dstDir);
 
+/*
+ * ExportDirToUSB
+ *
+ * Recursively copies srcDir (SD card) into dstDir (USB pen drive).
+ * dstDir is created if it does not exist; existing content is preserved
+ * (caller is responsible for clearing dstDir beforehand if needed).
+ *
+ * Returns:
+ *   >= 0  - number of files successfully copied
+ *   < 0   - error
+ */
+int16_t ExportDirToUSB(const char* srcDir, const char* dstDir);
+
+/*
+ * ClearDirRecursive
+ *
+ * Recursively deletes all files and subdirectories inside dirPath,
+ * then removes dirPath itself.
+ * Returns 0 on success, -1 on error.
+ */
+int16_t ClearDirRecursive(const char* dirPath);
+
 #endif /* APPLICATION_USER_TOUCHGFX_GUI_INCLUDE_GUI_MODEL_PARSEUPDATES_HPP_ */

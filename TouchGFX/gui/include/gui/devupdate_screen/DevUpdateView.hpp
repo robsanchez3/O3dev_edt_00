@@ -14,6 +14,7 @@ public:
 
     void updateInfo(const char* asciiMsg);
     void showButtons(bool showOk, bool showCancel);
+    void showImage(uint16_t bitmapId);
 
     virtual void cancelClicked();
     virtual void okClicked1();

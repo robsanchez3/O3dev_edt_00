@@ -65,6 +65,20 @@ void Model::tick()
 		return;
 	}
 
+	/* Log export: navigate to DevUpdate for user confirmation */
+	static uint8_t s_export_shown = 0;
+	if (dev_upd_export_is_active()) {
+		if (!s_export_shown) {
+			s_export_shown = 1;
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoDevUpdateScreenNoTransition();
+			return;
+		}
+	} else if (s_export_shown) {
+		s_export_shown = 0;
+		static_cast<FrontendApplication*>(Application::getInstance())->gotoStartingScreenNoTransition();
+		return;
+	}
+
 	/* Generator firmware update: navigate once to DevUpdate screen if pending */
 	static uint8_t s_dev_upd_shown = 0;
 	if (!s_dev_upd_shown && dev_upd_is_pending()) {
@@ -77,9 +91,11 @@ void Model::tick()
 	if (modelListener->getVisibleScreen() == SID_DEV_UPDATE) {
 		if (dev_upd_import_is_active() && dev_upd_import_is_pending())
 			modelListener->onDevUpdTick(0, (int)DEV_UPD_IMPORT_CONFIRM, dev_upd_import_get_dir());
-		else if (!dev_upd_import_is_active() && !dev_upd_is_pending())
+		else if (dev_upd_export_is_active() && dev_upd_export_is_pending())
+			modelListener->onDevUpdTick(0, dev_upd_export_is_notify() ? (int)DEV_UPD_EXPORT_DONE : (int)DEV_UPD_EXPORT_CONFIRM, dev_upd_export_get_msg());
+		else if (!dev_upd_import_is_active() && !dev_upd_export_is_active() && !dev_upd_is_pending())
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoStartingScreenNoTransition();
-		else if (!dev_upd_import_is_active())
+		else if (!dev_upd_import_is_active() && !dev_upd_export_is_active())
 			modelListener->onDevUpdTick(dev_upd_get_progress(), (int)dev_upd_get_state(), dev_upd_get_msg());
 		return;
 	}
@@ -1019,6 +1035,28 @@ void Model::configLoaderTask(void)
 			if (has_user    && dev_upd_import_request("User"))    ImportDirFromUSB("1:/Service/User",    "0:/Config/User");
 			dev_upd_import_end();
 		}
+	}
+	if(usb_found)
+	{
+		dev_upd_export_begin();
+		if(dev_upd_export_request("Export logs to USB drive?"))
+		{
+			if(f_stat("1:/Log", NULL) == FR_OK)
+			{
+				if(dev_upd_export_request("Log directory exists.\nOverwrite?"))
+				{
+					ClearDirRecursive("1:/Log");
+					ExportDirToUSB("0:/Config", "1:/Log");
+					dev_upd_export_notify("Export complete!\n\nRemove USB drive.\nPress OK to continue.");
+				}
+			}
+			else
+			{
+				ExportDirToUSB("0:/Config", "1:/Log");
+				dev_upd_export_notify("Export complete!\n\nRemove USB drive.\nPress OK to continue.");
+			}
+		}
+		dev_upd_export_end();
 	}
 	if(sd_found)
 	{

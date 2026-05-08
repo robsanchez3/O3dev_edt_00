@@ -4138,6 +4138,16 @@
         "Components": [
           {
             "Type": "ScalableImage",
+            "Name": "si_update",
+            "X": 250,
+            "Y": 250,
+            "Width": 300,
+            "Height": 120,
+            "Filename": "Bootload_120_00.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
+          },
+          {
+            "Type": "ScalableImage",
             "Name": "si_info",
             "X": 680,
             "Y": 25,
@@ -4152,7 +4162,7 @@
             "X": 172,
             "Y": 75,
             "Width": 457,
-            "Height": 351,
+            "Height": 123,
             "TextId": "__SingleUse_ZECK",
             "TextRotation": "0",
             "Color": {
