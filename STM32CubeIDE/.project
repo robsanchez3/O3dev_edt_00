@@ -1710,11 +1710,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/information_screen/InformationView.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/gui/LogManage.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/model/LogManage.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/gui/MainMenuPresenter.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/mainmenu_screen/MainMenuPresenter.cpp</locationURI>
@@ -1728,6 +1723,11 @@
 			<name>Application/User/gui/Model.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/model/Model.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/gui/ParamStore.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/model/ParamStore.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/gui/ParseAppConfig.cpp</name>

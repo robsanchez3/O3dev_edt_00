@@ -80,3 +80,8 @@ uint8_t SelectorPresenter::getFsmState()
 	return model->getFsmState();
 }
 
+void SelectorPresenter::enableLog()
+{
+    model->setLogEnabled(true);
+}
+

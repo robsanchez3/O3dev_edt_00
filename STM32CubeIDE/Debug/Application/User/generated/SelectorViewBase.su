@@ -171,13 +171,13 @@
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:357:8:virtual touchgfx::Callback<SelectorViewBase, const touchgfx::AbstractButton&>::~Callback()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:290:8:touchgfx::Callback<SelectorViewBase, const touchgfx::Slider&, int>::~Callback()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:290:8:virtual touchgfx::Callback<SelectorViewBase, const touchgfx::Slider&, int>::~Callback()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:10:1:SelectorViewBase::SelectorViewBase()	328	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:152:1:SelectorViewBase::~SelectorViewBase()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:152:1:virtual SelectorViewBase::~SelectorViewBase()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:157:6:virtual void SelectorViewBase::setupScreen()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:170:6:void SelectorViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:202:6:void SelectorViewBase::sliderValueChangedCallbackHandler(const touchgfx::Slider&, int)	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:213:6:void SelectorViewBase::updateItemCallbackHandler(touchgfx::DrawableListItemsInterface*, int16_t, int16_t)	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:10:1:SelectorViewBase::SelectorViewBase()	336	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:158:1:SelectorViewBase::~SelectorViewBase()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:158:1:virtual SelectorViewBase::~SelectorViewBase()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:163:6:virtual void SelectorViewBase::setupScreen()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:176:6:void SelectorViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:208:6:void SelectorViewBase::sliderValueChangedCallbackHandler(const touchgfx::Slider&, int)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/selector_screen/SelectorViewBase.cpp:219:6:void SelectorViewBase::updateItemCallbackHandler(touchgfx::DrawableListItemsInterface*, int16_t, int16_t)	40	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:39:5:touchgfx::View<T>::View() [with T = SelectorPresenter]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:44:7:constexpr touchgfx::GenericCallback<touchgfx::DrawableListItemsInterface*, short int, short int>::GenericCallback()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:237:5:touchgfx::Callback<dest_type, T1, T2, T3>::Callback(dest_type*, void (dest_type::*)(T1, T2, T3)) [with dest_type = SelectorViewBase; T1 = touchgfx::DrawableListItemsInterface*; T2 = short int; T3 = short int]	24	static

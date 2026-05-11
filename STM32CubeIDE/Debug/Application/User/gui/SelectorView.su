@@ -1,5 +1,9 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:180:10:bool touchgfx::Rect::intersect(int16_t, int16_t) const	24	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Bitmap.hpp:136:5:touchgfx::Bitmap::Bitmap(touchgfx::BitmapId)	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:73:13:int16_t touchgfx::ClickEvent::getX() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:83:13:int16_t touchgfx::ClickEvent::getY() const	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/events/ClickEvent.hpp:123:20:touchgfx::ClickEvent::ClickEventType touchgfx::ClickEvent::getType() const	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:515:10:void touchgfx::Drawable::setVisible(bool)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:537:10:bool touchgfx::Drawable::isVisible() const	16	static
@@ -8,26 +12,26 @@
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:191:13:int16_t touchgfx::Screen::getScreenWidth() const	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Slider.hpp:193:21:virtual int16_t touchgfx::Slider::getIndicatorMax() const	16	static
-../../TouchGFX/gui/include/gui/selector_screen/SelectorView.hpp:28:13:SelectorView::~SelectorView()	16	static
-../../TouchGFX/gui/include/gui/selector_screen/SelectorView.hpp:28:13:virtual SelectorView::~SelectorView()	16	static
+../../TouchGFX/gui/include/gui/selector_screen/SelectorView.hpp:29:13:SelectorView::~SelectorView()	16	static
+../../TouchGFX/gui/include/gui/selector_screen/SelectorView.hpp:29:13:virtual SelectorView::~SelectorView()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:8:1:SelectorView::SelectorView()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:18:6:virtual void SelectorView::setupScreen()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:30:6:virtual void SelectorView::tearDownScreen()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:35:6:virtual void SelectorView::handleTickEvent()	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:94:6:virtual void SelectorView::handleClickEvent(const touchgfx::ClickEvent&)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:107:6:void SelectorView::thousandsSep(touchgfx::Unicode::UnicodeChar*)	80	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:132:6:virtual void SelectorView::sw_selectorUpdateItem(sw_selectContainer&, int16_t)	88	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:166:6:virtual void SelectorView::sw_selectorUpdateCenterItem(sw_selectionContainer&, int16_t)	64	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:189:6:virtual void SelectorView::okClicked()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:199:6:virtual void SelectorView::cancelClicked()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:205:5:int SelectorView::get_logical_value(int)	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:220:5:int SelectorView::get_physical_value(int)	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:235:6:void SelectorView::update_selection(int)	56	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:245:6:void SelectorView::update_second_selection()	48	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:274:6:virtual void SelectorView::sl_slider_changed(int)	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:290:6:virtual void SelectorView::forwardClicked()	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:306:6:virtual void SelectorView::backClicked()	32	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:322:6:void SelectorView::initTherapyContext(THERAPY_CTX*)	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:328:6:void SelectorView::initSelectionContext(int8_t)	40	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:425:9:int16_t SelectorView::getSelectorItemWidth()	24	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:444:5:int SelectorView::bufferToInt(const touchgfx::Unicode::UnicodeChar*)	64	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:101:6:virtual void SelectorView::handleClickEvent(const touchgfx::ClickEvent&)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:123:6:void SelectorView::thousandsSep(touchgfx::Unicode::UnicodeChar*)	80	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:148:6:virtual void SelectorView::sw_selectorUpdateItem(sw_selectContainer&, int16_t)	88	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:182:6:virtual void SelectorView::sw_selectorUpdateCenterItem(sw_selectionContainer&, int16_t)	64	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:205:6:virtual void SelectorView::okClicked()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:218:6:virtual void SelectorView::cancelClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:224:5:int SelectorView::get_logical_value(int)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:239:5:int SelectorView::get_physical_value(int)	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:254:6:void SelectorView::update_selection(int)	56	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:264:6:void SelectorView::update_second_selection()	48	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:293:6:virtual void SelectorView::sl_slider_changed(int)	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:309:6:virtual void SelectorView::forwardClicked()	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:325:6:virtual void SelectorView::backClicked()	32	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:341:6:void SelectorView::initTherapyContext(THERAPY_CTX*)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:347:6:void SelectorView::initSelectionContext(int8_t)	40	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:444:9:int16_t SelectorView::getSelectorItemWidth()	24	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorView.cpp:463:5:int SelectorView::bufferToInt(const touchgfx::Unicode::UnicodeChar*)	64	static

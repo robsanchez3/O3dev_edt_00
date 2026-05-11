@@ -50,6 +50,7 @@ Application/User/gui \
 Drivers/CMSIS \
 Drivers/DevUpdate \
 Drivers/IAP \
+Drivers/Log \
 Drivers/O3/Dependencies \
 Drivers/O3/Fsm_o3 \
 Drivers/O3/Protocol \

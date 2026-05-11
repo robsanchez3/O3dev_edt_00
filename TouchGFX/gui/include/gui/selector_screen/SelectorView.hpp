@@ -7,6 +7,7 @@
 #include <gui/mainmenu_screen/MainMenuView.hpp>
 
 #define UNITS_BLINK_DELAY	    (int16_t)(250/16.66)  // 1 tick =~ 16.66 ms
+#define OK_LOG_TICKS            300                    // ~5 s at 60 fps
 #define UNITS_BLINK_REPALY_MAX	2
 
 #define TWO_DIGITS_WIDTH	    60		// Experimental values for a Verdana 25px font
@@ -59,10 +60,14 @@ public:
     int16_t selectorItemWidth = 0;
     int logicalValue = 0;
     int physicalValue = 0;
-    uint8_t accelCounter = 5;
-    uint32_t tickCounter = 0;
+    uint8_t  accelCounter = 5;
+    uint32_t tickCounter  = 0;
     UNITS_BLINK_CTX blinkUnits;
-    uint8_t currentExternalState = 0;
+    uint8_t  currentExternalState = 0;
+
+    uint16_t okHoldTicks = 0;
+    bool     okHolding   = false;
+    bool     okLongPress = false;
 
 protected:
 };

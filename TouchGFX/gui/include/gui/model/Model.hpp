@@ -118,6 +118,7 @@ public:
 	void userCancelled(void);
 	void userOk(void);
 	void userOkRelease(void);
+	void setLogEnabled(bool enabled);
 	void cancelWashing(void);
 	void washingExtesion(void);
 	void gotoRepose(void);
@@ -177,6 +178,8 @@ protected:
 	ModelListener* modelListener;
 
 private:
+	bool tickDevUpdate();
+
 	int8_t      guiTherapy = -1;
 //	THERAPY_CTX guiTherapyCtx;
 	int8_t deviceConfig[MAX_DEV_THERAPIES + 1] = { SYRINGE_AUTO_MODE, CONTINUOUS_MODE, INSUFFLATION_R_MODE, MANUAL_MODE, DENTAL_MODE, VACUUM_TIME_MODE, CLOSED_BAG_MODE, DOSE_MODE, SALINE_MODE, RFU_1_MODE, OPEN_BAG_MODE, SYRINGE_MANUAL_MODE, MMF_END };

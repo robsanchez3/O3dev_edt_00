@@ -28,6 +28,7 @@ RM := rm -rf
 -include Drivers/O3/Protocol/subdir.mk
 -include Drivers/O3/Fsm_o3/subdir.mk
 -include Drivers/O3/Dependencies/subdir.mk
+-include Drivers/Log/subdir.mk
 -include Drivers/IAP/subdir.mk
 -include Drivers/DevUpdate/subdir.mk
 -include Drivers/CMSIS/subdir.mk

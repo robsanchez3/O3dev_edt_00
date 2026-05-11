@@ -46,7 +46,6 @@
     <ClCompile Include="..\..\generated\gui_generated\src\information_screen\InformationViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\info_screen\INFOView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\info_screen\INFOViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\model\LogManage.cpp"/>
     <ClCompile Include="..\..\gui\src\mainmenu_screen\MainMenuPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\mainmenu_screen\MainMenuView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\mainmenu_screen\MainMenuViewBase.cpp"/>
@@ -91,6 +90,7 @@
     <ClCompile Include="..\..\gui\src\devupdate_screen\DevUpdatePresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\devupdate_screen\DevUpdateView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\devupdate_screen\DevUpdateViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\model\ParamStore.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -267,7 +267,6 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\information_screen\InformationViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\info_screen\INFOView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\info_screen\INFOViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\model\LogManage.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\mainmenu_screen\MainMenuPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\mainmenu_screen\MainMenuView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\mainmenu_screen\MainMenuViewBase.hpp"/>
@@ -320,6 +319,7 @@
     <ClInclude Include="..\..\gui\include\gui\devupdate_screen\DevUpdatePresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\devupdate_screen\DevUpdateView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\devupdate_screen\DevUpdateViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\model\ParamStore.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

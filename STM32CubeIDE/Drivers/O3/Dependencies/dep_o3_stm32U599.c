@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
+#include "../../Log/log.h"
 #include <../Vendor/Driver/edt_bsp_uart.h>
 #include "usart.h"
 #include "dep_o3.h"
@@ -141,7 +142,7 @@ void dep_o3_com_pollRx(void)
  * Sets COM_O3_Ready=0 so HAL_UARTEx_RxEventCallback does not re-arm IT
  * reception, then aborts any active IT transfer leaving the UART in
  * HAL_UART_STATE_READY for blocking IAP use.
- * Called once before dev_upd_gen_fw_task_fn() starts the IAP cycle.
+ * Called once before gen_upd_task_fn() starts the IAP cycle.
  * No restore needed: system resets via HAL_NVIC_SystemReset() after IAP. */
 void dep_o3_com_iap_takeover(void)
 {
@@ -168,7 +169,16 @@ void dep_o3_printf(const char *fmt, ...)
 
 void dep_o3_vprintf(const char *fmt, va_list args)
 {
-	vprintf(fmt, args);
+    va_list args_copy;
+    va_copy(args_copy, args);
+    vprintf(fmt, args);
+
+    if (log_is_enabled()) {
+        char buf[256];
+        vsnprintf(buf, sizeof(buf), fmt, args_copy);
+        log_raw_line(buf);
+    }
+    va_end(args_copy);
 }
 
 /* ---- Platform ---- */

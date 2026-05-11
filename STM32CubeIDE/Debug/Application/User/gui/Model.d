@@ -51,7 +51,8 @@ Application/User/gui/Model.o: \
  ../../TouchGFX/gui/include/gui/model/TherapyTemplates.hpp \
  ../../TouchGFX/generated/images/include/BitmapDatabase.hpp \
  ../../TouchGFX/generated/images/include/images/BitmapDatabase.hpp \
- ../../TouchGFX/gui/include/gui/model/LogManage.hpp ../../Core/Inc/main.h \
+ ../../TouchGFX/gui/include/gui/model/ParamStore.hpp \
+ ../../Core/Inc/main.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h \
  ../../Core/Inc/stm32u5xx_hal_conf.h \
  ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc.h \
@@ -119,6 +120,7 @@ Application/User/gui/Model.o: \
  C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h \
  C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/IAP/gen_updater.h \
  C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/IAP/../DevUpdate/dev_updater.h \
+ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/Log/log.h \
  ../../FATFS/App/fatfs.h ../../Drivers/Vendor/FatFs/source/ff.h \
  ../../FATFS/Target/ffconf.h \
  ../../Drivers/Vendor/FatFs/source/ff_gen_drv.h \
@@ -179,7 +181,7 @@ Application/User/gui/Model.o: \
 ../../TouchGFX/gui/include/gui/model/TherapyTemplates.hpp:
 ../../TouchGFX/generated/images/include/BitmapDatabase.hpp:
 ../../TouchGFX/generated/images/include/images/BitmapDatabase.hpp:
-../../TouchGFX/gui/include/gui/model/LogManage.hpp:
+../../TouchGFX/gui/include/gui/model/ParamStore.hpp:
 ../../Core/Inc/main.h:
 ../../Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h:
 ../../Core/Inc/stm32u5xx_hal_conf.h:
@@ -248,6 +250,7 @@ Application/User/gui/Model.o: \
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h:
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/IAP/gen_updater.h:
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/IAP/../DevUpdate/dev_updater.h:
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/model/../../../../Drivers/Log/log.h:
 ../../FATFS/App/fatfs.h:
 ../../Drivers/Vendor/FatFs/source/ff.h:
 ../../FATFS/Target/ffconf.h:

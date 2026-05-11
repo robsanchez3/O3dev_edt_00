@@ -7,13 +7,14 @@
 #ifndef SIMULATOR
 
 #include <gui/model/TherapyTemplates.hpp>
-#include <gui/model/LogManage.hpp>
+#include <gui/model/ParamStore.hpp>
 #include "BitmapDatabase.hpp"
 #include "main.h"
 #include "cmsis_os2.h"
 #include "stm32u5xx_hal.h"
 #include "../../../../Drivers/O3/Fsm_o3/fsm_o3_api.h"
 #include "../../../../Drivers/IAP/gen_updater.h"
+#include "../../../../Drivers/Log/log.h"
 #include <stdio.h>
 #include <string.h>
 extern "C" osSemaphoreId_t hSysConfigReady;  /* signals defaultTask that sys config is ready */
@@ -44,6 +45,8 @@ Model::Model() : modelListener(0)
 #endif
 }
 
+static const char* therapyName(uint16_t mode);
+
 void Model::tick()
 {
 	static char debug_done = 0;
@@ -51,54 +54,7 @@ void Model::tick()
 //  REMEMBER: The Model has a pointer to your currently active Presenter by means of ModelListener (where getVisibleScreen() has been defined as virtual)
 
 #ifndef SIMULATOR
-	/* Service config import: navigate to DevUpdate for each per-directory confirmation */
-	static uint8_t s_import_shown = 0;
-	if (dev_upd_import_is_active()) {
-		if (!s_import_shown) {
-			s_import_shown = 1;
-			static_cast<FrontendApplication*>(Application::getInstance())->gotoDevUpdateScreenNoTransition();
-			return;
-		}
-	} else if (s_import_shown) {
-		s_import_shown = 0;
-		static_cast<FrontendApplication*>(Application::getInstance())->gotoStartingScreenNoTransition();
-		return;
-	}
-
-	/* Log export: navigate to DevUpdate for user confirmation */
-	static uint8_t s_export_shown = 0;
-	if (dev_upd_export_is_active()) {
-		if (!s_export_shown) {
-			s_export_shown = 1;
-			static_cast<FrontendApplication*>(Application::getInstance())->gotoDevUpdateScreenNoTransition();
-			return;
-		}
-	} else if (s_export_shown) {
-		s_export_shown = 0;
-		static_cast<FrontendApplication*>(Application::getInstance())->gotoStartingScreenNoTransition();
-		return;
-	}
-
-	/* Generator firmware update: navigate once to DevUpdate screen if pending */
-	static uint8_t s_dev_upd_shown = 0;
-	if (!s_dev_upd_shown && dev_upd_is_pending()) {
-		s_dev_upd_shown = 1;
-		osThreadSuspend(defaultTaskHandle);
-		static_cast<FrontendApplication*>(Application::getInstance())->gotoDevUpdateScreenNoTransition();
-		return;
-	}
-	/* While DevUpdate screen is active: feed the presenter and block FSM switching */
-	if (modelListener->getVisibleScreen() == SID_DEV_UPDATE) {
-		if (dev_upd_import_is_active() && dev_upd_import_is_pending())
-			modelListener->onDevUpdTick(0, (int)DEV_UPD_IMPORT_CONFIRM, dev_upd_import_get_dir());
-		else if (dev_upd_export_is_active() && dev_upd_export_is_pending())
-			modelListener->onDevUpdTick(0, dev_upd_export_is_notify() ? (int)DEV_UPD_EXPORT_DONE : (int)DEV_UPD_EXPORT_CONFIRM, dev_upd_export_get_msg());
-		else if (!dev_upd_import_is_active() && !dev_upd_export_is_active() && !dev_upd_is_pending())
-			static_cast<FrontendApplication*>(Application::getInstance())->gotoStartingScreenNoTransition();
-		else if (!dev_upd_import_is_active() && !dev_upd_export_is_active())
-			modelListener->onDevUpdTick(dev_upd_get_progress(), (int)dev_upd_get_state(), dev_upd_get_msg());
-		return;
-	}
+	if (tickDevUpdate()) return;
 #endif
 
 //  Update screen according to current FSM state
@@ -109,6 +65,7 @@ void Model::tick()
 	case STATE_ERROR:
 		if(modelListener->getVisibleScreen() != SID_ERROR)
 		{
+			log_finish(LOG_RESULT_ERROR, (int32_t)fsm_o3_getErrorState());
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoErrorScreenNoTransition();
 		}
 		break;
@@ -154,6 +111,11 @@ void Model::tick()
 	case STATE_OVERPRESSURE:
 		if(modelListener->getVisibleScreen() != SID_END)
 		{
+			uint8_t st = getFsmState();
+			LogResult_t r = (st == (uint8_t)STATE_COMPLETED)      ? LOG_RESULT_OK :
+			                (st == (uint8_t)STATE_USER_CANCELLED)  ? LOG_RESULT_USER_CANCEL :
+			                                                          LOG_RESULT_ERROR;
+			log_finish(r, (r == LOG_RESULT_ERROR) ? (int32_t)st : 0);
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoEndScreenNoTransition();
 		}
 		break;
@@ -194,6 +156,56 @@ void Model::tick()
 		break;
 	}
 } // Model::tick()
+
+#ifndef SIMULATOR
+bool Model::tickDevUpdate()
+{
+	bool import_active = dev_upd_import_is_active();
+	bool export_active = dev_upd_export_is_active();
+	bool fw_pending    = dev_upd_is_pending();
+
+	/* Navigate to DevUpdate if any process is active and we're not already there */
+	if ( (import_active || export_active || fw_pending) && (modelListener->getVisibleScreen() != SID_DEV_UPDATE) )
+	{
+		if (fw_pending && !import_active && !export_active)
+		{
+			osThreadSuspend(defaultTaskHandle);
+		}
+		static_cast<FrontendApplication*>(Application::getInstance())->gotoDevUpdateScreenNoTransition();
+		return true;
+	}
+
+	if (modelListener->getVisibleScreen() != SID_DEV_UPDATE)
+	{
+		return false;
+	}
+	/* Device update state machine */
+	if (import_active && dev_upd_import_is_pending())
+	{
+		modelListener->onDevUpdTick(0, (int)DEV_UPD_IMPORT_CONFIRM, dev_upd_import_get_dir());
+	}
+	else if (export_active && dev_upd_export_is_pending())
+	{
+		modelListener->onDevUpdTick(0, dev_upd_export_is_notify() ? (int)DEV_UPD_EXPORT_DONE : (int)DEV_UPD_EXPORT_CONFIRM, dev_upd_export_get_msg());
+	}
+	else if (fw_pending)
+	{
+		modelListener->onDevUpdTick(dev_upd_get_progress(), (int)dev_upd_get_state(), dev_upd_get_msg());
+	}
+	else if (!import_active && !export_active && !fw_pending)
+	{
+		/* Debounce ~83 ms: avoids flash to Starting when configLoaderTask transitions between phases and briefly leaves all flags clear. */
+		static uint8_t s_idle_ticks = 0;
+		if (++s_idle_ticks >= 5)
+		{
+			s_idle_ticks = 0;
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoStartingScreenNoTransition();
+		}
+	}
+
+	return true;
+}
+#endif
 
 void Model::resetSystem()
 {
@@ -259,11 +271,11 @@ void Model::initTherapyTargetValues()
 void Model::initStorageDelegates(void)
 {
 	fsm_o3_registerStorage(
-		(int8 (*)())openParamFileWrite,
-		(int8 (*)())openParamFileRead,
-		(int8 (*)(uint16, int32))writeLogLine,
-		(int8 (*)(uint16, int32 *))readLogLine,
-		closeParamFile
+		(int8 (*)())p_store_openWrite,
+		(int8 (*)())p_store_openRead,
+		(int8 (*)(uint16, int32))p_store_writeLine,
+		(int8 (*)(uint16, int32 *))p_store_readLine,
+		p_store_close
 	);
 }
 
@@ -393,9 +405,33 @@ THERAPY_CTX * Model::getTherapyCtx()
 	return &guiTherapyCtx;
 }
 
+static const char* therapyName(uint16_t mode)
+{
+    switch ((OPERATION_MODE_E)mode) {
+    case SYRINGE_MODE:          return "Syringe";
+    case SYRINGE_AUTO_MODE:     return "Syringe Auto";
+    case SYRINGE_MANUAL_MODE:   return "Syringe Manual";
+    case CONTINUOUS_MODE:       return "Continuous";
+    case INSUFFLATION_MODE:     return "Insufflation";
+    case INSUFFLATION_R_MODE:   return "Insufflation R";
+    case INSUFFLATION_V_MODE:   return "Insufflation V";
+    case MANUAL_MODE:           return "Manual";
+    case DENTAL_MODE:           return "Dental";
+    case VACUUM_MODE:           return "Vacuum";
+    case VACUUM_TIME_MODE:      return "Vacuum Time";
+    case VACUUM_PRESSURE_MODE:  return "Vacuum Pressure";
+    case BAG_MODE:              return "Bag";
+    case CLOSED_BAG_MODE:       return "Closed Bag";
+    case OPEN_BAG_MODE:         return "Open Bag";
+    case DOSE_MODE:             return "Dose";
+    case SALINE_MODE:           return "Saline";
+    default:                    return "Unknown";
+    }
+}
+
 void Model::EndSelection(void)
 {
-//	printf("End of selection (model)...\n");
+	printf("End of selection (model)...\n");
 #ifndef SIMULATOR
 	fsm_o3_sendEnter();
 
@@ -405,6 +441,8 @@ void Model::EndSelection(void)
 	}
 	else
 	{
+		log_start(therapyName(fsm_o3_getOption()));
+
 		switch(fsm_o3_getOption())
 		{
 			case VACUUM_MODE:
@@ -415,7 +453,6 @@ void Model::EndSelection(void)
 		default:
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoAdjustingScreenNoTransition();
 		}
-
 	}
 #endif
 }
@@ -470,8 +507,12 @@ void Model::userCancelled(void)
 
 void Model::userOk(void)
 {
-//	printf("User OK (model)...\n");
+	printf("User OK (model)...\n");
 #ifndef SIMULATOR
+	if(getFsmState() == (uint8_t)STATE_WAITING_FOR_PROTOCOL)
+	{
+		log_start(therapyName(fsm_o3_getOption()));
+	}
 	fsm_o3_sendEnter();
 #endif
 }
@@ -481,6 +522,13 @@ void Model::userOkRelease(void)
 //	printf("User OK released (model)...\n");
 #ifndef SIMULATOR
 	fsm_o3_sendGeneric(); // to handle OK release event
+#endif
+}
+
+void Model::setLogEnabled(bool enabled)
+{
+#ifndef SIMULATOR
+    log_set_enabled(enabled);
 #endif
 }
 
@@ -1047,12 +1095,14 @@ void Model::configLoaderTask(void)
 				{
 					ClearDirRecursive("1:/Log");
 					ExportDirToUSB("0:/Config", "1:/Log");
+					ExportDirToUSB("0:/log",    "1:/Log/log");
 					dev_upd_export_notify("Export complete!\n\nRemove USB drive.\nPress OK to continue.");
 				}
 			}
 			else
 			{
 				ExportDirToUSB("0:/Config", "1:/Log");
+				ExportDirToUSB("0:/log",    "1:/Log/log");
 				dev_upd_export_notify("Export complete!\n\nRemove USB drive.\nPress OK to continue.");
 			}
 		}

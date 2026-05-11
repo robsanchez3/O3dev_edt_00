@@ -1451,6 +1451,17 @@
             "LineEndingStyle": "Square",
             "FileNameBackground": "Slider_back_760_6.png",
             "ProgressRangeMax": 100
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "si_logactive",
+            "X": 602,
+            "Y": 380,
+            "Width": 80,
+            "Height": 80,
+            "Visible": false,
+            "Filename": "lock_100.png",
+            "ScalingAlgorithm": "Nearest-neighbor"
           }
         ],
         "Interactions": [

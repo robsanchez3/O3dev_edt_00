@@ -422,7 +422,7 @@
       <UniqueIdentifier>9A22BFB8-42F1-8299-C966-AA4FD697B945</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\widget">
-      <UniqueIdentifier>377A6BB8-2E78-BAEB-338D-6A390AC723FD</UniqueIdentifier>
+      <UniqueIdentifier>ECF13CCE-D543-2E69-E4BF-A829B4193CF0</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -530,9 +530,6 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\info_screen\INFOViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\info_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\model\LogManage.cpp">
-      <Filter>Source Files\gui\model</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\mainmenu_screen\MainMenuPresenter.cpp">
       <Filter>Source Files\gui\mainmenu_screen</Filter>
@@ -665,6 +662,9 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\devupdate_screen\DevUpdateViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\devupdate_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\model\ParamStore.cpp">
+      <Filter>Source Files\gui\model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1186,9 +1186,6 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\info_screen\INFOViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\info_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\model\LogManage.hpp">
-      <Filter>Header Files\gui\model</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\mainmenu_screen\MainMenuPresenter.hpp">
       <Filter>Header Files\gui\mainmenu_screen</Filter>
     </ClInclude>
@@ -1344,6 +1341,9 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\devupdate_screen\DevUpdateViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\devupdate_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\model\ParamStore.hpp">
+      <Filter>Header Files\gui\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

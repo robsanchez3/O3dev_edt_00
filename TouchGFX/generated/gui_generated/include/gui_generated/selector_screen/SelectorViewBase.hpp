@@ -91,6 +91,7 @@ protected:
     touchgfx::RepeatButton bt_forward;
     touchgfx::LineProgress lp_iniDelay;
     touchgfx::PainterRGB888 lp_iniDelayPainter;
+    touchgfx::ScalableImage si_logactive;
 
     /*
      * Wildcard Buffers

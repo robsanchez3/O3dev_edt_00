@@ -32,3 +32,4 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorPresenter.cp
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorPresenter.cpp:67:6:void SelectorPresenter::onSelectionAction(uint8_t)	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorPresenter.cpp:72:6:void SelectorPresenter::onSliderAction(uint8_t, uint8_t, uint16_t)	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorPresenter.cpp:78:9:uint8_t SelectorPresenter::getFsmState()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/selector_screen/SelectorPresenter.cpp:83:6:void SelectorPresenter::enableLog()	16	static

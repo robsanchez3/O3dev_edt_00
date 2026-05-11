@@ -68,12 +68,10 @@ void DevUpdatePresenter::cancelClicked()
 {
 #ifndef SIMULATOR
     if (dev_upd_import_is_active()) {
-        view.updateInfo("Skipping...");
         view.showButtons(false, false);
         dev_upd_import_skip();
         return;
     } else if (dev_upd_export_is_active()) {
-        view.updateInfo("Skipping...");
         view.showButtons(false, false);
         dev_upd_export_skip();
         return;

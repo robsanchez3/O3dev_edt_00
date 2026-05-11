@@ -38,6 +38,7 @@ public:
     void onSelectionAction(uint8_t selectionStep);
     void onSliderAction(uint8_t step, uint8_t targetValueID, uint16_t value);
     uint8_t getFsmState();
+    void enableLog();
 private:
     SelectorPresenter();
 

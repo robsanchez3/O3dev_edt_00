@@ -57,6 +57,13 @@ void SelectorView::handleTickEvent()
 		}
 	}
 
+	//  OK button long press management
+    if (okHolding && !okLongPress && (++okHoldTicks >= OK_LOG_TICKS)) {
+        okLongPress = true;
+        si_logactive.setVisible(true);
+        si_logactive.invalidate();
+    }
+
 	//  Progress bar management
 	if( lp_iniDelay.isVisible() || cp_iniDelay.isVisible() )
 	{
@@ -93,8 +100,17 @@ void SelectorView::handleTickEvent()
 
 void SelectorView::handleClickEvent(const ClickEvent& event)
 {
+    if (event.getType() == ClickEvent::PRESSED) {
+        if (bt_OK.getRect().intersect(event.getX(), event.getY()))
+        {
+            okHoldTicks = 0;
+            okHolding   = true;
+            okLongPress = false;
+        }
+    }
 	if(event.getType() == ClickEvent::RELEASED)
 	{
+		okHolding = false;
 		 // reset acceleration
 		accelCounter = 5;
 		bt_back.setInterval(30);
@@ -188,12 +204,15 @@ void SelectorView::sw_selectorUpdateCenterItem(sw_selectionContainer& item, int1
 
 void SelectorView::okClicked()
 {
-// printf("SelectorView::okClicked... tag value: %d\n", bufferToInt(ta_selectionBuffer));
-
-// presenter->okClicked(therapyCtx->therapyTargetValue[selectionStep], sw_selector.getSelectedItem());
-   presenter->okClicked(therapyCtx->therapyTargetValue[selectionStep], bufferToInt(ta_selectionBuffer));
-   presenter->onSelectionAction(selectionStep);
-   initSelectionContext(++selectionStep);
+    if (okLongPress) {
+        presenter->enableLog();
+        si_logactive.setVisible(false);
+        si_logactive.invalidate();
+        okLongPress = false;
+    }
+    presenter->okClicked(therapyCtx->therapyTargetValue[selectionStep], bufferToInt(ta_selectionBuffer));
+    presenter->onSelectionAction(selectionStep);
+    initSelectionContext(++selectionStep);
 }
 
 void SelectorView::cancelClicked()
