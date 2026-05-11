@@ -49,13 +49,17 @@ static const char* therapyName(uint16_t mode);
 
 void Model::tick()
 {
-	static char debug_done = 0;
-
-//  REMEMBER: The Model has a pointer to your currently active Presenter by means of ModelListener (where getVisibleScreen() has been defined as virtual)
-
 #ifndef SIMULATOR
 	if (tickDevUpdate()) return;
 #endif
+	tickScreenUpdate();
+}
+
+void Model::tickScreenUpdate()
+{
+	static char debug_done = 0;
+
+//  REMEMBER: The Model has a pointer to your currently active Presenter by means of ModelListener (where getVisibleScreen() has been defined as virtual)
 
 //  Update screen according to current FSM state
 	// TODO: analyze if it is possible change screen in "controlled way"
@@ -155,8 +159,115 @@ void Model::tick()
 		debug_done = 0;
 		break;
 	}
-} // Model::tick()
+}
 
+#if 0
+void Model::tickScreenUpdate_Back()
+{
+	static char debug_done = 0;
+
+//  REMEMBER: The Model has a pointer to your currently active Presenter by means of ModelListener (where getVisibleScreen() has been defined as virtual)
+
+//  Update screen according to current FSM state
+	// TODO: analyze if it is possible change screen in "controlled way"
+	// TODO: analyze if it is possible change screen in "controlled way"
+	switch(getFsmState())
+	{
+	case STATE_ERROR:
+		if(modelListener->getVisibleScreen() != SID_ERROR)
+		{
+			log_finish(LOG_RESULT_ERROR, (int32_t)fsm_o3_getErrorState());
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoErrorScreenNoTransition();
+		}
+		break;
+	case STATE_WAITING_FOR_PROTOCOL:
+		// just debug
+		if(!debug_done)
+		{
+			printf("Menu config debug: deviceConfig[0]= %d, ", deviceConfig[0]);
+			for(uint8_t i = 1; i < MAX_DEV_THERAPIES; i++)
+			{
+				printf("[%d]= %d, ", i, deviceConfig[i]);
+			}
+			printf("\n");
+			debug_done = 1;
+		}
+		// end just debug
+
+		if(modelListener->getVisibleScreen() == SID_STARTING)  // End of initial starting process
+		{
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoMainMenuScreenNoTransition();
+		}
+		if(modelListener->getVisibleScreen() == SID_END) // End of therapy
+		{
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoMainMenuScreenNoTransition();
+		}
+		break;
+	case STATE_O3_GENERATING:
+	case STATE_VACUUM_GENERATING:
+		switch(guiTherapy)
+		{
+		case SYRINGE_MODE:
+		case SYRINGE_AUTO_MODE:
+		case SYRINGE_MANUAL_MODE: if(modelListener->getVisibleScreen() != SID_SYRINGE_FILL )  static_cast<FrontendApplication*>(Application::getInstance())->gotoSyringeFillScreenNoTransition();
+		break;
+		case CLOSED_BAG_MODE:     modelListener->updateProgressRange(0, fsm_o3_getTime());  // TODO: try to update just once
+		//	break;                intentionally no break to force default action
+		default:                  if(modelListener->getVisibleScreen() != SID_RUNNING) static_cast<FrontendApplication*>(Application::getInstance())->gotoRunningScreenNoTransition();
+		}
+
+	break;
+	case STATE_USER_CANCELLED:
+	case STATE_COMPLETED:
+	case STATE_OVERPRESSURE:
+		if(modelListener->getVisibleScreen() != SID_END)
+		{
+			uint8_t st = getFsmState();
+			LogResult_t r = (st == (uint8_t)STATE_COMPLETED)      ? LOG_RESULT_OK :
+			                (st == (uint8_t)STATE_USER_CANCELLED)  ? LOG_RESULT_USER_CANCEL :
+			                                                          LOG_RESULT_ERROR;
+			log_finish(r, (r == LOG_RESULT_ERROR) ? (int32_t)st : 0);
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoEndScreenNoTransition();
+		}
+		break;
+	case STATE_WASHING:
+		if(modelListener->getVisibleScreen() != SID_WASHING)
+		{
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoWashingScreenNoTransition();
+		}
+		break;
+	case STATE_WAITING_THERAPY_TIME:
+		modelListener->updateProgressRange(0, fsm_o3_getTime()); // TODO: try to update just once
+		break;
+	case STATE_WAITING_EXTERNAL_STUFF:
+		if(modelListener->getVisibleScreen() != SID_WASHING)
+		{
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoWashingScreenNoTransition();
+		}
+		break;
+	case STATE_ADJUSTING:
+	case STATE_TUNING_O3_SENSOR:
+		if(modelListener->getVisibleScreen() != SID_ADJUSTING)
+		{
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoAdjustingScreenNoTransition();
+		}
+		break;
+#if 1
+	case STATE_WAITING_FOR_SERVICE:
+//  	if( (modelListener->getVisibleScreen() != SID_CALIBRATION) && (fsm_o3_getOption() == NO_MODE) )
+		if( (modelListener->getVisibleScreen() != SID_CALIBRATION) && (fsm_o3_getOption() == SERVICE_MODE) )
+		{
+			static_cast<FrontendApplication*>(Application::getInstance())->gotoCalibrationScreenNoTransition();
+		//	ChangeCurrentState(STATE_WAITING_FOR_SERVICE);
+		}
+			break;
+#endif
+	default:
+		debug_done = 0;
+		break;
+	}
+} // Model::tickScreenUpdate()
+#endif
 #ifndef SIMULATOR
 bool Model::tickDevUpdate()
 {

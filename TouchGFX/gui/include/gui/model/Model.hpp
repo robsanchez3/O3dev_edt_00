@@ -179,6 +179,7 @@ protected:
 
 private:
 	bool tickDevUpdate();
+	void tickScreenUpdate();
 
 	int8_t      guiTherapy = -1;
 //	THERAPY_CTX guiTherapyCtx;

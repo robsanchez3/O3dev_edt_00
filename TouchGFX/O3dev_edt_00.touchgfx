@@ -1455,12 +1455,12 @@
           {
             "Type": "ScalableImage",
             "Name": "si_logactive",
-            "X": 602,
-            "Y": 380,
-            "Width": 80,
-            "Height": 80,
+            "X": 578,
+            "Y": 370,
+            "Width": 100,
+            "Height": 100,
             "Visible": false,
-            "Filename": "lock_100.png",
+            "Filename": "Add_log_100_00.png",
             "ScalingAlgorithm": "Nearest-neighbor"
           }
         ],

@@ -87,6 +87,7 @@
 "./Application/User/generated/UnmappedDataFont.o"
 "./Application/User/generated/VectorFontRendererBuffers.o"
 "./Application/User/generated/WashingViewBase.o"
+"./Application/User/generated/image_Add_log_100_00.o"
 "./Application/User/generated/image_Bag_01.o"
 "./Application/User/generated/image_Bag_10.o"
 "./Application/User/generated/image_Bag_pressed_01.o"

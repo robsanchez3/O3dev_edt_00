@@ -148,8 +148,8 @@ SelectorViewBase::SelectorViewBase() :
     lp_iniDelay.setValue(0);
     add(lp_iniDelay);
 
-    si_logactive.setBitmap(touchgfx::Bitmap(BITMAP_LOCK_100_ID));
-    si_logactive.setPosition(602, 380, 80, 80);
+    si_logactive.setBitmap(touchgfx::Bitmap(BITMAP_ADD_LOG_100_00_ID));
+    si_logactive.setPosition(578, 370, 100, 100);
     si_logactive.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
     si_logactive.setVisible(false);
     add(si_logactive);
