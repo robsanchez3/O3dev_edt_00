@@ -173,10 +173,11 @@ void dep_o3_vprintf(const char *fmt, va_list args)
     va_copy(args_copy, args);
     vprintf(fmt, args);
 
-    if (log_is_enabled()) {
+    if (log_is_enabled() || start_log_is_enabled()) {
         char buf[256];
         vsnprintf(buf, sizeof(buf), fmt, args_copy);
         log_raw_line(buf);
+        start_log_raw_line(buf);
     }
     va_end(args_copy);
 }

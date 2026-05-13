@@ -1858,7 +1858,7 @@ void LaunchTherapy(void)
 //	StartGeneration(FLOW_NOT_STARTED_YET);
 }
 
-#define _QUICK_START
+#define NO_QUICK_START
 
 
 void FSM_ProcessEvents()

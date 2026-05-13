@@ -1,8 +1,9 @@
 /*
  * log.c
  *
- * Therapy session log — stores last therapy header + all deb_printf output
- * to 0:/log/last_therapy.log on the SD card.
+ * Session logs stored on the SD card (0:/log/):
+ *   last_therapy.log — therapy session, all deb_printf output.
+ *   last_start.log   — boot process, STATE_INIT_CHECK_1 → WAITING_FOR_PROTOCOL/ERROR.
  *
  *  Created on: May 2026
  *      Author: Roberto.Sanchez
@@ -144,8 +145,104 @@ void log_raw_line(const char *line)
 
         UINT bw;
         f_write(&s_file, line, len, &bw);
-//      write_str("\r\n");
+        write_str("\r\n");
     }
 
     osMutexRelease(s_mutex);
+}
+
+/* ================================================================== */
+/* Boot process log — 0:/log/last_start.log                           */
+/* ================================================================== */
+
+#define SL_FILE_PATH    "0:/log/last_start.log"
+#define SL_MAX_BYTES    (512UL * 1024UL)
+
+static volatile bool  sl_enabled   = true;
+static FIL            sl_file;
+static uint8_t        sl_file_open = 0;
+static osMutexId_t    sl_mutex     = NULL;
+
+static void sl_write_str(const char *s)
+{
+    UINT bw;
+    f_write(&sl_file, s, strlen(s), &bw);
+}
+
+static bool sl_size_limit_reached(void)
+{
+    if (f_size(&sl_file) < SL_MAX_BYTES) return false;
+    sl_write_str("!!! LOG SIZE LIMIT REACHED - LOGGING STOPPED !!!\r\n");
+    f_sync(&sl_file);
+    f_close(&sl_file);
+    sl_file_open = 0;
+    sl_enabled   = false;
+    return true;
+}
+
+void start_log_set_enabled(bool enabled) { sl_enabled = enabled; }
+bool start_log_is_enabled(void)          { return sl_enabled; }
+
+int8_t start_log_start(void)
+{
+    if (!sl_enabled)  return 0;
+    if (sl_file_open) return 0;  /* idempotent — called every tick during STATE_INIT_CHECK_1 */
+
+    if (sl_mutex == NULL)
+        sl_mutex = osMutexNew(NULL);
+
+    ensure_dir("0:/log");
+
+    FRESULT res = f_open(&sl_file, SL_FILE_PATH, FA_CREATE_ALWAYS | FA_WRITE);
+    if (res != FR_OK) return -1;
+    sl_file_open = 1;
+
+    sl_write_str("=== LAST START BOOT LOG ===\r\n");
+    sl_write_str("---\r\n");
+    f_sync(&sl_file);
+
+    return 0;
+}
+
+void start_log_finish(bool success, int32_t error_code)
+{
+    if (!sl_file_open) return;  /* idempotent */
+
+    osMutexAcquire(sl_mutex, osWaitForever);
+
+    sl_write_str("---\r\n");
+
+    if (success) {
+        sl_write_str("Result: ok\r\n");
+    } else {
+        char line[64];
+        snprintf(line, sizeof(line), "Result: error %ld\r\n", error_code);
+        sl_write_str(line);
+    }
+
+    f_sync(&sl_file);
+    f_close(&sl_file);
+    sl_file_open = 0;
+    sl_enabled   = false;
+
+    osMutexRelease(sl_mutex);
+}
+
+void start_log_raw_line(const char *line)
+{
+    if (!sl_enabled || !sl_file_open || sl_mutex == NULL) return;
+
+    osMutexAcquire(sl_mutex, osWaitForever);
+
+    if (!sl_size_limit_reached())
+    {
+        size_t len = strlen(line);
+        if (len > 0 && line[len - 1] == '\n') len--;  /* strip trailing \n */
+
+        UINT bw;
+        f_write(&sl_file, line, len, &bw);
+        //sl_write_str("\r\n");
+    }
+
+    osMutexRelease(sl_mutex);
 }

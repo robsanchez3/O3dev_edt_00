@@ -47,6 +47,19 @@ int16_t ImportDirFromUSB(const char* srcDir, const char* dstDir);
 int16_t ExportDirToUSB(const char* srcDir, const char* dstDir);
 
 /*
+ * ExportDirFlatToUSB
+ *
+ * Copies every file found in srcDir (recursively, all subdirectories) directly
+ * into dstDir, without recreating the source subdirectory structure.
+ *   0:/Config/Hw/a.hwr  →  1:/Log/a.hwr
+ *
+ * Returns:
+ *   >= 0  - number of files successfully copied
+ *   < 0   - error
+ */
+int16_t ExportDirFlatToUSB(const char* srcDir, const char* dstDir);
+
+/*
  * ClearDirRecursive
  *
  * Recursively deletes all files and subdirectories inside dirPath,

@@ -57,104 +57,93 @@ void Model::tick()
 
 void Model::tickScreenUpdate()
 {
-	static char debug_done = 0;
+	static char debug_done  = 0;
+	uint8_t currentScreen   = modelListener->getVisibleScreen();
+	uint8_t fsmState        = getFsmState();
 
-//  REMEMBER: The Model has a pointer to your currently active Presenter by means of ModelListener (where getVisibleScreen() has been defined as virtual)
-
-//  Update screen according to current FSM state
-	// TODO: analyze if it is possible change screen in "controlled way"
-	// TODO: analyze if it is possible change screen in "controlled way"
-	switch(getFsmState())
+    //  REMEMBER: The Model has a pointer to your currently active Presenter by means of ModelListener (where getVisibleScreen() has been defined as virtual)
+    //  Update screen according to current FSM state
+    // TODO: analyze if it is possible change screen in "controlled way"
+	switch(fsmState)
 	{
 	case STATE_ERROR:
-		if(modelListener->getVisibleScreen() != SID_ERROR)
-		{
+		if(currentScreen != SID_ERROR) {
+			start_log_finish(START_LOG_ERROR, (int32_t)fsm_o3_getErrorState());
 			log_finish(LOG_RESULT_ERROR, (int32_t)fsm_o3_getErrorState());
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoErrorScreenNoTransition();
 		}
 		break;
+
 	case STATE_WAITING_FOR_PROTOCOL:
-		// just debug
-		if(!debug_done)
-		{
+		start_log_finish(START_LOG_OK, 0);
+		if(!debug_done) {
 			printf("Menu config debug: deviceConfig[0]= %d, ", deviceConfig[0]);
 			for(uint8_t i = 1; i < MAX_DEV_THERAPIES; i++)
-			{
 				printf("[%d]= %d, ", i, deviceConfig[i]);
-			}
 			printf("\n");
 			debug_done = 1;
 		}
-		// end just debug
-
-		if(modelListener->getVisibleScreen() == SID_STARTING)  // End of initial starting process
-		{
+		if(currentScreen == SID_STARTING || currentScreen == SID_END)
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoMainMenuScreenNoTransition();
-		}
-		if(modelListener->getVisibleScreen() == SID_END) // End of therapy
-		{
-			static_cast<FrontendApplication*>(Application::getInstance())->gotoMainMenuScreenNoTransition();
-		}
 		break;
+
 	case STATE_O3_GENERATING:
 	case STATE_VACUUM_GENERATING:
 		switch(guiTherapy)
 		{
 		case SYRINGE_MODE:
 		case SYRINGE_AUTO_MODE:
-		case SYRINGE_MANUAL_MODE: if(modelListener->getVisibleScreen() != SID_SYRINGE_FILL )  static_cast<FrontendApplication*>(Application::getInstance())->gotoSyringeFillScreenNoTransition();
-		break;
-		case CLOSED_BAG_MODE:     modelListener->updateProgressRange(0, fsm_o3_getTime());  // TODO: try to update just once
-		//	break;                intentionally no break to force default action
-		default:                  if(modelListener->getVisibleScreen() != SID_RUNNING) static_cast<FrontendApplication*>(Application::getInstance())->gotoRunningScreenNoTransition();
+		case SYRINGE_MANUAL_MODE:
+			if(currentScreen != SID_SYRINGE_FILL)
+				static_cast<FrontendApplication*>(Application::getInstance())->gotoSyringeFillScreenNoTransition();
+			break;
+		case CLOSED_BAG_MODE:
+			modelListener->updateProgressRange(0, fsm_o3_getTime());  // TODO: try to update just once
+		  //break;  intentionally no break
+		default:
+			if(currentScreen != SID_RUNNING)
+				static_cast<FrontendApplication*>(Application::getInstance())->gotoRunningScreenNoTransition();
 		}
+		break;
 
-	break;
 	case STATE_USER_CANCELLED:
 	case STATE_COMPLETED:
 	case STATE_OVERPRESSURE:
-		if(modelListener->getVisibleScreen() != SID_END)
-		{
-			uint8_t st = getFsmState();
-			LogResult_t r = (st == (uint8_t)STATE_COMPLETED)      ? LOG_RESULT_OK :
-			                (st == (uint8_t)STATE_USER_CANCELLED)  ? LOG_RESULT_USER_CANCEL :
-			                                                          LOG_RESULT_ERROR;
-			log_finish(r, (r == LOG_RESULT_ERROR) ? (int32_t)st : 0);
+		if(currentScreen != SID_END) {
+			LogResult_t r;
+			if      (fsmState == (uint8_t)STATE_COMPLETED)      r = LOG_RESULT_OK;
+			else if (fsmState == (uint8_t)STATE_USER_CANCELLED) r = LOG_RESULT_USER_CANCEL;
+			else                                                 r = LOG_RESULT_ERROR;
+			log_finish(r, (r == LOG_RESULT_ERROR) ? (int32_t)fsmState : 0);
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoEndScreenNoTransition();
 		}
 		break;
+
 	case STATE_WASHING:
-		if(modelListener->getVisibleScreen() != SID_WASHING)
-		{
-			static_cast<FrontendApplication*>(Application::getInstance())->gotoWashingScreenNoTransition();
-		}
-		break;
-	case STATE_WAITING_THERAPY_TIME:
-		modelListener->updateProgressRange(0, fsm_o3_getTime()); // TODO: try to update just once
-		break;
 	case STATE_WAITING_EXTERNAL_STUFF:
-		if(modelListener->getVisibleScreen() != SID_WASHING)
-		{
+		if(currentScreen != SID_WASHING)
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoWashingScreenNoTransition();
-		}
 		break;
+
+	case STATE_WAITING_THERAPY_TIME:
+		modelListener->updateProgressRange(0, fsm_o3_getTime());  // TODO: try to update just once
+		break;
+
 	case STATE_ADJUSTING:
 	case STATE_TUNING_O3_SENSOR:
-		if(modelListener->getVisibleScreen() != SID_ADJUSTING)
-		{
+		if(currentScreen != SID_ADJUSTING)
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoAdjustingScreenNoTransition();
-		}
 		break;
-#if 1
+
 	case STATE_WAITING_FOR_SERVICE:
-//  	if( (modelListener->getVisibleScreen() != SID_CALIBRATION) && (fsm_o3_getOption() == NO_MODE) )
-		if( (modelListener->getVisibleScreen() != SID_CALIBRATION) && (fsm_o3_getOption() == SERVICE_MODE) )
-		{
+		if(currentScreen != SID_CALIBRATION && fsm_o3_getOption() == SERVICE_MODE)
 			static_cast<FrontendApplication*>(Application::getInstance())->gotoCalibrationScreenNoTransition();
-		//	ChangeCurrentState(STATE_WAITING_FOR_SERVICE);
-		}
-			break;
-#endif
+		break;
+
+	case STATE_INIT_CHECK_1:
+		start_log_start();
+		break;
+
 	default:
 		debug_done = 0;
 		break;
@@ -1205,15 +1194,17 @@ void Model::configLoaderTask(void)
 				if(dev_upd_export_request("Log directory exists.\nOverwrite?"))
 				{
 					ClearDirRecursive("1:/Log");
-					ExportDirToUSB("0:/Config", "1:/Log");
-					ExportDirToUSB("0:/log",    "1:/Log/log");
+					ExportDirFlatToUSB("0:/Config", "1:/Log");
+					ExportDirFlatToUSB("0:/log",    "1:/Log");
+					f_mount(NULL, "1:", 0);
 					dev_upd_export_notify("Export complete!\n\nRemove USB drive.\nPress OK to continue.");
 				}
 			}
 			else
 			{
-				ExportDirToUSB("0:/Config", "1:/Log");
-				ExportDirToUSB("0:/log",    "1:/Log/log");
+				ExportDirFlatToUSB("0:/Config", "1:/Log");
+				ExportDirFlatToUSB("0:/log",    "1:/Log");
+				f_mount(NULL, "1:", 0);
 				dev_upd_export_notify("Export complete!\n\nRemove USB drive.\nPress OK to continue.");
 			}
 		}

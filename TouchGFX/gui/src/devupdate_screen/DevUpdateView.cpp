@@ -4,7 +4,7 @@
 #include <touchgfx/Bitmap.hpp>
 #include <images/BitmapDatabase.hpp>
 
-DevUpdateView::DevUpdateView()
+DevUpdateView::DevUpdateView() : m_lastBitmapId(0xFFFF)
 {
 }
 
@@ -39,6 +39,9 @@ void DevUpdateView::showButtons(bool showOk, bool showCancel)
 
 void DevUpdateView::showImage(uint16_t bitmapId)
 {
+    if (m_lastBitmapId == bitmapId)
+        return;
+    m_lastBitmapId = bitmapId;
     si_update.setBitmap(Bitmap(bitmapId));
     si_update.invalidate();
 }

@@ -19,6 +19,7 @@ public:
     virtual void cancelClicked();
     virtual void okClicked1();
 protected:
+    uint16_t m_lastBitmapId;
 };
 
 #endif // DEVUPDATEVIEW_HPP

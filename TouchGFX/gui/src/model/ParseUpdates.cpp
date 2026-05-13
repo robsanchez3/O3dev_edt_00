@@ -196,6 +196,52 @@ static int16_t CopyDirRecursive(const char* srcDir, const char* dstDir)
 }
 
 /* ---------------------------------------------------------------------------
+ * ExportDirFlatToUSB  (internal helper + public entry)
+ *
+ * Copies every file found in srcDir (recursively) directly into dstDir,
+ * without recreating the source subdirectory structure.
+ *   0:/Config/Hw/a.hwr  →  1:/Log/a.hwr
+ * --------------------------------------------------------------------------*/
+static int16_t flat_copy_dir(const char* srcDir, const char* dstDir)
+{
+    DIR     dir;
+    FILINFO fno;
+    char    srcPath[256], dstPath[256];
+    int16_t copied = 0;
+
+    if (f_opendir(&dir, srcDir) != FR_OK) return 0;
+
+    while (1)
+    {
+        if (f_readdir(&dir, &fno) != FR_OK || fno.fname[0] == '\0') break;
+
+        snprintf(srcPath, sizeof(srcPath), "%s/%s", srcDir, fno.fname);
+
+        if (fno.fattrib & AM_DIR)
+        {
+            copied += flat_copy_dir(srcPath, dstDir);
+        }
+        else
+        {
+            snprintf(dstPath, sizeof(dstPath), "%s/%s", dstDir, fno.fname);
+            if (CopyFile(srcPath, dstPath) == 0)
+                { printf("ExportFlat: '%s'\n", fno.fname); copied++; }
+            else
+                printf("ExportFlat: ERROR '%s'\n", fno.fname);
+        }
+    }
+    f_closedir(&dir);
+    return copied;
+}
+
+int16_t ExportDirFlatToUSB(const char* srcDir, const char* dstDir)
+{
+    f_mkdir(dstDir);
+    printf("ExportDirFlatToUSB: '%s' -> '%s'\n", srcDir, dstDir);
+    return flat_copy_dir(srcDir, dstDir);
+}
+
+/* ---------------------------------------------------------------------------
  * ExportDirToUSB
  *
  * Recursively copies srcDir (SD) into dstDir (USB).

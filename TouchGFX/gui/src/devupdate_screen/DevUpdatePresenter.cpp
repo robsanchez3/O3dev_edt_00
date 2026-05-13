@@ -89,6 +89,7 @@ void DevUpdatePresenter::onDevUpdTick(uint8_t progress, int state, const char* m
     switch ((dev_upd_state_t)state)
     {
     case DEV_UPD_IMPORT_CONFIRM: {
+        view.showImage(BITMAP_UPDATE_120_00_ID);
         char prompt[96];
         snprintf(prompt, sizeof prompt, "Import new service configuration:\n\n%s\n\nContinue?", msg);
         view.updateInfo(prompt);
@@ -96,11 +97,13 @@ void DevUpdatePresenter::onDevUpdTick(uint8_t progress, int state, const char* m
         break;
     }
     case DEV_UPD_EXPORT_CONFIRM:
+        view.showImage(BITMAP_LOG_120_00_ID);
         view.updateInfo(msg);
         view.showButtons(true, true);
         break;
 
     case DEV_UPD_EXPORT_DONE:
+        view.showImage(BITMAP_LOG_120_00_ID);
         view.updateInfo(msg);
         view.showButtons(true, false);
         break;
