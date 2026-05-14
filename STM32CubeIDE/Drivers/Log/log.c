@@ -3,7 +3,7 @@
  *
  * Session logs stored on the SD card (0:/log/):
  *   last_therapy.log — therapy session, all deb_printf output.
- *   last_start.log   — boot process, STATE_INIT_CHECK_1 → WAITING_FOR_PROTOCOL/ERROR.
+ *   last_start.log   — start boot process, STATE_INIT_CHECK_1 → WAITING_FOR_PROTOCOL/ERROR.
  *
  *  Created on: May 2026
  *      Author: Roberto.Sanchez
@@ -16,17 +16,19 @@
 #include <stdio.h>
 #include <string.h>
 
+/* ================================================================== */
+/* Last therapy log — 0:/log/last_therapy.log                         */
+/* ================================================================== */
 #define LOG_FILE_PATH   "0:/log/last_therapy.log"
 #define LOG_MAX_BYTES   (512UL * 1024UL)
 
 extern FSM_O3_OPERATION_T GLB_fsm_o3;
 
-static volatile bool  s_enabled   = false;
-static FIL            s_file;
-static uint8_t        s_file_open = 0;
-static osMutexId_t    s_mutex     = NULL;
+static volatile bool  tl_enabled   = false;
+static FIL            tl_file;
+static uint8_t        tl_file_open = 0;
+static osMutexId_t    tl_mutex     = NULL;
 
-/* ------------------------------------------------------------------ */
 
 static FRESULT ensure_dir(const char *path)
 {
@@ -40,38 +42,37 @@ static FRESULT ensure_dir(const char *path)
 static void write_str(const char *s)
 {
     UINT bw;
-    f_write(&s_file, s, strlen(s), &bw);
+    f_write(&tl_file, s, strlen(s), &bw);
 }
 
 static bool size_limit_reached(void)
 {
-    if (f_size(&s_file) < LOG_MAX_BYTES) return false;
+    if (f_size(&tl_file) < LOG_MAX_BYTES) return false;
     write_str("!!! LOG SIZE LIMIT REACHED - LOGGING STOPPED !!!\r\n");
-    f_sync(&s_file);
-    f_close(&s_file);
-    s_file_open = 0;
-    s_enabled   = false;
+    f_sync(&tl_file);
+    f_close(&tl_file);
+    tl_file_open = 0;
+    tl_enabled   = false;
     return true;
 }
 
-/* ------------------------------------------------------------------ */
 
-void log_set_enabled(bool enabled) { s_enabled = enabled; }
-bool log_is_enabled(void)          { return s_enabled; }
+void log_set_enabled(bool enabled) { tl_enabled = enabled; }
+bool log_is_enabled(void)          { return tl_enabled; }
 
 int8_t log_start(const char *therapy_name)
 {
-    if (!s_enabled)  return 0;
-    if (s_file_open) return 0;  /* already running — idempotent */
+    if (!tl_enabled)  return 0;
+    if (tl_file_open) return 0;  /* already running — idempotent */
 
-    if (s_mutex == NULL)
-        s_mutex = osMutexNew(NULL);
+    if (tl_mutex == NULL)
+        tl_mutex = osMutexNew(NULL);
 
     ensure_dir("0:/log");
 
-    FRESULT res = f_open(&s_file, LOG_FILE_PATH, FA_CREATE_ALWAYS | FA_WRITE);
+    FRESULT res = f_open(&tl_file, LOG_FILE_PATH, FA_CREATE_ALWAYS | FA_WRITE);
     if (res != FR_OK) return -1;
-    s_file_open = 1;
+    tl_file_open = 1;
 
     char line[128];
 
@@ -97,16 +98,16 @@ int8_t log_start(const char *therapy_name)
     write_str(line);
 
     write_str("---\r\n");
-    f_sync(&s_file);
+    f_sync(&tl_file);
 
     return 0;
 }
 
 void log_finish(LogResult_t result, int32_t error_code)
 {
-    if (!s_file_open) return;
+    if (!tl_file_open) return;
 
-    osMutexAcquire(s_mutex, osWaitForever);
+    osMutexAcquire(tl_mutex, osWaitForever);
 
     write_str("---\r\n");
 
@@ -124,19 +125,19 @@ void log_finish(LogResult_t result, int32_t error_code)
         break;
     }
 
-    f_sync(&s_file);
-    f_close(&s_file);
-    s_file_open = 0;
-    s_enabled   = false;
+    f_sync(&tl_file);
+    f_close(&tl_file);
+    tl_file_open = 0;
+    tl_enabled   = false;
 
-    osMutexRelease(s_mutex);
+    osMutexRelease(tl_mutex);
 }
 
 void log_raw_line(const char *line)
 {
-    if (!s_enabled || !s_file_open || s_mutex == NULL) return;
+    if (!tl_enabled || !tl_file_open || tl_mutex == NULL) return;
 
-    osMutexAcquire(s_mutex, osWaitForever);
+    osMutexAcquire(tl_mutex, osWaitForever);
 
     if (!size_limit_reached())
     {
@@ -144,15 +145,15 @@ void log_raw_line(const char *line)
         if (len > 0 && line[len - 1] == '\n') len--;  /* strip trailing \n */
 
         UINT bw;
-        f_write(&s_file, line, len, &bw);
-        write_str("\r\n");
+        f_write(&tl_file, line, len, &bw);
+//      write_str("\r\n");
     }
 
-    osMutexRelease(s_mutex);
+    osMutexRelease(tl_mutex);
 }
 
 /* ================================================================== */
-/* Boot process log — 0:/log/last_start.log                           */
+/* Start boot process log — 0:/log/last_start.log                     */
 /* ================================================================== */
 
 #define SL_FILE_PATH    "0:/log/last_start.log"
