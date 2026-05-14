@@ -139,6 +139,29 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
   switch (cmd)
   {
     case CTRL_SYNC:
+      /* SCSI SYNCHRONIZE CACHE (10): flush drive's write cache to NAND.
+         Drives that don't support it return ILLEGAL REQUEST — acceptable,
+         we return RES_OK regardless so FatFS continues normally.          */
+      if ((hUsbHostHS.gState == HOST_CLASS) &&
+          (hUsbHostHS.device.PortEnabled != 0U))
+      {
+        MSC_HandleTypeDef *msc = (MSC_HandleTypeDef *) hUsbHostHS.pActiveClass->pData;
+        if (msc->unit[lun].state == MSC_IDLE)
+        {
+          (void)USBH_memset(msc->hbot.cbw.field.CB, 0, CBW_CB_LENGTH);
+          msc->hbot.cbw.field.DataTransferLength = 0;
+          msc->hbot.cbw.field.Flags              = USB_EP_DIR_OUT;
+          msc->hbot.cbw.field.CBLength           = CBW_LENGTH;
+          msc->hbot.cbw.field.CB[0]              = 0x35U; /* SYNCHRONIZE CACHE (10) */
+          msc->hbot.state                        = BOT_SEND_CBW;
+
+          uint32_t t0 = hUsbHostHS.Timer;
+          while (USBH_MSC_BOT_Process(&hUsbHostHS, lun) == USBH_BUSY)
+          {
+            if ((hUsbHostHS.Timer - t0) > 3000U) break;
+          }
+        }
+      }
       res = RES_OK;
       break;
 

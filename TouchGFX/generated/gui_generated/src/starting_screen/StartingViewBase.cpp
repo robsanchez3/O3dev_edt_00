@@ -55,6 +55,12 @@ StartingViewBase::StartingViewBase() :
     bt_settings.setBitmaps(touchgfx::Bitmap(BITMAP_SETTINGS_100_A_ID), touchgfx::Bitmap(BITMAP_SETTINGS_100_B_ID));
     bt_settings.setAction(buttonCallback);
     add(bt_settings);
+
+    bt_bootLog.setXY(676, 334);
+    bt_bootLog.setBitmaps(touchgfx::Bitmap(BITMAP_ADD_LOG_100_00_ID), touchgfx::Bitmap(BITMAP_ADD_LOG_PRESSED_100_00_ID));
+    bt_bootLog.setVisible(false);
+    bt_bootLog.setAction(buttonCallback);
+    add(bt_bootLog);
 }
 
 StartingViewBase::~StartingViewBase()
@@ -79,5 +85,12 @@ void StartingViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
         //When bt_settings clicked call virtual function
         //Call settingsClicked
         settingsClicked();
+    }
+    if (&src == &bt_bootLog)
+    {
+        //bootLogClicked1
+        //When bt_bootLog clicked call virtual function
+        //Call bootLogClicked
+        bootLogClicked();
     }
 }

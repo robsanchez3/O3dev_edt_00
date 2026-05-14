@@ -27,3 +27,8 @@ void StartingPresenter::settingsClicked()
 	model->userOk();
 	model->blockConfigOptions();
 }
+
+void StartingPresenter::bootLogClicked()
+{
+	model->bootLogEnable();
+}

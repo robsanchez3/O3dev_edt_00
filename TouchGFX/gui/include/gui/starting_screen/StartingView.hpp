@@ -14,6 +14,7 @@ public:
 
     virtual void handleTickEvent();
     void settingsClicked();
+    virtual void bootLogClicked();
 
 private:
     float xAngle3D;

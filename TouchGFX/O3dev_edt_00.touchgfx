@@ -1193,6 +1193,17 @@
             "Height": 100,
             "Pressed": "Settings_100_b.png",
             "Released": "Settings_100_a.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "bt_bootLog",
+            "X": 676,
+            "Y": 334,
+            "Width": 100,
+            "Height": 100,
+            "Visible": false,
+            "Pressed": "Add_log_Pressed_100_00.png",
+            "Released": "Add_log_100_00.png"
           }
         ],
         "Interactions": [
@@ -1217,6 +1228,17 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "settingsClicked"
+            }
+          },
+          {
+            "InteractionName": "bootLogClicked1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bt_bootLog"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "bootLogClicked"
             }
           }
         ]

@@ -119,6 +119,7 @@ public:
 	void userOk(void);
 	void userOkRelease(void);
 	void setLogEnabled(bool enabled);
+	void bootLogEnable();
 	void cancelWashing(void);
 	void washingExtesion(void);
 	void gotoRepose(void);

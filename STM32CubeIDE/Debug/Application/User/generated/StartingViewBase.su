@@ -20,6 +20,7 @@
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:490:18:virtual void touchgfx::Drawable::handleDragEvent(const touchgfx::DragEvent&)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:501:18:virtual void touchgfx::Drawable::handleTickEvent()	16	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:515:10:void touchgfx::Drawable::setVisible(bool)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:525:10:void touchgfx::Drawable::setTouchable(bool)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:537:10:bool touchgfx::Drawable::isVisible() const	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:549:10:bool touchgfx::Drawable::isTouchable() const	16	static
@@ -110,7 +111,8 @@
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:32:7:virtual touchgfx::AbstractButton::~AbstractButton()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:34:5:touchgfx::Button::Button()	16	static
 ../../TouchGFX/generated/gui_generated/include/gui_generated/starting_screen/StartingViewBase.hpp:30:18:virtual void StartingViewBase::settingsClicked()	16	static
-../../TouchGFX/generated/gui_generated/include/gui_generated/starting_screen/StartingViewBase.hpp:36:26:FrontendApplication& StartingViewBase::application()	16	static
+../../TouchGFX/generated/gui_generated/include/gui_generated/starting_screen/StartingViewBase.hpp:34:18:virtual void StartingViewBase::bootLogClicked()	16	static
+../../TouchGFX/generated/gui_generated/include/gui_generated/starting_screen/StartingViewBase.hpp:40:26:FrontendApplication& StartingViewBase::application()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:36:7:touchgfx::View<StartingPresenter>::~View()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:36:7:virtual touchgfx::View<StartingPresenter>::~View()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:29:7:touchgfx::Box::~Box()	16	static
@@ -139,11 +141,11 @@
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:31:7:virtual touchgfx::Button::~Button()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:357:8:touchgfx::Callback<StartingViewBase, const touchgfx::AbstractButton&>::~Callback()	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:357:8:virtual touchgfx::Callback<StartingViewBase, const touchgfx::AbstractButton&>::~Callback()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:9:1:StartingViewBase::StartingViewBase()	88	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:60:1:StartingViewBase::~StartingViewBase()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:60:1:virtual StartingViewBase::~StartingViewBase()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:65:6:virtual void StartingViewBase::setupScreen()	16	static
-C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:70:6:void StartingViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:9:1:StartingViewBase::StartingViewBase()	96	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:66:1:StartingViewBase::~StartingViewBase()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:66:1:virtual StartingViewBase::~StartingViewBase()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:71:6:virtual void StartingViewBase::setupScreen()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/generated/gui_generated/src/starting_screen/StartingViewBase.cpp:76:6:void StartingViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	16	static
 ../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:39:5:touchgfx::View<T>::View() [with T = StartingPresenter]	16	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:44:5:touchgfx::FadeAnimator<T>::FadeAnimator() [with T = touchgfx::Image]	32	static
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp:44:5:touchgfx::FadeAnimator<T>::FadeAnimator() [with T = touchgfx::TextureMapper]	32	static

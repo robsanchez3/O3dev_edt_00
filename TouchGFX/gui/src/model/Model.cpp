@@ -632,6 +632,13 @@ void Model::setLogEnabled(bool enabled)
 #endif
 }
 
+void Model::bootLogEnable()
+{
+#ifndef SIMULATOR
+    start_log_set_enabled(true);
+#endif
+}
+
 void Model::cancelWashing(void)
 {
 	printf("Washing cancelled (model)...\n");

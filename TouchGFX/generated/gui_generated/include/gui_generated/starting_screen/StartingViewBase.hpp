@@ -31,6 +31,10 @@ public:
     {
         // Override and implement this function in Starting
     }
+    virtual void bootLogClicked()
+    {
+        // Override and implement this function in Starting
+    }
 
 protected:
     FrontendApplication& application() {
@@ -47,6 +51,7 @@ protected:
     touchgfx::LineProgress lp_tout;
     touchgfx::PainterRGB888 lp_toutPainter;
     touchgfx::Button bt_settings;
+    touchgfx::Button bt_bootLog;
 
 private:
 

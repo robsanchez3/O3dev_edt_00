@@ -23,3 +23,4 @@ C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/starting_screen/StartingPresenter.cp
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/starting_screen/StartingPresenter.cpp:15:6:virtual void StartingPresenter::deactivate()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/starting_screen/StartingPresenter.cpp:20:10:virtual uint16_t StartingPresenter::getVisibleScreen()	16	static
 C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/starting_screen/StartingPresenter.cpp:25:6:void StartingPresenter::settingsClicked()	16	static
+C:/Roberto/O3/O3dev_edt_00/TouchGFX/gui/src/starting_screen/StartingPresenter.cpp:31:6:void StartingPresenter::bootLogClicked()	16	static

@@ -28,6 +28,7 @@ public:
     virtual ~StartingPresenter() {};
     uint16_t getVisibleScreen();
     void settingsClicked();
+    void bootLogClicked();
 
 private:
     StartingPresenter();

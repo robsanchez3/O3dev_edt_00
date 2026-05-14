@@ -3,7 +3,6 @@
 
 #include "BitmapDatabase.hpp"
 #include <stdio.h>
-
 #define TOUT_SETTINGS_MS 2500
 #define VIEW_SETTINGS_DELAY_MS 1000
 
@@ -28,6 +27,7 @@ void StartingView::setupScreen()
     StartingViewBase::setupScreen();
     lp_tout.setVisible(false);
     bt_settings.setVisible(false);
+    bt_bootLog.setVisible(false);
     timeoutCounter = 0;
 }
 
@@ -56,8 +56,10 @@ void StartingView::handleTickEvent()
 				timeoutCounter = 0;
 				lp_tout.setVisible(true);
 				bt_settings.setVisible(true);
+				bt_bootLog.setVisible(true);
 				lp_tout.invalidate();
 				bt_settings.invalidate();
+				bt_bootLog.invalidate();
 			}
 		}
 		else
@@ -73,8 +75,10 @@ void StartingView::handleTickEvent()
 				timeoutCounter = 0;
 				lp_tout.setVisible(false);
 				bt_settings.setVisible(false);
+				bt_bootLog.setVisible(false);
 				lp_tout.invalidate();
 				bt_settings.invalidate();
+				bt_bootLog.invalidate();
 			}
 		}
 	}
@@ -131,4 +135,10 @@ void StartingView::settingsClicked()
 {
 	printf("StartingView::settingsClicked()...\n");
 	presenter->settingsClicked();
+}
+
+void StartingView::bootLogClicked()
+{
+	printf("StartingView::bootLogClicked()...\n");
+	presenter->bootLogClicked();
 }

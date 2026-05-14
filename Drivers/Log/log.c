@@ -158,7 +158,7 @@ void log_raw_line(const char *line)
 #define SL_FILE_PATH    "0:/log/last_start.log"
 #define SL_MAX_BYTES    (512UL * 1024UL)
 
-static volatile bool  sl_enabled   = true;
+static volatile bool  sl_enabled   = false;
 static FIL            sl_file;
 static uint8_t        sl_file_open = 0;
 static osMutexId_t    sl_mutex     = NULL;
